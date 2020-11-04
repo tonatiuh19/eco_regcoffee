@@ -30,20 +30,20 @@ $grays: map-merge(
     "700": $gray-700,
     "800": $gray-800,
     "900": $gray-900
-  ),
+    ),
   $grays
-);
+  );
 
 $blue:    #007bff !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
-$red:     #dc3545 !default;
+$red:     #e84a5f !default;
 $orange:  #fd7e14 !default;
 $yellow:  #ffc107 !default;
-$green:   #28a745 !default;
+$green:   #a8df65 !default;
 $teal:    #20c997 !default;
-$cyan:    #17a2b8 !default;
+$cyan:    #47eef4 !default;
 
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -62,12 +62,12 @@ $colors: map-merge(
     "white":      $white,
     "gray":       $gray-600,
     "gray-dark":  $gray-800
-  ),
+    ),
   $colors
-);
+  );
 
-$primary:       $blue !default;
-$secondary:     $gray-600 !default;
+$primary:       $purple !default;
+$secondary:     $cyan !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
@@ -87,9 +87,9 @@ $theme-colors: map-merge(
     "danger":     $danger,
     "light":      $light,
     "dark":       $dark
-  ),
+    ),
   $theme-colors
-);
+  );
 
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:      8% !default;
@@ -138,9 +138,9 @@ $spacers: map-merge(
     3: $spacer,
     4: ($spacer * 1.5),
     5: ($spacer * 3)
-  ),
+    ),
   $spacers
-);
+  );
 
 // This variable affects the `.h-*` and `.w-*` classes.
 $sizes: () !default;
@@ -152,9 +152,9 @@ $sizes: map-merge(
     75: 75%,
     100: 100%,
     auto: auto
-  ),
+    ),
   $sizes
-);
+  );
 
 
 // Body
@@ -194,7 +194,7 @@ $grid-breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px
-) !default;
+  ) !default;
 
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
@@ -209,7 +209,7 @@ $container-max-widths: (
   md: 720px,
   lg: 960px,
   xl: 1140px
-) !default;
+  ) !default;
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
@@ -261,16 +261,16 @@ $embed-responsive-aspect-ratios: join(
     (16 9),
     (4 3),
     (1 1),
-  ),
+    ),
   $embed-responsive-aspect-ratios
-);
+  );
 
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:      'Mulish', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
@@ -639,7 +639,7 @@ $custom-file-button-color:          $custom-file-color !default;
 $custom-file-button-bg:             $input-group-addon-bg !default;
 $custom-file-text: (
   en: "Browse"
-) !default;
+  ) !default;
 
 
 // Form validation
@@ -661,14 +661,14 @@ $form-validation-states: map-merge(
     "valid": (
       "color": $form-feedback-valid-color,
       "icon": $form-feedback-icon-valid
-    ),
+      ),
     "invalid": (
       "color": $form-feedback-invalid-color,
       "icon": $form-feedback-icon-invalid
+      ),
     ),
-  ),
   $form-validation-states
-);
+  );
 
 // Z-index master list
 //
