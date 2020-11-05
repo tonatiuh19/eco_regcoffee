@@ -1,3 +1,13 @@
+<?php
+require_once('admin/cn.php');
+session_start();
+
+if (isset($_SESSION['uname'])){
+	echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.location.href='mipagina/';
+    </SCRIPT>");
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -67,8 +77,8 @@
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 
                 <li><a href="symptoms.html" class="nav-link">Explora creadores</a></li>
-                <li><a href="about.html" class="nav-link">Entrar</a></li>
-                <li><a href="contact.html" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-success"></i></a></li>
+                <li><a data-toggle="modal" href="#iniciarSesion" class="nav-link">Entrar</a></li>
+                <li><a data-toggle="modal" href="#crearCuenta" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-success"></i></a></li>
               </ul>
             </nav>
           </div>
@@ -97,7 +107,7 @@
               </div>
               <input type="search" placeholder="tunombre" class="form-control border-left-0" name="username" id="username" autofocus="autofocus" autocomplete="off">
               <div class="input-group-append">
-                <button class="btn btn-primary btn-outline-white" type="button" id="comenzarBtn" data-toggle="modal" data-target="#comenzar">Empezar <i class="fas fa-play"></i></button>
+                <button class="btn btn-primary btn-outline-white" type="button" id="comenzarBtn" data-toggle="modal" data-target="#comenzar" disabled>Empezar <i class="fas fa-play"></i></button>
               </div>
             </div>
             <div id="uname_response"></div>
@@ -578,20 +588,98 @@
   <script src="js/coffee.js"></script>
 
 <div class="modal fade" id="comenzar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form method="post" action="sign-up/">
+          <div class="form-group">
+            <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
+            <input type="hidden" id="usernametxt" name="usernametxt">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" required> 
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-dark text-center">Continuar <i class="fas fa-arrow-circle-right"></i></button>
+          </div>
+        </form>
+        <p class="text-center">
+            ¿Ya tienes cuenta? <a href="#">Inicia sesion</a>
+        </p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="iniciarSesion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Entrar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="sign-in/">
+          <div class="form-group">
+            <input type="email" class="form-control input-lg" name="email_i" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" name="pwd_i" placeholder="Ingresa la contraseña" required> 
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-dark text-center">Entrar <i class="fas fa-arrow-circle-right"></i></button>
+          </div>
+        </form>
+        <p class="text-center">
+            ¿No tienes cuenta? <a href="#">Crea una aqui <i class="far fa-smile-wink"></i></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="crearCuenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="sign-up/">
+          <div class="form-group">
+            <div class="input-group input-focus">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-white font-weight-bold">regalameuncafe.com/</span>
+                </div>
+                <input type="search" placeholder="tunombre" class="form-control border-left-0" name="usernametxt" id="usernameModal" autofocus="autofocus" autocomplete="off">
+            </div>
+            <div class="alert alert-warning" role="alert" id="alertExistModal"><small>Este nombre de usuario ya existe :(</small></div>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
+            
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" required> 
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-dark text-center" id="comenzarBtnModal" disabled>Continuar <i class="fas fa-arrow-circle-right"></i></button>
+          </div>
+        </form>
+        <p class="text-center">
+            ¿Ya tienes cuenta? <a href="#">Inicia sesion</a>
+        </p>
       </div>
     </div>
   </div>
