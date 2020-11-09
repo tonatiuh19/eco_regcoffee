@@ -141,6 +141,28 @@ $(document).ready(function(){
          document.getElementById("comenzarBtn").setAttribute("disabled", '');
       }
     });
+   $('#cancelmodifyPayment').hide();
+   $('#savemodifyPayment').hide();
+   $("#modifyPayment").click(function(evt){
+      $('#cancelmodifyPayment').show();
+      $('#savemodifyPayment').show();
+      document.getElementById("inputPaypal").removeAttribute("readonly");
+      document.getElementById("inputClabeBank").removeAttribute("readonly");
+      document.getElementById("inputClabeBankNumber").removeAttribute("readonly");
+      document.getElementById("radioActivePaypal").removeAttribute("disabled");
+      document.getElementById("radioActiveClabe").removeAttribute("disabled");
+      
+   });
+
+   $("#cancelmodifyPayment").click(function(evt){
+      document.getElementById("inputPaypal").setAttribute("readonly", '');
+      document.getElementById("inputClabeBank").setAttribute("readonly", '');
+      document.getElementById("inputClabeBankNumber").setAttribute("readonly", '');
+      document.getElementById("radioActivePaypal").setAttribute("disabled", '');
+      document.getElementById("radioActiveClabe").setAttribute("disabled", '');
+      $('#cancelmodifyPayment').hide();
+      $('#savemodifyPayment').hide();
+   });
 
 });
 
@@ -160,3 +182,39 @@ $("#username").keyup(function() {
 $("#usernametxt").keyup(function() {
    $("#username").val($("#usernametxt").val());
 });
+
+
+$('#copy').tooltip({
+   trigger: 'click',
+   placement: 'bottom'
+ });
+ 
+ function setTooltip(message) {
+   $('#copy').tooltip('hide')
+     .attr('data-original-title', message)
+     .tooltip('show');
+ }
+ 
+ function hideTooltip() {
+   setTimeout(function() {
+     $('#copy').tooltip('hide');
+   }, 1000);
+ }
+ 
+ // Clipboard
+ var clipboard = new ClipboardJS('#copy');
+ 
+ clipboard.on('success', function(e) {
+      setTooltip('Link copiado ;)');
+      hideTooltip();
+  
+ });
+ 
+ clipboard.on('error', function(e) {
+     setTooltip('Failed!');
+     hideTooltip();
+   
+ });
+
+
+  

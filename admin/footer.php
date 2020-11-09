@@ -62,10 +62,10 @@
   <script src="../js/jquery.fancybox.min.js"></script>
   <script src="../js/jquery.sticky.js"></script>
   <script src="../js/isotope.pkgd.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
 
   <script src="../js/main.js"></script>
-  <script src="../js/main-in.js"></script>
+  <script src="../js/coffee.js"></script>
 
 
 </body>

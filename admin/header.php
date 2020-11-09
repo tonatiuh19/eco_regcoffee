@@ -78,7 +78,7 @@ require_once('cn.php');
                 <li class="has-children active">
                   <a href="#" class="nav-link"><i class="fas fa-user-astronaut"></i></a>
                   <ul class="dropdown">
-                    <li><a href="#" class="nav-link">Mi cuenta</a></li>
+                    <li><a href="../micuenta/" class="nav-link">Mi cuenta</a></li>
                     <li><a href="../admin/end.php" class="nav-link">Salir </a></li>
                   </ul>
                 </li>

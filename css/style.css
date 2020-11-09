@@ -61,7 +61,7 @@ body:after {
 .btn {
   font-size: 12px;
   text-transform: uppercase;
-  border-radius: 30px;
+  
   padding: 10px 30px; }
   .btn:hover, .btn:active, .btn:focus {
     outline: none;
@@ -110,7 +110,8 @@ body:after {
     box-shadow: none !important; }
 
 .site-section {
-  padding: 2.5em 0; }
+  padding: 2.5em 0;
+  height: 100vh; }
   @media (min-width: 768px) {
     .site-section {
       padding: 8em 0; } }
@@ -1211,4 +1212,25 @@ figure figcaption {
 
 #alertExist {
   display:inline-block;
+}
+
+
+.bouton-image:before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: text-top;
+  background-color: transparent;
+  background-position : center center;
+  background-repeat:no-repeat;
+}
+
+.monBouton:before{
+   background-image : url(http://icons.iconarchive.com/icons/fatcow/farm-fresh/16/accept-icon.png);
+}
+
+html {
+  scroll-behavior: smooth;
 }

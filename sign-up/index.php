@@ -21,25 +21,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         VALUES ('$username', '$mail_i', '$pwd', '$today')";
         
         if ($conn->query($sql) === TRUE) {
-            $_SESSION["email"] = $mail_i;
-            $_SESSION["uname"] = $username;
 
-            $folder_path = "../".$username."/";
-            if (!file_exists($folder_path)) {
-                if(mkdir($folder_path, 0777, true)){
-                    if(copy("../template/index.php", "../".$username."/index.php")){
-                        echo ("<SCRIPT LANGUAGE='JavaScript'>
-                        window.location.href='../';
-                        </SCRIPT>");
+            $sql3 = "SELECT id_user, user_name FROM users WHERE email='".$mail_i."'";
+            $result3 = $conn->query($sql3);
+
+            if ($result3->num_rows > 0) {
+            // output data of each row
+                while($row3 = $result3->fetch_assoc()) {
+                    $_SESSION["user_param"] = $row3["id_user"];
+                    $_SESSION["uname"] = $row3["user_name"];
+
+                    $folder_path = "../".$username."/";
+                    if (!file_exists($folder_path)) {
+                        if(mkdir($folder_path, 0777, true)){
+                            if(copy("../template/index.php", "../".$username."/index.php")){
+                                echo ("<SCRIPT LANGUAGE='JavaScript'>
+                                window.location.href='../';
+                                </SCRIPT>");
+                            }else{
+                                echo "Houston tenemos problemas";
+                            }
+                        }else{
+                            
+                        }
                     }else{
                         echo "Houston tenemos problemas";
                     }
-                }else{
-                    
                 }
-            }else{
-                echo "Houston tenemos problemas";
+            } else {
+                echo "0 results";
             }
+            
         } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
         }
