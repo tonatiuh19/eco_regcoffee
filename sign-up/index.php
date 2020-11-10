@@ -34,10 +34,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $folder_path = "../".$username."/";
                     if (!file_exists($folder_path)) {
                         if(mkdir($folder_path, 0777, true)){
+                            
                             if(copy("../template/index.php", "../".$username."/index.php")){
-                                echo ("<SCRIPT LANGUAGE='JavaScript'>
-                                window.location.href='../';
-                                </SCRIPT>");
+                                $idUser = $_SESSION["user_param"];
+                                $sqli = "INSERT INTO users_notification (id_user, new_supporter, new_coffe, date)
+                                VALUES ('$idUser', '1', '1', '$today')";
+
+                                if ($conn->query($sqli) === TRUE) {
+                                    echo ("<SCRIPT LANGUAGE='JavaScript'>
+                                    window.location.href='../';
+                                    </SCRIPT>");
+                                } else {
+                                    echo "Error: " . $sql . "<br>" . $conn->error;
+                                }
+                                
                             }else{
                                 echo "Houston tenemos problemas";
                             }

@@ -164,6 +164,44 @@ $(document).ready(function(){
       $('#savemodifyPayment').hide();
    });
 
+   $('#cancelmodifyNotifications').hide();
+   $('#savemodifyNotifications').hide();
+   $("#modifyNotifications").click(function(evt){
+      document.getElementById("checkFan").removeAttribute("disabled");
+      document.getElementById("checkCoffe").removeAttribute("disabled");
+      $('#cancelmodifyNotifications').show();
+      $('#savemodifyNotifications').show();
+   });
+
+   $("#cancelmodifyNotifications").click(function(evt){
+      document.getElementById("checkFan").setAttribute("disabled", '');
+      document.getElementById("checkCoffe").setAttribute("disabled", '');
+      $('#cancelmodifyNotifications').hide();
+      $('#savemodifyNotifications').hide();
+   });
+
+   $('#cancelmodifyProfile').hide();
+   $('#savemodifyProfile').hide();
+   $("#modifyProfile").click(function(evt){
+      document.getElementById("correo").removeAttribute("disabled");
+      document.getElementById("pwd").removeAttribute("disabled");
+      document.getElementById("nombre").removeAttribute("disabled");
+      document.getElementById("apellido").removeAttribute("disabled");
+      document.getElementById("telefono").removeAttribute("disabled");
+      $('#cancelmodifyProfile').show();
+      $('#savemodifyProfile').show();
+   });
+
+   $("#cancelmodifyProfile").click(function(evt){
+      document.getElementById("correo").setAttribute("disabled", '');
+      document.getElementById("pwd").setAttribute("disabled", '');
+      document.getElementById("nombre").setAttribute("disabled", '');
+      document.getElementById("apellido").setAttribute("disabled", '');
+      document.getElementById("telefono").setAttribute("disabled", '');
+      $('#cancelmodifyProfile').hide();
+      $('#savemodifyProfile').hide();
+   });
+
 });
 
 
@@ -215,6 +253,23 @@ $('#copy').tooltip({
      hideTooltip();
    
  });
+
+ function checkingNotifications(){
+   
+   /*if (document.getElementById("checkAllNotifications").checked == true){
+      document.getElementById("checkCoffe").checked = true;
+      document.getElementById("checkFan").checked = true;
+   } */
+
+   /*if (document.getElementById("checkCoffe").checked == true && document.getElementById("checkFan").checked){
+      document.getElementById("checkAllNotifications").checked = true;
+   }
+
+   if (!document.getElementById("checkCoffe").checked == true || !document.getElementById("checkFan").checked){
+      document.getElementById("checkAllNotifications").checked = false;
+   }*/
+
+ }
 
 
   

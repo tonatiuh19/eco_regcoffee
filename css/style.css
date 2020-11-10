@@ -111,7 +111,7 @@ body:after {
 
 .site-section {
   padding: 2.5em 0;
-  height: 100vh; }
+  height: 105%; }
   @media (min-width: 768px) {
     .site-section {
       padding: 8em 0; } }
