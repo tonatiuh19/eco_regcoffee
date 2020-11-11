@@ -202,6 +202,14 @@ $(document).ready(function(){
       $('#savemodifyProfile').hide();
    });
 
+   $('.currency').blur(function(){
+      $('.currency').formatCurrency();
+   });
+
+   $('.currency').on('input', function (event) { 
+      this.value = this.value.replace(/[^0-9]/g, '');
+   });
+
 });
 
 
@@ -254,22 +262,4 @@ $('#copy').tooltip({
    
  });
 
- function checkingNotifications(){
-   
-   /*if (document.getElementById("checkAllNotifications").checked == true){
-      document.getElementById("checkCoffe").checked = true;
-      document.getElementById("checkFan").checked = true;
-   } */
-
-   /*if (document.getElementById("checkCoffe").checked == true && document.getElementById("checkFan").checked){
-      document.getElementById("checkAllNotifications").checked = true;
-   }
-
-   if (!document.getElementById("checkCoffe").checked == true || !document.getElementById("checkFan").checked){
-      document.getElementById("checkAllNotifications").checked = false;
-   }*/
-
- }
-
-
-  
+ $("[data-toggle=tooltip]").tooltip();

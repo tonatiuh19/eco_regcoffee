@@ -70,7 +70,7 @@ require_once('cn.php');
                 <li><a href="../mipagina/" class="nav-link"><i class="fas fa-hat-wizard"></i> Inicio</a></li>
                 
                 <li><a href="#" class="nav-link"><i class="fas fa-grin-hearts"></i> Mis Fans</a></li>
-                <li><a href="#" class="nav-link"><i class="fas fa-gifts"></i> Extras</a></li>
+                <li><a href="../misextras/" class="nav-link"><i class="fas fa-gifts"></i> Extras</a></li>
 
 
                 <li><a href="#" class="nav-link"><i class="far fa-newspaper"></i> Posts</a></li>
