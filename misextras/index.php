@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('../admin/header.php');
 ?>
     <div class="site-section bg-primary-light">

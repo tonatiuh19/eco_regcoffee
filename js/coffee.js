@@ -263,3 +263,16 @@ $('#copy').tooltip({
  });
 
  $("[data-toggle=tooltip]").tooltip();
+
+function CheckSession() {
+   var session = '<%=Session["uname"] != null%>';
+   if (session == false) {
+       alert("Your Session has expired");
+       window.location = "login.aspx";
+   }
+}
+
+$('#bologna-list a').on('click', function (e) {
+   e.preventDefault()
+   $(this).tab('show')
+})

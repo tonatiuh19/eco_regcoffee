@@ -1,5 +1,15 @@
 <?php
 require_once('cn.php');
+if(!isset($_SESSION)) 
+{ 
+  session_start(); 
+} 
+if(!isset($_SESSION["user_param"])) 
+{
+	echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.location.href='../';
+        </SCRIPT>");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -74,7 +84,7 @@ require_once('cn.php');
 
 
                 <li><a href="#" class="nav-link"><i class="far fa-newspaper"></i> Posts</a></li>
-                <li><a href="#" class="nav-link"><i class="fas fa-address-card"></i> Pagina</a></li>
+                <li><a href="../comolovemifan/" class="nav-link"><i class="fas fa-address-card"></i> Pagina</a></li>
                 <li class="has-children active">
                   <a href="#" class="nav-link"><i class="fas fa-user-astronaut"></i></a>
                   <ul class="dropdown">
