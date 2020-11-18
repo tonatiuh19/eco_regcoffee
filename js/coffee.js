@@ -210,6 +210,27 @@ $(document).ready(function(){
       this.value = this.value.replace(/[^0-9]/g, '');
    });
 
+
+   document.querySelector("#valueRadioGive").addEventListener("change",function () {
+      var frst = document.querySelector("#valueRadioGive").value;
+      var priceExtra = $('#hiddenExtra').val();
+      var newPrice = frst*priceExtra;
+      if(frst == "1"){
+         $("#test0").prop("checked", true);
+      }else if(frst == "3"){
+         $("#test1").prop("checked", true);
+      }else if(frst == "5"){
+         $("#test2").prop("checked", true);
+      }else{
+         $('input:radio[name=same-group-name]').each(function () { $(this).prop('checked', false); });
+      }
+      $("#valueBtnExtra").text(newPrice);
+   });
+
+   setTimeout(function() {
+      $("#alertPaging").alert('close');
+  }, 5000);
+
 });
 
 
@@ -276,3 +297,11 @@ $('#bologna-list a').on('click', function (e) {
    e.preventDefault()
    $(this).tab('show')
 })
+
+$('input[name=same-group-name]').click(function() {
+   var valueRadioGive = $('input[name=same-group-name]:checked').val();
+   var priceExtra = $('#hiddenExtra').val();
+   var newPrice = valueRadioGive*priceExtra;
+   document.getElementById("valueRadioGive").value = valueRadioGive;
+   $("#valueBtnExtra").text(newPrice);
+});

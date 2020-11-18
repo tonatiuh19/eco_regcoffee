@@ -139,10 +139,10 @@ function test_input($data) {
     <div class="modal-content">
       <div class="modal-body text-center">
      
-      <h5 class="modal-title w-100" id="exampleModalLongTitle"><i class="fas fa-glass-cheers fa-2x"></i><br>¡Felicidades!</h5>
-      <p>Ahora tu extra es visible en tu pagina y disponible para ser comprado.</p>
-      <a href="../fan/" class="btn btn-warning">Verlo en mi pagina</a>
-      <a href="../" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
+        <h5 class="modal-title w-100" id="exampleModalLongTitle"><i class="fas fa-glass-cheers fa-2x"></i><br>¡Felicidades!</h5>
+        <p>Ahora tu extra es visible en tu pagina y disponible para ser comprado.</p>
+        <a href="../fan/" class="btn btn-warning">Verlo en mi pagina</a>
+        <a href="../" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
       
       </div>
     </div>

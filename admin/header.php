@@ -83,7 +83,7 @@ if(!isset($_SESSION["user_param"]))
                 <li><a href="../misextras/" class="nav-link"><i class="fas fa-gifts"></i> Extras</a></li>
 
 
-                <li><a href="#" class="nav-link"><i class="far fa-newspaper"></i> Posts</a></li>
+                <li><a href="../misposts/" class="nav-link"><i class="far fa-newspaper"></i> Posts</a></li>
                 <li><a href="../comolovemifan/" class="nav-link"><i class="fas fa-address-card"></i> Pagina</a></li>
                 <li class="has-children active">
                   <a href="#" class="nav-link"><i class="fas fa-user-astronaut"></i></a>

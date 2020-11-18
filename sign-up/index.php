@@ -41,9 +41,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 VALUES ('$idUser', '1', '1', '$today')";
 
                                 if ($conn->query($sqli) === TRUE) {
-                                    echo ("<SCRIPT LANGUAGE='JavaScript'>
-                                    window.location.href='../';
-                                    </SCRIPT>");
+                                    $sql2 = "INSERT INTO `extras` (`title`, `id_user`, `description`, `confirmation`, `price`, `date`, `active`) VALUES ('Coffee', '$idUser', '¡Me estas invitando un cafe!', 'Te agradezco de todo corazon. Tu apoyo me permite seguir motivado :)', '45', '$today', '2');";
+
+                                    if (mysqli_query($conn, $sql2)) {
+                                        echo ("<SCRIPT LANGUAGE='JavaScript'>
+                                        window.location.href='../';
+                                        </SCRIPT>");
+                                    } else {
+                                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                    }
+                                   
                                 } else {
                                     echo "Error: " . $sql . "<br>" . $conn->error;
                                 }
