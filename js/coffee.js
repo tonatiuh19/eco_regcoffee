@@ -224,12 +224,40 @@ $(document).ready(function(){
       }else{
          $('input:radio[name=same-group-name]').each(function () { $(this).prop('checked', false); });
       }
+      document.getElementById("amountCoffe").value = newPrice;
+      document.getElementById("quantityCoffe").value = frst;
       $("#valueBtnExtra").text(newPrice);
    });
 
    setTimeout(function() {
       $("#alertPaging").alert('close');
   }, 5000);
+
+   $("#btnPayCreditDebit").click(function(evt){
+      $('#apoyar').modal('hide');
+      $('#apoyarSiguiente').modal('show');
+   
+   });
+
+   $('#alertBank').hide();
+   document.querySelector("#inputMailFan1").addEventListener("change",function () {
+      var frst = document.querySelector("#inputMailFan1").value;
+      document.getElementById("inputMailFan2").value = frst;
+   });
+
+   document.querySelector("#inputTextFan1").addEventListener("change",function () {
+      var frst = document.querySelector("#inputTextFan1").value;
+      document.getElementById("inputTextFan2").value = frst;
+   });
+
+   $('#inlineRadio1').click(function() {
+      if($('#inlineRadio1').is(':checked')) { $("#inlineRadio12").attr('checked', 'checked'); }
+   });
+
+   $('#inlineRadio2').click(function() {
+      if($('#inlineRadio2').is(':checked')) { $("#inlineRadio22").attr('checked', 'checked'); }
+   });
+   
 
 });
 
@@ -303,5 +331,83 @@ $('input[name=same-group-name]').click(function() {
    var priceExtra = $('#hiddenExtra').val();
    var newPrice = valueRadioGive*priceExtra;
    document.getElementById("valueRadioGive").value = valueRadioGive;
+   document.getElementById("amountCoffe").value = newPrice;
+   document.getElementById("quantityCoffe").value = valueRadioGive;
    $("#valueBtnExtra").text(newPrice);
+});
+
+//Openpay - Start
+$(document).ready(function() {
+   OpenPay.setId('mklwynufmke2y82injra');
+   OpenPay.setApiKey('pk_7e94dbb7be654ad5ada6cbe87c932f65');
+   OpenPay.setSandboxMode(true);
+   var deviceSessionId = OpenPay.deviceData.setup("payment-form", "deviceIdHiddenFieldName");
+   
+});
+
+var validated = false;
+$('#pay-button').on('click', function(event) {
+   event.preventDefault();
+   $("#alertBank").hide();
+   $("#pay-button").prop( "disabled", true);
+   OpenPay.token.extractFormAndCreate('payment-form', success_callbak, error_callbak);        
+   var form = $("#payment-form")
+   if (form[0].checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+      validated = false;
+   } else{
+      validated = true;
+   }
+   form.addClass('was-validated')      
+
+});
+
+var success_callbak = function(response) {
+   var token_id = response.data.id;
+   $('#token_id').val(token_id);
+   if(validated){
+      $('#payment-form').submit();
+   }else{
+      $("#pay-button").prop("disabled", false);
+   }
+   
+};
+
+var error_callbak = function(response) {
+   var desc = response.data.description != undefined ?
+      response.data.description : response.message;
+   //alert("ERROR [" + response.status + "] " + desc);
+   $("#alertBank").show();
+   if(response.status === "422"){
+      $("#alertBank").text("El número de tarjeta es invalido");
+   }else if(response.status == "400"){
+      $("#alertBank").text("La tarjeta es invalida o la fecha de expiración de la tarjeta ha expirado");
+   }else if(response.status == "2006"){
+      $("#alertBank").text("El código de seguridad de la tarjeta (CVV2) no fue proporcionado");
+   }else if(response.status == "412"){
+      $("#alertBank").text("El número de tarjeta es invalido");
+   }else if(response.status == "2008"){
+      $("#alertBank").text("La tarjeta no es valida para pago con puntos");
+   }else if(response.status == "2009"){
+      $("#alertBank").text("El código de seguridad de la tarjeta (CVV2) es inválido");
+   }else if(response.status == "402"){
+      $("#alertBank").text("Autenticación 3D Secure fallida");
+   }else if(response.status == "422"){
+      $("#alertBank").text("Tipo de tarjeta no soportada");
+   }else{
+      $("#alertBank").text("ERROR [" + response.status + "] " + desc);
+   }
+   
+   $("#pay-button").prop("disabled", false);
+};
+//Openpay - End
+
+function openRegister(){
+   $('#iniciarSesion').modal('hide');
+   $('#crearCuenta').modal('show');
+}
+
+$('#iniciarSesion').on('hidden.bs.modal', function () {
+   window.location.hash = '';
 });

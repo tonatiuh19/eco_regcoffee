@@ -1369,8 +1369,8 @@ html {
 
 .stock-images .image {
   opacity: 0.7;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   background-position: center center;
   background-color: gray;
@@ -1390,7 +1390,7 @@ html {
   border: 5px solid white;
 }
 .stock-images [type="radio"]:checked + label .image {
-  border: 5px solid orangered;
+  border: 5px solid #c29248;
   opacity: 1;
 }
 
@@ -1409,4 +1409,13 @@ html {
 
 .post-img {
   width: 15rem;
+}
+
+.modal {
+  overflow-y:auto;
+}
+
+.alert-bank {
+  width:60%;    
+  width:60%;    
 }

@@ -68,6 +68,72 @@
   <script src="../js/main.js"></script>
   <script src="../js/coffee.js"></script>
 
+  <div class="modal fade" id="iniciarSesion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Entrar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="sign-in/">
+          <div class="form-group">
+            <input type="email" class="form-control input-lg" name="email_i" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" name="pwd_i" placeholder="Ingresa la contraseña" required> 
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-dark text-center">Entrar <i class="fas fa-arrow-circle-right"></i></button>
+          </div>
+        </form>
+        <p class="text-center">
+          ¿No tienes cuenta? <a href="" onclick="openRegister();return false;">Crea una aqui <i class="far fa-smile-wink"></i></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="modal fade" id="crearCuenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="sign-up/">
+          <div class="form-group">
+            <div class="input-group input-focus">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-white font-weight-bold">regalameuncafe.com/</span>
+                </div>
+                <input type="search" placeholder="tunombre" class="form-control border-left-0" name="usernametxt" id="usernameModal" autofocus="autofocus" autocomplete="off">
+            </div>
+            <div class="alert alert-warning" role="alert" id="alertExistModal"><small>Este nombre de usuario ya existe :(</small></div>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
+            
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" required> 
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-dark text-center" id="comenzarBtnModal" disabled>Continuar <i class="fas fa-arrow-circle-right"></i></button>
+          </div>
+        </form>
+        <p class="text-center">
+            ¿Ya tienes cuenta? <a href="#">Inicia sesion</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -1,15 +1,5 @@
 <?php
 require_once('cn.php');
-if(!isset($_SESSION)) 
-{ 
-  session_start(); 
-} 
-if(!isset($_SESSION["user_param"])) 
-{
-	echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.location.href='../';
-        </SCRIPT>");
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,7 +29,6 @@ if(!isset($_SESSION["user_param"]))
 
   <link rel="stylesheet" href="../css/style.css">
   <link href="../css/fontawesome/css/all.css" rel="stylesheet">
-</head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
 
@@ -76,20 +65,13 @@ if(!isset($_SESSION["user_param"]))
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="../mipagina/" class="nav-link"><i class="fas fa-hat-wizard"></i> Inicio</a></li>
-                
-                <li><a href="#" class="nav-link"><i class="fas fa-grin-hearts"></i> Mis Fans</a></li>
-                <li><a href="../misextras/" class="nav-link"><i class="fas fa-gifts"></i> Extras</a></li>
-
-
-                <li><a href="../misposts/" class="nav-link"><i class="far fa-newspaper"></i> Posts</a></li>
-                <li><a href="../comolovemifan/" class="nav-link"><i class="fas fa-address-card"></i> Pagina</a></li>
+               
                 <li class="has-children active">
                   <a href="#" class="nav-link"><i class="fas fa-user-astronaut"></i></a>
                   <ul class="dropdown">
-                    <li><a href="../micuenta/" class="nav-link">Mi cuenta</a></li>
+                    <li><a data-toggle="modal" href="#iniciarSesion" class="nav-link">Iniciar Sesion</a></li>
                     <li><a href="../missubcripciones/" class="nav-link">Mis subcripciones</a></li>
-                    <li><a href="../admin/end.php" class="nav-link">Salir </a></li>
+                    <li><a data-toggle="modal" href="#crearCuenta" class="nav-link">Crear cuenta </a></li>
                   </ul>
                 </li>
               </ul>

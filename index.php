@@ -99,7 +99,7 @@ if (isset($_SESSION['uname'])){
           <div class="col-lg-6 mr-auto text-center text-lg-left">
             <span class="d-block subheading">A tus fans les va a encantar</span>
             <h1 class="heading mb-3">Forma sencilla y significativa de financiar tu trabajo creativo</h1>
-            <p class="mb-5">Puedes aceptar apoyo, membresías, webinars, zooms, etc y construir una relación directa con tus fans.</p>
+            <p class="mb-5">Puedes aceptar apoyo de tus membresías, webinars, zooms, recibir un cafe, etc y construir una relación directa con tus fans.</p>
             <p class="mb-4">
             <div class="input-group input-focus">
               <div class="input-group-prepend">
@@ -639,7 +639,7 @@ if (isset($_SESSION['uname'])){
           </div>
         </form>
         <p class="text-center">
-            ¿No tienes cuenta? <a href="#">Crea una aqui <i class="far fa-smile-wink"></i></a>
+            ¿No tienes cuenta? <a href="" onclick="openRegister();return false;">Crea una aqui <i class="far fa-smile-wink"></i></a>
         </p>
       </div>
     </div>
