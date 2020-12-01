@@ -77,7 +77,7 @@ if (isset($_SESSION['uname'])){
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 
                 <li><a href="symptoms.html" class="nav-link">Explora creadores</a></li>
-                <li><a data-toggle="modal" href="#iniciarSesion" class="nav-link">Entrar</a></li>
+                <li><a data-toggle="modal" href="#iniciarSesion" class="nav-link border border-success rounded p-2">Entrar</a></li>
                 <li><a data-toggle="modal" href="#crearCuenta" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-success"></i></a></li>
               </ul>
             </nav>

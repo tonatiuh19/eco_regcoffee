@@ -11,6 +11,7 @@ if(!isset($_SESSION["uname"]))
 	$sess = true;
 	require_once('../admin/header.php');
 }
+$_SESSION['extra'] = '0';
 ?>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://js.openpay.mx/openpay.v1.min.js"></script>
@@ -182,7 +183,21 @@ if(!isset($_SESSION["uname"]))
 														?>
 														<div class="row">
 															<div class="col-sm-12">
-																<button type="button" class="btn btn-success col-sm-12 text-white" data-toggle="modal" data-target="#apoyar">Apoyar <i class="fas fa-dollar-sign"></i> <strong style="font-size:120%;" id="valueBtnExtra">45</strong></button>
+																<button type="button" class="btn btn-success col-sm-12 text-white" id="btnPayCoffee" data-toggle="modal" data-target="#apoyar">Apoyar <i class="fas fa-dollar-sign"></i> <strong style="font-size:120%;" id="valueBtnExtra">45</strong></button>
+																<?php
+																	echo '<script>var btnPay = document.getElementById("btnPayCoffee");
+																	btnPay.addEventListener("click", function(){
+																	   document.getElementById("titlePay").innerHTML = "Apoyando a <b>'.$uName.'</b>"; 
+																	   document.getElementById("titlePaying").innerHTML = "Apoyando a <b>'.$uName.'</b>"; 
+																	   $("#preguntaSection").hide();
+																		document.getElementById("questionAnswer").removeAttribute("required");
+																		document.getElementById("payType").value = "1";
+																		var prriceCoffee = document.getElementById("valueBtnExtra").innerText;
+																		document.getElementById("amountCoffe").value = prriceCoffee;
+																		document.getElementById("id-extra").value = "'.$idExtra.'";
+																		document.getElementById("descripcionPay").value = "Coffee for: '.$userID.'";
+																	});</script>';
+																?>
 															</div>
 														</div>
 													</form>
@@ -278,7 +293,8 @@ if(!isset($_SESSION["uname"]))
 								
 								<div class="tab-pane" id="history" role="tabpanel" aria-labelledby="history-tab">  
 									<div class="row justify-content-center">
-									<?php										
+									<?php	
+										//$sqle = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.limit_slots, a.price, a.question, a.subsciption FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=1 AND a.active <>2 AND b.user_name='".$uName."'";									
 										while($rowe = $resulte->fetch_assoc()) {
 											echo '<div class="card col-sm-3 m-1 p-3">
 												<div class="card-body">
@@ -291,60 +307,38 @@ if(!isset($_SESSION["uname"]))
 													}												
 														
 													echo 'Quedan '.$rowe["limit_slots"].' lugares';
-													if($rowe["subsciption"]=="1"){
-														echo '<button class="btn btn-success btn-sm p-1 text-white" data-toggle="modal" data-target="#ex'.$rowe["id_extra"].'">Suscribirme <strong>'.$rowe["price"].'</strong></button>';
+													if($rowe["subsciption"] == "1"){
+														echo '<button class="btn btn-success btn-sm p-1 text-white" id="btnPayCoffee'.$rowe["id_extra"].'" data-toggle="modal" data-target="#apoyar">Suscribete por <strong>'.$rowe["price"].'</strong></button>';
 													}else{
-														echo '<button class="btn btn-success btn-sm p-1 text-white" data-toggle="modal" data-target="#ex'.$rowe["id_extra"].'">Comprar <strong>'.$rowe["price"].'</strong></button>';
+														echo '<button class="btn btn-success btn-sm p-1 text-white" id="btnPayCoffee'.$rowe["id_extra"].'" data-toggle="modal" data-target="#apoyar">Comprar <strong>'.$rowe["price"].'</strong></button>';
 													}
+													
+
+													echo '<script>var btnPay'.$rowe["id_extra"].' = document.getElementById("btnPayCoffee'.$rowe["id_extra"].'");
+																btnPay'.$rowe["id_extra"].'.addEventListener("click", function(){
+																document.getElementById("titlePay").innerHTML = "<b>'.$rowe["title"].'</b>"; 
+																document.getElementById("titlePaying").innerHTML = "<b>'.$rowe["title"].'</b>";
+																document.getElementById("amountCoffe").value = "'.$rowe["price"].'";
+																document.getElementById("id-extra").value = "'.$rowe["id_extra"].'";
+																document.getElementById("descripcionPay").value = "'.$rowe["title"].' from: '.$userID.'";';
+																if($rowe["subsciption"] == "1"){
+																	echo 'document.getElementById("payType").value = "2";';
+																}else{
+																	echo 'document.getElementById("payType").value = "1";';
+																}
+
+																if($rowe["question"] == ""){
+																	echo '$("#preguntaSection").hide();
+																	document.getElementById("questionAnswer").removeAttribute("required");';
+																}else{
+																	echo '$("#preguntaSection").show();
+																	document.getElementById("questionAnswer").setAttribute("required", "");
+																	document.getElementById("questionLabel").innerHTML = "<b>'.$rowe["question"].'</b>";';
+																}
+															echo '});</script>';
 													echo '</div>
 											</div>';
-											echo '<div class="modal fade" id="ex'.$rowe["id_extra"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-											<div class="modal-dialog modal-dialog-centered" role="document">
-											  <div class="modal-content">
-												
-												  <div class="modal-body text-center">
-													  
-													  <h5 class="modal-title w-100" id="exampleModalLongTitle"><img class="masthead-avatar-pay mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" alt="" /><br>													
-													  '.$rowe["title"].'<br>
-													  <b class="p-1">'.$uName.'</b>
-													  </h5>
-													  <p>
-														  <div class="form-group">
-															  <input type="email" class="form-control" id="inputMailFan1'.$rowe["id_extra"].'" aria-describedby="emailHelp" placeholder="Ingresa tu correo">
-															  <small id="emailHelp" class="form-text text-muted">Aqui te llegara tu confirmacion de pago y un mensaje especial.</small>
-														  </div>
-														  <div class="form-group">
-															  <textarea class="form-control" id="inputTextFan1'.$rowe["id_extra"].'" rows="2" placeholder="Aqui puedes escribirle algo.. (opcional)"></textarea>
-														  </div>
-														  ';
-														  if($rowe["question"]){
-															echo '<div class="form-group">
-																<label for="exampleInputEmail1">'.$rowe["question"].'</label>
-																<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Tu respuesta">
-														  		</div>';
-														  }
-														  
-														  echo '<div class="divider-custom-pay divider-light-pay">
-															  <div class="divider-custom-line-pay"></div>
-																  <div class="divider-custom-icon-pay">Pagar con:</div>
-																  <div class="divider-custom-line-pay"></div>
-															  </div>
-														  <div class="container">
-															  <div class="row">
-																  <div class="col-sm-12 p-2"><button type="button" class="btn btn-warning col-sm-12" id="btnPayCreditDebitE"><i class="fab fa-cc-visa fa-2x"></i> <i class="fab fa-cc-mastercard fa-2x"></i> <i class="fab fa-cc-amex fa-2x"></i> Pago seguro</button></div>
-																  <!--<div class="col-sm-12 p-2"><button type="button" class="btn btn-outline-warning col-sm-12">Paypal</button></div>-->
-															  </div>
-															  
-														  </div>
-													  </p>
-													  <small><i class="fas fa-user-lock"></i> Tus pagos se realizan de forma segura con encriptación de 256 bits.</small>
-													  
-											  
-												  </div>
-												
-											  </div>
-											</div>
-										  </div>';
+										
 										}
 									?>
 									</div>
@@ -385,7 +379,7 @@ if(!isset($_SESSION["uname"]))
 			
 			<h5 class="modal-title w-100" id="exampleModalLongTitle"><img class="masthead-avatar-pay mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" alt="" /><br>
 			<?php
-				echo 'Apoyando a <b>'.$uName.'</b>';
+				echo '<span id="titlePay"></span>';
 			?>
 			</h5>
 			<p>
@@ -426,6 +420,7 @@ if(!isset($_SESSION["uname"]))
     </div>
   </div>
 </div>
+
 <div class="modal fade" id="apoyarSiguiente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -434,18 +429,21 @@ if(!isset($_SESSION["uname"]))
 			
 			<h5 class="modal-title w-100" id="exampleModalLongTitle"><img class="masthead-avatar-pay mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" alt="" /><br>
 			<?php
-				echo 'Apoyando a <b>'.$uName.'</b>';
+				echo '<span id="titlePaying"></span>';
 			?>
 			</h5>
 			<p>
 				<form action="../pagando/" method="POST" id="payment-form" novalidate="">
 					<input type="hidden" name="token_id" id="token_id">
-					<input type="hidden" name="payType" value="1">
+					<input type="hidden" name="payType" value="1" id="payType">
 					<input type="hidden" name="coffeeQuantity" value="1" id="quantityCoffe">
+					<input type="hidden" name="amount" value="0" id="amountCoffe">
+					<input type="hidden" name="descripcion" value="0" id="descripcionPay">
+					<input type="hidden" name="id-extra" value="0" id="id-extra">
 					<?php
-						echo '<input type="hidden" name="descripcion" value="Coffee for: '.$userID.'">';
-						echo '<input type="hidden" name="uname" value="'.$uName.'">';
-						echo '<input type="hidden" name="amount" value="'.$priceExtra.'" id="amountCoffe">';
+						echo '';
+						echo '<input type="hidden" name="uname" value="'.$uName.'" id="unamePay">';
+						echo '';
 					?>
 					<div class="form-group">
 						<input type="email" class="form-control" id="inputMailFan2" name="email" aria-describedby="emailHelp" placeholder="Inresa tu correo" required>
@@ -461,6 +459,10 @@ if(!isset($_SESSION["uname"]))
 							<input class="form-check-input" type="radio" name="privatePublic" id="inlineRadio22" value="0">
 							<label class="form-check-label" for="inlineRadio2">Privado</label>
 						</div>
+					</div>
+					<div class="form-group" id="preguntaSection">
+						<label for="exampleFormControlTextarea1" id="questionLabel">Example textarea</label>
+						<textarea class="form-control" id="questionAnswer" name="questAnswer" rows="2" placeholder="Aqui tu respuesta" name="questionAnswer" required></textarea>
 					</div>
 					<div class="divider-custom-pay divider-light-pay">
 						<div class="divider-custom-line-pay"></div>
@@ -504,15 +506,12 @@ if(!isset($_SESSION["uname"]))
 							</div>
 							</div>
 						</div>
-						<button class="btn btn-warning btn-block shadow-sm" id="pay-button" type="submit"><i class="fas fa-lock"></i> Finalizar</button>
+						<button class="btn btn-warning btn-block shadow-sm" id="pay-button" type="submit"><span id="endLabelPay"><i class="fas fa-lock"></i> Finalizar</span><span id="endLabelPaying"><i class="fas fa-spinner fa-pulse"></i> Pagando</span></button>
 					</div>
 				</form>
 			</p>
 			<small><i class="fas fa-user-lock"></i> Tus pagos se realizan de forma segura con encriptación de 256 bits.</small>
-			
-	
 		</div>
-      
     </div>
   </div>
 </div>

@@ -29,6 +29,7 @@ require_once('cn.php');
 
   <link rel="stylesheet" href="../css/style.css">
   <link href="../css/fontawesome/css/all.css" rel="stylesheet">
+</head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
 

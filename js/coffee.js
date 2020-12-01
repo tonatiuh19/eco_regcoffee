@@ -259,6 +259,11 @@ $(document).ready(function(){
    });
    
 
+   $('#preguntaSection').hide();
+   $('#endLabelPaying').hide();
+   document.getElementById("questionAnswer").removeAttribute("required");
+
+
 });
 
 
@@ -350,6 +355,8 @@ $('#pay-button').on('click', function(event) {
    event.preventDefault();
    $("#alertBank").hide();
    $("#pay-button").prop( "disabled", true);
+   $('#endLabelPay').hide();
+   $('#endLabelPaying').show();
    OpenPay.token.extractFormAndCreate('payment-form', success_callbak, error_callbak);        
    var form = $("#payment-form")
    if (form[0].checkValidity() === false) {
@@ -370,6 +377,8 @@ var success_callbak = function(response) {
       $('#payment-form').submit();
    }else{
       $("#pay-button").prop("disabled", false);
+      $('#endLabelPay').show();
+      $('#endLabelPaying').hide();
    }
    
 };
@@ -377,7 +386,7 @@ var success_callbak = function(response) {
 var error_callbak = function(response) {
    var desc = response.data.description != undefined ?
       response.data.description : response.message;
-   //alert("ERROR [" + response.status + "] " + desc);
+   alert("ERROR [" + response.status + "] " + desc);
    $("#alertBank").show();
    if(response.status === "422"){
       $("#alertBank").text("El número de tarjeta es invalido");
@@ -400,6 +409,8 @@ var error_callbak = function(response) {
    }
    
    $("#pay-button").prop("disabled", false);
+   $('#endLabelPaying').hide();
+   $('#endLabelPay').show();
 };
 //Openpay - End
 
@@ -411,3 +422,4 @@ function openRegister(){
 $('#iniciarSesion').on('hidden.bs.modal', function () {
    window.location.hash = '';
 });
+

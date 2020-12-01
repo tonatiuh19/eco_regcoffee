@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $noteFan = test_input($_POST["noteFan"]);
     $isPublic = test_input($_POST["isPublic"]);
     $today = date("Y-m-d H:i:s");
+    $idExtra = test_input($_POST["id-extra"]);
 
     $sql = "SELECT id_user FROM users WHERE user_name='".$uname."'";
     $result = $conn->query($sql);
@@ -36,9 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $amount = test_input($_POST["amount"]);
       $amountF = test_input($_POST["amountF"]);
       $amountT = test_input($_POST["amountT"]);
+      $questAnswer = test_input($_POST["questAnswer"]);
       
-      $sqli = "INSERT INTO payments (id_user, id_openpay, type, brand, card_number, bank_name, status, date, amount, amount_fee, amount_tax, description, email_user, note_fan, isPublic_note_fan)
-      VALUES ('$idUser', '$idPay', '$typeB', '$brand', '$cardNo', '$bank', '$satusB', '$date', '$amount', '$amountF', '$amountT', '$description', '$email', '$noteFan', '$isPublic')";
+      $sqli = "INSERT INTO payments (id_user, id_openpay, type, brand, card_number, bank_name, status, date, amount, amount_fee, amount_tax, description, email_user, note_fan, isPublic_note_fan, id_extra, question_answer)
+      VALUES ('$idUser', '$idPay', '$typeB', '$brand', '$cardNo', '$bank', '$satusB', '$date', '$amount', '$amountF', '$amountT', '$description', '$email', '$noteFan', '$isPublic', '$idExtra', '$questAnswer')";
 
       if ($conn->query($sqli) === TRUE) {
         
@@ -93,8 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }else{
       $today = date("Y-m-d H:i:s");
       $desc = clean($description);
-      $sqli = "INSERT INTO payments (id_user, description, email_user, date, note_fan, isPublic_note_fan)
-      VALUES ('$idUser', '".$desc."', '$email', '$today', '$noteFan', '$isPublic')";
+      $sqli = "INSERT INTO payments (id_user, description, email_user, date, note_fan, isPublic_note_fan, id_extra)
+      VALUES ('$idUser', '".$desc."', '$email', '$today', '$noteFan', '$isPublic', '$idExtra')";
 
       if ($conn->query($sqli) === TRUE) {
         echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
