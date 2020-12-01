@@ -37,6 +37,13 @@ if (isset($_SESSION['uname'])){
   <link rel="stylesheet" href="css/style.css">
 
   <link href="css/fontawesome/css/all.css" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -68,7 +75,7 @@ if (isset($_SESSION['uname'])){
         <div class="row align-items-center">
 
           <div class="col-6 col-xl-2">
-            <div class="mb-0 site-logo"><a href="index.html" class="mb-0">Covid<span class="text-primary">.</span> </a></div>
+            <div class="mb-0 site-logo"><a href="../" class="mb-0"><img class="img-fluid" src="images/logo.png" alt="regalameuncafe.com"></a></div>
           </div>
 
           <div class="col-12 col-md-10 d-none d-xl-block">
@@ -77,8 +84,8 @@ if (isset($_SESSION['uname'])){
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 
                 <li><a href="symptoms.html" class="nav-link">Explora creadores</a></li>
-                <li><a data-toggle="modal" href="#iniciarSesion" class="nav-link border border-success rounded p-2">Entrar</a></li>
-                <li><a data-toggle="modal" href="#crearCuenta" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-success"></i></a></li>
+                <li><a data-toggle="modal" href="#iniciarSesion" class="nav-link border border-primary rounded p-2">Entrar</a></li>
+                <li><a data-toggle="modal" href="#crearCuenta" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-primary"></i></a></li>
               </ul>
             </nav>
           </div>

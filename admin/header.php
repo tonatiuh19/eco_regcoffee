@@ -39,6 +39,13 @@ if(!isset($_SESSION["user_param"]))
 
   <link rel="stylesheet" href="../css/style.css">
   <link href="../css/fontawesome/css/all.css" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
@@ -69,7 +76,7 @@ if(!isset($_SESSION["user_param"]))
         <div class="row align-items-center">
 
           <div class="col-6 col-xl-2">
-            <div class="mb-0 site-logo"><a href="index.html" class="mb-0">Covid<span class="text-primary">.</span> </a></div>
+            <div class="mb-0 site-logo"><a href="../" class="mb-0"><img class="img-fluid" src="images/logo.png" alt="regalameuncafe.com"></a></div>
           </div>
 
           <div class="col-12 col-md-10 d-none d-xl-block">

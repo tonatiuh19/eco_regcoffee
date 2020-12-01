@@ -423,3 +423,9 @@ $('#iniciarSesion').on('hidden.bs.modal', function () {
    window.location.hash = '';
 });
 
+$('#iniciarSesion').hide(400, removeHashFromUrl());
+
+function removeHashFromUrl()
+{
+    window.location.hash = '';
+}

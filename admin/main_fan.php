@@ -12,6 +12,7 @@ if(!isset($_SESSION["uname"]))
 	require_once('../admin/header.php');
 }
 $_SESSION['extra'] = '0';
+date_default_timezone_set('America/Mexico_City');
 ?>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://js.openpay.mx/openpay.v1.min.js"></script>
@@ -89,7 +90,7 @@ $_SESSION['extra'] = '0';
 			
 			echo '<div class="divider-custom divider-light">
 				<div class="divider-custom-line"></div>
-					<div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+					<div class="divider-custom-icon"><i class="fas fa-star text-primary"></i></div>
 					<div class="divider-custom-line"></div>
 				</div>
 			';
@@ -118,7 +119,7 @@ $_SESSION['extra'] = '0';
 									<a class="nav-link active" href="#description" role="tab" aria-controls="description" aria-selected="true">Recientes</a>
 								</li>
 								<?php
-									$sqle = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.limit_slots, a.price, a.question, a.subsciption FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=1 AND a.active <>2 AND b.user_name='".$uName."'";
+									$sqle = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.limit_slots, a.price, a.question, a.subsciption FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=1 AND a.active <>2 AND b.user_name='".$uName."' order by a.subsciption desc";
 									$resulte = $conn->query($sqle);
 									
 									if ($resulte->num_rows > 0) {
