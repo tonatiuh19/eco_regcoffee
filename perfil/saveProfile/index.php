@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../../admin/cn.php');
-
+date_default_timezone_set('America/Mexico_City');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $validate = test_input($_POST["pwd_confirm"]);
