@@ -76,7 +76,7 @@ if(!isset($_SESSION["user_param"]))
         <div class="row align-items-center">
 
           <div class="col-6 col-xl-2">
-            <div class="mb-0 site-logo"><a href="../" class="mb-0"><img class="img-fluid" src="images/logo.png" alt="regalameuncafe.com"></a></div>
+            <div class="mb-0 site-logo"><a href="../" class="mb-0"><img class="img-fluid" src="../images/logo.png" alt="regalameuncafe.com"></a></div>
           </div>
 
           <div class="col-12 col-md-10 d-none d-xl-block">
