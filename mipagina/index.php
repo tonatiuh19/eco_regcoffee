@@ -4,21 +4,17 @@ require_once('../admin/header.php');
     <div class="site-section bg-primary-light">
       <div class="container">
         <?php
-          $sql = "SELECT paypal, clabe FROM users WHERE id_user='".$_SESSION["user_param"]."'";
+          $sql = "SELECT t.id_users_payment, a.max_date, t.id_users_payment_type, a.id_user FROM users_payment as t INNER JOIN (SELECT id_user,MAX(date) as max_date FROM users_payment WHERE id_user='".$_SESSION["user_param"]."' GROUP BY id_user) as a ON a.max_date = t.date";
           $result = $conn->query($sql);
           
-          if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-              
-              if($row["paypal"] === NULL && $row["clabe"] === NULL){
-                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+          if (!($result->num_rows > 0)) {
+            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>Registra tu usuario de <i class="fab fa-paypal"></i> Paypal o tu <i class="fas fa-money-check-alt"></i> Clabe interbancaria</strong> para que tus cafes se vuelvan realidad <a href="../micuenta/" class="text-danger">aqui</a>.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>';
-              }
-            }
+            
           }
         ?>
         

@@ -124,7 +124,7 @@ date_default_timezone_set('America/Mexico_City');
 									
 									if ($resulte->num_rows > 0) {
 										echo '<li class="nav-item">
-											<a class="nav-link"  href="#history" role="tab" aria-controls="history" aria-selected="false">Extras</a>
+											<a class="nav-link"  href="#history" role="tab" aria-controls="history" aria-selected="false"><i class="fas fa-gifts"></i> Extras</a>
 										</li>';
 									}
 								?>

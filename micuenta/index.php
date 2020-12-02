@@ -18,7 +18,7 @@ require_once('../admin/header.php');
                       </span>
                       <?php
                         echo $_SESSION['uname'];
-                        echo $today = date("Y-m-d H:i:s");
+                        $today = date("Y-m-d H:i:s");
                       ?>
                       </h5>
                     <?php

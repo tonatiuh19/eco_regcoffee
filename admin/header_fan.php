@@ -77,9 +77,9 @@ require_once('cn.php');
                 <li class="has-children active">
                   <a href="#" class="nav-link"><i class="fas fa-user-astronaut"></i></a>
                   <ul class="dropdown">
-                    <li><a data-toggle="modal" href="#iniciarSesion" class="nav-link">Iniciar Sesion</a></li>
+                    <li><a data-toggle="modal" href="" class="nav-link" data-target="#iniciarSesion">Iniciar Sesion</a></li>
                     <li><a href="../missubcripciones/" class="nav-link">Mis subcripciones</a></li>
-                    <li><a data-toggle="modal" href="#crearCuenta" class="nav-link">Crear cuenta </a></li>
+                    <li><a data-toggle="modal" href="" data-target="#crearCuenta" class="nav-link">Crear cuenta </a></li>
                   </ul>
                 </li>
                 <li><a href="#" class="nav-link"></li>

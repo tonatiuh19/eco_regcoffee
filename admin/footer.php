@@ -78,7 +78,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" action="sign-in/">
+        <form method="post" action="../sign-in/">
           <div class="form-group">
             <input type="email" class="form-control input-lg" name="email_i" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
           </div>
@@ -107,7 +107,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" action="sign-up/">
+        <form method="post" action="../sign-up/">
           <div class="form-group">
             <div class="input-group input-focus">
                 <div class="input-group-prepend">
@@ -129,7 +129,7 @@
           </div>
         </form>
         <p class="text-center">
-            ¿Ya tienes cuenta? <a href="#">Inicia sesion</a>
+            ¿Ya tienes cuenta? <a href="" onclick="openInicio();return false;">Inicia sesion</a>
         </p>
       </div>
     </div>

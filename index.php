@@ -84,8 +84,8 @@ if (isset($_SESSION['uname'])){
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 
                 <li><a href="symptoms.html" class="nav-link">Explora creadores</a></li>
-                <li><a data-toggle="modal" href="#iniciarSesion" class="nav-link border border-primary rounded p-2">Entrar</a></li>
-                <li><a data-toggle="modal" href="#crearCuenta" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-primary"></i></a></li>
+                <li><a data-toggle="modal" href="" data-target="#iniciarSesion" class="nav-link border border-primary rounded p-2">Entrar</a></li>
+                <li><a data-toggle="modal" href="" data-target="#crearCuenta" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-primary"></i></a></li>
               </ul>
             </nav>
           </div>
@@ -685,7 +685,7 @@ if (isset($_SESSION['uname'])){
           </div>
         </form>
         <p class="text-center">
-            ¿Ya tienes cuenta? <a href="#">Inicia sesion</a>
+            ¿Ya tienes cuenta? <a href="" onclick="openInicio();return false;">Inicia sesion</a>
         </p>
       </div>
     </div>

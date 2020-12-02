@@ -419,13 +419,7 @@ function openRegister(){
    $('#crearCuenta').modal('show');
 }
 
-$('#iniciarSesion').on('hidden.bs.modal', function () {
-   window.location.hash = '';
-});
-
-$('#iniciarSesion').hide(400, removeHashFromUrl());
-
-function removeHashFromUrl()
-{
-    window.location.hash = '';
+function openInicio(){
+   $('#iniciarSesion').modal('show');
+   $('#crearCuenta').modal('hide');
 }
