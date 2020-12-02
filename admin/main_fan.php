@@ -44,15 +44,20 @@ date_default_timezone_set('America/Mexico_City');
 			$folder_path = "../".$uName."/profile/";
 			if (!file_exists($folder_path)) {
 				echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
-					<img class="masthead-avatar mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" alt="" />';
+					<img class="masthead-avatar mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="220" alt="" />';
 					if($sess){
 						echo '<button type="button" class="btn btn-warning p-1 delete-image" data-toggle="modal" data-target="#editarme" style="position:absolute;bottom:50px;right:2px;margin:0;"><i class="fas fa-pencil-alt"></i></button>';
 					}
 				echo '</a>';
 			}else{
-				foreach(glob('user/'.$_SESSION['email'].'/profile/*.{jpg,png}', GLOB_BRACE) as $file) {
+				foreach(glob('../'.$uName.'/profile/*.{jpg,png}', GLOB_BRACE) as $file) {
 					if (preg_match('/(\.jpg|\.png|\.bmp)$/', $file)) {
-						echo '<img class="profile-pic" src="'.$file.'" height="80" width="80"/><br>';
+						echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
+							<img class="masthead-avatar mb-2 rounded" src="'.$file.'" width="220" alt="" />';
+							if($sess){
+								echo '<button type="button" class="btn btn-warning p-1 delete-image" data-toggle="modal" data-target="#editarme" style="position:absolute;bottom:50px;right:2px;margin:0;"><i class="fas fa-pencil-alt"></i></button>';
+							}
+						echo '</a>';
 					}
 				}
 			}
@@ -75,7 +80,10 @@ date_default_timezone_set('America/Mexico_City');
 					$userID = $rowz["id_user"];
 				}
 			}
-			echo '<input type="hidden" value="'.$priceExtra.'" id="hiddenExtra">';
+			$mon = trim($priceExtra, '$');
+			$mon = str_replace( ',', '', $mon );
+			$money = $mon+ 0;
+			echo '<input type="hidden" value="'.$money.'" id="hiddenExtra">';
 			
 			echo '<h1 class="masthead-heading mb-0">'.$uName.'</h1>';
 			if($sess){
@@ -184,7 +192,9 @@ date_default_timezone_set('America/Mexico_City');
 														?>
 														<div class="row">
 															<div class="col-sm-12">
-																<button type="button" class="btn btn-success col-sm-12 text-white" id="btnPayCoffee" data-toggle="modal" data-target="#apoyar">Apoyar <i class="fas fa-dollar-sign"></i> <strong style="font-size:120%;" id="valueBtnExtra">45</strong></button>
+																<?php
+																	echo '<button type="button" class="btn btn-success col-sm-12 text-white" id="btnPayCoffee" data-toggle="modal" data-target="#apoyar">Apoyar <i class="fas fa-dollar-sign"></i> <strong style="font-size:120%;" id="valueBtnExtra">'.$money.'</strong></button>';
+																?>
 																<?php
 																	echo '<script>var btnPay = document.getElementById("btnPayCoffee");
 																	btnPay.addEventListener("click", function(){
@@ -357,17 +367,73 @@ date_default_timezone_set('America/Mexico_City');
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Editar mi Pagina</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body text-center">
+	  	<form class="needs-validation" method="post" action="../misextras/saveExtraCoffee/" enctype="multipart/form-data">
+			<p>
+				<?php
+					$folder_path = "../".$uName."/profile/";
+					if (!file_exists($folder_path)) {
+						echo '<img src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="120" id="preview" class="img-thumbnail rounded">';
+					}else{
+						foreach(glob('../'.$uName.'/profile/*.{jpg,png}', GLOB_BRACE) as $file) {
+							if (preg_match('/(\.jpg|\.png|\.bmp)$/', $file)) {
+								echo '<img src="'.$file.'" id="preview" class="img-thumbnail" width="120">';
+							}
+						}
+					}
+				?>
+				<input type="file" class="file" name="fileToUpload" accept="image/jpeg, image/png">
+				<div class="input-group my-3">
+					<input type="text" class="form-control" disabled placeholder="Upload File" id="file">
+					<div class="input-group-append">
+						<button type="button" class="browse btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Editar foto</button>
+					</div>
+				</div>
+			</p>
+		  	<div class="form-group">
+				<label for="exampleFormControlTextarea1"><b>Tu descripcion personal:</b></label>
+				<?php
+					if($creation == ''){
+						echo '<textarea class="form-control" id="exampleFormControlTextarea1" name="creation" rows="3" required>Creador maravilloso</textarea>';
+					}else{
+						echo "aqui";
+						echo '<textarea class="form-control" id="exampleFormControlTextarea1" name="creation" rows="3" required>'.$creation.'</textarea>';
+					}
+					
+				?>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlTextarea1"><b>Escribe que haces, tu pasion, tu dedicacion:</b></label>
+				<?php
+					if($about == ''){
+						echo '<textarea class="form-control" id="exampleFormControlTextarea1" name="description_ex" rows="2" required>¡Oye!, acabo de crear una página aquí. ¡Ahora puedes invitarme a un café!</textarea>';
+					}else{
+						echo '<textarea class="form-control" id="exampleFormControlTextarea1" name="description_ex" rows="2" required>'.$about.'</textarea>';
+					}
+				?>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1"><b>Precio de tu cafe:</b></label>
+				<?php
+					echo '<input type="textbox" class="form-control currency" id="exampleFormControlInput1" name="price_ex" style="text-align:center;" value="'.$priceExtra.'" required>';
+				?>				
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlTextarea1"><b>Este mensaje le llegara a tu fan una vez haya pagado uno o varios cafes:</b></label>
+				<?php
+					echo '<textarea class="form-control" id="exampleFormControlTextarea1" name="confirmation_ex" rows="2" required>'.$confirmationExtra.'</textarea>
+					<input type="hidden" name="extra_edit" value="'.$idExtra.'">';
+				?>
+			</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-success text-white"><i class="fas fa-magic"></i> Actualizar</button>
+		</form>
       </div>
     </div>
   </div>
