@@ -37,7 +37,7 @@ require_once('../admin/header.php');
               </p>
                     <?php
                         $idUser = $_SESSION["user_param"];
-                        $sqlx = "SELECT id_extra, title, description, confirmation, limit_slots, price, question, subsciption FROM extras WHERE id_user='".$idUser."' AND active=1 AND active <>2";
+                        $sqlx = "SELECT id_extra, title, description, confirmation, limit_slots, price, question, subsciption FROM extras WHERE id_user='".$idUser."' AND active=1 AND active <>2 order by subsciption desc";
                         $resultx = $conn->query($sqlx);
                         
                         if ($resultx->num_rows > 0) {

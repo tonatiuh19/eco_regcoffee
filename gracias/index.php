@@ -92,6 +92,74 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
       
 
+    }else if($status == "3"){
+      $uname = test_input($_POST["uname"]);
+      $idPay = test_input($_POST["idPay"]);
+      $typeB = "";
+      $brand = "";
+      $cardNo = "";
+      $bank = "";
+      $satusB = test_input($_POST["status"]);
+      $date = test_input($_POST["date"]);
+      $amount = test_input($_POST["amount"]);
+      $amountF = "";
+      $amountT = "";
+      $questAnswer = test_input($_POST["questAnswer"]);
+      $endPeriod = test_input($_POST["period_end_date"]);
+      
+      $sqli = "INSERT INTO payments (id_user, id_openpay, type, brand, card_number, bank_name, status, date, amount, amount_fee, amount_tax, description, email_user, note_fan, isPublic_note_fan, id_extra, question_answer, period_end_date)
+      VALUES ('$idUser', '$idPay', '$typeB', '$brand', '$cardNo', '$bank', '$satusB', '$date', '$amount', '$amountF', '$amountT', '$description', '$email', '$noteFan', '$isPublic', '$idExtra', '$questAnswer', '$endPeriod')";
+
+      if ($conn->query($sqli) === TRUE) {
+        
+        $sql1 = "SELECT email FROM users WHERE email='".$email."'";
+        $result1 = $conn->query($sql1);
+
+        if ($result1->num_rows > 0) {
+          // output data of each row
+          echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+              
+                  <h4 class="modal-title w-100" id="exampleModalLongTitle"><img class="masthead-avatar-pay mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" alt="" /><br><span class="bg-dark text-white p-1 rounded small">tonatiuh</span><br><b>¡Gracias totales!</b></h4>
+                  <p>Revisa tu correo o entra a tu cuenta donde puedes administrar tu subcripcion, asi como tambien encontrar tu primer recibo de pago y un mensaje especial.</p>
+                  
+                  <a href="../'.$uname.'" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
+                
+                </div>
+              </div>
+            </div>
+          </div>';
+        } else {
+          $sql2 = "INSERT INTO users (user_name, email, pwd, date)
+          VALUES ('', '$email', '/%Chivas%%%%%%(93)123%/', '$today')";
+
+          if ($conn->query($sql2) === TRUE) {
+            echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-body text-center">
+                
+                    <h4 class="modal-title w-100" id="exampleModalLongTitle"><img class="masthead-avatar-pay mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" alt="" /><br><span class="bg-dark text-white p-1 rounded small">tonatiuh</span><br><b>¡Gracias totales!</b></h4>
+                    <p>Revisa tu correo donde encontraras instrucciones para acceder a tu cuenta y administrar tu subcripcion, asi como tambien tu primer recibo de pago y un mensaje especial.</p>
+                    
+                    <a href="../'.$uname.'" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>';
+          } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+          }
+
+        }
+      } else {
+        echo "Error: " . $sqli . "<br>" . $conn->error;
+      }
+      
+    
     }else{
       $today = date("Y-m-d H:i:s");
       $desc = clean($description);

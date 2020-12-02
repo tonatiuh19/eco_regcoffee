@@ -119,7 +119,7 @@ date_default_timezone_set('America/Mexico_City');
 									<a class="nav-link active" href="#description" role="tab" aria-controls="description" aria-selected="true">Recientes</a>
 								</li>
 								<?php
-									$sqle = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.limit_slots, a.price, a.question, a.subsciption FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=1 AND a.active <>2 AND b.user_name='".$uName."' order by a.subsciption desc";
+									$sqle = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.limit_slots, a.price, a.question, a.subsciption, a.subsciption_id FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=1 AND a.active <>2 AND b.user_name='".$uName."' order by a.subsciption desc";
 									$resulte = $conn->query($sqle);
 									
 									if ($resulte->num_rows > 0) {
@@ -324,6 +324,7 @@ date_default_timezone_set('America/Mexico_City');
 																document.getElementById("descripcionPay").value = "'.$rowe["title"].' from: '.$userID.'";';
 																if($rowe["subsciption"] == "1"){
 																	echo 'document.getElementById("payType").value = "2";';
+																	echo 'document.getElementById("subsid").value = "'.$rowe["subsciption_id"].'";';
 																}else{
 																	echo 'document.getElementById("payType").value = "1";';
 																}
@@ -441,9 +442,10 @@ date_default_timezone_set('America/Mexico_City');
 					<input type="hidden" name="amount" value="0" id="amountCoffe">
 					<input type="hidden" name="descripcion" value="0" id="descripcionPay">
 					<input type="hidden" name="id-extra" value="0" id="id-extra">
+					<input type="hidden" name="subsid" value="0" id="subsid">
 					<?php
 						echo '';
-						echo '<input type="hidden" name="uname" value="'.$uName.'" id="unamePay">';
+						echo '<input type="hidden" name="uname" value="'.$uName.'" id="unamePay">';						
 						echo '';
 					?>
 					<div class="form-group">
@@ -474,11 +476,11 @@ date_default_timezone_set('America/Mexico_City');
 						<p class="alert alert-danger p-1 small" id="alertBank">Some text success or error</p>
 						<p class="alert alert-danger p-1 small invalid-feedback" id="alertBank_form">Completa todos los campos</p>
 						<div class="form-group">
-							<input type="text" placeholder="Nombre en tarjeta" autocomplete="off" data-openpay-card="holder_name" required class="form-control">
+							<input type="text" placeholder="Nombre en tarjeta" name="holder_name" autocomplete="off" data-openpay-card="holder_name" required class="form-control">
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-							<input type="text" autocomplete="off" data-openpay-card="card_number" placeholder="Numero de tarjeta" class="form-control" required>
+							<input type="text" autocomplete="off" data-openpay-card="card_number" name="card_number" placeholder="Numero de tarjeta" class="form-control" required>
 							<div class="input-group-append">
 								<span class="input-group-text text-muted">
 									<i class="fab fa-cc-visa mx-1"></i>
@@ -493,8 +495,8 @@ date_default_timezone_set('America/Mexico_City');
 							<div class="form-group">
 								<label><span class="hidden-xs">Expiración</span></label>
 								<div class="input-group">
-								<input type="number" placeholder="MM" max="12" data-openpay-card="expiration_month" class="form-control" required>
-								<input type="number" placeholder="YY" min="20" max="30" data-openpay-card="expiration_year" class="form-control" required>
+								<input type="number" placeholder="MM" name="expiration_month" max="12" data-openpay-card="expiration_month" class="form-control" required>
+								<input type="number" placeholder="YY" name="expiration_year" min="20" max="30" data-openpay-card="expiration_year" class="form-control" required>
 								</div>
 							</div>
 							</div>
@@ -503,7 +505,7 @@ date_default_timezone_set('America/Mexico_City');
 								<label data-toggle="tooltip" title="Código de tres dígitos en el reverso de tu tarjeta">CVV
 															<i class="fa fa-question-circle"></i>
 														</label>
-								<input type="text" required autocomplete="off" data-openpay-card="cvv2" class="form-control">
+								<input type="text" required autocomplete="off" data-openpay-card="cvv2" name="cvv2" class="form-control">
 							</div>
 							</div>
 						</div>
