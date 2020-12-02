@@ -1,7 +1,7 @@
 <?php
 require_once("../Openpay.php");
 require_once('../../../admin/cn.php');
-
+date_default_timezone_set('America/Mexico_City');
 Openpay::setId('my5osdjarjverf8pvgd7');
 Openpay::setApiKey('sk_9252628a92d04854b9602f975da5da78');
 $sql = "SELECT name, last_name FROM users WHERE email='".$_POST["email"]."'";

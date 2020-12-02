@@ -2,6 +2,7 @@
 session_start();
 require_once('../../admin/cn.php');
 require_once("../../pagando/Openpay.php");
+date_default_timezone_set('America/Mexico_City');
 
 Openpay::setId('mklwynufmke2y82injra');
 Openpay::setApiKey('sk_e8bd01b6ec2f434089ddf536725654bb');

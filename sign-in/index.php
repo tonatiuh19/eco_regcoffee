@@ -2,7 +2,7 @@
 // define variables and set to empty values
 session_start();
 require_once('../admin/cn.php');
-
+date_default_timezone_set('America/Mexico_City');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$email = test_input($_POST["email_i"]);
 	$pwd = test_input($_POST["pwd_i"]);

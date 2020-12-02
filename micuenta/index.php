@@ -1,5 +1,6 @@
 <?php
 require_once('../admin/header.php');
+date_default_timezone_set('America/Mexico_City');
 ?>
     <div class="site-section bg-primary-light">
       <div class="container">
