@@ -86,16 +86,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $sql2 = "UPDATE extras SET subsciption_id='".$plan->id."' WHERE id_extra=".$idExtra."";
 
                         if ($conn->query($sql2) === TRUE) {
-                            if( isset($_POST['edit']) )
-                            {          
-                                echo ("<SCRIPT LANGUAGE='JavaScript'>
-                                window.location.href='../';
-                                </SCRIPT>");
-                            }else{
-                                echo ("<SCRIPT LANGUAGE='JavaScript'>
-                                $('#exampleModalCenter').modal('show');
-                                </SCRIPT>");
+                            $sqly = "UPDATE payments SET id_extra='".$idExtra."' WHERE id_extra=".$editId."";
+
+                            if ($conn->query($sqly) === TRUE) {
+                                if( isset($_POST['edit']) )
+                                {          
+                                    echo ("<SCRIPT LANGUAGE='JavaScript'>
+                                    window.location.href='../';
+                                    </SCRIPT>");
+                                }else{
+                                    echo ("<SCRIPT LANGUAGE='JavaScript'>
+                                    $('#exampleModalCenter').modal('show');
+                                    </SCRIPT>");
+                                }
+                            } else {
+                                echo "Error updating record: " . $conn->error;
                             }
+                            
                         } else {
                             echo "Error updating record: " . $conn->error;
                         }
@@ -159,15 +166,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql2 = "UPDATE extras SET subsciption_id='".$plan->id."' WHERE id_extra=".$idExtra."";
 
                 if ($conn->query($sql2) === TRUE) {
-                    if( isset($_POST['edit']) )
-                    {          
-                        echo ("<SCRIPT LANGUAGE='JavaScript'>
-                        window.location.href='../';
-                        </SCRIPT>");
-                    }else{
-                        echo ("<SCRIPT LANGUAGE='JavaScript'>
-                        $('#exampleModalCenter').modal('show');
-                        </SCRIPT>");
+                    $sqly = "UPDATE payments SET id_extra='".$idExtra."' WHERE id_extra=".$editId."";
+
+                    if ($conn->query($sqly) === TRUE) {
+                        if( isset($_POST['edit']) )
+                        {          
+                            echo ("<SCRIPT LANGUAGE='JavaScript'>
+                                    window.location.href='../';
+                                    </SCRIPT>");
+                        }else{
+                            echo ("<SCRIPT LANGUAGE='JavaScript'>
+                                    $('#exampleModalCenter').modal('show');
+                                    </SCRIPT>");
+                        }
+                    } else {
+                            echo "Error updating record: " . $conn->error;
                     }
                 } else {
                     echo "Error updating record: " . $conn->error;

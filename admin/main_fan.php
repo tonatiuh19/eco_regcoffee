@@ -305,8 +305,10 @@ date_default_timezone_set('America/Mexico_City');
 								<div class="tab-pane" id="history" role="tabpanel" aria-labelledby="history-tab">  
 									<div class="row justify-content-center">
 									<?php	
+										
 										//$sqle = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.limit_slots, a.price, a.question, a.subsciption FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=1 AND a.active <>2 AND b.user_name='".$uName."'";									
 										while($rowe = $resulte->fetch_assoc()) {
+											$q = 1;
 											echo '<div class="card col-sm-3 m-1 p-3">
 												<div class="card-body">
 													<h5 class="card-title">'.$rowe["title"].'</h5>';
@@ -316,12 +318,35 @@ date_default_timezone_set('America/Mexico_City');
 													}else{
 														echo '<h6 class="card-subtitle mb-2 text-muted">Por solo: '.$rowe["price"].'</h6>';
 													}												
+													if($rowe["limit_slots"] != "0"){
 														
-													echo 'Quedan '.$rowe["limit_slots"].' lugares';
+														$sqlg = "SELECT id_payments FROM payments WHERE id_extra=".$rowe["id_extra"]." and status='completed'";
+														$resultg = $conn->query($sqlg);
+
+														if ($resultg->num_rows > 0) {
+															$x=0;
+															while($rowg = $resultg->fetch_assoc()) {
+																$x++;
+															}
+															$q = $rowe["limit_slots"] - $x;
+															echo 'Quedan '.$q.'<br>';
+														} else {
+															echo 'Quedan '.$rowe["limit_slots"].'<br>';
+														}
+														
+													}
 													if($rowe["subsciption"] == "1"){
-														echo '<button class="btn btn-success btn-sm p-1 text-white" id="btnPayCoffee'.$rowe["id_extra"].'" data-toggle="modal" data-target="#apoyar">Suscribete por <strong>'.$rowe["price"].'</strong></button>';
+														if($q <= 0){
+															echo '<button class="btn btn-success btn-sm p-1 text-white" disabled>Agotado</button>';
+														}else{
+															echo '<button class="btn btn-success btn-sm p-1 text-white" id="btnPayCoffee'.$rowe["id_extra"].'" data-toggle="modal" data-target="#apoyar">Suscribete por <strong>'.$rowe["price"].'</strong></button>';
+														}
 													}else{
-														echo '<button class="btn btn-success btn-sm p-1 text-white" id="btnPayCoffee'.$rowe["id_extra"].'" data-toggle="modal" data-target="#apoyar">Comprar <strong>'.$rowe["price"].'</strong></button>';
+														if($q <= 0){
+															echo '<button class="btn btn-success btn-sm p-1 text-white" disabled>Agotado</button>';
+														}else{
+															echo '<button class="btn btn-success btn-sm p-1 text-white" id="btnPayCoffee'.$rowe["id_extra"].'" data-toggle="modal" data-target="#apoyar">Comprar <strong>'.$rowe["price"].'</strong></button>';
+														}
 													}
 													
 

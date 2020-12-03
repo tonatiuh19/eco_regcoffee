@@ -136,9 +136,14 @@ require_once('../admin/header.php');
                                                                     No hay limite
                                                                 </label>
                                                                 <script> function limitsFunc() {var checkBox = document.getElementById("checkLimit"); if (checkBox.checked == true){document.getElementById("limitInput").disabled = true; } else {document.getElementById("limitInput").disabled = false; } } </script>
-                                                            </div>
-                                                            <input type="number" class="form-control" id="limitInput" name="limit_ex" value="'.$rowx["limit-slots"].'">
-                                                        </div>
+                                                            </div>';
+                                                            if($rowx["limit_slots"] == "0"){
+                                                                echo '<input type="number" class="form-control" id="limitInput" name="limit_ex" value="">';
+                                                            }else{
+                                                                echo '<input type="number" class="form-control" id="limitInput" name="limit_ex" value="'.$rowx["limit_slots"].'">';
+                                                            }
+                                                            
+                                                        echo '</div>
                                                         <div class="form-group files">
                                                             <label><b>Incluye una imagen a tu extra o sustituyela:</b> <span class="small">(Opcional)</span></label>
                                                             <input type="file" class="form-control" name="fileToUpload" accept="image/jpeg, image/png">
