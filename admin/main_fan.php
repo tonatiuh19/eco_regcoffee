@@ -43,21 +43,26 @@ date_default_timezone_set('America/Mexico_City');
 
 			$folder_path = "../".$uName."/profile/";
 			if (!file_exists($folder_path)) {
-				echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
-					<img class="masthead-avatar mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="220" alt="" />';
 					if($sess){
+						echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
+							<img class="masthead-avatar mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="220" alt="" />';
 						echo '<button type="button" class="btn btn-warning p-1 delete-image" data-toggle="modal" data-target="#editarme" style="position:absolute;bottom:50px;right:2px;margin:0;"><i class="fas fa-pencil-alt"></i></button>';
+						echo '</a>';
+					}else{
+						echo '<img class="masthead-avatar mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="220" alt="" />';
 					}
-				echo '</a>';
+				
 			}else{
 				foreach(glob('../'.$uName.'/profile/*.{jpg,png}', GLOB_BRACE) as $file) {
-					if (preg_match('/(\.jpg|\.png|\.bmp)$/', $file)) {
-						echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
-							<img class="masthead-avatar mb-2 rounded" src="'.$file.'" width="220" alt="" />';
+					if (preg_match('/(\.jpg|\.jpeg|\.png|\.bmp)$/', $file)) {
 							if($sess){
+								echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
+								<img class="masthead-avatar mb-2 rounded" src="'.$file.'" width="220" alt="" />';
 								echo '<button type="button" class="btn btn-warning p-1 delete-image" data-toggle="modal" data-target="#editarme" style="position:absolute;bottom:50px;right:2px;margin:0;"><i class="fas fa-pencil-alt"></i></button>';
+								echo '</a>';
+							}else{
+								echo '<img class="masthead-avatar mb-2 rounded" src="'.$file.'" width="220" alt="" />';
 							}
-						echo '</a>';
 					}
 				}
 			}
@@ -274,7 +279,7 @@ date_default_timezone_set('America/Mexico_City');
 													echo '<h3>Fans</h3>';
 												}
 												
-												$sqlu = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='".$uName."' AND a.status='completed' AND a.isPublic_note_fan=1 AND a.note_fan<>'' ";
+												/*$sqlu = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='".$uName."' AND a.status='completed' AND a.isPublic_note_fan=1 AND a.note_fan<>'' ";
 												$resultu = $conn->query($sqlu);
 
 												if ($resultu->num_rows > 0) {
@@ -295,7 +300,31 @@ date_default_timezone_set('America/Mexico_City');
 													echo '</div>';
 												} else {
 													echo "0 results";
-												}
+												}*/
+												echo '<div id="table-data"></div>';
+												echo '<script type="text/javascript">
+												 $(document).ready(function(){
+												   function loadData(page){
+													 $.ajax({
+													   url  : "../comolovemifan/pagination.php",
+													   type : "POST",
+													   cache: false,
+													   data : {page_no:page, username:"'.$uName.'"},
+													   success:function(response){
+														 $("#table-data").html(response);
+													   }
+													 });
+												   }
+												   loadData();
+												   
+												   // Pagination code
+												   $(document).on("click", ".pagination li a", function(e){
+													 e.preventDefault();
+													 var pageId = $(this).attr("id");
+													 loadData(pageId);
+												   });
+												 });
+											   </script>';
 											?>
 											
 										</div>

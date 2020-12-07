@@ -1424,3 +1424,10 @@ html {
   visibility: hidden;
   position: absolute;
 }
+
+
+.bBottom {
+  margin-top:auto;
+  position:sticky;
+  bottom:0;
+}

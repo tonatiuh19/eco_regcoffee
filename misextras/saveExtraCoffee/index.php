@@ -54,9 +54,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $sql5 = "UPDATE users SET about='$description', creation='$creation' WHERE id_user=".$idUser."";
 
                     if ($conn->query($sql5) === TRUE) {
-                        echo ("<SCRIPT LANGUAGE='JavaScript'>
-                        window.location.href='../../comolovemifan/';
-                        </SCRIPT>");
+
+                        $sqlt = "SELECT id_extra FROM extras WHERE id_user='".$idUser."' AND date='".$today."' AND price='".$price."'";
+                        $resultt = $conn->query($sqlt);
+
+                        if ($resultt->num_rows > 0) {
+                        // output data of each row
+                            while($rowt = $resultt->fetch_assoc()) {
+                                $idExtra = $rowt["id_extra"];
+                            }
+                            $sqlu = "UPDATE payments SET id_extra='".$idExtra."' WHERE id_extra=".$editId."";
+
+                            if ($conn->query($sqlu) === TRUE) {
+                                echo ("<SCRIPT LANGUAGE='JavaScript'>
+                                window.location.href='../../comolovemifan/';
+                                </SCRIPT>");
+                            } else {
+                                echo "Error updating record: " . $conn->error;
+                            }
+                        } else {
+                            echo "0 results";
+                        }
+                        
                     } else {
                         echo "Error updating record: " . $conn->error;
                     }
@@ -89,9 +108,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql5 = "UPDATE users SET about='$description', creation='$creation' WHERE id_user=".$idUser."";
 
             if ($conn->query($sql5) === TRUE) {
-                echo ("<SCRIPT LANGUAGE='JavaScript'>
-                window.location.href='../../comolovemifan/';
-                </SCRIPT>");
+                $sqlt = "SELECT id_extra FROM extras WHERE id_user='".$idUser."' AND date='".$today."' AND price='".$price."'";
+                $resultt = $conn->query($sqlt);
+
+                if ($resultt->num_rows > 0) {
+                        // output data of each row
+                    while($rowt = $resultt->fetch_assoc()) {
+                        $idExtra = $rowt["id_extra"];
+                    }
+                    $sqlu = "UPDATE payments SET id_extra='".$idExtra."' WHERE id_extra=".$editId."";
+
+                    if ($conn->query($sqlu) === TRUE) {
+                        echo ("<SCRIPT LANGUAGE='JavaScript'>
+                                window.location.href='../../comolovemifan/';
+                                </SCRIPT>");
+                    } else {
+                        echo "Error updating record: " . $conn->error;
+                    }
+                } else {
+                    echo "0 results";
+                }
             } else {
                 echo "Error updating record: " . $conn->error;
             }

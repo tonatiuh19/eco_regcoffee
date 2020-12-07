@@ -33,7 +33,7 @@ require_once('../admin/header.php');
               <h1>Mis extras</h1>
               <p>
                     <a href="../misextras" class="btn btn-primary active"><i class="fas fa-gifts"></i> Extras</a>
-                    <a href="../compromisos/" class="btn btn-primary"><i class="fas fa-hand-holding-usd"></i> Compromisos</a>
+                    <a href="../misfans/" class="btn btn-primary"><i class="fas fa-hand-holding-usd"></i> Compromisos</a>
               </p>
                     <?php
                         $idUser = $_SESSION["user_param"];

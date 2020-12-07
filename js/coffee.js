@@ -263,7 +263,7 @@ $(document).ready(function(){
    $('#endLabelPaying').hide();
    document.getElementById("questionAnswer").removeAttribute("required");
 
-
+   
 });
 
 
@@ -441,4 +441,37 @@ $(document).on("click", ".browse", function() {
    // read the image file as a data URL.
    reader.readAsDataURL(this.files[0]);
  });
- 
+
+
+var btnContainer = document.getElementById("myFansButtons");
+
+// Get all buttons with class="btn" inside the container
+var btns = btnContainer.getElementsByClassName("btnFans");
+
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("btn-warning");
+    current[0].className = current[0].className.replace(" btn-warning", "btn-outline-warning");
+    this.className += " btn-warning";
+  });
+}
+
+function getSummary(id)
+{
+   $.ajax({
+      url  : "../misfans/extras.php",
+      type : "POST",
+      cache: false,
+      data : {page_no:1, extraid:id},
+      beforeSend: function(){
+         $("#imageLoading").show();
+      },
+      complete: function(){
+         $("#imageLoading").hide();
+      },
+      success:function(response){
+         $("#table-data").html(response);
+      }
+   });
+}

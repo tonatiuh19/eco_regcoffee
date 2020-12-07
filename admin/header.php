@@ -85,7 +85,7 @@ if(!isset($_SESSION["user_param"]))
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li><a href="../mipagina/" class="nav-link"><i class="fas fa-hat-wizard"></i> Inicio</a></li>
                 
-                <li><a href="#" class="nav-link"><i class="fas fa-grin-hearts"></i> Mis Fans</a></li>
+                <li><a href="../misfans/" class="nav-link"><i class="fas fa-grin-hearts"></i> Mis Fans</a></li>
                 <li><a href="../misextras/" class="nav-link"><i class="fas fa-gifts"></i> Extras</a></li>
 
 
