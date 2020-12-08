@@ -411,8 +411,25 @@ var error_callbak = function(response) {
    $("#pay-button").prop("disabled", false);
    $('#endLabelPaying').hide();
    $('#endLabelPay').show();
+
+   $('#tt').tooltip({
+      trigger: 'click',
+      placement: 'bottom'
+   });
+    
 };
+
+function setTooltip(message) {
+   $('#tt').tooltip('hide')
+     .attr('data-original-title', message)
+     .tooltip('show');
+}
+
 //Openpay - End
+
+$(document).ready(function () {
+   showGraph();
+});
 
 function openRegister(){
    $('#iniciarSesion').modal('hide');
@@ -474,4 +491,111 @@ function getSummary(id)
          $("#table-data").html(response);
       }
    });
+}
+
+
+function copyToClipboard(element) {
+   var $temp = $("<input>");
+   $("body").append($temp);
+   $temp.val($(element).text()).select();
+   document.execCommand("copy");
+   $temp.remove();
+   setTooltip('¡Copiado!');
+   hideTooltip();
+}
+
+function copyLinkToClipboard(element) {
+   var $temp = $("<input>");
+   $("body").append($temp);
+   $temp.val($(element).text()).select();
+   document.execCommand("copy");
+   $temp.remove();
+   setTooltipLink('¡Copiado!');
+   hideTooltipLink();
+}
+
+$('#copyLink').tooltip({
+   trigger: 'click',
+   placement: 'bottom'
+});
+ 
+function setTooltipLink(message) {
+   $('#copyLink').tooltip('hide')
+     .attr('data-original-title', message)
+     .tooltip('show');
+}
+ 
+function hideTooltipLink() {
+   setTimeout(function() {
+     $('#copyLink').tooltip('hide');
+   }, 1000);
+}
+
+
+
+function showGraph()
+{
+	{
+		$.post("../chart/data.php",
+			function (data)
+			{
+				var ctx = document.getElementById("examChart").getContext("2d");
+				var today = new Date();
+
+                var days = 8; // Days you want to subtract
+                var date = new Date();
+                var last = new Date(date.getTime() - (days * 24 * 60 * 60 * 1000));
+                var day =last.getDate();
+                var month=last.getMonth()+1;
+                var year=last.getFullYear();
+                var menossiete = year+"-"+month+"-"+day+" 13:3";
+
+                var today = new Date();
+                var newdate = new Date();
+                newdate.setDate(today.getDate()+5);
+                var newDay = newdate.getDate();
+                var newMonth = newdate.getMonth()+1;
+                var newYear = newdate.getFullYear();
+                var mascinco = newYear+"-"+newMonth+"-"+newDay;
+
+                var myChart = new Chart(ctx, {
+                	type: 'line',
+                	data: {
+                		labels: [new Date(mascinco).toLocaleString(), new Date(menossiete).toLocaleString(), new Date(mascinco).toLocaleString()],
+                		datasets: [{
+                			label: 'Visitas',
+                			data: data,
+                			backgroundColor: [
+                			'rgba(255, 99, 132, 0.2)',
+                			'rgba(54, 162, 235, 0.2)',
+                			'rgba(255, 206, 86, 0.2)',
+                			'rgba(75, 192, 192, 0.2)',
+                			'rgba(153, 102, 255, 0.2)',
+                			'rgba(255, 159, 64, 0.2)'
+                			],
+                			borderColor: [
+                			'rgba(255,99,132,1)',
+                			'rgba(54, 162, 235, 1)',
+                			'rgba(255, 206, 86, 1)',
+                			'rgba(75, 192, 192, 1)',
+                			'rgba(153, 102, 255, 1)',
+                			'rgba(255, 159, 64, 1)'
+                			],
+                			borderWidth: 1
+                		}]
+                	},
+                	options: {
+                		scales: {
+                			xAxes: [{
+                            type: 'time',
+                            time: {
+                              unit: 'day'
+                            }
+                			}]
+                      },
+                      responsive: true
+                	}
+                });
+            });
+	}
 }

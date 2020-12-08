@@ -46,6 +46,7 @@ if(!isset($_SESSION["user_param"]))
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
@@ -95,7 +96,7 @@ if(!isset($_SESSION["user_param"]))
                   <a href="#" class="nav-link"><i class="fas fa-user-astronaut"></i></a>
                   <ul class="dropdown">
                     <li><a href="../micuenta/" class="nav-link">Mi cuenta</a></li>
-                    <li><a href="../missubcripciones/" class="nav-link">Mis subcripciones</a></li>
+                    <li><a href="../missubcripciones/" class="nav-link">Apoyo a creadores</a></li>
                     <li><a href="../admin/end.php" class="nav-link">Salir </a></li>
                   </ul>
                 </li>

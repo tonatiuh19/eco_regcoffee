@@ -23,9 +23,7 @@ require_once('../admin/header.php');
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-body">
-                    <?php
-                      echo '<button id="copy" class="btn btn-primary float-right" data-clipboard-text="regalameuncafe.com/'.$_SESSION['uname'].'"><i class="fas fa-clone"></i> Copiar link</button>';
-                    ?>
+                  <button id="copyLink" class="btn btn-primary float-right"  onclick="copyLinkToClipboard('#linkToCopy')"><i class="fas fa-clone"></i> Copiar link</button>
                     <h5 class="card-title">
                       <span class="fa-stack">
                         <i class="fas fa-square fa-stack-2x"></i>
@@ -36,7 +34,7 @@ require_once('../admin/header.php');
                       ?>
                       </h5>
                     <?php
-                      echo '<p class="card-text">regalameuncafe.com/'.$_SESSION['uname'].'</p>';
+                      echo '<p class="card-text" id="linkToCopy">regalameuncafe.com/'.$_SESSION['uname'].'</p>';
                     ?>
                   </div>
                 </div>

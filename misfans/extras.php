@@ -14,7 +14,7 @@
 
 	$offset = ($page_no-1) * $limit;
 
-	$sqlu = "SELECT a.id_payments, a.id_extra, a.id_openpay, a.date, a.amount, a.description, a.question_answer, a.email_user, a.isPublic_note_fan, a.note_fan, b.active, b.title, b.subsciption FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.status='completed' and a.id_extra=".$idExtra." LIMIT $offset, $limit";
+	$sqlu = "SELECT a.id_payments, a.id_extra, a.id_openpay, a.date, a.amount, a.description, a.question_answer, a.email_user, a.isPublic_note_fan, a.note_fan, b.active, b.title, b.subsciption FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.status='completed' and a.id_extra=".$idExtra." order by a.date desc LIMIT $offset, $limit";
 
 	$resultu = $conn->query($sqlu);
 
@@ -49,10 +49,10 @@
             if($rowu["active"] == "2"){
                 $whatIWant = substr($rowu["description"], strpos($rowu["description"], "|") + 1);
                 if($rowu["isPublic_note_fan"] == "1"){
-                    $isPublic = '<span class="bg-dark text-white">Privado</span>';
+                    $isPublic = '<span class="bg-dark text-white">&nbsp;Privado&nbsp;</span>';
                     $output.='<tr class="">';
                 }else{
-                    $isPublic = '<span class="bg-success text-white">Publico</span>';
+                    $isPublic = '<span class="bg-success text-white">&nbsp;Publico&nbsp;</span>';
                     $output.='<tr>';
                 }
 
@@ -72,10 +72,10 @@
                 </tr>';
             }else{
                 if($rowu["isPublic_note_fan"] == "1"){
-                    $isPublic = '<span class="bg-dark text-white">Privado</span>';
+                    $isPublic = '<span class="bg-dark text-white">&nbsp;Privado&nbsp;</span>';
                     $output.='<tr class="bg-light">';
                 }else{
-                    $isPublic = '<span class="bg-success text-white">Publico</span>';
+                    $isPublic = '<span class="bg-success text-white">&nbsp;Publico&nbsp;</span>';
                     $output.='<tr>';
                 }
 

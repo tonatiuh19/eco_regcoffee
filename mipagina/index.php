@@ -1,6 +1,7 @@
 <?php
 require_once('../admin/header.php');
 ?>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <div class="site-section bg-primary-light">
       <div class="container">
         <?php
@@ -23,8 +24,9 @@ require_once('../admin/header.php');
                 <div class="card">
                   <div class="card-body">
                     <?php
-                      echo '<button id="copy" class="btn btn-primary float-right" data-clipboard-text="regalameuncafe.com/'.$_SESSION['uname'].'"><i class="fas fa-clone"></i> Copiar link</button>';
+                      echo '';
                     ?>
+                    <button id="copyLink" class="btn btn-primary float-right"  onclick="copyLinkToClipboard('#linkToCopy')"><i class="fas fa-clone"></i> Copiar link</button>
                     <h5 class="card-title">
                       <span class="fa-stack">
                         <i class="fas fa-square fa-stack-2x"></i>
@@ -35,7 +37,7 @@ require_once('../admin/header.php');
                       ?>
                       </h5>
                     <?php
-                      echo '<p class="card-text">regalameuncafe.com/'.$_SESSION['uname'].'</p>';
+                      echo '<p class="card-text" id="linkToCopy">regalameuncafe.com/'.$_SESSION['uname'].'</p>';
                     ?>
                   </div>
                 </div>
@@ -46,51 +48,105 @@ require_once('../admin/header.php');
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-body">
-                    <?php
-                      $sql1 = "SELECT id_users_extras, id_creator, email_fan, id_extra FROM users_extras WHERE id_creator='".$_SESSION["user_param"]."'";
-                      $result1 = $conn->query($sql1);
-                      
-                      if ($result1->num_rows > 0) {
-                        // output data of each row
-                        while($row1 = $result1->fetch_assoc()) {
-                          echo $row1["email_fan"];
-                        }
-                      } else {
-                        echo '<div class="row mb-3">
-                        <div class="col-lg-7 text-center mx-auto">
-                          <!--<h2 class="section-heading">Diseñado para personas, no para empresas</h2>
-                          <p>Comparte contenido exclusivo o simplemente brinda una forma de respaldar tu trabajo</p>-->
-                          <h2 class="section-heading"><i class=""></i></h2>
-                          <h2>Aun no te regalan cafes <i class="far fa-dizzy"></i></h2>
-                          <h2 class="mb-4 section-heading">Aqui tienes algunos tips:</h2>
-                          <ul class="list-unstyled mb-3">
-                            <li><i class="far fa-hand-point-right"></i> Incluye tu link en tu descripcion en redes sociales.</li>
-                            <li><i class="far fa-hand-point-right"></i> Incluye tu link en tu descripcion en Youtube.</li>
-                            <li><i class="far fa-hand-point-right"></i> Incluye tu link en tu read-me en tus repositorios de Git.</li>
-                            <li> <i class="far fa-hand-point-right"></i> Incluye tu link en todos lados! donde lo necesites <i class="fas fa-heart text-danger"></i>.</li>
-                          </ul>
-                          <p>
-                            <button id="copy_" class="btn btn-primary" data-clipboard-text="regalameuncafe.com/'.$_SESSION['uname'].'"><i class="fas fa-clone"></i> Copiar link</button>
-                            <a href="#generarBoton" class="btn btn-primary"><i class="fas fa-code"></i> Crea un boton</a>
-                          </p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4 align-items-center justify-content-center">
+                              <?php
+                              $idUser = $_SESSION["user_param"];
+                              $sql = "SELECT COUNT(a.id_payments) as 'cafes' FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=".$idUser." and b.active=2 and a.status='completed'";
+                              $result = $conn->query($sql);
+
+                              if ($result->num_rows > 0) {
+                                // output data of each row
+                                while($row = $result->fetch_assoc()) {
+                                  $countCoffe = $row["cafes"];
+                                }
+                                  echo '<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                                  <div class="card-body">
+                                    <h5 class="card-title text-white">Nuevos Cafes<i class="fas fa-mug-hot text-white float-right"></i></h5>
+                                    <p class="card-text">
+                                      <span class="fa-stack">
+                                          <span class="fa fa-circle fa-stack-2x"></span>
+                                          <strong class="fa-stack-1x text-dark">
+                                              '.$countCoffe.'    
+                                          </strong>
+                                      </span>
+                                      <a href="../misfans/" class="btn btn-white btn-sm p-1 mt-1 float-right">Ver mas</a>
+                                    </p>
+                                  </div>
+                                </div>';
+                              } else {
+                                echo "0 results";
+                              }
+                              ?>
+                              <hr>
+                              <?php
+                              $sql2 = "SELECT a.id_payments, b.title, COUNT(b.id_extra) as 'cafes' FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=".$idUser." and b.active<>2 and b.active<>0 and a.status='completed' GROUP BY b.id_extra ORDER BY cafes DESC LIMIT 3";
+                              $result2 = $conn->query($sql2);
+                              
+                              if ($result2->num_rows > 0) {
+                                // output data of each row
+                                while($row2 = $result2->fetch_assoc()) {
+                                    echo '<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                      <h6 class="card-title text-white">'.$row2["title"].' <i class="fas fa-gifts fa-xs text-white float-right"></i></h6>
+                                      <p class="card-text">
+                                        <span class="fa-stack">
+                                            <span class="fa fa-circle fa-stack-2x"></span>
+                                            <strong class="fa-stack-1x text-dark">
+                                            '.$row2["cafes"].'   
+                                            </strong>
+                                        </span>
+                                        <a href="../misfans/" class="btn btn-white btn-sm p-1 mt-1 float-right">Ver mas</a>
+                                      </p>
+                                    </div>
+                                  </div>';
+                                }
+                              } else {
+                                echo '<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                      <h6 class="card-title text-white">Agrega un extra<i class="fas fa-gifts text-white float-right"></i></h6>
+                                      <p class="card-text">
+                                        
+                                        <a href="../misextras/" class="btn btn-white btn-sm p-1 mt-1 float-right">Agregar</a>
+                                      </p>
+                                    </div>
+                                  </div>';
+                              }
+                              ?>
+                              <a href="../misfans/" class="btn btn-primary">Ver todo</a>
+                            </div>
+                            <div class="col-sm-8 d-flex align-items-center justify-content-center">
+                              <canvas id="examChart" width="400" height="330"></canvas>
+                            </div>
                         </div>
-                      </div>';
-                      }
-                    ?>
-                    
+                    </div>
                   </div>
                 </div>
               </div>
         </div>
         <p></p>
+        <h2>Agrega un boton en tu git, pagina, blog, etc.</h2>
         <div class="row" id="generarBoton">
           <div class="col-sm-12">
             <div class="card">
               <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-6"><button class="btn btn-primary bouton-image monBouton">Éditer</button></div>
-                    <div class="col-sm-6">
-                      For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+                    
+                    <div class="col-sm-6 d-flex align-items-center justify-content-center">
+                      <iframe id="FileFrame" src="about:blank" width="280" height="50" scrolling="no" frameBorder="0"></iframe>
+                      <script src="../developers/create.button.min.js"></script>
+                    </div>
+                    <div class="col-sm-6 bg-light">
+                    <pre class="prettyprint" id="p1">  
+  <xmp>
+<script src="../developers/create.button.min.js"></script><iframe 
+id="FileFrame" src="about:blank" width="280" height="50" scrolling="no" 
+frameBorder="0"></iframe>
+  </xmp>
+</pre>
+<button class="btn btn-primary" onclick="copyToClipboard('#p1')" id="tt" data-clipboard-text="1"><i class="fas fa-clone"></i> Copiar</button>
+
                     </div>
                 </div>
               </div>

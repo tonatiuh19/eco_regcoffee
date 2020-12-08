@@ -91,6 +91,15 @@ date_default_timezone_set('America/Mexico_City');
 			echo '<input type="hidden" value="'.$money.'" id="hiddenExtra">';
 			
 			echo '<h1 class="masthead-heading mb-0">'.$uName.'</h1>';
+			$today = date("Y-m-d H:i:s");
+			$sqlh = "INSERT INTO visitors_users (id_user, date)
+			VALUES ('$userID', '$today')";
+
+			if ($conn->query($sqlh) === TRUE) {
+				//echo "New record created successfully";
+			} else {
+				echo "Error: " . $sql . "<br>" . $conn->error;
+			}
 			if($sess){
 				if($creation == ''){
 					echo '<span>Aun no añades tu descripcion <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button></span>';
@@ -277,7 +286,13 @@ date_default_timezone_set('America/Mexico_City');
 													echo '<span class="small"><i class="fas fa-users"></i> '.$fansCount.'</span>';
 												} else {
 													echo '<h3>Fans</h3>';
+
 												}
+												echo '<p id="imageLoading"><i class="fas fa-spinner fa-spin fa-2x"></i></p><script>
+												$(document).ready(function() {
+												  $("#imageLoading").hide();
+												});
+												</script>';
 												
 												/*$sqlu = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='".$uName."' AND a.status='completed' AND a.isPublic_note_fan=1 AND a.note_fan<>'' ";
 												$resultu = $conn->query($sqlu);
@@ -310,6 +325,12 @@ date_default_timezone_set('America/Mexico_City');
 													   type : "POST",
 													   cache: false,
 													   data : {page_no:page, username:"'.$uName.'"},
+													   beforeSend: function(){
+														$("#imageLoading").show();
+														},
+														complete: function(){
+															$("#imageLoading").hide();
+														},
 													   success:function(response){
 														 $("#table-data").html(response);
 													   }
