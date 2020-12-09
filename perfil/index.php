@@ -32,9 +32,10 @@ require_once('../admin/header.php');
                   <div class="card-body">
                     <h1>Mi cuenta</h1>
                     <p>
-                    <a href="../micuenta" class="btn btn-primary"><i class="fas fa-cog"></i> General</a>
-                    <a href="../notificaciones/" class="btn btn-primary"><i class="fas fa-bell"></i> Notificaciones</a>
-                    <a href="../perfil/" class="btn btn-primary active"><i class="fas fa-user"></i> Perfil</a>
+                      <a href="../micuenta" class="btn btn-primary"><i class="fas fa-cog"></i> General</a>
+                      <a href="../notificaciones/" class="btn btn-primary"><i class="fas fa-bell"></i> Notificaciones</a>
+                      <a href="../perfil/" class="btn btn-primary active"><i class="fas fa-user"></i> Perfil</a>
+                      <a href="../material/" class="btn btn-primary">¿Que tipo de material creas, desarrollas, imaginas, etc?</a>
                     </p>
                     <button class="btn btn-danger float-right" id="cancelmodifyProfile"><i class="fas fa-times-circle"></i> Cancelar</button>
                       <button class="btn btn-primary float-right" id="modifyProfile"><i class="fas fa-pencil-alt"></i> Modificar</button>
@@ -128,5 +129,7 @@ $conn->close();
 ?>
 <script type="text/javascript">
 	var myTitle='<?php echo $session_value;?>';
-	document.title = 'Regalame un Cafe';
+  document.title = 'Regalame un Cafe';
+  
+  activateNavbarItem("navAstronaut");
 </script>

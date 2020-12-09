@@ -75,8 +75,16 @@ require_once('../admin/header.php');
                                     </p>
                                   </div>
                                 </div>';
-                              } else {
-                                echo "0 results";
+                              } else {?>
+                                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                                  <div class="card-body">
+                                    <h5 class="card-title text-white">Comparte tu link<i class="fas fa-mug-hot text-white float-right"></i></h5>
+                                    <p class="card-text">
+                                      <button  class="btn btn-white btn-sm p-1 mt-1 float-right" onclick="copyLinkToClipboard('#linkToCopy')"><i class="fas fa-clone"></i> Copiar link</button>
+                                    </p>
+                                  </div>
+                                </div>
+                              <?php
                               }
                               ?>
                               <hr>
@@ -156,7 +164,6 @@ frameBorder="0"></iframe>
 
       </div>
     </div>
-
 <?php
 require_once('../admin/footer.php');
 $session_value=basename(dirname(__FILE__));
@@ -164,5 +171,7 @@ $conn->close();
 ?>
 <script type="text/javascript">
 	var myTitle='<?php echo $session_value;?>';
-	document.title = 'Regalame un Cafe';
+  document.title = 'Regalame un Cafe';
+  
+  activateNavbarItem("navInicio");
 </script>

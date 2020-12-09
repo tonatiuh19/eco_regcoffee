@@ -662,3 +662,6 @@ date_default_timezone_set('America/Mexico_City');
 <?php
 require_once('../admin/footer.php');
 ?>
+<script type="text/javascript">
+  activateNavbarItem("navPagina");
+</script>

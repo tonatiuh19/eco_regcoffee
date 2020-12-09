@@ -35,6 +35,7 @@ require_once('../admin/header.php');
                       <a href="../micuenta" class="btn btn-primary"><i class="fas fa-cog"></i> General</a>
                       <a href="../notificaciones/" class="btn btn-primary active"><i class="fas fa-bell"></i> Notificaciones</a>
                       <a href="../perfil/" class="btn btn-primary"><i class="fas fa-user"></i> Perfil</a>
+                      <a href="../material/" class="btn btn-primary">¿Que tipo de material creas, desarrollas, imaginas, etc?</a>
                     </p>
                     <hr>
                     <p>
@@ -108,5 +109,7 @@ $conn->close();
 ?>
 <script type="text/javascript">
 	var myTitle='<?php echo $session_value;?>';
-	document.title = 'Regalame un Cafe';
+  document.title = 'Regalame un Cafe';
+  
+  activateNavbarItem("navAstronaut");
 </script>

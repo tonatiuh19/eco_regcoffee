@@ -84,19 +84,21 @@ if(!isset($_SESSION["user_param"]))
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="../mipagina/" class="nav-link"><i class="fas fa-hat-wizard"></i> Inicio</a></li>
+                <li><a href="../mipagina/" class="nav-link itemActive" id="navInicio"><i class="fas fa-hat-wizard"></i> Inicio</a></li>
                 
-                <li><a href="../misfans/" class="nav-link"><i class="fas fa-grin-hearts"></i> Mis Fans</a></li>
-                <li><a href="../misextras/" class="nav-link"><i class="fas fa-gifts"></i> Extras</a></li>
+                <li><a href="../misfans/" class="nav-link itemActive" id="navFans"><i class="fas fa-grin-hearts"></i> Mis Fans</a></li>
+                <li><a href="../misextras/" class="nav-link itemActive" id="navExtras"><i class="fas fa-gifts"></i> Extras</a></li>
 
 
-                <li><a href="../misposts/" class="nav-link"><i class="far fa-newspaper"></i> Posts</a></li>
-                <li><a href="../comolovemifan/" class="nav-link"><i class="fas fa-address-card"></i> Pagina</a></li>
+                <li><a href="../misposts/" class="nav-link itemActive" id="navPosts"><i class="far fa-newspaper"></i> Posts</a></li>
+                <li><a href="../comolovemifan/" class="nav-link itemActive" id="navPagina"><i class="fas fa-address-card"></i> Pagina</a></li>
                 <li class="has-children active">
-                  <a href="#" class="nav-link"><i class="fas fa-user-astronaut"></i></a>
+                  <a href="#" class="nav-link itemActive" id="navAstronaut"><i class="fas fa-user-astronaut"></i></a>
                   <ul class="dropdown">
                     <li><a href="../micuenta/" class="nav-link">Mi cuenta</a></li>
                     <li><a href="../missubcripciones/" class="nav-link">Apoyo a creadores</a></li>
+                    <li><a href="../missubcripciones/" class="nav-link">Mis pagos</a></li>
+                    <li><a href="../missubcripciones/" class="nav-link">Soporte</a></li>
                     <li><a href="../admin/end.php" class="nav-link">Salir </a></li>
                   </ul>
                 </li>

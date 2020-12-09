@@ -118,5 +118,7 @@ $conn->close();
 ?>
 <script type="text/javascript">
 	var myTitle='<?php echo $session_value;?>';
-	document.title = 'Regalame un Cafe';
+  document.title = 'Regalame un Cafe';
+  
+  activateNavbarItem("navFans");
 </script>

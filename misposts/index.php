@@ -110,3 +110,6 @@ $conn->close();
 	var myTitle='<?php echo $session_value;?>';
 	document.title = 'Regalame un Cafe';
 </script>
+<script type="text/javascript">
+  activateNavbarItem("navPosts");
+</script>

@@ -202,6 +202,32 @@ $(document).ready(function(){
       $('#savemodifyProfile').hide();
    });
 
+   /*$('#cancelmodifyMaterial').hide();
+   $('#savemodifyMaterial').hide();
+   $("#modifyMaterial").click(function(evt){
+      document.getElementById("myCheckboxCreator").removeAttribute("disabled");
+      document.getElementById("myCheckboxWritter").removeAttribute("disabled");
+      document.getElementById("myCheckboxDeveloper").removeAttribute("disabled");
+      document.getElementById("myCheckboxPodcaster").removeAttribute("disabled");
+      document.getElementById("myCheckboxArtist").removeAttribute("disabled");
+      document.getElementById("myCheckboxInfluencer").removeAttribute("disabled");
+      document.getElementById("myCheckboxOther").removeAttribute("disabled");
+      $('#cancelmodifyMaterial').show();
+      $('#savemodifyMaterial').show();
+   });
+
+   $("#cancelmodifyMaterial").click(function(evt){
+      document.getElementById("myCheckboxCreator").setAttribute("disabled", '');
+      document.getElementById("myCheckboxWritter").setAttribute("disabled", '');
+      document.getElementById("myCheckboxDeveloper").setAttribute("disabled", '');
+      document.getElementById("myCheckboxPodcaster").setAttribute("disabled", '');
+      document.getElementById("myCheckboxArtist").setAttribute("disabled", '');
+      document.getElementById("myCheckboxInfluencer").setAttribute("disabled", '');
+      document.getElementById("myCheckboxOther").setAttribute("disabled", '');
+      $('#cancelmodifyMaterial').hide();
+      $('#savemodifyMaterial').hide();
+   });*/
+
    $('.currency').blur(function(){
       $('.currency').formatCurrency();
    });
@@ -598,4 +624,10 @@ function showGraph()
                 });
             });
 	}
+}
+
+function activateNavbarItem(item){
+   var element = document.getElementById(item);
+   $('.itemActive').removeClass('active');
+   element.classList.add("active");
 }
