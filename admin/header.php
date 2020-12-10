@@ -97,9 +97,18 @@ if(!isset($_SESSION["user_param"]))
                   <ul class="dropdown">
                     <li><a href="../micuenta/" class="nav-link">Mi cuenta</a></li>
                     <li><a href="../missubcripciones/" class="nav-link">Apoyo a creadores</a></li>
-                    <li><a href="../missubcripciones/" class="nav-link">Mis pagos</a></li>
-                    <li><a href="../missubcripciones/" class="nav-link">Soporte</a></li>
-                    <li><a href="../admin/end.php" class="nav-link">Salir </a></li>
+                    <?php
+                    $sqlp = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=".$_SESSION["user_param"]." and a.status='completed'";
+                    $resultp = $conn->query($sqlp);
+                    
+                    if ($resultp->num_rows > 0) {
+                      echo '<li><a href="../mispagos/" class="nav-link">Mis pagos</a></li>';
+                    } else {
+                      echo '<li><a href="../mispagos/" class="nav-link disabled">Mis pagos</a></li>';
+                    }
+                    ?>
+                    <li><a href="../houstontenemosproblemas/" class="nav-link"><i class="fas fa-tools fa-sm"></i> Soporte</a></li>
+                    <li><a href="../adios/" class="nav-link"><i class="fas fa-toggle-off fa-sm"></i> Salir</a></li>
                   </ul>
                 </li>
               </ul>

@@ -16,6 +16,19 @@ require_once('../admin/header.php');
                 </button>
               </div>';
             
+          }else{
+            $sqlc = "SELECT a.id_users_categories, a.date, a.video, a.writter, a.developer, a.podcaster, a.artist, a.influencer, a.other FROM users_categories as a INNER JOIN (SELECT id_user, MAX(date) as max_date FROM users_categories WHERE id_user=".$_SESSION["user_param"]." GROUP by id_user) as b on a.date=b.max_date";
+            $resultc = $conn->query($sqlc);
+
+            if (!($resultc->num_rows > 0)) {
+              echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Registra una o mas categorias para que tus nuevos fans puedan ver a que te dedicas <a href="../material/" class="text-danger">aqui</a>.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>';
+            }
+           
           }
         ?>
         

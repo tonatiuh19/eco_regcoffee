@@ -103,39 +103,135 @@ label img {
                     
                       <hr>
                       <p>
+                        <h5>Selecciona una o mas categorias:</h5>
                         <form action="saveMaterial/" method="post"> 
                             <ul class="ulu text-center">
-                                <li class="liu">
-                                    <input type="checkbox" id="myCheckbox1" />
-                                    <label for="myCheckbox1"><i class="fas fa-video"></i> Video creador</label>
-                                </li>
-                                <li class="liu">
-                                    <input type="checkbox" id="myCheckbox2" />
-                                    <label for="myCheckbox2"><i class="fas fa-pencil-alt"></i> Escritor</label>
-                                </li>
-                                <li class="liu">
-                                    <input type="checkbox" id="myCheckbox3" />
-                                    <label for="myCheckbox3"><i class="fas fa-code"></i> Developer</label>
-                                </li>
-                                <li class="liu">
-                                    <input type="checkbox" id="myCheckbox3" />
-                                    <label for="myCheckbox3"><i class="fas fa-microphone"></i> Podcaster</label>
-                                </li>
-                                <li class="liu">
-                                    <input type="checkbox" id="myCheckbox3" />
-                                    <label for="myCheckbox3"><i class="fas fa-film"></i> Artista</label>
-                                </li>
-                                <li class="liu">
-                                    <input type="checkbox" id="myCheckbox3" />
-                                    <label for="myCheckbox3"><i class="fas fa-heart"></i> Influencer</label>
-                                </li>
-                                <li class="liu">
-                                    <input type="checkbox" id="myCheckbox3" />
-                                    <label for="myCheckbox3"><i class="fas fa-magic"></i> Otro</label>
-                                </li>
+                                <?php
+                                $idUser = $_SESSION["user_param"];
+                                $sql = "SELECT a.id_users_categories, a.date, a.video, a.writter, a.developer, a.podcaster, a.artist, a.influencer, a.other FROM users_categories as a INNER JOIN (SELECT id_user, MAX(date) as max_date FROM users_categories WHERE id_user=".$idUser." GROUP by id_user) as b on a.date=b.max_date";
+                                $result = $conn->query($sql);
+                                
+                                if ($result->num_rows > 0) {
+                                  // output data of each row
+                                  while($row = $result->fetch_assoc()) {
+                                    if($row["video"]=="1"){
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox1" name="video" checked />
+                                      <label for="myCheckbox1"><i class="fas fa-video"></i> Video creador</label>
+                                  </li>';
+                                    }else{
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox1" name="video" />
+                                      <label for="myCheckbox1"><i class="fas fa-video"></i> Video creador</label>
+                                  </li>';
+                                    }
+
+                                    if($row["writter"]=="1"){
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox2" name="writter" checked />
+                                      <label for="myCheckbox2"><i class="fas fa-pencil-alt"></i> Escritor</label>
+                                  </li>';
+                                    }else{
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox2" name="writter" />
+                                      <label for="myCheckbox2"><i class="fas fa-pencil-alt"></i> Escritor</label>
+                                  </li>';
+                                    }
+
+                                    if($row["developer"]=="1"){
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox3" name="developer" checked />
+                                      <label for="myCheckbox3"><i class="fas fa-code"></i> Developer</label>
+                                  </li>';
+                                    }else{
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox3" name="developer" />
+                                      <label for="myCheckbox3"><i class="fas fa-code"></i> Developer</label>
+                                  </li>';
+                                    }
+
+                                    if($row["podcaster"]=="1"){
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox4" name="podcaster" checked />
+                                      <label for="myCheckbox4"><i class="fas fa-microphone"></i> Podcaster</label>
+                                  </li>';
+                                    }else{
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox4" name="podcaster" />
+                                      <label for="myCheckbox4"><i class="fas fa-microphone"></i> Podcaster</label>
+                                  </li>';
+                                    }
+
+                                    if($row["artist"]=="1"){
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox5" name="artist" checked />
+                                      <label for="myCheckbox5"><i class="fas fa-film"></i> Artista</label>
+                                  </li>';
+                                    }else{
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox5" name="artist" />
+                                      <label for="myCheckbox5"><i class="fas fa-film"></i> Artista</label>
+                                  </li>';
+                                    }
+
+                                    if($row["influencer"]=="1"){
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox6" name="influencer" checked />
+                                      <label for="myCheckbox6"><i class="fas fa-heart"></i> Influencer</label>
+                                  </li>';
+                                    }else{
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox6" name="influencer" />
+                                      <label for="myCheckbox6"><i class="fas fa-heart"></i> Influencer</label>
+                                  </li>';
+                                    }
+
+                                    if($row["other"]=="1"){
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox7" name="otro" checked />
+                                      <label for="myCheckbox7"><i class="fas fa-magic"></i> Otro</label>
+                                  </li>';
+                                    }else{
+                                      echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox7" name="otro" />
+                                      <label for="myCheckbox7"><i class="fas fa-magic"></i> Otro</label>
+                                  </li>';
+                                    }
+                                  }
+                                } else {
+                                  echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox1" name="video" />
+                                      <label for="myCheckbox1"><i class="fas fa-video"></i> Video creador</label>
+                                  </li>';
+                                  echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox2" name="writter" />
+                                      <label for="myCheckbox2"><i class="fas fa-pencil-alt"></i> Escritor</label>
+                                  </li>';
+                                  echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox3" name="developer" />
+                                      <label for="myCheckbox3"><i class="fas fa-code"></i> Developer</label>
+                                  </li>';
+                                  echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox4" name="podcaster" />
+                                      <label for="myCheckbox4"><i class="fas fa-microphone"></i> Podcaster</label>
+                                  </li>';
+                                  echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox5" name="artist" />
+                                      <label for="myCheckbox5"><i class="fas fa-film"></i> Artista</label>
+                                  </li>';
+                                  echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox6" name="influencer" />
+                                      <label for="myCheckbox6"><i class="fas fa-heart"></i> Influencer</label>
+                                  </li>';
+                                  echo '<li class="liu">
+                                      <input type="checkbox" id="myCheckbox7" name="otro" />
+                                      <label for="myCheckbox7"><i class="fas fa-magic"></i> Otro</label>
+                                  </li>';
+                                }
+                                ?>
                             </ul>
-                            <button type="button" class="btn btn-success text-white" id="savemodifyMaterial" data-toggle="modal" data-target="#exampleModal">
-                            <i class="fas fa-check-circle" type="submit"></i> Actualizar
+                            <button type="submit" class="btn btn-success text-white" id="savemodifyMaterial">
+                            <i class="fas fa-check-circle"></i> Actualizar
                             </button>
                           
                         </form>
