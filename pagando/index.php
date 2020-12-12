@@ -201,7 +201,7 @@ if ($_POST["payType"]=="1") {
 	if ($status==1) {
 		echo '<input type="hidden" name="stat" value="3">';
 		echo '<input type="hidden" name="uname" value="'.$_POST["uname"].'">';
-		echo '<input type="hidden" name="idPay" value="'.$subscription->transaction->id.'">';
+		echo '<input type="hidden" name="idPay" value="'.$subscription->id.'">';
 		/*echo '<input type="hidden" name="typeB" value="'.$subscription->transaction->card->type.'">';
 		echo '<input type="hidden" name="brand" value="'.$subscription->transaction->card->brand.'">';
 		echo '<input type="hidden" name="cardNo" value="'.$subscription->transaction->card->card_number.'">';
@@ -219,6 +219,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 		echo '<input type="hidden" name="questAnswer" value="'.$_POST["questAnswer"].'">';
 		echo '<input type="hidden" name="period_end_date" value="'.$subscription->period_end_date.'">';
+		echo '<input type="hidden" name="customerID" value="'.$subscription->customer_id.'">';
 		echo '<input type="hidden" name="active" value="1">';
 	}elseif ($status==2) {
 		echo '<input type="hidden" name="stat" value="2">';

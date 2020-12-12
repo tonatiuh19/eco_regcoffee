@@ -1,6 +1,7 @@
 <?php
 require_once('../admin/header.php');
 ?>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <div class="site-section bg-primary-light">
     <div class="container">       
         
@@ -60,7 +61,7 @@ require_once('../admin/header.php');
                     <div class="tab-content mt-3">
                         <div class="tab-pane active" id="description" role="tabpanel">
                             <?php
-                            $sql = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$_SESSION["user_param"]." and a.status='completed' AND b.subsciption=0 ORDER BY a.date DESC";
+                            /*$sql = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$_SESSION["user_param"]." and a.status='completed' AND b.subsciption=0 ORDER BY a.date DESC";
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
@@ -99,13 +100,50 @@ require_once('../admin/header.php');
                               }
                               echo '</tbody>
                               </table>';
-                            }
+                            }*/
+                            echo '<p id="imageLoadingPayments"><i class="fas fa-spinner fa-spin fa-2x"></i></p><script>
+                            $(document).ready(function() {
+                              $("#imageLoadingPayments").hide();
+                            });
+                            </script>';
+                            
+                        
+                            echo '<div id="table-data-payments"></div>';
+                            echo '<script type="text/javascript">
+                             $(document).ready(function(){
+                               function loadDataPay(page){
+                                 $.ajax({
+                                   url  : "../mispagos/pagination.php",
+                                   type : "POST",
+                                   cache: false,
+                                   data : {page_no:page, username:"'.$_SESSION["user_param"].'", type:1},
+                                   beforeSend: function(){
+                                    $("#imageLoadingPayments").show();
+                                    },
+                                    complete: function(){
+                                        $("#imageLoadingPayments").hide();
+                                    },
+                                   success:function(response){
+                                     $("#table-data-payments").html(response);
+                                   }
+                                 });
+                               }
+                               loadDataPay();
+                               
+                               // Pagination code
+                               $(document).on("click", ".pagination li a", function(e){
+                                 e.preventDefault();
+                                 var pageId = $(this).attr("id");
+                                 loadDataPay(pageId);
+                               });
+                             });
+                           </script>';
                             ?>
                         </div>
                         
                         <div class="tab-pane" id="history" role="tabpanel" aria-labelledby="history-tab">  
                             <?php
-                            if ($resultd->num_rows > 0) {
+                            /*if ($resultd->num_rows > 0) {
                                 // output data of each row
                                 
                                 echo '<table class="table">
@@ -143,7 +181,46 @@ require_once('../admin/header.php');
                               }
                               echo '</tbody>
                               </table>';
-                              }
+                              }*/
+                              if ($resultd->num_rows > 0) {
+                                echo '<p id="imageLoadingSub"><i class="fas fa-spinner fa-spin fa-2x"></i></p><script>
+                                $(document).ready(function() {
+                                $("#imageLoadingSub").hide();
+                                });
+                                </script>';
+                                
+                            
+                                    echo '<div id="table-data-subs"></div>';
+                                    echo '<script type="text/javascript">
+                                    $(document).ready(function(){
+                                    function loadDataSub(page){
+                                        $.ajax({
+                                        url  : "../mispagos/pagination.php",
+                                        type : "POST",
+                                        cache: false,
+                                        data : {page_no:page, username:"'.$_SESSION["user_param"].'", type:2},
+                                        beforeSend: function(){
+                                            $("#imageLoadingSub").show();
+                                            },
+                                            complete: function(){
+                                                $("#imageLoadingSub").hide();
+                                            },
+                                        success:function(response){
+                                            $("#table-data-subs").html(response);
+                                        }
+                                        });
+                                    }
+                                    loadDataSub();
+                                    
+                                    // Pagination code
+                                    $(document).on("click", ".pagination li a", function(e){
+                                        e.preventDefault();
+                                        var pageId = $(this).attr("id");
+                                        loadDataSub(pageId);
+                                    });
+                                    });
+                                </script>';
+                            }
                             ?>
                         </div>
                        

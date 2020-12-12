@@ -64,8 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
           </div>';
         } else {
-          $sql2 = "INSERT INTO users (user_name, email, pwd, date)
-          VALUES ('', '$email', '/%Chivas%%%%%%(93)123%/', '$today')";
+          $sql2 = "INSERT INTO users (user_name, email, pwd, date, active)
+          VALUES ('', '$email', '/%Chivas%%%%%%(93)123%/', '$today', '2')";
 
           if ($conn->query($sql2) === TRUE) {
             echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -106,9 +106,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $amountT = "";
       $questAnswer = test_input($_POST["questAnswer"]);
       $endPeriod = test_input($_POST["period_end_date"]);
+      $customerID = test_input($_POST["customerID"]);
       
-      $sqli = "INSERT INTO payments (id_user, id_openpay, type, brand, card_number, bank_name, status, date, amount, amount_fee, amount_tax, description, email_user, note_fan, isPublic_note_fan, id_extra, question_answer, period_end_date)
-      VALUES ('$idUser', '$idPay', '$typeB', '$brand', '$cardNo', '$bank', '$satusB', '$date', '$amount', '$amountF', '$amountT', '$description', '$email', '$noteFan', '$isPublic', '$idExtra', '$questAnswer', '$endPeriod')";
+      $sqli = "INSERT INTO payments (id_user, id_openpay, type, brand, card_number, bank_name, status, date, amount, amount_fee, amount_tax, description, email_user, note_fan, isPublic_note_fan, id_extra, question_answer, period_end_date, customer_id)
+      VALUES ('$idUser', '$idPay', '$typeB', '$brand', '$cardNo', '$bank', '$satusB', '$date', '$amount', '$amountF', '$amountT', '$description', '$email', '$noteFan', '$isPublic', '$idExtra', '$questAnswer', '$endPeriod', '$customerID')";
 
       if ($conn->query($sqli) === TRUE) {
         
@@ -132,8 +133,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
           </div>';
         } else {
-          $sql2 = "INSERT INTO users (user_name, email, pwd, date)
-          VALUES ('', '$email', '/%Chivas%%%%%%(93)123%/', '$today')";
+          $sql2 = "INSERT INTO users (user_name, email, pwd, date, active)
+          VALUES ('', '$email', '/%Chivas%%%%%%(93)123%/', '$today', '2')";
 
           if ($conn->query($sql2) === TRUE) {
             echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

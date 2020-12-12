@@ -96,7 +96,7 @@ if(!isset($_SESSION["user_param"]))
                   <a href="#" class="nav-link itemActive" id="navAstronaut"><i class="fas fa-user-astronaut"></i></a>
                   <ul class="dropdown">
                     <li><a href="../micuenta/" class="nav-link">Mi cuenta</a></li>
-                    <li><a href="../missubcripciones/" class="nav-link">Apoyo a creadores</a></li>
+                    <li><a href="../explorar/" class="nav-link">Apoyo a creadores</a></li>
                     <?php
                     $sqlp = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=".$_SESSION["user_param"]." and a.status='completed'";
                     $resultp = $conn->query($sqlp);

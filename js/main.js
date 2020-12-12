@@ -332,7 +332,7 @@ jQuery(document).ready(function($) {
   siteIstotope();
 
 
-  $('.fancybox').on('click', function() {
+  /*$('.fancybox').on('click', function() {
 	  var visibleLinks = $('.fancybox');
 
 	  $.fancybox.open( visibleLinks, {}, visibleLinks.index( this ) );
@@ -347,7 +347,7 @@ jQuery(document).ready(function($) {
 		document.canvas.src=imgArr[num];
 	}
 
-	displayImg();
+	displayImg();*/
 	
 
 });

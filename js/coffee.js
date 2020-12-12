@@ -202,31 +202,183 @@ $(document).ready(function(){
       $('#savemodifyProfile').hide();
    });
 
-   /*$('#cancelmodifyMaterial').hide();
-   $('#savemodifyMaterial').hide();
-   $("#modifyMaterial").click(function(evt){
-      document.getElementById("myCheckboxCreator").removeAttribute("disabled");
-      document.getElementById("myCheckboxWritter").removeAttribute("disabled");
-      document.getElementById("myCheckboxDeveloper").removeAttribute("disabled");
-      document.getElementById("myCheckboxPodcaster").removeAttribute("disabled");
-      document.getElementById("myCheckboxArtist").removeAttribute("disabled");
-      document.getElementById("myCheckboxInfluencer").removeAttribute("disabled");
-      document.getElementById("myCheckboxOther").removeAttribute("disabled");
-      $('#cancelmodifyMaterial').show();
-      $('#savemodifyMaterial').show();
+   $('#video').on('click', function(){
+      
+      //remove all class .active
+      $('#all').removeClass('active');
+      $('#writter').removeClass('active');
+      $('#developer').removeClass('active');
+      $('#podcaster').removeClass('active');
+      $('#artist').removeClass('active');
+      $('#influencer').removeClass('active');
+      $('#other').removeClass('active');
+      // add class .active
+      $(this).addClass('active');
+      // filter
+      $('.writter').hide();
+      $('.developer').hide();
+      $('.podcaster').hide();
+      $('.artist').hide();
+      $('.influencer').hide();
+      $('.other').hide();
+      $(".video").show();
    });
 
-   $("#cancelmodifyMaterial").click(function(evt){
-      document.getElementById("myCheckboxCreator").setAttribute("disabled", '');
-      document.getElementById("myCheckboxWritter").setAttribute("disabled", '');
-      document.getElementById("myCheckboxDeveloper").setAttribute("disabled", '');
-      document.getElementById("myCheckboxPodcaster").setAttribute("disabled", '');
-      document.getElementById("myCheckboxArtist").setAttribute("disabled", '');
-      document.getElementById("myCheckboxInfluencer").setAttribute("disabled", '');
-      document.getElementById("myCheckboxOther").setAttribute("disabled", '');
-      $('#cancelmodifyMaterial').hide();
-      $('#savemodifyMaterial').hide();
-   });*/
+   $('#all').on('click', function(){
+      
+      //remove all class .active
+      $('#video').removeClass('active');
+      $('#writter').removeClass('active');
+      $('#developer').removeClass('active');
+      $('#podcaster').removeClass('active');
+      $('#artist').removeClass('active');
+      $('#influencer').removeClass('active');
+      $('#other').removeClass('active');
+      // add class .active
+      $(this).addClass('active');
+      // filter      
+      $('.video').hide();
+      $('.writter').hide();
+      $('.developer').hide();
+      $('.podcaster').hide();
+      $('.artist').hide();
+      $('.influencer').hide();
+      $('.other').hide();
+      $(".card").show(); 
+   });
+
+   $('#writter').on('click', function(){
+      
+      //remove all class .active
+      $('#video').removeClass('active');
+      $('#all').removeClass('active');
+      $('#developer').removeClass('active');
+      $('#podcaster').removeClass('active');
+      $('#artist').removeClass('active');
+      $('#influencer').removeClass('active');
+      $('#other').removeClass('active');
+      // add class .active
+      $(this).addClass('active');
+      // filter
+      $('.video').hide();
+      $('.developer').hide();
+      $('.podcaster').hide();
+      $('.artist').hide();
+      $('.influencer').hide();
+      $('.other').hide();
+      $(".writter").show();
+   });
+
+   $('#developer').on('click', function(){
+      
+      //remove all class .active
+      $('#video').removeClass('active');
+      $('#all').removeClass('active');
+      $('#writter').removeClass('active');
+      $('#podcaster').removeClass('active');
+      $('#artist').removeClass('active');
+      $('#influencer').removeClass('active');
+      $('#other').removeClass('active');
+      // add class .active
+      $(this).addClass('active');
+      // filter
+      $('.video').hide();
+      $('.writter').hide();
+      $('.podcaster').hide();
+      $('.artist').hide();
+      $('.influencer').hide();
+      $('.other').hide();
+      $(".developer").show();
+   });
+
+   $('#podcaster').on('click', function(){
+      
+      //remove all class .active
+      $('#video').removeClass('active');
+      $('#all').removeClass('active');
+      $('#writter').removeClass('active');
+      $('#developer').removeClass('active');
+      $('#artist').removeClass('active');
+      $('#influencer').removeClass('active');
+      $('#other').removeClass('active');
+      // add class .active
+      $(this).addClass('active');
+      // filter
+      $('.video').hide();
+      $('.writter').hide();
+      $('.developer').hide();
+      $('.artist').hide();
+      $('.influencer').hide();
+      $('.other').hide();
+      $(".podcaster").show();
+   });
+
+   $('#artist').on('click', function(){
+      
+      //remove all class .active
+      $('#video').removeClass('active');
+      $('#all').removeClass('active');
+      $('#writter').removeClass('active');
+      $('#developer').removeClass('active');
+      $('#podcaster').removeClass('active');
+      $('#influencer').removeClass('active');
+      $('#other').removeClass('active');
+      // add class .active
+      $(this).addClass('active');
+      // filter
+      $('.video').hide();
+      $('.writter').hide();
+      $('.developer').hide();
+      $('.podcaster').hide();
+      $('.influencer').hide();
+      $('.other').hide();
+      $(".artist").show();
+   });
+
+   $('#influencer').on('click', function(){
+      
+      //remove all class .active
+      $('#video').removeClass('active');
+      $('#all').removeClass('active');
+      $('#writter').removeClass('active');
+      $('#developer').removeClass('active');
+      $('#podcaster').removeClass('active');
+      $('#artist').removeClass('active');
+      $('#other').removeClass('active');
+      // add class .active
+      $(this).addClass('active');
+      // filter
+      $('.video').hide();
+      $('.writter').hide();
+      $('.developer').hide();
+      $('.podcaster').hide();
+      $('.artist').hide();
+      $('.other').hide();
+      $(".influencer").show();
+   });
+
+   $('#other').on('click', function(){
+      
+      //remove all class .active
+      $('#video').removeClass('active');
+      $('#all').removeClass('active');
+      $('#writter').removeClass('active');
+      $('#developer').removeClass('active');
+      $('#podcaster').removeClass('active');
+      $('#artist').removeClass('active');
+      $('#influencer').removeClass('active');
+      // add class .active
+      $(this).addClass('active');
+      // filter
+      $('.video').hide();
+      $('.writter').hide();
+      $('.developer').hide();
+      $('.podcaster').hide();
+      $('.artist').hide();
+      $('.influencer').hide();
+      $(".other").show();
+   });
+   
 
    $('.currency').blur(function(){
       $('.currency').formatCurrency();
@@ -288,7 +440,6 @@ $(document).ready(function(){
    $('#preguntaSection').hide();
    $('#endLabelPaying').hide();
    document.getElementById("questionAnswer").removeAttribute("required");
-
    
 });
 
@@ -631,3 +782,7 @@ function activateNavbarItem(item){
    $('.itemActive').removeClass('active');
    element.classList.add("active");
 }
+
+$('#filters button').click(function(){
+   e.preventDefault();
+});

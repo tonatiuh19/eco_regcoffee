@@ -107,7 +107,12 @@ date_default_timezone_set('America/Mexico_City');
 					echo '<span>'.$creation.' <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button></span>';
 				}
 			}else{
-				echo '<span>Creador maravilloso</span>';
+				if($creation == ''){
+					echo '<span>Creador maravilloso</span>';
+				}else{
+					echo '<span>'.$creation.'</span>';
+				}
+				
 			}
 			
 			echo '<div class="divider-custom divider-light">
@@ -123,7 +128,12 @@ date_default_timezone_set('America/Mexico_City');
 					echo '<p class="masthead-subheading font-weight-light mb-0">'.$about.'</p>';
 				}
 			}else{
-				echo '<p class="masthead-subheading font-weight-light mb-0">¡Oye!, acabo de crear una página aquí. ¡Ahora puedes invitarme a un café!</p>';
+				if($about == ''){
+					echo '<p class="masthead-subheading font-weight-light mb-0">¡Oye!, acabo de crear una página aquí. ¡Ahora puedes invitarme a un café!</p>';
+				}else{
+					echo '<p class="masthead-subheading font-weight-light mb-0">'.$about.'</p>';
+				}
+				
 			}
 			
 			echo '
@@ -294,28 +304,7 @@ date_default_timezone_set('America/Mexico_City');
 												});
 												</script>';
 												
-												/*$sqlu = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='".$uName."' AND a.status='completed' AND a.isPublic_note_fan=1 AND a.note_fan<>'' ";
-												$resultu = $conn->query($sqlu);
-
-												if ($resultu->num_rows > 0) {
-												// output data of each row
-													echo '<div class="row justify-content-center">';
-													while($rowu = $resultu->fetch_assoc()) {
-														echo '<div class="card col-sm-12 m-1 p-3 bg-light">
-																	<div class="card-body">
-																		
-																		<p class="font-weight-bold">'.$rowu["note_fan"].'</p>';
-																		$date = date_create($rowu["date"]);
-																		$mysqltime = date_format($date, 'd-m-Y G:i a');
-																		echo '<p class="small"><i class="fas fa-calendar-alt"></i> '.$mysqltime.'</p>';
-																		
-																	echo '</div>
-																</div>';
-													}
-													echo '</div>';
-												} else {
-													echo "0 results";
-												}*/
+											
 												echo '<div id="table-data"></div>';
 												echo '<script type="text/javascript">
 												 $(document).ready(function(){

@@ -560,19 +560,19 @@ if (isset($_SESSION['uname'])){
             </div>
           </div>
         </div>
-        <div class="row text-center">
+        <!--<div class="row text-center">
           <div class="col-md-12">
             <div class="border-top pt-5">
               <p class="copyright"><small>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></small></p>
+               
+                Todos los derechos reservaods | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+               </small></p>
 
               </div>
             </div>
 
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
 
@@ -580,7 +580,6 @@ if (isset($_SESSION['uname'])){
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.countdown.min.js"></script>
@@ -606,11 +605,11 @@ if (isset($_SESSION['uname'])){
       <div class="modal-body">
         <form method="post" action="sign-up/">
           <div class="form-group">
-            <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
+            <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" autocomplete="off" placeholder="Ingresa tu correo electronico" required>
             <input type="hidden" id="usernametxt" name="usernametxt">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" required> 
+            <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" autocomplete="off" required> 
           </div>
           <div class="form-group text-center">
             <button type="submit" class="btn btn-dark text-center">Continuar <i class="fas fa-arrow-circle-right"></i></button>
@@ -639,7 +638,7 @@ if (isset($_SESSION['uname'])){
             <input type="email" class="form-control input-lg" name="email_i" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control input-lg" name="pwd_i" placeholder="Ingresa la contraseña" required> 
+            <input type="password" class="form-control input-lg" name="pwd_i" placeholder="Ingresa la contraseña" autocomplete="off" required> 
           </div>
           <div class="form-group text-center">
             <button type="submit" class="btn btn-dark text-center">Entrar <i class="fas fa-arrow-circle-right"></i></button>
@@ -674,11 +673,11 @@ if (isset($_SESSION['uname'])){
             <div class="alert alert-warning" role="alert" id="alertExistModal"><small>Este nombre de usuario ya existe :(</small></div>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
+            <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" autocomplete="off" placeholder="Ingresa tu correo electronico" required>
             
           </div>
           <div class="form-group">
-            <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" required> 
+            <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" autocomplete="off" required> 
           </div>
           <div class="form-group text-center">
             <button type="submit" class="btn btn-dark text-center" id="comenzarBtnModal" disabled>Continuar <i class="fas fa-arrow-circle-right"></i></button>
