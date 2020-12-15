@@ -1,5 +1,6 @@
 <?php
-    require_once('../admin/cn.php');
+	require_once('../admin/cn.php');
+	date_default_timezone_set('America/Mexico_City');
 
     $limit = 10;
     

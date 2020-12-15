@@ -1,6 +1,7 @@
 <?php
     require_once('../admin/cn.php');
     session_start(); 
+    date_default_timezone_set('America/Mexico_City');
     $limit = 10;
     
     $idExtra = $_POST['extraid'];

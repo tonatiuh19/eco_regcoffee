@@ -5,6 +5,7 @@ if($_SESSION["utype"] == "2"){
   window.location.href='../misapoyos/';
   </SCRIPT>");
 }
+date_default_timezone_set('America/Mexico_City');
 ?>
     <div class="site-section bg-primary-light">
       <div class="container">

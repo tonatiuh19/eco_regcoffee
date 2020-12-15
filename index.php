@@ -518,8 +518,8 @@ if (isset($_SESSION['uname'])){
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
-            <h2 class="footer-heading mb-4">About</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi cumque tenetur inventore veniam, hic vel ipsa necessitatibus ducimus architecto fugiat!</p>
+            <h2 class="footer-heading mb-4">Escribenos:</h2>
+            <p><a href="mailto:dihola@regalameuncafe.com">dihola@regalameuncafe.com</a></p>
             <div class="my-5">
               <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
               <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
@@ -530,49 +530,35 @@ if (isset($_SESSION['uname'])){
           <div class="col-lg-8">
             <div class="row">
               <div class="col-lg-4">
-                <h2 class="footer-heading mb-4">Quick Links</h2>
-                <ul class="list-unstyled">
-                  <li><a href="#">Symptoms</a></li>
-                  <li><a href="#">Prevention</a></li>
-                  <li><a href="#">FAQs</a></li>
-                  <li><a href="#">About Coronavirus</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                </ul>
+              &nbsp;
               </div>
               <div class="col-lg-4">
-                <h2 class="footer-heading mb-4">Helpful Link</h2>
-                <ul class="list-unstyled">
-                  <li><a href="#">Helathcare Professional</a></li>
-                  <li><a href="#">LGU Facilities</a></li>
-                  <li><a href="#">Protect Your Family</a></li>
-                  <li><a href="#">World Health</a></li>
-                </ul>
+              &nbsp;
               </div>
               <div class="col-lg-4">
-                <h2 class="footer-heading mb-4">Resources</h2>
+                <h2 class="footer-heading mb-4"></h2>
                 <ul class="list-unstyled">
-                  <li><a href="#">WHO Website</a></li>
-                  <li><a href="#">CDC Website</a></li>
-                  <li><a href="#">Gov Website</a></li>
-                  <li><a href="#">DOH Website</a></li>
+                  <li><a href="#">Terminos y condiciones</a></li>
+                  <li><a href="#">Politicas de privacidad</a></li>
+                  <li><a href="#">Empleo</a></li>
+                  <li><a href="#">FAQ</a></li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        <!--<div class="row text-center">
+        <div class="row text-center">
           <div class="col-md-12">
             <div class="border-top pt-5">
               <p class="copyright"><small>
-               
-                Todos los derechos reservaods | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+                Hecho con <i class="icon-heart text-danger" aria-hidden="true"></i> para Mexico y Latinoamerica.
                </small></p>
 
               </div>
             </div>
 
           </div>
-        </div>-->
+        </div>
       </div>
     </div>
 

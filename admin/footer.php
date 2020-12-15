@@ -4,46 +4,56 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
-            <h2 class="footer-heading mb-4">About</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi cumque tenetur inventore veniam, hic vel ipsa necessitatibus ducimus architecto fugiat!</p>
-            <div class="my-5">
-              <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-            </div>
+            
+            <?php
+            if(!isset($_SESSION["user_param"])) 
+            {
+              echo '<h2 class="footer-heading mb-4">¿Te gusta el contenido de <b>'.$uName.'?</b></h2>
+              <p>Comparte y apoya:</p>
+              <a href="#" class="btn btn-warning">Compartir Link</a>
+              ';
+            }else{
+              echo '<h2 class="footer-heading mb-4">Escribenos:</h2>
+              <p><a href="mailto:dihola@regalameuncafe.com">dihola@regalameuncafe.com</a></p>
+              <div class="my-5">
+                <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+              </div>';
+            }
+            ?>
           </div>
           <div class="col-lg-8">
             <div class="row">
               <div class="col-lg-4">
-                <h2 class="footer-heading mb-4">Quick Links</h2>
-                <ul class="list-unstyled">
-                  <li><a href="#">Symptoms</a></li>
-                  <li><a href="#">Prevention</a></li>
-                  <li><a href="#">FAQs</a></li>
-                  <li><a href="#">About Coronavirus</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                </ul>
+              &nbsp;
               </div>
               <div class="col-lg-4">
-                <h2 class="footer-heading mb-4">Helpful Link</h2>
-                <ul class="list-unstyled">
-                  <li><a href="#">Helathcare Professional</a></li>
-                  <li><a href="#">LGU Facilities</a></li>
-                  <li><a href="#">Protect Your Family</a></li>
-                  <li><a href="#">World Health</a></li>
-                </ul>
+              &nbsp;
               </div>
               <div class="col-lg-4">
-                <h2 class="footer-heading mb-4">Resources</h2>
+                <h2 class="footer-heading mb-4"></h2>
                 <ul class="list-unstyled">
-                  <li><a href="#">WHO Website</a></li>
-                  <li><a href="#">CDC Website</a></li>
-                  <li><a href="#">Gov Website</a></li>
-                  <li><a href="#">DOH Website</a></li>
+                  <li><a href="#">Terminos y condiciones</a></li>
+                  <li><a href="#">Politicas de privacidad</a></li>
+                  <li><a href="#">Empleo</a></li>
+                  <li><a href="#">FAQ</a></li>
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-md-12">
+            <div class="border-top pt-5">
+              <p class="copyright"><small>
+                Hecho con <i class="icon-heart text-danger" aria-hidden="true"></i> para Mexico y Latinoamerica.
+               </small></p>
+
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
