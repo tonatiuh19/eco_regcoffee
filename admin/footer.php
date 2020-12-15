@@ -135,5 +135,39 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="crearCuentaCreador" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Genera ingresos con tu creatividad</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="../nuevoCreador/">
+          <div class="form-group">
+            <div class="input-group input-focus">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-white font-weight-bold">regalameuncafe.com/</span>
+                </div>
+                <input type="search" placeholder="tunombre" class="form-control border-left-0" name="usernametxt" id="usernameModalCreator" autofocus="autofocus" autocomplete="off">
+            </div>
+            <div class="alert alert-warning" role="alert" id="alertExistModalCreator"><small>Este nombre de usuario ya existe :(</small></div>
+            <br>
+            <small id="emailHelp" class="form-text text-muted">Igual podras seguir apoyando a tus favoritos <i class="far fa-hand-peace"></i></small>
+          </div>
+        
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-dark text-center" id="comenzarBtnModalCreator" disabled>Continuar <i class="fas fa-arrow-circle-right"></i></button>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

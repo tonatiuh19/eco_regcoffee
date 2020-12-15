@@ -98,8 +98,14 @@ date_default_timezone_set('America/Mexico_City');
     </div>
 </div>
 <?php
+if($_SESSION["utype"] != "2"){
+    echo '<script type="text/javascript">
+    activateNavbarItem("navAstronaut");
+  </script>';
+}else{
+    echo '<script type="text/javascript">
+    activateNavbarItem("navExplorar");
+  </script>';
+}
 require_once('../admin/footer.php');
 ?>
-<script type="text/javascript">
-  activateNavbarItem("navAstronaut");
-</script>

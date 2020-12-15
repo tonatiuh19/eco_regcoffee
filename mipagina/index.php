@@ -1,5 +1,11 @@
 <?php
+
 require_once('../admin/header.php');
+if($_SESSION["utype"] == "2"){
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.location.href='../misapoyos/';
+  </SCRIPT>");
+}
 ?>
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <div class="site-section bg-primary-light">

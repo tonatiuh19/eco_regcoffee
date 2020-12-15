@@ -1,5 +1,10 @@
 <?php
 require_once('../admin/header.php');
+if($_SESSION["utype"] == "2"){
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.location.href='../perfil/';
+  </SCRIPT>");
+}
 date_default_timezone_set('America/Mexico_City');
 ?>
     <div class="site-section bg-primary-light">

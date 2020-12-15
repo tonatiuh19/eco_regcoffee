@@ -1,5 +1,10 @@
 <?php
 require_once('../admin/header.php');
+if($_SESSION["utype"] == "2"){
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.location.href='../misapoyos/';
+  </SCRIPT>");
+}
 ?>
 <style>
 .ulu {

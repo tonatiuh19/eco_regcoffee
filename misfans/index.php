@@ -5,6 +5,11 @@ require_once('../admin/header.php');
     <div class="site-section bg-primary-light">
       <div class="container">
         <?php
+        if($_SESSION["utype"] == "2"){
+          echo ("<SCRIPT LANGUAGE='JavaScript'>
+          window.location.href='../misapoyos/';
+          </SCRIPT>");
+        }
           $sql = "SELECT t.id_users_payment, a.max_date, t.id_users_payment_type, a.id_user FROM users_payment as t INNER JOIN (SELECT id_user,MAX(date) as max_date FROM users_payment WHERE id_user='".$_SESSION["user_param"]."' GROUP BY id_user) as a ON a.max_date = t.date";
           $result = $conn->query($sql);
           

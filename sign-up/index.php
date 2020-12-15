@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if ($conn->query($sql) === TRUE) {
 
-            $sql3 = "SELECT id_user, user_name FROM users WHERE email='".$mail_i."'";
+            $sql3 = "SELECT id_user, user_name, active FROM users WHERE email='".$mail_i."'";
             $result3 = $conn->query($sql3);
 
             if ($result3->num_rows > 0) {
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 while($row3 = $result3->fetch_assoc()) {
                     $_SESSION["user_param"] = $row3["id_user"];
                     $_SESSION["uname"] = $row3["user_name"];
+                    $_SESSION["utype"] = $row3["active"];
 
                     $folder_path = "../".$username."/";
                     if (!file_exists($folder_path)) {

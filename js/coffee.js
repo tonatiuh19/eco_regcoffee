@@ -141,6 +141,76 @@ $(document).ready(function(){
          document.getElementById("comenzarBtn").setAttribute("disabled", '');
       }
     });
+
+    $('#alertExistModalCreator').hide(); 
+    $("#usernameModalCreator").keyup(function(){
+      var username = $(this).val().trim();
+      var element = document.getElementById("usernameModalCreator");
+      
+      if(username != ''){
+         
+         $.ajax({
+            url: '../../admin/check.php',
+            type: 'post',
+            data: {username:username},
+            success: function(response){
+               // Show response
+               //$("#uname_response").html(response);
+               
+               if(response == "1"){
+                  $('#alertExistModalCreator').show();
+                  element.classList.remove("border-success");
+                  element.classList.add("border-danger");
+                  document.getElementById("comenzarBtnModalCreator").setAttribute("disabled", '');
+               }else{
+                  $('#alertExistModalCreator').hide();  
+                  element.classList.add("border-success");
+                  element.classList.remove("border-danger");
+                  document.getElementById("comenzarBtnModalCreator").removeAttribute("disabled");
+               }
+            }
+         });
+      }else{
+         $("#uname_responseCreator").hide();
+         element.classList.remove("border-success");
+         document.getElementById("comenzarBtnModalCreator").setAttribute("disabled", '');
+      }
+    });
+
+    $("#usernameModalCreator").mouseleave(function(){
+      var username = $(this).val().trim();
+      var element = document.getElementById("usernameModalCreator");
+      
+      if(username != ''){
+         
+         $.ajax({
+            url: '../../admin/check.php',
+            type: 'post',
+            data: {username:username},
+            success: function(response){
+               // Show response
+               //$("#uname_response").html(response);
+               
+               if(response == "1"){
+                  $('#alertExistModalCreator').show();
+                  element.classList.remove("border-success");
+                  element.classList.add("border-danger");
+                  document.getElementById("comenzarBtnModalCreator").setAttribute("disabled", '');
+               }else{
+                  $('#alertExistModalCreator').hide();  
+                  element.classList.add("border-success");
+                  element.classList.remove("border-danger");
+                  document.getElementById("comenzarBtnModalCreator").removeAttribute("disabled");
+               }
+            }
+         });
+      }else{
+         $("#uname_responseCreator").hide();
+         element.classList.remove("border-success");
+         document.getElementById("comenzarBtnModalCreator").setAttribute("disabled", '');
+      }
+    });
+
    $('#cancelmodifyPayment').hide();
    $('#savemodifyPayment').hide();
    $("#modifyPayment").click(function(evt){

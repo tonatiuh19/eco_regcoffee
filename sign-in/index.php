@@ -10,14 +10,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$todayVisit = date("Y-m-d H:i:s");
 	
-	$sql = "SELECT email, user_name, id_user FROM users WHERE email='$email' AND pwd='$pwd'";
+	$sql = "SELECT email, user_name, id_user, active FROM users WHERE email='$email' AND pwd='$pwd'";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
 	    // output data of each row
 		while($row = $result->fetch_assoc()) {	
             $_SESSION["user_param"] = $row["id_user"];
-            $_SESSION["uname"] = $row["user_name"];
+			$_SESSION["uname"] = $row["user_name"];
+			$_SESSION["utype"] = $row["active"];
 			if (isset($_SESSION["user_param"])){
 				echo ("<SCRIPT LANGUAGE='JavaScript'>
                         window.location.href='../';
