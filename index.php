@@ -146,7 +146,7 @@ if (isset($_SESSION['uname'])){
             <!--<h2 class="section-heading">Diseñado para personas, no para empresas</h2>
             <p>Comparte contenido exclusivo o simplemente brinda una forma de respaldar tu trabajo</p>-->
             <h2 class="section-heading">Dale a tu audiencia una forma fácil de agradecer</h2>
-            <p>Comparte contenido exclusivo o simplemente brinda una forma de respaldar tu trabajo. Con solo un par de clicks, tus fans pueden comprarte un café, comprarte una membresia a tus "close friends" en instagram, comprar un e-book, etc, mas aparte dejar un mensaje. Ni siquiera tienen que crear una cuenta.</p>
+            <p>Comparte contenido exclusivo o simplemente brinda una forma de respaldar tu trabajo. Con solo un par de clicks, tus fans pueden comprarte un café, comprarte una membresia a tus "close friends" en instagram, comprar un e-book, etc, mas aparte dejar un mensaje. <span class="font-weight-bold"><u>Ni siquiera tienen que crear una cuenta.</u></span></p>
           </div>
         </div>
         <div class="row"> 
@@ -181,85 +181,6 @@ if (isset($_SESSION['uname'])){
       </div>
     </div>
 
-
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 mb-4 mb-lg-0">
-            <figure class="img-play-vid">
-              <img src="images/hero_1.jpg" alt="Image" class="img-fluid">
-              <div class="absolute-block d-flex">
-                <span class="text">Watch the Video</span>
-                <a href="https://www.youtube.com/watch?v=9pVy8sRC440" data-fancybox class="btn-play">
-                  <span class="icon-play"></span>
-                </a>
-              </div>
-            </figure>
-          </div>
-          <div class="col-lg-5 ml-auto">
-            <h2 class="mb-4 section-heading">What is Coronavirus?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex officia quas, modi sit eligendi numquam!</p>
-            <ul class="list-check list-unstyled mb-5">
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Consectetur adipisicing elit</li>
-              <li>Unde doloremque</li>
-            </ul>
-            <p><a href="#" class="btn btn-primary">Learn more</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container pb-5">
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="feature-v1 d-flex align-items-center">
-            <div class="icon-wrap mr-3">
-              <span class="flaticon-protection"></span>
-            </div>
-            <div>
-              <h3>Protection</h3>
-              <span class="d-block">Lorem ipsum dolor sit.</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="feature-v1 d-flex align-items-center">
-            <div class="icon-wrap mr-3">
-              <span class="flaticon-patient"></span>
-            </div>
-            <div>
-              <h3>Prevention</h3>
-              <span class="d-block">Lorem ipsum dolor sit.</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="feature-v1 d-flex align-items-center">
-            <div class="icon-wrap mr-3">
-              <span class="flaticon-hand-sanitizer"></span>
-            </div>
-            <div>
-              <h3>Treatments</h3>
-              <span class="d-block">Lorem ipsum dolor sit.</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="feature-v1 d-flex align-items-center">
-            <div class="icon-wrap mr-3">
-              <span class="flaticon-virus"></span>
-            </div>
-            <div>
-              <h3>Symptoms</h3>
-              <span class="d-block">Lorem ipsum dolor sit.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
     <div class="site-section bg-primary-light">
       <div class="container">
         <div class="row align-items-center">
@@ -268,9 +189,7 @@ if (isset($_SESSION['uname'])){
             <div class="row">
               <div class="col-6 col-lg-6 mt-lg-5">
                 <div class="media-v1 bg-1">
-                  <div class="icon-wrap">
-                    <span class="flaticon-stay-at-home"></span>
-                  </div>
+                <img src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png" class="img-fluid" >
                   <div class="body">
                     <h3>Stay at home</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>
@@ -312,132 +231,147 @@ if (isset($_SESSION['uname'])){
             </div>
           </div>
           <div class="col-lg-5 ml-auto">
-            <h2 class="section-heading mb-4">How to Prevent Coronavirus?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis doloribus consequatur fugit voluptatum ex rerum perspiciatis cupiditate, esse hic!</p>
-            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, error!</p>
-
+            <h2 class="section-heading mb-4">Incluye tu link en todos lados</h2>
+            <p>Dale la oportunidad a tu audiencia de agradecerte en todos lados, en todos los sitios donde tienes presencia.</p>
             <ul class="list-check list-unstyled mb-5">
               <li>Lorem ipsum dolor sit amet</li>
               <li>Consectetur adipisicing elit</li>
               <li>Unde doloremque</li>
             </ul>
 
-            <p><a href="#" class="btn btn-primary">Read more about prevention</a></p>
+            <p><a href="#" class="btn btn-primary">Entrar</a> <a href="#" class="btn btn-primary">Registrate</a></p>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="site-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-lg-7 mx-auto text-center">
-            <span class="subheading">What you need to do</span>
-            <h2 class="mb-4 section-heading">How To Protect Yourself</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex officia quas, modi sit eligendi numquam!</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 ">
-            <div class="row mt-5 pt-5">
-              <div class="col-lg-6 do ">
-                <h3>You should do</h3>
-                <ul class="list-unstyled check">
-                  <li>Stay at home</li>
-                  <li>Wear mask</li>
-                  <li>Use Sanitizer</li>
-                  <li>Disinfect your home</li>
-                  <li>Wash your hands</li>
-                  <li>Frequent self-isolation</li>
-                </ul>
-              </div>
-              <div class="col-lg-6 dont ">
-                <h3>You should avoid</h3>
-                <ul class="list-unstyled cross">
-                  <li>Avoid infected people</li>
-                  <li>Avoid animals</li>
-                  <li>Avoid handshaking</li>
-                  <li>Aviod infected surfaces</li>
-                  <li>Don't touch your face</li>
-                  <li>Avoid droplets</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <img src="images/protect.png" alt="Image" class="img-fluid">
-          </div>
-        </div>
-      </div>
-    </div>
-
 
     <div class="site-section bg-primary-light">
       <div class="container">
         <div class="row mb-5">
           <div class="col-lg-7 mx-auto text-center">
-            <h2 class="mb-4 section-heading">Symptoms of Coronavirus</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex officia quas, modi sit eligendi numquam!</p>
+            <span class="subheading">Eleva tus ingresos</span>
+            <h2 class="mb-4 section-heading">Incluye Extras, la forma creativa de vender y ofrecer mas de tu servicios</h2>
+            <p>Como por ejemplo:</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-6 mb-4">
-            <div class="symptom d-flex">
-              <div class="img">
-                <img src="images/symptom_high-fever.png" alt="Image" class="img-fluid">
-              </div>
-              <div class="text">
-                <h3>High Fever</h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ipsum repellendus animi modi iure provident, cupiditate perferendis voluptatem!</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mb-4">
-            <div class="symptom d-flex">
-              <div class="img">
-                <img src="images/symptom_cough.png" alt="Image" class="img-fluid">
-              </div>
-              <div class="text">
-                <h3>Cough</h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla ullam illo laborum repellendus vel esse dolor, sunt exercitationem.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mb-4">
-            <div class="symptom d-flex">
-              <div class="img">
-                <img src="images/symptom_sore-troath.png" alt="Image" class="img-fluid">
-              </div>
-              <div class="text">
-                <h3>Sore Troath</h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse voluptatum, vel inventore at! Ullam, libero reiciendis amet?</p>
-              </div>
-            </div>
-          </div>
+        
 
-          <div class="col-lg-6 mb-4">
-            <div class="symptom d-flex">
-              <div class="img">
-                <img src="images/symptom_headache.png" alt="Image" class="img-fluid">
-              </div>
-              <div class="text">
-                <h3>Headache</h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem voluptatem ratione veniam rerum qui quibusdam reprehenderit quis.</p>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-lg-6 mb-4">
+                  <div class="symptom d-flex">
+                    <div class="img">
+                      <img src="images/symptom_high-fever.png" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="text">
+                      <h3>High Fever</h3>
+                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ipsum repellendus animi modi iure provident, cupiditate perferendis voluptatem!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="symptom d-flex">
+                    <div class="img">
+                      <img src="images/symptom_cough.png" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="text">
+                      <h3>Cough</h3>
+                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla ullam illo laborum repellendus vel esse dolor, sunt exercitationem.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="symptom d-flex">
+                    <div class="img">
+                      <img src="images/symptom_sore-troath.png" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="text">
+                      <h3>Sore Troath</h3>
+                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse voluptatum, vel inventore at! Ullam, libero reiciendis amet?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                  <div class="symptom d-flex">
+                    <div class="img">
+                      <img src="images/symptom_headache.png" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="text">
+                      <h3>Headache</h3>
+                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem voluptatem ratione veniam rerum qui quibusdam reprehenderit quis.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-lg-6 mb-4">
+                  <div class="symptom d-flex">
+                    <div class="img">
+                      <img src="images/symptom_high-fever.png" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="text">
+                      <h3>High Fever</h3>
+                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ipsum repellendus animi modi iure provident, cupiditate perferendis voluptatem!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="symptom d-flex">
+                    <div class="img">
+                      <img src="images/symptom_cough.png" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="text">
+                      <h3>Cough</h3>
+                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla ullam illo laborum repellendus vel esse dolor, sunt exercitationem.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="symptom d-flex">
+                    <div class="img">
+                      <img src="images/symptom_sore-troath.png" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="text">
+                      <h3>Sore Troath</h3>
+                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse voluptatum, vel inventore at! Ullam, libero reiciendis amet?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                  <div class="symptom d-flex">
+                    <div class="img">
+                      <img src="images/symptom_headache.png" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="text">
+                      <h3>Headache</h3>
+                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem voluptatem ratione veniam rerum qui quibusdam reprehenderit quis.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
 
         <div class="row justify-content-md-center">
-          <div class="col-lg-10">
-            <div class="note row">
-
-              <div class="col-lg-8 mb-4 mb-lg-0"><strong>Stay at home and call your doctor:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, eaque.</div>
-              <div class="col-lg-4 text-lg-right">
-                <a href="#" class="btn btn-primary"><span class="icon-phone mr-2 mt-3"></span>Help line</a>
-              </div>
-            </div>
-          </div>
+            <p>
+              <a href="#" class="btn btn-primary">Entrar</a>
+            </p>
         </div>
       </div>
     </div>
@@ -447,68 +381,8 @@ if (isset($_SESSION['uname'])){
       <div class="container">
         <div class="row mb-5">
           <div class="col-lg-7 mx-auto text-center">
-            <h2 class="mb-4 section-heading">News &amp; Articles</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex officia quas, modi sit eligendi numquam!</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="post-entry">
-              <a href="#" class="thumb">
-                <span class="date">30 Jul, 2020</span>
-                <img src="images/hero_1.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="post-meta text-center">
-                <a href="">
-                  <span class="icon-user"></span>
-                  <span>Admin</span>
-                </a>
-                <a href="#">
-                  <span class="icon-comment"></span>
-                  <span>3 Comments</span>
-                </a>
-              </div>
-              <h3><a href="#">How Coronavirus Very Contigous</a></h3>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="post-entry">
-              <a href="#" class="thumb">
-                <span class="date">30 Jul, 2020</span>
-                <img src="images/hero_2.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="post-meta text-center">
-                <a href="">
-                  <span class="icon-user"></span>
-                  <span>Admin</span>
-                </a>
-                <a href="#">
-                  <span class="icon-comment"></span>
-                  <span>3 Comments</span>
-                </a>
-              </div>
-              <h3><a href="#">How Coronavirus Very Contigous</a></h3>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="post-entry">
-              <a href="#" class="thumb">
-                <span class="date">30 Jul, 2020</span>
-                <img src="images/hero_1.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="post-meta text-center">
-                <a href="">
-                  <span class="icon-user"></span>
-                  <span>Admin</span>
-                </a>
-                <a href="#">
-                  <span class="icon-comment"></span>
-                  <span>3 Comments</span>
-                </a>
-              </div>
-              <h3><a href="#">How Coronavirus Very Contigous</a></h3>
-            </div>
+            <h2 class="mb-4 section-heading">De creadores para creadores</h2>
+            <h3>Hecho con <i class="icon-heart text-danger" aria-hidden="true"></i> para Mexico y Latinoamerica.</h3>
           </div>
         </div>
       </div>
@@ -550,9 +424,7 @@ if (isset($_SESSION['uname'])){
         <div class="row text-center">
           <div class="col-md-12">
             <div class="border-top pt-5">
-              <p class="copyright"><small>
-                Hecho con <i class="icon-heart text-danger" aria-hidden="true"></i> para Mexico y Latinoamerica.
-               </small></p>
+              
 
               </div>
             </div>
