@@ -83,7 +83,7 @@ if (isset($_SESSION['uname'])){
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 
-                <li><a href="symptoms.html" class="nav-link">Explora creadores</a></li>
+                <li><a href="explorar/" class="nav-link">Explora creadores</a></li>
                 <li><a data-toggle="modal" href="" data-target="#iniciarSesion" class="nav-link border border-primary rounded p-2">Entrar</a></li>
                 <li><a data-toggle="modal" href="" data-target="#crearCuenta" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-primary"></i></a></li>
               </ul>
@@ -239,7 +239,7 @@ if (isset($_SESSION['uname'])){
               <li>Ergonomico en User Experience</li>
             </ul>
 
-            <p><a href="#" class="btn btn-primary">Entrar</a> <a href="#" class="btn btn-primary">Registrate</a></p>
+            <p><a data-toggle="modal" href="" data-target="#iniciarSesion" class="btn btn-primary">Entrar</a> <a data-toggle="modal" href="" data-target="#crearCuenta" class="btn btn-primary">Registrate</a></p>
           </div>
         </div>
       </div>
@@ -367,7 +367,12 @@ if (isset($_SESSION['uname'])){
           <div class="col-lg-7 mx-auto text-center">
             <h2 class="mb-4 section-heading">De creadores para creadores</h2>
             <h3>Hecho con <i class="icon-heart text-danger" aria-hidden="true"></i> para Mexico y Latinoamerica.</h3><br>
-            <p><a href="#" class="btn btn-primary btn-sm">Comenzar mi pagina</a></p>
+            <div class="img-blur">
+              <img src="https://media.giphy.com/media/yoJC2El7xJkYCadlWE/giphy.gif" class="img-fluid" id='movieImg' alt="Para ti">
+            </div>
+            <br>
+
+            <p><a data-toggle="modal" href="" data-target="#crearCuenta" class="btn btn-primary btn-sm">Comenzar mi pagina</a></p>
           </div>
         </div>
       </div>

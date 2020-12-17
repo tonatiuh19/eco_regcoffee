@@ -510,9 +510,19 @@ $(document).ready(function(){
    $('#preguntaSection').hide();
    $('#endLabelPaying').hide();
    document.getElementById("questionAnswer").removeAttribute("required");
-   
+
+
+   randomImg();
 });
 
+
+function randomImg(){
+   var randimg = document.getElementById("movieImg");
+   var movieimages = ["https://media.giphy.com/media/yoJC2El7xJkYCadlWE/giphy.gif", "https://media.giphy.com/media/fWfowxJtHySJ0SGCgN/giphy.gif", "https://media.giphy.com/media/l2R0eYcNq9rJUsVAA/giphy.gif", "https://media.giphy.com/media/JlpjgShzDsrMIyFu5U/giphy.gif"];
+   var randNum = Math.floor(Math.random() * movieimages.length) + 0  
+    
+   randimg.src = movieimages[randNum] ;
+}
 
 $("#username").change(function() {
    $("#usernametxt").val($("#username").val());
