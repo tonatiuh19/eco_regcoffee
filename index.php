@@ -234,9 +234,9 @@ if (isset($_SESSION['uname'])){
             <h2 class="section-heading mb-4">Incluye tu link en todos lados</h2>
             <p>Dale la oportunidad a tu audiencia de agradecerte en todos lados, en todos los sitios donde tienes presencia.</p>
             <ul class="list-check list-unstyled mb-5">
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Consectetur adipisicing elit</li>
-              <li>Unde doloremque</li>
+              <li>Simple</li>
+              <li>Rapido</li>
+              <li>Ergonomico en User Experience</li>
             </ul>
 
             <p><a href="#" class="btn btn-primary">Entrar</a> <a href="#" class="btn btn-primary">Registrate</a></p>
@@ -262,46 +262,38 @@ if (isset($_SESSION['uname'])){
               <div class="row">
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    <div class="img">
-                      <img src="images/symptom_high-fever.png" alt="Image" class="img-fluid">
-                    </div>
+                    
                     <div class="text">
-                      <h3>High Fever</h3>
-                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ipsum repellendus animi modi iure provident, cupiditate perferendis voluptatem!</p>
+                      
+                      <p><h3><i class="fas fa-gifts"></i> Consultas 1:1</h3></p>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    <div class="img">
-                      <img src="images/symptom_cough.png" alt="Image" class="img-fluid">
-                    </div>
+                    
                     <div class="text">
-                      <h3>Cough</h3>
-                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla ullam illo laborum repellendus vel esse dolor, sunt exercitationem.</p>
+                      
+                      <p><h3><i class="fas fa-gifts"></i> Acceso a tus close friends con subscripcion por mes</h3></p>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    <div class="img">
-                      <img src="images/symptom_sore-troath.png" alt="Image" class="img-fluid">
-                    </div>
+                    
                     <div class="text">
-                      <h3>Sore Troath</h3>
-                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse voluptatum, vel inventore at! Ullam, libero reiciendis amet?</p>
+                      
+                      <p><h3><i class="fas fa-gifts"></i> Acceso a un grupo privado de Wtsp/Telegram</h3></p>
                     </div>
                   </div>
                 </div>
 
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    <div class="img">
-                      <img src="images/symptom_headache.png" alt="Image" class="img-fluid">
-                    </div>
+                    
                     <div class="text">
-                      <h3>Headache</h3>
-                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem voluptatem ratione veniam rerum qui quibusdam reprehenderit quis.</p>
+                      
+                      <p><h3><i class="fas fa-gifts"></i> Vender playeras</h3></p>
                     </div>
                   </div>
                 </div>
@@ -311,46 +303,38 @@ if (isset($_SESSION['uname'])){
               <div class="row">
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    <div class="img">
-                      <img src="images/symptom_high-fever.png" alt="Image" class="img-fluid">
-                    </div>
+                    
                     <div class="text">
-                      <h3>High Fever</h3>
-                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ipsum repellendus animi modi iure provident, cupiditate perferendis voluptatem!</p>
+                      
+                      <p><h3><i class="fas fa-gifts"></i> Post en twitter</h3></p>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    <div class="img">
-                      <img src="images/symptom_cough.png" alt="Image" class="img-fluid">
-                    </div>
+                    
                     <div class="text">
-                      <h3>Cough</h3>
-                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla ullam illo laborum repellendus vel esse dolor, sunt exercitationem.</p>
+                      
+                      <p><h3><i class="fas fa-gifts"></i> Story en instagram</h3></p>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    <div class="img">
-                      <img src="images/symptom_sore-troath.png" alt="Image" class="img-fluid">
-                    </div>
+                    
                     <div class="text">
-                      <h3>Sore Troath</h3>
-                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse voluptatum, vel inventore at! Ullam, libero reiciendis amet?</p>
+                      
+                      <p><h3><i class="fas fa-gifts"></i> Ebooks</h3></p>
                     </div>
                   </div>
                 </div>
 
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    <div class="img">
-                      <img src="images/symptom_headache.png" alt="Image" class="img-fluid">
-                    </div>
+                    
                     <div class="text">
-                      <h3>Headache</h3>
-                      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem voluptatem ratione veniam rerum qui quibusdam reprehenderit quis.</p>
+                      
+                      <p><h3 class="text-danger">Y lo que a ti se te ocurra...</h3></p>
                     </div>
                   </div>
                 </div>
@@ -368,11 +352,11 @@ if (isset($_SESSION['uname'])){
           </a>
         </div>
 
-        <div class="row justify-content-md-center">
+        <!--<div class="row justify-content-md-center">
             <p>
               <a href="#" class="btn btn-primary">Entrar</a>
             </p>
-        </div>
+        </div>-->
       </div>
     </div>
 
@@ -382,7 +366,8 @@ if (isset($_SESSION['uname'])){
         <div class="row mb-5">
           <div class="col-lg-7 mx-auto text-center">
             <h2 class="mb-4 section-heading">De creadores para creadores</h2>
-            <h3>Hecho con <i class="icon-heart text-danger" aria-hidden="true"></i> para Mexico y Latinoamerica.</h3>
+            <h3>Hecho con <i class="icon-heart text-danger" aria-hidden="true"></i> para Mexico y Latinoamerica.</h3><br>
+            <p><a href="#" class="btn btn-primary btn-sm">Comenzar mi pagina</a></p>
           </div>
         </div>
       </div>

@@ -604,12 +604,12 @@ body:after {
   .hero-v1 .subheading {
     font-size: 12px;
     text-transform: uppercase;
-    color: rgba(156, 147, 135, 0.5);
+    color: rgba(156, 135, 135, 0.5);
     letter-spacing: .1rem;
     font-weight: 900; }
   .hero-v1 .illustration {
     position: relative;
-    margin-top: -100px;
+    margin-top: -110px;
     position: absolute; }
   .hero-v1 .illustration-2 {
     position: relative;
