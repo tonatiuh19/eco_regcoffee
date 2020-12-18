@@ -189,42 +189,23 @@ if (isset($_SESSION['uname'])){
             <div class="row">
               <div class="col-6 col-lg-6 mt-lg-5">
                 <div class="media-v1 bg-1">
-                <img src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png" class="img-fluid" >
-                  <div class="body">
+                <img src="images/instagramCreator.png" class="img-fluid" >
+                  <!--<div class="body">
                     <h3>Stay at home</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>
-                  </div>
+                  </div>-->
                 </div>
-
                 <div class="media-v1 bg-1">
-                  <div class="icon-wrap">
-                    <span class="flaticon-patient"></span>
-                  </div>
-                  <div class="body">
-                    <h3>Wear facemask</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>
-                  </div>
+                  <img src="images/githubCreator.png" class="img-fluid" >
                 </div>
+                
               </div>
               <div class="col-6 col-lg-6">
                 <div class="media-v1 bg-1">
-                  <div class="icon-wrap">
-                    <span class="flaticon-social-distancing"></span>
-                  </div>
-                  <div class="body">
-                    <h3>Keep social distancing</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>
-                  </div>
+                  <img src="images/youtubeCreator.png" class="img-fluid" >
                 </div>
-
                 <div class="media-v1 bg-1">
-                  <div class="icon-wrap">
-                    <span class="flaticon-hand-washing"></span>
-                  </div>
-                  <div class="body">
-                    <h3>Wash your hands</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>
-                  </div>
+                  <img src="images/facebookCreator.png" class="img-fluid" >
                 </div>
               </div>
               
