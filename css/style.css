@@ -615,6 +615,29 @@ body:after {
     position: relative;
     margin-top: -200px;
     position: absolute; }
+  #img-phone{
+    display: none;
+  }
+    @media only screen and (max-width: 990px) {
+      .hero-v1 .illustration {
+        display: none; }
+        #img-phone{
+        display: block;
+      }
+
+      .phoneStyling{
+        font-size: 12px;
+      }
+
+      .phoneStylingBtn{
+        font-size: 9px;
+    
+      }
+      .phoneStylingInput{
+        font-size: 9px;
+        
+      }
+    }
 
 .slide-item, .cover {
   background-size: cover;

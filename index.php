@@ -110,25 +110,24 @@ if (isset($_SESSION['uname'])){
             <p class="mb-4">
             <div class="input-group input-focus">
               <div class="input-group-prepend">
-                <span class="input-group-text bg-white font-weight-bold">regalameuncafe.com/</span>
+                <span class="input-group-text bg-white font-weight-bold phoneStyling">regalameuncafe.com/</span>
               </div>
-              <input type="search" placeholder="tunombre" class="form-control border-left-0" name="username" id="username" autofocus="autofocus" autocomplete="off">
+              <input type="search" placeholder="tunombre" class="form-control border-left-0 phoneStylingInput" name="username" id="username" autofocus="autofocus" autocomplete="off">
               <div class="input-group-append">
-                <button class="btn btn-primary btn-outline-white" type="button" id="comenzarBtn" data-toggle="modal" data-target="#comenzar" disabled>Empezar <i class="fas fa-play"></i></button>
+                <button class="btn btn-primary btn-outline-white phoneStylingBtn" type="button" id="comenzarBtn" data-toggle="modal" data-target="#comenzar" disabled>Empezar <i class="fas fa-play"></i></button>
               </div>
             </div>
             <div id="uname_response"></div>
             <div class="alert alert-danger" role="alert" id="alertExist"><small>Este nombre de usuario ya existe :(</small></div>
             <small id="emailHelp" class="form-text text-muted">Es gratis y toma menos de un minuto</small>
             </p>
-
+            <img src="images/creator.png" alt="Image" class="img-fluid" id="img-phone" width="420">
 
 
           </div>
           <div class="col-lg-6">
             <figure class="illustration">
               <img src="images/creator.png" alt="Image" class="img-fluid">
-              <!--<img src="https://media.giphy.com/media/W5TBpQMQmxhTaTmxjc/giphy.gif" name="canvas" alt="Image" class="img-fluid">-->
             </figure>
           </div>
           <div class="col-lg-6"></div>
