@@ -1,0 +1,19 @@
+.imgBorder {
+    -webkit-filter: drop-shadow(3px 3px 0 #FF0000) drop-shadow(-3px -3px 0 #FF0000);
+    filter:drop-shadow(3px 3px 0 #FF0000) drop-shadow(-3px -3px 0 #FF0000);
+}
+
+.imgBorderBlue {
+    -webkit-filter: drop-shadow(3px 3px 0 #4400ff) drop-shadow(-3px -3px 0 #4400ff);
+    filter:drop-shadow(3px 3px 0 #4400ff) drop-shadow(-3px -3px 0 #4400ff);
+}
+
+.imgBorderGreen {
+    -webkit-filter: drop-shadow(3px 3px 0 #00ff4c) drop-shadow(-3px -3px 0 #00ff4c);
+    filter:drop-shadow(3px 3px 0 #00ff4c) drop-shadow(-3px -3px 0 #00ff4c);
+}
+
+.imgBorderPink {
+    -webkit-filter: drop-shadow(3px 3px 0 #ff008c) drop-shadow(-3px -3px 0 #ff008c);
+    filter:drop-shadow(3px 3px 0 #ff008c) drop-shadow(-3px -3px 0 #ff008c);
+}

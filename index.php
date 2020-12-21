@@ -35,6 +35,7 @@ if (isset($_SESSION['uname'])){
   <link rel="stylesheet" href="css/aos.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/imgindex.css">
 
   <link href="css/fontawesome/css/all.css" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -126,8 +127,8 @@ if (isset($_SESSION['uname'])){
 
           </div>
           <div class="col-lg-6">
-            <figure class="illustration">
-              <img src="images/creator.png" alt="Image" class="img-fluid">
+            <figure class="illustration" >
+              <img src="images/creator.png" alt="Image" class="img-fluid" id="imgChangeBorder">
             </figure>
           </div>
           <div class="col-lg-6"></div>
@@ -420,6 +421,7 @@ if (isset($_SESSION['uname'])){
 
   <script src="js/main.js"></script>
   <script src="js/coffee.js"></script>
+  <script src="js/imgindex.js"></script>
   <script type="text/javascript">
     function openPasswordForgotten(){
       $('#iniciarSesion').modal('hide');
