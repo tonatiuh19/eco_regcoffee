@@ -458,6 +458,10 @@ $(document).ready(function(){
       this.value = this.value.replace(/[^0-9]/g, '');
    });
 
+   function openPasswordForgotten(){
+      $('#iniciarSesion').modal('hide');
+      $('#contrasenaOlvidada').modal('show');
+   }
 
    document.querySelector("#valueRadioGive").addEventListener("change",function () {
       var frst = document.querySelector("#valueRadioGive").value;

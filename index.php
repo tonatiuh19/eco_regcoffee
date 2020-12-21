@@ -420,6 +420,12 @@ if (isset($_SESSION['uname'])){
 
   <script src="js/main.js"></script>
   <script src="js/coffee.js"></script>
+  <script type="text/javascript">
+    function openPasswordForgotten(){
+      $('#iniciarSesion').modal('hide');
+      $('#contrasenaOlvidada').modal('show');
+    }
+  </script>
 
 <div class="modal fade" id="comenzar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -469,6 +475,9 @@ if (isset($_SESSION['uname'])){
             <input type="password" class="form-control input-lg" name="pwd_i" placeholder="Ingresa la contraseña" autocomplete="off" required> 
           </div>
           <div class="form-group text-center">
+            <button class="btn btn-link btn-sm" onclick="openPasswordForgotten()">¿Olvidaste la contraseña?</button>
+          </div>
+          <div class="form-group text-center">
             <button type="submit" class="btn btn-dark text-center">Entrar <i class="fas fa-arrow-circle-right"></i></button>
           </div>
         </form>
@@ -515,6 +524,31 @@ if (isset($_SESSION['uname'])){
             ¿Ya tienes cuenta? <a href="" onclick="openInicio();return false;">Inicia sesion</a>
         </p>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="contrasenaOlvidada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">¿Olvidaste tu contraseña?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="olvidemicontrasena/">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Escribe el correo electronico con el que te registraste:</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" name="email_o" aria-describedby="emailHelp" placeholder="" required>
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-dark btn-sm">Continuar <i class="fas fa-arrow-circle-right"></i></button>
+          </div>
+        </form>
+      </div>
+      
     </div>
   </div>
 </div>
