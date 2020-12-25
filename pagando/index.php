@@ -87,6 +87,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 		echo '<input type="hidden" name="questAnswer" value="'.$_POST["questAnswer"].'">';
 		echo '<input type="hidden" name="period_end_date" value="'.$charge->operation_date.'">';
+		echo '<input type="hidden" name="confirmationM" value="'.$_POST["confirmationM"].'">';
 	}elseif ($status==2) {
 		echo '<input type="hidden" name="stat" value="2">';
 		echo '<input type="hidden" name="uname" value="'.$_POST["uname"].'">';
@@ -220,6 +221,8 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="questAnswer" value="'.$_POST["questAnswer"].'">';
 		echo '<input type="hidden" name="period_end_date" value="'.$subscription->period_end_date.'">';
 		echo '<input type="hidden" name="customerID" value="'.$subscription->customer_id.'">';
+		echo '<input type="hidden" name="confirmationM" value="'.$_POST["confirmationM"].'">';
+		echo '<input type="hidden" name="titleExtra" value="'.$_POST["titleExtra"].'">';
 		echo '<input type="hidden" name="active" value="1">';
 	}elseif ($status==2) {
 		echo '<input type="hidden" name="stat" value="2">';

@@ -394,6 +394,7 @@ date_default_timezone_set('America/Mexico_City');
 																document.getElementById("titlePay").innerHTML = "<b>'.$rowe["title"].'</b>"; 
 																document.getElementById("titlePaying").innerHTML = "<b>'.$rowe["title"].'</b>";
 																document.getElementById("amountCoffe").value = "'.$rowe["price"].'";
+																document.getElementById("titleExtraval").value = "'.$rowe["title"].'";
 																document.getElementById("id-extra").value = "'.$rowe["id_extra"].'";
 																document.getElementById("descripcionPay").value = "'.$rowe["title"].' from: '.$userID.'";';
 																if($rowe["subsciption"] == "1"){
@@ -573,8 +574,9 @@ date_default_timezone_set('America/Mexico_City');
 					<input type="hidden" name="descripcion" value="0" id="descripcionPay">
 					<input type="hidden" name="id-extra" value="0" id="id-extra">
 					<input type="hidden" name="subsid" value="0" id="subsid">
+					<input type="hidden" name="titleExtra" value="0" id="titleExtraval">
 					<?php
-						echo '';
+						echo '<input type="hidden" name="confirmationM" value="'.$confirmationExtra.'">';
 						echo '<input type="hidden" name="uname" value="'.$uName.'" id="unamePay">';						
 						echo '';
 					?>
