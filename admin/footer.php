@@ -77,6 +77,7 @@
 
   <script src="../js/main.js"></script>
   <script src="../js/coffee.js"></script>
+  <script src="../js/fan.js"></script>
 
   <div class="modal fade" id="iniciarSesion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

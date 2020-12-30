@@ -225,12 +225,17 @@ date_default_timezone_set('America/Mexico_City');
 																	   document.getElementById("titlePay").innerHTML = "Apoyando a <b>'.$uName.'</b>"; 
 																	   document.getElementById("titlePaying").innerHTML = "Apoyando a <b>'.$uName.'</b>"; 
 																	   $("#preguntaSection").hide();
+																	   $("#preguntaSection2").hide();
 																		document.getElementById("questionAnswer").removeAttribute("required");
+																		document.getElementById("questionAnswer2").removeAttribute("required");
 																		document.getElementById("payType").value = "1";
 																		var prriceCoffee = document.getElementById("valueBtnExtra").innerText;
 																		document.getElementById("amountCoffe").value = prriceCoffee;
+																		document.getElementById("amountCoffe2").value = prriceCoffee;
 																		document.getElementById("id-extra").value = "'.$idExtra.'";
+																		document.getElementById("id-extra2").value = "'.$idExtra.'";
 																		document.getElementById("descripcionPay").value = "Coffee for: '.$userID.'";
+																		document.getElementById("descripcionPay2").value = "Coffee for: '.$userID.'";
 																	});</script>';
 																?>
 															</div>
@@ -394,23 +399,36 @@ date_default_timezone_set('America/Mexico_City');
 																document.getElementById("titlePay").innerHTML = "<b>'.$rowe["title"].'</b>"; 
 																document.getElementById("titlePaying").innerHTML = "<b>'.$rowe["title"].'</b>";
 																document.getElementById("amountCoffe").value = "'.$rowe["price"].'";
+																document.getElementById("amountCoffe2").value = "'.$rowe["price"].'";
 																document.getElementById("titleExtraval").value = "'.$rowe["title"].'";
+																document.getElementById("titleExtraval2").value = "'.$rowe["title"].'";
 																document.getElementById("id-extra").value = "'.$rowe["id_extra"].'";
-																document.getElementById("descripcionPay").value = "'.$rowe["title"].' from: '.$userID.'";';
+																document.getElementById("id-extra2").value = "'.$rowe["id_extra"].'";
+																document.getElementById("descripcionPay").value = "'.$rowe["title"].' from: '.$userID.'";
+																document.getElementById("descripcionPay2").value = "'.$rowe["title"].' from: '.$userID.'";';
+																
 																if($rowe["subsciption"] == "1"){
 																	echo 'document.getElementById("payType").value = "2";';
 																	echo 'document.getElementById("subsid").value = "'.$rowe["subsciption_id"].'";';
+																	echo 'document.getElementById("subsid2").value = "'.$rowe["subsciption_id"].'";';
+																	echo 'document.getElementById("btnPaypalDiv").style.display = "none";';
 																}else{
 																	echo 'document.getElementById("payType").value = "1";';
+																	echo 'document.getElementById("btnPaypalDiv").style.display = "block";';
 																}
 
 																if($rowe["question"] == ""){
 																	echo '$("#preguntaSection").hide();
-																	document.getElementById("questionAnswer").removeAttribute("required");';
+																	$("#preguntaSection2").hide();
+																	document.getElementById("questionAnswer").removeAttribute("required");
+																	document.getElementById("questionAnswer2").removeAttribute("required");';
 																}else{
 																	echo '$("#preguntaSection").show();
+																	$("#preguntaSection2").show();
 																	document.getElementById("questionAnswer").setAttribute("required", "");
-																	document.getElementById("questionLabel").innerHTML = "<b>'.$rowe["question"].'</b>";';
+																	document.getElementById("questionAnswer2").setAttribute("required", "");
+																	document.getElementById("questionLabel").innerHTML = "<b>'.$rowe["question"].'</b>";
+																	document.getElementById("questionLabel2").innerHTML = "<b>'.$rowe["question"].'</b>";';
 																}
 															echo '});</script>';
 													echo '</div>
@@ -540,7 +558,7 @@ date_default_timezone_set('America/Mexico_City');
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12 p-2"><button type="button" class="btn btn-warning col-sm-12" id="btnPayCreditDebit"><i class="fab fa-cc-visa fa-2x"></i> <i class="fab fa-cc-mastercard fa-2x"></i> <i class="fab fa-cc-amex fa-2x"></i> Pago seguro</button></div>
-						<!--<div class="col-sm-12 p-2"><button type="button" class="btn btn-outline-warning col-sm-12">Paypal</button></div>-->
+						<div class="col-sm-12 p-2" id="btnPaypalDiv"><button class="btn btn-warning col-sm-12" id="btnPaypal"><img src="../images/paypal.png" width="100"></button></div>
 					</div>
 					
 				</div>
@@ -575,6 +593,7 @@ date_default_timezone_set('America/Mexico_City');
 					<input type="hidden" name="id-extra" value="0" id="id-extra">
 					<input type="hidden" name="subsid" value="0" id="subsid">
 					<input type="hidden" name="titleExtra" value="0" id="titleExtraval">
+					<input type="hidden" name="isPaypal" value="0" id="isPaypal">
 					<?php
 						echo '<input type="hidden" name="confirmationM" value="'.$confirmationExtra.'">';
 						echo '<input type="hidden" name="uname" value="'.$uName.'" id="unamePay">';						
@@ -642,6 +661,48 @@ date_default_timezone_set('America/Mexico_City');
 							</div>
 						</div>
 						<button class="btn btn-warning btn-block shadow-sm" id="pay-button" type="submit"><span id="endLabelPay"><i class="fas fa-lock"></i> Finalizar</span><span id="endLabelPaying"><i class="fas fa-spinner fa-pulse"></i> Pagando</span></button>
+					</div>
+				</form>
+				<form action="../pagandoPaypal/" method="POST" id="payment-form-paypal" class="needs-validation" novalidate>
+					<input type="hidden" name="payType" value="3" id="payType2">
+					<input type="hidden" name="coffeeQuantity" value="1" id="quantityCoffe2">
+					<input type="hidden" name="amount" value="0" id="amountCoffe2">
+					<input type="hidden" name="descripcion" value="0" id="descripcionPay2">
+					<input type="hidden" name="id-extra" value="0" id="id-extra2">
+					<input type="hidden" name="subsid" value="0" id="subsid2">
+					<input type="hidden" name="titleExtra" value="0" id="titleExtraval2">
+					<input type="hidden" name="isPaypal" value="0" id="isPaypal2">
+					<?php
+						echo '<input type="hidden" name="confirmationM" value="'.$confirmationExtra.'">';
+						echo '<input type="hidden" name="uname" value="'.$uName.'" id="unamePay2">';						
+						echo '';
+					?>
+					<div class="form-group">
+						<input type="email" class="form-control" id="inputMailFan2" name="email" aria-describedby="emailHelp" placeholder="Inresa tu correo" required>
+						<small id="emailHelp" class="form-text text-muted">Aqui te llegara tu confirmacion de pago y un mensaje especial.</small>
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" id="inputTextFan2" name="noteFan" rows="2" placeholder="Aqui puedes escribirle algo.. (opcional)"></textarea>
+						<div class="form-check form-check-inline small">
+							<input class="form-check-input" type="radio" name="privatePublic" id="inlineRadio12" value="1" checked>
+							<label class="form-check-label" for="inlineRadio1">Publico</label>
+						</div>
+						<div class="form-check form-check-inline small">
+							<input class="form-check-input" type="radio" name="privatePublic" id="inlineRadio22" value="0">
+							<label class="form-check-label" for="inlineRadio2">Privado</label>
+						</div>
+					</div>
+					<div class="form-group" id="preguntaSection2">
+						<label for="exampleFormControlTextarea1" id="questionLabel2">Example textarea</label>
+						<textarea class="form-control" id="questionAnswer2" name="questAnswer" rows="2" placeholder="Aqui tu respuesta" name="questionAnswer" required></textarea>
+					</div>
+					<div class="divider-custom-pay divider-light-pay">
+						<div class="divider-custom-line-pay"></div>
+							<div class="divider-custom-icon-pay">Pagar con:</div>
+							<div class="divider-custom-line-pay"></div>
+						</div>
+					<div class="container">
+						<button class="btn btn-warning col-sm-12" type="submit"><img src="../images/paypal.png" width="100"></button>
 					</div>
 				</form>
 			</p>

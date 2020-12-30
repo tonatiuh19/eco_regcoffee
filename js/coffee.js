@@ -488,7 +488,8 @@ $(document).ready(function(){
    $("#btnPayCreditDebit").click(function(evt){
       $('#apoyar').modal('hide');
       $('#apoyarSiguiente').modal('show');
-   
+      document.getElementById("payment-form").style.display = "block";
+      document.getElementById("payment-form-paypal").style.display = "none";
    });
 
    $('#alertBank').hide();
