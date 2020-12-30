@@ -3,7 +3,7 @@
 
 date_default_timezone_set('America/Mexico_City');
 require_once('../admin/paypal/autoload.php');
-/*use PayPal\Api\Payment;
+use PayPal\Api\Payment;
 $apiContext = new \PayPal\Rest\ApiContext(
     new \PayPal\Auth\OAuthTokenCredential(
         'AR-nXPqa88NuwUJl-y_EdvesUVNSV0s6J4K9l25hf6fINGpUHvrUSrnPV-gx-Uo6l1cu3yCgpcwa7NsY',     // ClientID
@@ -31,16 +31,5 @@ try {
 
  //ResultPrinter::printResult("Get Payment", "Payment", $payment->getId(), null, $payment);
 
-return $payment;*/
-require __DIR__ . '../admin/paypal/autoload.php';
-use PayPalCheckoutSdk\Core\PayPalHttpClient;
-use PayPalCheckoutSdk\Core\SandboxEnvironment;
-// Creating an environment
-$clientId = "<<PAYPAL-CLIENT-ID>>";
-$clientSecret = "<<PAYPAL-CLIENT-SECRET>>";
-
-$environment = new SandboxEnvironment($clientId, $clientSecret);
-$client = new PayPalHttpClient($environment);
-
-
+return $payment;
 ?>
