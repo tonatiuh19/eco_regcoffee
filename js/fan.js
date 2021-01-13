@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+  document.getElementById("btnPaypal").style.display = "none";
     $("#btnPaypal").click(function(evt){
         $('#apoyar').modal('hide');
         document.getElementById("payment-form").style.display = "none";

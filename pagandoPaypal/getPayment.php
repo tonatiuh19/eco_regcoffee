@@ -1,6 +1,4 @@
 <?php
-
-
 date_default_timezone_set('America/Mexico_City');
 require_once('../admin/paypal/autoload.php');
 use PayPal\Api\Payment;
@@ -19,7 +17,7 @@ $apiContext->setConfig(
 );
 
 try {
-    $payment = Payment::get('PAYID-L7VLP5Q6D932142KN461621R', $apiContext);
+    $payment = Payment::get('PAYID-L7V5TCA82469330SB7495713', $apiContext);
     echo $payment;
 } catch (Exception $ex) {
 

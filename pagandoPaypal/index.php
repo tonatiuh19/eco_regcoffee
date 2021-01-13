@@ -23,8 +23,8 @@ $payer = new \PayPal\Api\Payer();
 $payer->setPaymentMethod('paypal');
 
 $amount = new \PayPal\Api\Amount();
-$amount->setTotal('1.00');
-$amount->setCurrency('USD');
+$amount->setTotal('55');
+$amount->setCurrency('MXN');
 
 $transaction = new \PayPal\Api\Transaction();
 $transaction->setAmount($amount);

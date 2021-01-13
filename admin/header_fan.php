@@ -69,7 +69,7 @@ require_once('cn.php');
             <div class="mb-0 site-logo"><a href="../" class="mb-0"><img class="img-fluid" src="../images/logo.png" alt="regalameuncafe.com"></a></div>
           </div>
 
-          <div class="col-12 col-md-10 d-none d-xl-block">
+          <div class="col-6 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
@@ -88,7 +88,7 @@ require_once('cn.php');
           </div>
 
 
-          <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3 text-black"></span></a></div>
+          <div class="col-4 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3 text-black"></span></a></div>
 
         </div>
       </div>
