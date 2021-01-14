@@ -1,4 +1,5 @@
 <?php
+include("read_and_export.php");
 require_once('../admin/header.php');
 ?>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -23,7 +24,7 @@ require_once('../admin/header.php');
             
           }
         ?>
-        
+
         <div class="row">
               <div class="col-sm-12">
                 <div class="card">
@@ -112,7 +113,16 @@ require_once('../admin/header.php');
           <i class="fas fa-spinner fa-spin fa-2x" id="imageLoading"></i>
           <div id="table-data" class="col-sm-12"></div>
         </div>
-
+        <div class="row justify-content-end">
+          <form action="exportarFans/" method="post">
+            <?php
+              $idUser = $_SESSION["user_param"];
+              echo '<input type="hidden" name="idUser" value="'.$idUser.'">';
+            ?>
+            <button type="submit" id="export" name="export" value="Export to excel" class="btn btn-success text-white"><i class="fas fa-file-excel"></i> Exportar a Excel</button>
+          </form>
+        </div>
+        
       </div>
     </div>
 
