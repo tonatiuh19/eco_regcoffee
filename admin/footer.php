@@ -6,7 +6,7 @@
           <div class="col-lg-4">
             
             <?php
-            if(!isset($_SESSION["user_param"])) 
+            if(isset($_SESSION["user_param"])) 
             {
               echo '<h2 class="footer-heading mb-4">¿Te gusta el contenido de <b>'.$uName.'?</b></h2>
               <p>Comparte y apoya:</p>

@@ -22,13 +22,15 @@ date_default_timezone_set('America/Mexico_City');
         </div>
 
         <?php
-            $sqlx = "SELECT a.id_payments FROM payments as a INNER JOIN users as b on a.email_user=b.email WHERE a.status='completed' and b.id_user=".$_SESSION["user_param"]."";
-            $resultx = $conn->query($sqlx);
-            
-            if ($resultx->num_rows > 0) {
-                echo '<div class="row btn-toolbar align-items-center justify-content-center">
-                    <a href="../misapoyos/" class="btn btn-warning"><i class="far fa-heart"></i> Mis apoyos</a>
-                </div><p></p>';
+            if($sess){
+                $sqlx = "SELECT a.id_payments FROM payments as a INNER JOIN users as b on a.email_user=b.email WHERE a.status='completed' and b.id_user=".$_SESSION["user_param"]."";
+                $resultx = $conn->query($sqlx);
+                
+                if ($resultx->num_rows > 0) {
+                    echo '<div class="row btn-toolbar align-items-center justify-content-center">
+                        <a href="../misapoyos/" class="btn btn-warning"><i class="far fa-heart"></i> Mis apoyos</a>
+                    </div><p></p>';
+                }
             }
         ?>
 
@@ -98,14 +100,21 @@ date_default_timezone_set('America/Mexico_City');
     </div>
 </div>
 <?php
-if($_SESSION["utype"] != "2"){
-    echo '<script type="text/javascript">
-    activateNavbarItem("navAstronaut");
-  </script>';
+if($sess){
+    if($_SESSION["utype"] != "2"){
+        echo '<script type="text/javascript">
+        activateNavbarItem("navAstronaut");
+      </script>';
+    }else{
+        echo '<script type="text/javascript">
+        activateNavbarItem("navExplorar");
+      </script>';
+    }
 }else{
     echo '<script type="text/javascript">
     activateNavbarItem("navExplorar");
   </script>';
 }
+
 require_once('../admin/footer.php');
 ?>

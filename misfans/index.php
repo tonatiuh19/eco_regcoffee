@@ -1,5 +1,4 @@
 <?php
-include("read_and_export.php");
 require_once('../admin/header.php');
 ?>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
