@@ -59,7 +59,7 @@ if($_SESSION["utype"] == "2"){
                                             }
                                             echo '<h6 class="card-subtitle mb-2 text-muted">Precio: '.$rowx["price"].'</h6>';
                                             
-                                            echo '<button class="btn btn-dark btn-sm p-1"><i class="far fa-copy"></i> Copiar link directo</button>';
+                                            //echo '<button class="btn btn-dark btn-sm p-1"><i class="far fa-copy"></i> Copiar link directo</button>';
                                             echo '</div>
                                     </div>
                                     <div class="modal fade" id="cancel'.$rowx["id_extra"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

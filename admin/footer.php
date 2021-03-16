@@ -6,12 +6,13 @@
           <div class="col-lg-4">
             
             <?php
-            if(isset($_SESSION["user_param"])) 
+            if(!isset($_SESSION["user_param"])) 
             {
               echo '<h2 class="footer-heading mb-4">¿Te gusta el contenido de <b>'.$uName.'?</b></h2>
-              <p>Comparte y apoya:</p>
-              <a href="#" class="btn btn-warning">Compartir Link</a>
-              ';
+              <p>Comparte y apoya el link de esta pagina</p>
+              ';?>
+              <!--<button id="copyLink" class="btn btn-primary float-right"  onclick="copyLinkToClipboard('#linkToCopy')"><i class="fas fa-clone"></i> Copiar link</button>-->
+              <?php
             }else{
               echo '<h2 class="footer-heading mb-4">Escribenos:</h2>
               <p><a href="mailto:dihola@regalameuncafe.com">dihola@regalameuncafe.com</a></p>

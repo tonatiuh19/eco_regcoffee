@@ -5,10 +5,24 @@ if(!isset($_SESSION))
 }
 if(!isset($_SESSION["uname"])) 
 {
-	require_once('../admin/header_fan.php');
 	$sess = false;
+	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$url = rtrim($actual_link,"/");
+	preg_match("/[^\/]+$/", $url, $matches);
+	$last_word = $matches[0];
+	$uName = $last_word;
+	require_once('../admin/header_fan.php');
 }else{
 	$sess = true;
+	$folder_path = "../".$_SESSION["uname"]."/profile/";
+	$uName = $_SESSION["uname"];
+	
+	echo '<div class="alert alert-warning alert-dismissible fade show" role="alert" id="alertPaging">
+		<strong>Tus fans asi ven tu pagina.</strong> Editala como tu lo necesites.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>';
 	require_once('../admin/header.php');
 }
 $_SESSION['extra'] = '0';
@@ -21,26 +35,6 @@ date_default_timezone_set('America/Mexico_City');
 <div class="site-section bg-primary-light">
 	<div class="container d-flex align-items-center flex-column">
 		<?php
-			if($sess){
-				$folder_path = "../".$_SESSION["uname"]."/profile/";
-				$uName = $_SESSION["uname"];
-
-				
-				echo '<div class="alert alert-warning alert-dismissible fade show" role="alert" id="alertPaging">
-					<strong>Tus fans asi ven tu pagina.</strong> Editala como tu lo necesites.
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					</button>
-				</div>';
-				
-			}else{
-				$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-				$url = rtrim($actual_link,"/");
-				preg_match("/[^\/]+$/", $url, $matches);
-				$last_word = $matches[0];
-				$uName = $last_word;
-			}
-
 			echo '<div class="container bg-light rounded">
 					<div class="row">
 						<div class="col-lg-7 col-sm-12 col-md-5">';
@@ -51,11 +45,11 @@ date_default_timezone_set('America/Mexico_City');
 									if (!file_exists($folder_path)) {
 											if($sess){
 												echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
-													<img class="masthead-avatar m-4 rounded-circle" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="220" alt="" />';
+													<img class="m-4 rounded-circle border-3 border-primary shadow mb-5 bg-white rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="200" height="200" alt="" />';
 												echo '<button type="button" class="btn btn-warning p-1 delete-image z-depth-2" data-toggle="modal" data-target="#editarme" style="position:absolute;bottom:50px;right:2px;margin:0;"><i class="fas fa-pencil-alt"></i></button>';
 												echo '</a>';
 											}else{
-												echo '<img class="masthead-avatar m-4 rounded-circle z-depth-2" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="220" alt="" />';
+												echo '<img class="m-4 rounded-circle border-3 border-primary shadow mb-5 bg-white rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="200" height="200" alt="" />';
 											}
 										
 									}else{
@@ -63,11 +57,11 @@ date_default_timezone_set('America/Mexico_City');
 											if (preg_match('/(\.jpg|\.jpeg|\.png|\.bmp)$/', $file)) {
 													if($sess){
 														echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
-														<img class="masthead-avatar m-4 rounded-circle" src="'.$file.'" width="220" alt="" />';
+														<img class="m-4 rounded-circle border-3 border-primary shadow mb-5 bg-white rounded" src="'.$file.'" width="200" height="200" alt="" />';
 														echo '<button type="button" class="btn btn-warning p-1 delete-image z-depth-2" data-toggle="modal" data-target="#editarme" style="position:absolute;bottom:50px;right:2px;margin:0;"><i class="fas fa-pencil-alt"></i></button>';
 														echo '</a>';
 													}else{
-														echo '<img class="m-4 rounded-circle border-3 border-primary shadow mb-5 bg-white rounded" src="'.$file.'" width="200" alt="" />';
+														echo '<img class="m-4 rounded-circle border-3 border-primary shadow mb-5 bg-white rounded" src="'.$file.'" width="200" height="200" alt="" />';
 													}
 											}
 										}
@@ -109,7 +103,7 @@ date_default_timezone_set('America/Mexico_City');
 											echo "Error: " . $sql . "<br>" . $conn->error;
 										}							
 									echo '</div>';
-									echo '<div class="col-sm-12">';
+									echo '<div class="col-sm-12 mb-4">';
 										if($sess){
 											if($creation == ''){
 												echo '<span>Aun no añades tu descripcion <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button></span>';
