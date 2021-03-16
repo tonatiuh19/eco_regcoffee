@@ -41,7 +41,7 @@ require_once('cn.php');
     <meta property="og:type"               content="profile" />
     <meta property="og:title"              content="Apoya a '.$uName.' y regálale un cafe" />
     <meta property="og:description"        content="Forma sencilla y significativa de apoyar su trabajo" />
-    <meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />';
+    <meta property="og:image"              content="../shareImage.png" />';
   ?>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
