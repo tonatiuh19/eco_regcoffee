@@ -41,107 +41,200 @@ date_default_timezone_set('America/Mexico_City');
 				$uName = $last_word;
 			}
 
-			$folder_path = "../".$uName."/profile/";
-			if (!file_exists($folder_path)) {
-					if($sess){
-						echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
-							<img class="masthead-avatar mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="220" alt="" />';
-						echo '<button type="button" class="btn btn-warning p-1 delete-image" data-toggle="modal" data-target="#editarme" style="position:absolute;bottom:50px;right:2px;margin:0;"><i class="fas fa-pencil-alt"></i></button>';
-						echo '</a>';
-					}else{
-						echo '<img class="masthead-avatar mb-2 rounded" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="220" alt="" />';
-					}
-				
-			}else{
-				foreach(glob('../'.$uName.'/profile/*.{jpg,png}', GLOB_BRACE) as $file) {
-					if (preg_match('/(\.jpg|\.jpeg|\.png|\.bmp)$/', $file)) {
-							if($sess){
-								echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
-								<img class="masthead-avatar mb-2 rounded" src="'.$file.'" width="220" alt="" />';
-								echo '<button type="button" class="btn btn-warning p-1 delete-image" data-toggle="modal" data-target="#editarme" style="position:absolute;bottom:50px;right:2px;margin:0;"><i class="fas fa-pencil-alt"></i></button>';
-								echo '</a>';
-							}else{
-								echo '<img class="masthead-avatar mb-2 rounded" src="'.$file.'" width="220" alt="" />';
-							}
-					}
-				}
-			}
-			$sqlz = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.price, b.id_user, b.name, b.last_name, b.about, b.creation, b.extra FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=2 AND b.user_name='".$uName."'";
-			$resultz = $conn->query($sqlz);
+			echo '<div class="container bg-light rounded">
+					<div class="row">
+						<div class="col-lg-7 col-sm-12 col-md-5">';
+						echo '<div class="container">
+								<div class="row">
+									<div class="col-sm-12">';
+									$folder_path = "../".$uName."/profile/";
+									if (!file_exists($folder_path)) {
+											if($sess){
+												echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
+													<img class="masthead-avatar m-4 rounded-circle" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="220" alt="" />';
+												echo '<button type="button" class="btn btn-warning p-1 delete-image z-depth-2" data-toggle="modal" data-target="#editarme" style="position:absolute;bottom:50px;right:2px;margin:0;"><i class="fas fa-pencil-alt"></i></button>';
+												echo '</a>';
+											}else{
+												echo '<img class="masthead-avatar m-4 rounded-circle z-depth-2" src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" width="220" alt="" />';
+											}
+										
+									}else{
+										foreach(glob('../'.$uName.'/profile/*.{jpg,png}', GLOB_BRACE) as $file) {
+											if (preg_match('/(\.jpg|\.jpeg|\.png|\.bmp)$/', $file)) {
+													if($sess){
+														echo '<a data-toggle="modal" href="#editarme" style="position:relative;">
+														<img class="masthead-avatar m-4 rounded-circle" src="'.$file.'" width="220" alt="" />';
+														echo '<button type="button" class="btn btn-warning p-1 delete-image z-depth-2" data-toggle="modal" data-target="#editarme" style="position:absolute;bottom:50px;right:2px;margin:0;"><i class="fas fa-pencil-alt"></i></button>';
+														echo '</a>';
+													}else{
+														echo '<img class="m-4 rounded-circle border-3 border-primary shadow mb-5 bg-white rounded" src="'.$file.'" width="200" alt="" />';
+													}
+											}
+										}
+									}
+									echo '</div>';
+									echo '<div class="col-sm-12">';		
+										$sqlz = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.price, b.id_user, b.name, b.last_name, b.about, b.creation, b.extra FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=2 AND b.user_name='".$uName."'";
+										$resultz = $conn->query($sqlz);
 
-			if ($resultz->num_rows > 0) {
-				// output data of each row
-				while($rowz = $resultz->fetch_assoc()) {
-					$idExtra = $rowz["id_extra"];
-					$titleExtra = $rowz["title"];
-					$descriptionExtra = $rowz["description"];
-					$confirmationExtra = $rowz["confirmation"];
-					$priceExtra = $rowz["price"];
-					$name = $rowz["name"];
-					$lname = $rowz["last_name"];
-					$about = $rowz["about"];
-					$creation = $rowz["creation"];
-					$extra = $rowz["extra"];
-					$userID = $rowz["id_user"];
-				}
-			}
-			$mon = trim($priceExtra, '$');
-			$mon = str_replace( ',', '', $mon );
-			$money = $mon+ 0;
-			echo '<input type="hidden" value="'.$money.'" id="hiddenExtra">';
-			
-			echo '<h1 class="masthead-heading mb-0">'.$uName.'</h1>';
-			$today = date("Y-m-d H:i:s");
-			$sqlh = "INSERT INTO visitors_users (id_user, date)
-			VALUES ('$userID', '$today')";
+										if ($resultz->num_rows > 0) {
+											// output data of each row
+											while($rowz = $resultz->fetch_assoc()) {
+												$idExtra = $rowz["id_extra"];
+												$titleExtra = $rowz["title"];
+												$descriptionExtra = $rowz["description"];
+												$confirmationExtra = $rowz["confirmation"];
+												$priceExtra = $rowz["price"];
+												$name = $rowz["name"];
+												$lname = $rowz["last_name"];
+												$about = $rowz["about"];
+												$creation = $rowz["creation"];
+												$extra = $rowz["extra"];
+												$userID = $rowz["id_user"];
+											}
+										}
+										$mon = trim($priceExtra, '$');
+										$mon = str_replace( ',', '', $mon );
+										$money = $mon+ 0;
+										echo '<input type="hidden" value="'.$money.'" id="hiddenExtra">';
+										
+										echo '<span class="btn btn-primary mb-2 p-1" style="text-transform: none;"><h2 class="masthead-heading ">'.$uName.'</h2></span>';
+										$today = date("Y-m-d H:i:s");
+										$sqlh = "INSERT INTO visitors_users (id_user, date)
+										VALUES ('$userID', '$today')";
 
-			if ($conn->query($sqlh) === TRUE) {
-				//echo "New record created successfully";
-			} else {
-				echo "Error: " . $sql . "<br>" . $conn->error;
-			}
-			if($sess){
-				if($creation == ''){
-					echo '<span>Aun no añades tu descripcion <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button></span>';
-				}else{
-					echo '<span>'.$creation.' <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button></span>';
-				}
-			}else{
-				if($creation == ''){
-					echo '<span>Creador maravilloso</span>';
-				}else{
-					echo '<span>'.$creation.'</span>';
-				}
-				
-			}
-			
-			echo '<div class="divider-custom divider-light">
-				<div class="divider-custom-line"></div>
-					<div class="divider-custom-icon"><i class="fas fa-star text-primary"></i></div>
-					<div class="divider-custom-line"></div>
-				</div>
-			';
-			if($sess){
-				if($about == ''){
-					echo '<p class="masthead-subheading font-weight-light mb-0">Escribe que haces, tu pasion, tu dedicacion, etc. <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button></p>';
-				}else{
-					echo '<p class="masthead-subheading font-weight-light mb-0">'.$about.'</p>';
-				}
-			}else{
-				if($about == ''){
-					echo '<p class="masthead-subheading font-weight-light mb-0">¡Oye!, acabo de crear una página aquí. ¡Ahora puedes invitarme a un café!</p>';
-				}else{
-					echo '<p class="masthead-subheading font-weight-light mb-0">'.$about.'</p>';
-				}
-				
-			}
-			
+										if ($conn->query($sqlh) === TRUE) {
+											//echo "New record created successfully";
+										} else {
+											echo "Error: " . $sql . "<br>" . $conn->error;
+										}							
+									echo '</div>';
+									echo '<div class="col-sm-12">';
+										if($sess){
+											if($creation == ''){
+												echo '<span>Aun no añades tu descripcion <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button></span>';
+											}else{
+												echo '<span>'.$creation.' <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button></span>';
+											}
+										}else{
+											if($creation == ''){
+												echo '<span>Creador maravilloso</span>';
+											}else{
+												echo '<span>'.$creation.'</span>';
+											}
+											
+										}
+										echo '<hr>
+										';
+
+										if($sess){
+											if($about == ''){
+												echo '<p class="masthead-subheading font-weight-light mb-0">Escribe que haces, tu pasion, tu dedicacion, etc. <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button></p>';
+											}else{
+												echo '<p class="masthead-subheading font-weight-light mb-0">'.$about.'</p>';
+											}
+										}else{
+											if($about == ''){
+												echo '<p class="masthead-subheading font-weight-light mb-0">¡Oye!, acabo de crear una página aquí. ¡Ahora puedes invitarme a un café!</p>';
+											}else{
+												echo '<p class="masthead-subheading font-weight-light mb-0">'.$about.'</p>';
+											}
+											
+										}
+										
+									echo '</div>';
+									
+								echo '</div>
+							</div>';
+						
+						echo '</div>
+						<div class="col-lg-5 col-sm-12 col-md-7">'; ?>
+							<div class="card mt-5">
+								<div class="card-body">
+									<?php
+									echo '<h6 class="card-title">Apoya a <strong>'.$uName.'</strong> comprandole un cafe o mas</h6>';
+									?>
+									<form action="../thanks/" method="post">
+										<div class="row stock-images d-flex">
+											<div class="col-2 h-100 justify-content-center align-items-center">
+												<i class="fas fa-mug-hot fa-3x text-primary"></i>
+											</div>
+											<div class="col-1 center0">
+												<i class="fas fa-times"></i>
+											</div>
+											<div class="col-2"><input id="test0" name="same-group-name" class="radiosImg" type="radio" value="1" checked="checked" />
+												<label for="test0">
+													<span class="image fa-stack text-dark ">
+														<strong class="fa-stack-1x text-white mt-2" style="font-size:180%;">
+															1
+														</strong>
+													</span>
+												</label>
+											</div>
+											<div class="col-2"><input id="test1" name="same-group-name" class="radiosImg" type="radio" value="3" />
+												<label for="test1">
+													<span class="image fa-stack text-dark ">
+														<strong class="fa-stack-1x text-white mt-2" style="font-size:180%;">
+															3
+														</strong>
+													</span>
+												</label>
+											</div>
+											<div class="col-2"><input id="test2" name="same-group-name" class="radiosImg" type="radio" value="5" />
+												<label for="test2">
+													<span class="image fa-stack text-dark ">
+														<strong class="fa-stack-1x text-white mt-2" style="font-size:180%;">
+															5
+														</strong>
+													</span>
+												</label>
+											</div>
+											<div class="col-3 h-100 justify-content-center align-items-center">
+												<input type="number" min="1" class="form-control rounded text-center font-weight-bold" width="48" heigth="48" name="qty" id="valueRadioGive" value="1" placeholder="10" required>
+											</div>
+										</div>
+										<?php
+										if($sess){
+										echo '<button type="button" class="btn btn-warning p-1 float-right" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button>';
+										}
+										?>
+										<div class="row">
+											<div class="col-sm-12">
+												<?php
+												echo '<button type="button" class="btn btn-success col-sm-12 text-white" id="btnPayCoffee" data-toggle="modal" data-target="#apoyar">Apoyar <i class="fas fa-dollar-sign"></i> <strong style="font-size:120%;" id="valueBtnExtra">'.$money.'</strong></button>';
+												?>
+												<?php
+												echo '<script>var btnPay = document.getElementById("btnPayCoffee");
+												btnPay.addEventListener("click", function(){
+													document.getElementById("titlePay").innerHTML = "Apoyando a <b>'.$uName.'</b>"; 
+													document.getElementById("titlePaying").innerHTML = "Apoyando a <b>'.$uName.'</b>"; 
+													$("#preguntaSection").hide();
+													$("#preguntaSection2").hide();
+													document.getElementById("questionAnswer").removeAttribute("required");
+													document.getElementById("questionAnswer2").removeAttribute("required");
+													document.getElementById("payType").value = "1";
+													var prriceCoffee = document.getElementById("valueBtnExtra").innerText;
+													document.getElementById("amountCoffe").value = prriceCoffee;
+													document.getElementById("amountCoffe2").value = prriceCoffee;
+													document.getElementById("id-extra").value = "'.$idExtra.'";
+													document.getElementById("id-extra2").value = "'.$idExtra.'";
+													document.getElementById("descripcionPay").value = "Coffee for: '.$userID.'";
+													document.getElementById("descripcionPay2").value = "Coffee for: '.$userID.'";
+												});</script>';
+												?>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						<?php echo '</div>
+					</div>
+				</div>';
 			echo '
 			</div>';
-		
 		?>
 		<p></p>
-		<div class="container">
+		<div class="container mt-4">
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
@@ -152,7 +245,9 @@ date_default_timezone_set('America/Mexico_City');
 								</li>
 								<?php
 									$sqle = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.limit_slots, a.price, a.question, a.subsciption, a.subsciption_id FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=1 AND a.active <>2 AND b.user_name='".$uName."' order by a.subsciption desc";
+									$sqleTop = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.limit_slots, a.price, a.question, a.subsciption, a.subsciption_id FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=1 AND a.active <>2 AND b.user_name='".$uName."' order by RAND() LIMIT 3";
 									$resulte = $conn->query($sqle);
+									$resultTop = $conn->query($sqleTop);
 									
 									if ($resulte->num_rows > 0) {
 										echo '<li class="nav-item">
@@ -167,87 +262,104 @@ date_default_timezone_set('America/Mexico_City');
 								<div class="tab-pane active" id="description" role="tabpanel">
 									<div class="row">
 										
-										<div class="col-sm-5">
-											<div class="card">
-												<div class="card-body">
-													<?php
-														echo '<h6 class="card-title">Apoya a <strong>'.$uName.'</strong> comprandole un cafe o mas</h6>';
-													?>
-													<form action="../thanks/" method="post">
-														<div class="row stock-images d-flex">
-															<div class="col-2 h-100 justify-content-center align-items-center">
-																<i class="fas fa-mug-hot fa-3x text-primary"></i>
-															</div>
-															<div class="col-1 center0">
-																<i class="fas fa-times"></i>
-															</div>
-															<div class="col-2"><input id="test0" name="same-group-name" class="radiosImg" type="radio" value="1" checked="checked" /><label for="test0">
-																<span class="image fa-stack text-dark ">
-																	<strong class="fa-stack-1x text-white mt-2" style="font-size:180%;">
-																		1
-																	</strong>
-																</span>
-																</label>
-															</div>
-															<div class="col-2"><input id="test1" name="same-group-name" class="radiosImg" type="radio" value="3" /><label for="test1">
-																<span class="image fa-stack text-dark ">
-																	<strong class="fa-stack-1x text-white mt-2" style="font-size:180%;">
-																		3
-																	</strong>
-																</span>
-																</label>
-															</div>
-															<div class="col-2"><input id="test2" name="same-group-name" class="radiosImg" type="radio" value="5" /><label for="test2">
-																<span class="image fa-stack text-dark ">
-																	<strong class="fa-stack-1x text-white mt-2" style="font-size:180%;">
-																		5
-																	</strong>
-																</span>
-																</label>
-															</div>
-															<div class="col-3 h-100 justify-content-center align-items-center">
-    															<input type="number" min="1" class="form-control rounded text-center font-weight-bold" width="48" heigth="48" name="qty" id="valueRadioGive" value="1" placeholder="10" required>
-															</div>
-														</div>
-														<?php
-															if($sess){
-																echo '<button type="button" class="btn btn-warning p-1 float-right" data-toggle="modal" data-target="#editarme"><i class="fas fa-pencil-alt"></i></button>';
-															}
-														?>
-														<div class="row">
-															<div class="col-sm-12">
-																<?php
-																	echo '<button type="button" class="btn btn-success col-sm-12 text-white" id="btnPayCoffee" data-toggle="modal" data-target="#apoyar">Apoyar <i class="fas fa-dollar-sign"></i> <strong style="font-size:120%;" id="valueBtnExtra">'.$money.'</strong></button>';
-																?>
-																<?php
-																	echo '<script>var btnPay = document.getElementById("btnPayCoffee");
-																	btnPay.addEventListener("click", function(){
-																	   document.getElementById("titlePay").innerHTML = "Apoyando a <b>'.$uName.'</b>"; 
-																	   document.getElementById("titlePaying").innerHTML = "Apoyando a <b>'.$uName.'</b>"; 
-																	   $("#preguntaSection").hide();
-																	   $("#preguntaSection2").hide();
-																		document.getElementById("questionAnswer").removeAttribute("required");
-																		document.getElementById("questionAnswer2").removeAttribute("required");
-																		document.getElementById("payType").value = "1";
-																		var prriceCoffee = document.getElementById("valueBtnExtra").innerText;
-																		document.getElementById("amountCoffe").value = prriceCoffee;
-																		document.getElementById("amountCoffe2").value = prriceCoffee;
-																		document.getElementById("id-extra").value = "'.$idExtra.'";
-																		document.getElementById("id-extra2").value = "'.$idExtra.'";
-																		document.getElementById("descripcionPay").value = "Coffee for: '.$userID.'";
-																		document.getElementById("descripcionPay2").value = "Coffee for: '.$userID.'";
-																	});</script>';
-																?>
-															</div>
-														</div>
-													</form>
-													
-												</div>
-											</div>
+										<div class="col-lg-5 col-sm-12 col-md-5">
+											<?php
+											if ($resulte->num_rows > 0) {
+												echo '<div class="container">
+													<div class="row">
+														<div class="col-sm-12">';
+														while($rowTop = $resultTop->fetch_assoc()) {
+															$q = 1;
+															echo '<div class="card mt-2">
+																<div class="card-body">
+																	<h5 class="card-title">'.$rowTop["title"].'</h5>';
+																	echo '<p class="bg-primary p-1 text-white rounded">'.$rowTop["description"].'</p>';		
+																	if($rowTop["subsciption"]=="1"){
+																		echo '<h6 class="card-subtitle mb-2 text-muted">Por solo: '.$rowTop["price"].' al mes</h6>';
+																	}else{
+																		echo '<h6 class="card-subtitle mb-2 text-muted">Por solo: '.$rowTop["price"].'</h6>';
+																	}												
+																	if($rowTop["limit_slots"] != "0"){
+																		
+																		$sqlp = "SELECT id_payments FROM payments WHERE id_extra=".$rowTop["id_extra"]." and status='completed'";
+																		$resultp = $conn->query($sqlp);
+				
+																		if ($resultp->num_rows > 0) {
+																			$p=0;
+																			while($rowp = $resultp->fetch_assoc()) {
+																				$p++;
+																			}
+																			$q = $rowTop["limit_slots"] - $p;
+																			echo 'Quedan '.$q.'<br>';
+																		} else {
+																			echo 'Quedan '.$rowTop["limit_slots"].'<br>';
+																		}
+																		
+																	}
+																	if($rowTop["subsciption"] == "1"){
+																		if($q <= 0){
+																			echo '<button class="btn btn-success btn-sm p-1 text-white" disabled>Agotado</button>';
+																		}else{
+																			echo '<button class="btn btn-success btn-sm p-1 text-white" id="btnPayCoffee'.$rowTop["id_extra"].'" data-toggle="modal" data-target="#apoyar">Suscribete por <strong>'.$rowTop["price"].'</strong></button>';
+																		}
+																	}else{
+																		if($q <= 0){
+																			echo '<button class="btn btn-success btn-sm p-1 text-white" disabled>Agotado</button>';
+																		}else{
+																			echo '<button class="btn btn-success btn-sm p-1 text-white" id="btnPayCoffee'.$rowTop["id_extra"].'" data-toggle="modal" data-target="#apoyar">Comprar <strong>'.$rowTop["price"].'</strong></button>';
+																		}
+																	}
+																	
+				
+																	echo '<script>var btnPay'.$rowTop["id_extra"].' = document.getElementById("btnPayCoffee'.$rowTop["id_extra"].'");
+																				btnPay'.$rowTop["id_extra"].'.addEventListener("click", function(){
+																				document.getElementById("titlePay").innerHTML = "<b>'.$rowTop["title"].'</b>"; 
+																				document.getElementById("titlePaying").innerHTML = "<b>'.$rowTop["title"].'</b>";
+																				document.getElementById("amountCoffe").value = "'.$rowTop["price"].'";
+																				document.getElementById("amountCoffe2").value = "'.$rowTop["price"].'";
+																				document.getElementById("titleExtraval").value = "'.$rowTop["title"].'";
+																				document.getElementById("titleExtraval2").value = "'.$rowTop["title"].'";
+																				document.getElementById("id-extra").value = "'.$rowTop["id_extra"].'";
+																				document.getElementById("id-extra2").value = "'.$rowTop["id_extra"].'";
+																				document.getElementById("descripcionPay").value = "'.$rowTop["title"].' from: '.$userID.'";
+																				document.getElementById("descripcionPay2").value = "'.$rowTop["title"].' from: '.$userID.'";';
+																				
+																				if($rowTop["subsciption"] == "1"){
+																					echo 'document.getElementById("payType").value = "2";';
+																					echo 'document.getElementById("subsid").value = "'.$rowTop["subsciption_id"].'";';
+																					echo 'document.getElementById("subsid2").value = "'.$rowTop["subsciption_id"].'";';
+																					echo 'document.getElementById("btnPaypalDiv").style.display = "none";';
+																				}else{
+																					echo 'document.getElementById("payType").value = "1";';
+																					echo 'document.getElementById("btnPaypalDiv").style.display = "block";';
+																				}
+				
+																				if($rowTop["question"] == ""){
+																					echo '$("#preguntaSection").hide();
+																					$("#preguntaSection2").hide();
+																					document.getElementById("questionAnswer").removeAttribute("required");
+																					document.getElementById("questionAnswer2").removeAttribute("required");';
+																				}else{
+																					echo '$("#preguntaSection").show();
+																					$("#preguntaSection2").show();
+																					document.getElementById("questionAnswer").setAttribute("required", "");
+																					document.getElementById("questionAnswer2").setAttribute("required", "");
+																					document.getElementById("questionLabel").innerHTML = "<b>'.$rowTop["question"].'</b>";
+																					document.getElementById("questionLabel2").innerHTML = "<b>'.$rowTop["question"].'</b>";';
+																				}
+																			echo '});</script>';
+																	echo '</div>
+															</div>';
+														
+														}
+														echo '</div>
+													</div>
+												</div>';
+											}
+											?>
+											
 											<p></p>
 											<div class="container">
-												
-												
 												<?php
 													$sqlf = "SELECT a.id_users_posts, a.is_deleted, a.text, a.date FROM users_posts as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='".$uName."' AND a.is_deleted=0";
 													$resultf = $conn->query($sqlf);
@@ -287,7 +399,7 @@ date_default_timezone_set('America/Mexico_City');
 												?>	
 											</div>
 										</div>
-										<div class="col-sm-7">
+										<div class="col-lg-7 col-sm-12 col-md-7">
 											<?php
 												$sqlk = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='".$uName."' AND a.status='completed'";
 												$resultk = $conn->query($sqlk);
@@ -356,7 +468,7 @@ date_default_timezone_set('America/Mexico_City');
 											echo '<div class="card col-sm-3 m-1 p-3">
 												<div class="card-body">
 													<h5 class="card-title">'.$rowe["title"].'</h5>';
-													echo '<p class="font-italic bg-dark p-1 text-white rounded">'.$rowe["description"].'</p>';		
+													echo '<p class="bg-primary p-1 text-white rounded">'.$rowe["description"].'</p>';		
 													if($rowe["subsciption"]=="1"){
 														echo '<h6 class="card-subtitle mb-2 text-muted">Por solo: '.$rowe["price"].' al mes</h6>';
 													}else{
