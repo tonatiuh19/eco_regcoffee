@@ -35,8 +35,10 @@ if (isset($_SESSION['uname'])) {
 
   <link rel="stylesheet" href="css/aos.css">
 
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/imgindex.css">
+
+  <link rel="stylesheet" href="css/imageMain.css">
+  <link rel="stylesheet" href="css/index.css">
 
   <link href="css/fontawesome/css/all.css" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -62,369 +64,431 @@ if (isset($_SESSION['uname'])) {
 
   <div class="site-wrap">
 
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a href="../" class="navbar-brand"><img class="img-fluid" width="200" src="images/logo.png" alt="regalameuncafe.com"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a href="explorar/" class="nav-link">Explora creadores</a></li>
+            <li class="nav-item"><a data-toggle="modal" href="" data-target="#iniciarSesion" class="nav-link border border-primary rounded p-2">Entrar</a></li>
+            <li class="nav-item"><a data-toggle="modal" href="" data-target="#crearCuenta" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-primary"></i></a></li>
+          </ul>
         </div>
       </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-
-
-    <header class="site-navbar light js-sticky-header site-navbar-target" role="banner">
-
-      <div class="container">
-        <div class="row align-items-center">
-
-          <div class="col-6 col-xl-2">
-            <div class="mb-0 site-logo"><a href="../" class="mb-0"><img class="img-fluid" src="images/logo.png" alt="regalameuncafe.com"></a></div>
-          </div>
-
-          <div class="col-12 col-md-10 d-none d-xl-block">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-
-                <li><a href="explorar/" class="nav-link">Explora creadores</a></li>
-                <li><a data-toggle="modal" href="" data-target="#iniciarSesion" class="nav-link border border-primary rounded p-2">Entrar</a></li>
-                <li><a data-toggle="modal" href="" data-target="#crearCuenta" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-primary"></i></a></li>
-              </ul>
-            </nav>
-          </div>
-
-
-          <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3 text-black"></span></a></div>
-
-        </div>
-      </div>
-
-    </header>
+    </nav>
 
 
 
-    <div class="hero-v1">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 mr-auto text-center text-lg-left">
-            <span class="d-block subheading">A tus fans les va a encantar</span>
-            <h1 class="heading mb-3">Forma sencilla y significativa de financiar tu trabajo creativo</h1>
-            <p class="mb-5">Puedes aceptar apoyo de tus membresías, webinars, zooms, recibir un cafe, etc y construir una relación directa con tus fans.</p>
-            <p class="mb-4">
-            <div class="input-group input-focus">
-              <div class="input-group-prepend">
-                <span class="input-group-text bg-white font-weight-bold phoneStyling">regalameuncafe.com/</span>
-              </div>
-              <input type="search" placeholder="tunombre" class="form-control border-left-0 phoneStylingInput" name="username" id="username" autofocus="autofocus" autocomplete="off">
-              <div class="input-group-append">
-                <button class="btn btn-primary btn-outline-white phoneStylingBtn" type="button" id="comenzarBtn" data-toggle="modal" data-target="#comenzar" disabled>Empezar <i class="fas fa-play"></i></button>
-              </div>
-            </div>
-            <div id="uname_response"></div>
-            <div class="alert alert-danger" role="alert" id="alertExist"><small>Este nombre de usuario ya existe :(</small></div>
-            <small id="emailHelp" class="form-text text-muted">Es gratis y toma menos de un minuto</small>
-            </p>
-            <img src="images/creator.png" alt="Image" class="img-fluid" id="img-phone" width="420">
 
-
-          </div>
-          <div class="col-lg-6">
-            <figure class="illustration">
-              <img src="images/creator.png" alt="Image" class="img-fluid" id="imgChangeBorder">
-            </figure>
-          </div>
-          <div class="col-lg-6"></div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- MAIN -->
-
-    <div class="site-section stats">
-      <div class="container">
-        <div class="row mb-3">
-          <div class="col-lg-7 text-center mx-auto">
-            <!--<h2 class="section-heading">Diseñado para personas, no para empresas</h2>
-            <p>Comparte contenido exclusivo o simplemente brinda una forma de respaldar tu trabajo</p>-->
-            <h2 class="section-heading">Dale a tu audiencia una forma fácil de agradecer</h2>
-            <p>Comparte contenido exclusivo o simplemente brinda una forma de respaldar tu trabajo. Con solo un par de clicks, tus fans pueden comprarte un café, comprarte una membresia a tus "close friends" en instagram, comprar un e-book, etc, mas aparte dejar un mensaje. <span class="font-weight-bold"><u>Ni siquiera tienen que crear una cuenta.</u></span></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="data">
-              <span class="icon text-primary">
-                <span class="fas fa-magic"></span>
-              </span>
-              <strong class="d-block number">Control Total</strong>
-              <span class="label">Tienes el 100% de propiedad de tus seguidores. Nunca les enviamos correos electrónicos y puede exportar la lista cuando lo desees.</span>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="data">
-              <span class="icon text-primary">
-                <span class="fas fa-users"></span>
-              </span>
-              <strong class="d-block number">Conciente a los tuyos</strong>
-              <span class="label">Comienza una subcripcion para tus fans. Material exclusivo, apoyo mensual, acceso a codigo, etc.</span>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="data">
-              <span class="icon text-primary">
-                <span class="fas fa-heart"></span>
-              </span>
-              <strong class="d-block number">Servicio insuperable</strong>
-              <span class="label">Se te pagara instantáneamente en 24 horas a tu cuenta. Puedes hablar siempre con un humano para que te ayude, o si solo quieres un consejo para arrancar a toda velocidad.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site-section bg-primary-light">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-
-            <div class="row">
-              <div class="col-6 col-lg-6 mt-lg-5">
-                <div class="media-v1 bg-1">
-                  <img src="images/instagramCreator.png" class="img-fluid">
-                  <!--<div class="body">
-                    <h3>Stay at home</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>
-                  </div>-->
-                </div>
-                <div class="media-v1 bg-1">
-                  <img src="images/githubCreator.png" class="img-fluid">
-                </div>
-
-              </div>
-              <div class="col-6 col-lg-6">
-                <div class="media-v1 bg-1">
-                  <img src="images/youtubeCreator.png" class="img-fluid">
-                </div>
-                <div class="media-v1 bg-1">
-                  <img src="images/facebookCreator.png" class="img-fluid">
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="col-lg-5 ml-auto">
-            <h2 class="section-heading mb-4">Incluye tu link en todos lados</h2>
-            <p>Dale la oportunidad a tu audiencia de agradecerte en todos lados, en todos los sitios donde tienes presencia.</p>
-            <ul class="list-check list-unstyled mb-5">
-              <li>Simple</li>
-              <li>Rapido</li>
-              <li>Ergonomico en User Experience</li>
-            </ul>
-
-            <p><a data-toggle="modal" href="" data-target="#iniciarSesion" class="btn btn-primary">Entrar</a> <a data-toggle="modal" href="" data-target="#crearCuenta" class="btn btn-primary">Registrate</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site-section bg-primary-light">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-lg-7 mx-auto text-center">
-            <span class="subheading">Eleva tus ingresos</span>
-            <h2 class="mb-4 section-heading">Incluye Extras, la forma creativa de vender y ofrecer mas de tu servicios</h2>
-            <p>Como por ejemplo:</p>
-          </div>
-        </div>
-
-
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
+    <div class="py-5">
+      <div class="container pt-5">
+        <div class="row ">
+          <div class="col-sm-7">
+            <div class="container">
               <div class="row">
-                <div class="col-lg-6 mb-4">
-                  <div class="symptom d-flex">
-
-                    <div class="text">
-
-                      <p>
-                      <h3><i class="fas fa-gifts"></i> Consultas 1:1</h3>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="symptom d-flex">
-
-                    <div class="text">
-
-                      <p>
-                      <h3><i class="fas fa-gifts"></i> Acceso a tus close friends con subscripcion por mes</h3>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="symptom d-flex">
-
-                    <div class="text">
-
-                      <p>
-                      <h3><i class="fas fa-gifts"></i> Acceso a un grupo privado de Wtsp/Telegram</h3>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-lg-6 mb-4">
-                  <div class="symptom d-flex">
-
-                    <div class="text">
-
-                      <p>
-                      <h3><i class="fas fa-gifts"></i> Vender playeras</h3>
-                      </p>
-                    </div>
-                  </div>
+                <div class="col-sm">
+                  <h3>A tus fans les va encantar</h3>
                 </div>
               </div>
-            </div>
-            <div class="carousel-item">
               <div class="row">
-                <div class="col-lg-6 mb-4">
-                  <div class="symptom d-flex">
-
-                    <div class="text">
-
-                      <p>
-                      <h3><i class="fas fa-gifts"></i> Post en twitter</h3>
-                      </p>
-                    </div>
-                  </div>
+                <div class="col-sm">
+                  <h1 class="fw-bolder">
+                    Forma sencilla y significativa de financiar tu trabajo
+                    creativo
+                  </h1>
                 </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="symptom d-flex">
-
-                    <div class="text">
-
-                      <p>
-                      <h3><i class="fas fa-gifts"></i> Story en instagram</h3>
-                      </p>
-                    </div>
-                  </div>
+              </div>
+              <div class="row pt-4">
+                <div class="col-sm">
+                  <h5>
+                    Puedes aceptar apoyo de tus membresías, webinars, zooms,
+                    recibir un cafe, etc. Poder construir una relación directa
+                    con tus fans.
+                  </h5>
                 </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="symptom d-flex">
-
-                    <div class="text">
-
-                      <p>
-                      <h3><i class="fas fa-gifts"></i> Ebooks</h3>
-                      </p>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <div class="input-group">
+                    <div class="input-group-text">
+                      regalameuncafe.com/
                     </div>
+
+                    <input type="search" placeholder="tunombre" class="form-control border-left-0 phoneStylingInput" name="username" id="username" autofocus="autofocus" autocomplete="off">
+                    <button class="btn btn-primary btn-outline-white phoneStylingBtn" type="button" id="comenzarBtn" data-toggle="modal" data-target="#comenzar" disabled>Empezar <i class="fas fa-play"></i></button>
                   </div>
-                </div>
-
-                <div class="col-lg-6 mb-4">
-                  <div class="symptom d-flex">
-
-                    <div class="text">
-
-                      <p>
-                      <h3 class="text-danger">Y lo que a ti se te ocurra...</h3>
-                      </p>
-                    </div>
+                  <p class="fs-6 fw-light mt-1">
+                    Es gratis y toma menos de un minuto.
+                  <div class="badge bg-danger text-wrap" id="alertExist">
+                    El nombre de usuario ya existe
+                    <ImSad2 />
                   </div>
+                  </p>
                 </div>
               </div>
             </div>
-
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-
-        <!--<div class="row justify-content-md-center">
-            <p>
-              <a href="#" class="btn btn-primary">Entrar</a>
-            </p>
-        </div>-->
-      </div>
-    </div>
-
-
-    <div class="site-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-lg-7 mx-auto text-center">
-            <h2 class="mb-4 section-heading">De creadores para creadores</h2>
-            <h3>Hecho con <i class="icon-heart text-danger" aria-hidden="true"></i> para Mexico y Latinoamerica.</h3><br>
-            <div class="img-blur">
-              <img src="https://media.giphy.com/media/yoJC2El7xJkYCadlWE/giphy.gif" class="img-fluid" id='movieImg' alt="Para ti">
-            </div>
-            <br>
-
-            <p><a data-toggle="modal" href="" data-target="#crearCuenta" class="btn btn-primary btn-sm">Comenzar mi pagina</a></p>
+          <div class="col-sm-5">
+            <img src="images/creator.png" class="img-fluid vert-move" />
           </div>
         </div>
       </div>
     </div>
 
-    <div class="site-footer">
-      <div class="container">
+    <div class="bg-light py-5">
+      <div class="container py-5">
         <div class="row">
-          <div class="col-lg-4">
-            <h2 class="footer-heading mb-4">Escribenos:</h2>
-            <p><a href="mailto:dihola@regalameuncafe.com">dihola@regalameuncafe.com</a></p>
-            <div class="my-5">
-              <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+          <div class="col-sm text-center">
+            <span class="fas fa-magic"></span>
+            <h4 class="fw-bolder">Control total</h4>
+            <h5 class="fs-5 pt-2">
+              Tienes el 100% de propiedad de tus seguidores. Nunca les
+              enviamos correos electrónicos y puede exportar la lista cuando
+              lo desees.
+            </h5>
+          </div>
+          <div class="col-sm text-center">
+            <span class="fas fa-users"></span>
+            <h4 class="fw-bolder">Conciente a los tuyos</h4>
+            <h5 class="fs-5 pt-2">
+              Comienza una suscripción para tus fans. material exclusivo,
+              apoyo mensual, acceso a código, etc.
+            </h5>
+          </div>
+          <div class="col-sm text-center">
+            <span class="fas fa-heart"></span>
+            <h4 class="fw-bolder">Servicio insuperable</h4>
+            <h5 class="fs-5 pt-2">
+              Puedes hablar siempre con un humano para que te ayude, o si solo
+              quieres un consejo para arrancar a toda velocidad.
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-5 bg-dark text-white">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-sm">
+            <FaHeartbeat fontSize="4.5em" />
+            <h2 class="fw-bolder py-3">
+              Dale a tu audiencia una forma fácil de agradecer
+            </h2>
+
+            <h5 class="px-5 fs-5">
+              Brinda una forma de respaldar tu trabajo. Con solo un par de
+              clicks, tus fans pueden apoyar tu creatividad, mas aparte dejar
+              un mensaje.
+              <p class="fw-bolder">
+                Ni siquiera tienen que crear una cuenta.
+              </p>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-light py-5">
+      <div class="container py-5">
+        <div class="row ">
+          <div class="flex-container">
+            <div class="flex-items col-sm-7">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <img src="./images/link_facebook.png" class="img-thumbnail border border-dark" />
+                  </div>
+                  <div class="col-sm">
+                    <img src="./images/link_instagram.png" class="img-thumbnail border border-dark" />
+                  </div>
+                  <div class="col-sm">
+                    <img src="./images/link_instagram.png" class="img-thumbnail border border-dark" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex-items col-sm-5">
+              <h2 class="fw-bolder pt-3">
+                Incluye tu link en todas partes
+              </h2>
+              <h5 class="fs-5 py-3">
+                Dale la oportunidad a tu audiencia de agradecerte en todos
+                lados, en todos los sitios donde tienes presencia.
+              </h5>
+              <div class="list-group bg-light">
+                <h5 class="fw-bolder">
+                  <i class="fas fa-arrow-alt-circle-right"></i> Simple
+                </h5>
+                <h5 class="fw-bolder">
+                  <i class="fas fa-arrow-alt-circle-right"></i> Rapido
+                </h5>
+                <h5 class="fw-bolder">
+                  <i class="fas fa-arrow-alt-circle-right"></i> Ergonomico UI/UX
+                </h5>
+              </div>
             </div>
           </div>
-          <div class="col-lg-8">
-            <div class="row">
-              <div class="col-lg-4">
-                &nbsp;
-              </div>
-              <div class="col-lg-4">
-                &nbsp;
-              </div>
-              <div class="col-lg-4">
-                <h2 class="footer-heading mb-4"></h2>
-                <ul class="list-unstyled">
-                  <li><a href="#">Terminos y condiciones</a></li>
-                  <li><a href="#">Politicas de privacidad</a></li>
-                  <li><a href="#">Empleo</a></li>
-                  <li><a href="#">FAQ</a></li>
-                </ul>
-              </div>
-            </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-sm">
+            <h2 class="fw-bolder py-3">Donde mas lo necesites</h2>
           </div>
         </div>
         <div class="row text-center">
-          <div class="col-md-12">
-            <div class="border-top pt-5">
-
-
+          <div class=" col-sm-4"></div>
+          <div class="col-sm-4 ">
+            <div class="slider bg-light">
+              <div class="slide-track">
+                <div class="slide">
+                  <i class="fab fa-facebook fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-instagram fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-github fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-youtube fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-dailymotion fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-google fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fas fa-podcast fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-spotify fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-tiktok fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-bitbucket fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-facebook fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-instagram fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-github fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-youtube fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-dailymotion fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-google fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fas fa-podcast fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-spotify fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-tiktok fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-bitbucket fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-facebook fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-instagram fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-github fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-youtube fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-dailymotion fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-google fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fas fa-podcast fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-spotify fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-tiktok fa-5x"></i>
+                </div>
+                <div class="slide">
+                  <i class="fab fa-bitbucket fa-5x"></i>
+                </div>
+              </div>
             </div>
           </div>
-
+          <div class="col-sm-4"></div>
         </div>
       </div>
     </div>
+
+    <div class="bg-dark text-white py-5">
+      <div class="container py-5">
+        <div class="row text-center">
+          <div class="col-sm-12">
+            <h5 class="fs-5">Eleva tus ingresos</h5>
+            <h2 class="fw-bolder">
+              Incluye Extras, la forma creativa de vender y ofrecer mas de tu
+              servicios
+            </h2>
+          </div>
+        </div>
+        <div class="row text-center">
+          <h5 class="fs-5 ">Como por ejemplo:</h5>
+          <div class="row row-cols-1 row-cols-md-2 g-4 text-dark text-start mt-n3">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title fw-bolder">
+                    <i class="fas fa-arrow-alt-circle-right"></i> Consulta 1:1
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title fw-bolder">
+                    <i class="fas fa-arrow-alt-circle-right"></i> Acceso a tus close friends con
+                    subscripcion por mes
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title fw-bolder">
+                    <i class="fas fa-arrow-alt-circle-right"></i> Acceso a un grupo privado de
+                    Wtsp/Telegram
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title fw-bolder">
+                    <i class="fas fa-arrow-alt-circle-right"></i> Post en twitter
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title fw-bolder">
+                    <i class="fas fa-arrow-alt-circle-right"></i> Story en instagram
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title fw-bolder">
+                    <i class="fas fa-arrow-alt-circle-right"></i> Ebooks
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-cols-1 row-cols-md g-4 text-dark">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title fw-bolder">
+                    <i class="fas fa-arrow-alt-circle-right"></i> Y lo que a ti se te ocurra...
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="bg-light py-5">
+      <div class="container py-5">
+        <div class="row text-center">
+          <div class="col-sm">
+            <h2 class="fw-bolder">De creadores para creadores</h2>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-sm">
+            <h2>
+              Hecho con
+              <i class="fas fa-heart text-danger"></i> para México y
+              Latinoamerica.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img class="imgFullWidth" src="./images/creativity.png"></img>
+
+
   </div>
 
-  </div> <!-- .site-wrap -->
+  <footer class="footer mt-auto py-3 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="flex-container-s">
+          <div class="flex-items-s col-sm">
+            <div class="col-sm">
+              <h5 class="fs-5">Escribenos:</h5>
+            </div>
+            <a href="#" class="btn btn-outline-light">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="btn btn-outline-light">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="btn btn-outline-light">
+              <i class="far fa-envelope-open"></i>
+            </a>
+          </div>
+          <div class="flex-items-s">
+            <div class="row">
+              <a class="btn btn-link text-white" href="#">
+                Terminos y condiciones
+              </a>
+            </div>
+            <div class="row">
+              <a class="btn btn-link text-white" href="#">
+                Aviso de privacidad
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/bootstrap.min.js"></script>
