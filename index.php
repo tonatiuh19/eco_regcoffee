@@ -2,18 +2,19 @@
 require_once('admin/cn.php');
 session_start();
 
-if (isset($_SESSION['uname'])){
-	echo ("<SCRIPT LANGUAGE='JavaScript'>
+if (isset($_SESSION['uname'])) {
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.location.href='mipagina/';
     </SCRIPT>");
 }
 ?>
 <!doctype html>
 <html lang="en">
+
 <head>
   <title>Regalame un Cafe</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap" rel="stylesheet">
 
@@ -47,6 +48,7 @@ if (isset($_SESSION['uname'])){
   <meta name="theme-color" content="#ffffff">
 
 </head>
+
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
 
@@ -69,7 +71,7 @@ if (isset($_SESSION['uname'])){
       <div class="site-mobile-menu-body"></div>
     </div>
 
-    
+
     <header class="site-navbar light js-sticky-header site-navbar-target" role="banner">
 
       <div class="container">
@@ -83,7 +85,7 @@ if (isset($_SESSION['uname'])){
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                
+
                 <li><a href="explorar/" class="nav-link">Explora creadores</a></li>
                 <li><a data-toggle="modal" href="" data-target="#iniciarSesion" class="nav-link border border-primary rounded p-2">Entrar</a></li>
                 <li><a data-toggle="modal" href="" data-target="#crearCuenta" class="nav-link">Registrate <i class="fas fa-arrow-circle-right text-primary"></i></a></li>
@@ -99,7 +101,7 @@ if (isset($_SESSION['uname'])){
 
     </header>
 
-    
+
 
     <div class="hero-v1">
       <div class="container">
@@ -127,7 +129,7 @@ if (isset($_SESSION['uname'])){
 
           </div>
           <div class="col-lg-6">
-            <figure class="illustration" >
+            <figure class="illustration">
               <img src="images/creator.png" alt="Image" class="img-fluid" id="imgChangeBorder">
             </figure>
           </div>
@@ -138,7 +140,7 @@ if (isset($_SESSION['uname'])){
 
 
     <!-- MAIN -->
-    
+
     <div class="site-section stats">
       <div class="container">
         <div class="row mb-3">
@@ -149,7 +151,7 @@ if (isset($_SESSION['uname'])){
             <p>Comparte contenido exclusivo o simplemente brinda una forma de respaldar tu trabajo. Con solo un par de clicks, tus fans pueden comprarte un café, comprarte una membresia a tus "close friends" en instagram, comprar un e-book, etc, mas aparte dejar un mensaje. <span class="font-weight-bold"><u>Ni siquiera tienen que crear una cuenta.</u></span></p>
           </div>
         </div>
-        <div class="row"> 
+        <div class="row">
           <div class="col-lg-4">
             <div class="data">
               <span class="icon text-primary">
@@ -189,26 +191,26 @@ if (isset($_SESSION['uname'])){
             <div class="row">
               <div class="col-6 col-lg-6 mt-lg-5">
                 <div class="media-v1 bg-1">
-                <img src="images/instagramCreator.png" class="img-fluid" >
+                  <img src="images/instagramCreator.png" class="img-fluid">
                   <!--<div class="body">
                     <h3>Stay at home</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>
                   </div>-->
                 </div>
                 <div class="media-v1 bg-1">
-                  <img src="images/githubCreator.png" class="img-fluid" >
+                  <img src="images/githubCreator.png" class="img-fluid">
                 </div>
-                
+
               </div>
               <div class="col-6 col-lg-6">
                 <div class="media-v1 bg-1">
-                  <img src="images/youtubeCreator.png" class="img-fluid" >
+                  <img src="images/youtubeCreator.png" class="img-fluid">
                 </div>
                 <div class="media-v1 bg-1">
-                  <img src="images/facebookCreator.png" class="img-fluid" >
+                  <img src="images/facebookCreator.png" class="img-fluid">
                 </div>
               </div>
-              
+
             </div>
           </div>
           <div class="col-lg-5 ml-auto">
@@ -235,7 +237,7 @@ if (isset($_SESSION['uname'])){
             <p>Como por ejemplo:</p>
           </div>
         </div>
-        
+
 
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
@@ -243,38 +245,46 @@ if (isset($_SESSION['uname'])){
               <div class="row">
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    
+
                     <div class="text">
-                      
-                      <p><h3><i class="fas fa-gifts"></i> Consultas 1:1</h3></p>
+
+                      <p>
+                      <h3><i class="fas fa-gifts"></i> Consultas 1:1</h3>
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    
+
                     <div class="text">
-                      
-                      <p><h3><i class="fas fa-gifts"></i> Acceso a tus close friends con subscripcion por mes</h3></p>
+
+                      <p>
+                      <h3><i class="fas fa-gifts"></i> Acceso a tus close friends con subscripcion por mes</h3>
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    
+
                     <div class="text">
-                      
-                      <p><h3><i class="fas fa-gifts"></i> Acceso a un grupo privado de Wtsp/Telegram</h3></p>
+
+                      <p>
+                      <h3><i class="fas fa-gifts"></i> Acceso a un grupo privado de Wtsp/Telegram</h3>
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    
+
                     <div class="text">
-                      
-                      <p><h3><i class="fas fa-gifts"></i> Vender playeras</h3></p>
+
+                      <p>
+                      <h3><i class="fas fa-gifts"></i> Vender playeras</h3>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -284,44 +294,52 @@ if (isset($_SESSION['uname'])){
               <div class="row">
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    
+
                     <div class="text">
-                      
-                      <p><h3><i class="fas fa-gifts"></i> Post en twitter</h3></p>
+
+                      <p>
+                      <h3><i class="fas fa-gifts"></i> Post en twitter</h3>
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    
+
                     <div class="text">
-                      
-                      <p><h3><i class="fas fa-gifts"></i> Story en instagram</h3></p>
+
+                      <p>
+                      <h3><i class="fas fa-gifts"></i> Story en instagram</h3>
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    
+
                     <div class="text">
-                      
-                      <p><h3><i class="fas fa-gifts"></i> Ebooks</h3></p>
+
+                      <p>
+                      <h3><i class="fas fa-gifts"></i> Ebooks</h3>
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div class="col-lg-6 mb-4">
                   <div class="symptom d-flex">
-                    
+
                     <div class="text">
-                      
-                      <p><h3 class="text-danger">Y lo que a ti se te ocurra...</h3></p>
+
+                      <p>
+                      <h3 class="text-danger">Y lo que a ti se te ocurra...</h3>
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -375,10 +393,10 @@ if (isset($_SESSION['uname'])){
           <div class="col-lg-8">
             <div class="row">
               <div class="col-lg-4">
-              &nbsp;
+                &nbsp;
               </div>
               <div class="col-lg-4">
-              &nbsp;
+                &nbsp;
               </div>
               <div class="col-lg-4">
                 <h2 class="footer-heading mb-4"></h2>
@@ -395,15 +413,15 @@ if (isset($_SESSION['uname'])){
         <div class="row text-center">
           <div class="col-md-12">
             <div class="border-top pt-5">
-              
 
-              </div>
+
             </div>
-
           </div>
+
         </div>
       </div>
     </div>
+  </div>
 
   </div> <!-- .site-wrap -->
 
@@ -423,136 +441,137 @@ if (isset($_SESSION['uname'])){
   <script src="js/coffee.js"></script>
   <script src="js/imgindex.js"></script>
   <script type="text/javascript">
-    function openPasswordForgotten(){
+    function openPasswordForgotten() {
       $('#iniciarSesion').modal('hide');
       $('#contrasenaOlvidada').modal('show');
     }
   </script>
 
-<div class="modal fade" id="comenzar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="sign-up/">
-          <div class="form-group">
-            <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" autocomplete="off" placeholder="Ingresa tu correo electronico" required>
-            <input type="hidden" id="usernametxt" name="usernametxt">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" autocomplete="off" required> 
-          </div>
-          <div class="form-group text-center">
-            <button type="submit" class="btn btn-dark text-center">Continuar <i class="fas fa-arrow-circle-right"></i></button>
-          </div>
-        </form>
-        <p class="text-center">
+  <div class="modal fade" id="comenzar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="sign-up/">
+            <div class="form-group">
+              <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" autocomplete="off" placeholder="Ingresa tu correo electronico" required>
+              <input type="hidden" id="usernametxt" name="usernametxt">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" autocomplete="off" required>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-dark text-center">Continuar <i class="fas fa-arrow-circle-right"></i></button>
+            </div>
+          </form>
+          <p class="text-center">
             ¿Ya tienes cuenta? <a href="#">Inicia sesion</a>
-        </p>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal fade" id="iniciarSesion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Entrar</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="sign-in/">
-          <div class="form-group">
-            <input type="email" class="form-control input-lg" name="email_i" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control input-lg" name="pwd_i" placeholder="Ingresa la contraseña" autocomplete="off" required> 
-          </div>
-          <div class="form-group text-center">
-            <button class="btn btn-link btn-sm" onclick="openPasswordForgotten()">¿Olvidaste la contraseña?</button>
-          </div>
-          <div class="form-group text-center">
-            <button type="submit" class="btn btn-dark text-center">Entrar <i class="fas fa-arrow-circle-right"></i></button>
-          </div>
-        </form>
-        <p class="text-center">
+  <div class="modal fade" id="iniciarSesion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Entrar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="sign-in/">
+            <div class="form-group">
+              <input type="email" class="form-control input-lg" name="email_i" aria-describedby="emailHelp" placeholder="Ingresa tu correo electronico" required>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" name="pwd_i" placeholder="Ingresa la contraseña" autocomplete="off" required>
+            </div>
+            <div class="form-group text-center">
+              <button class="btn btn-link btn-sm" onclick="openPasswordForgotten()">¿Olvidaste la contraseña?</button>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-dark text-center">Entrar <i class="fas fa-arrow-circle-right"></i></button>
+            </div>
+          </form>
+          <p class="text-center">
             ¿No tienes cuenta? <a href="" onclick="openRegister();return false;">Crea una aqui <i class="far fa-smile-wink"></i></a>
-        </p>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal fade" id="crearCuenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="sign-up/">
-          <div class="form-group">
-            <div class="input-group input-focus">
+  <div class="modal fade" id="crearCuenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="sign-up/">
+            <div class="form-group">
+              <div class="input-group input-focus">
                 <div class="input-group-prepend">
                   <span class="input-group-text bg-white font-weight-bold">regalameuncafe.com/</span>
                 </div>
                 <input type="search" placeholder="tunombre" class="form-control border-left-0" name="usernametxt" id="usernameModal" autofocus="autofocus" autocomplete="off">
+              </div>
+              <div class="alert alert-warning" role="alert" id="alertExistModal"><small>Este nombre de usuario ya existe :(</small></div>
             </div>
-            <div class="alert alert-warning" role="alert" id="alertExistModal"><small>Este nombre de usuario ya existe :(</small></div>
-          </div>
-          <div class="form-group">
-            <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" autocomplete="off" placeholder="Ingresa tu correo electronico" required>
-            
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" autocomplete="off" required> 
-          </div>
-          <div class="form-group text-center">
-            <button type="submit" class="btn btn-dark text-center" id="comenzarBtnModal" disabled>Continuar <i class="fas fa-arrow-circle-right"></i></button>
-          </div>
-        </form>
-        <p class="text-center">
-            ¿Ya tienes cuenta? <a href="" onclick="openInicio();return false;">Inicia sesion</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+            <div class="form-group">
+              <input type="email" class="form-control input-lg" name="email" aria-describedby="emailHelp" autocomplete="off" placeholder="Ingresa tu correo electronico" required>
 
-<div class="modal fade" id="contrasenaOlvidada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">¿Olvidaste tu contraseña?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" name="password" placeholder="Ingresa una contraseña" autocomplete="off" required>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-dark text-center" id="comenzarBtnModal" disabled>Continuar <i class="fas fa-arrow-circle-right"></i></button>
+            </div>
+          </form>
+          <p class="text-center">
+            ¿Ya tienes cuenta? <a href="" onclick="openInicio();return false;">Inicia sesion</a>
+          </p>
+        </div>
       </div>
-      <div class="modal-body">
-        <form method="POST" action="olvidemicontrasena/">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Escribe el correo electronico con el que te registraste:</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email_o" aria-describedby="emailHelp" placeholder="" required>
-          </div>
-          <div class="form-group text-center">
-            <button type="submit" class="btn btn-dark btn-sm">Continuar <i class="fas fa-arrow-circle-right"></i></button>
-          </div>
-        </form>
-      </div>
-      
     </div>
   </div>
-</div>
+
+  <div class="modal fade" id="contrasenaOlvidada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Olvidaste tu contraseña?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="olvidemicontrasena/">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Escribe el correo electronico con el que te registraste:</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" name="email_o" aria-describedby="emailHelp" placeholder="" required>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-dark btn-sm">Continuar <i class="fas fa-arrow-circle-right"></i></button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
