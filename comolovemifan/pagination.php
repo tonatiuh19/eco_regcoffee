@@ -22,7 +22,7 @@
 
 	if (mysqli_num_rows($resultu) > 0) {
 
-	$output.='<div class="row justify-content-center">';
+	$output.='<div>';
         while ($rowu = $resultu->fetch_assoc()) {
 
             /*$output.="<tr>
@@ -34,12 +34,11 @@
             </tr>";*/
             $date = date_create($rowu["date"]);
             $mysqltime = date_format($date, 'd-m-Y G:i a');
-            $output.='<div class="card col-sm-12 m-1 p-3 bg-light">
-                <div class="card-body">
-                    <p class="font-weight-bold">'.$rowu["note_fan"].'</p>
-                    <p class="small"><i class="fas fa-calendar-alt"></i>'.$mysqltime.'</p>
-                    </div>
-                </div>';
+            $output.='
+					<span className="fst-italic">'.$rowu["note_fan"].'</span>
+			<p className="fw-light mb-1">
+			<i class="fas fa-calendar-alt"></i>'.$mysqltime.'
+			</p>';
         } 
 	$output.='</div>';
 
@@ -70,5 +69,3 @@
 	}else{
         echo '$uName';
     }
-
-?>

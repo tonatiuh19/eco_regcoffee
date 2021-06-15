@@ -471,23 +471,27 @@ $(document).ready(function(){
       $('#contrasenaOlvidada').modal('show');
    }
 
-   document.querySelector("#valueRadioGive").addEventListener("change",function () {
-      var frst = document.querySelector("#valueRadioGive").value;
-      var priceExtra = $('#hiddenExtra').val();
-      var newPrice = frst*priceExtra;
-      if(frst == "1"){
-         $("#test0").prop("checked", true);
-      }else if(frst == "3"){
-         $("#test1").prop("checked", true);
-      }else if(frst == "5"){
-         $("#test2").prop("checked", true);
-      }else{
-         $('input:radio[name=same-group-name]').each(function () { $(this).prop('checked', false); });
-      }
-      document.getElementById("amountCoffe").value = newPrice;
-      document.getElementById("quantityCoffe").value = frst;
-      $("#valueBtnExtra").text(newPrice);
-   });
+   let valueRadioGive = document.querySelector("valueRadioGive");
+   if(valueRadioGive){
+      valueRadioGive.addEventListener("change",function () {
+         var frst = document.querySelector("#valueRadioGive").value;
+         var priceExtra = $('#hiddenExtra').val();
+         var newPrice = frst*priceExtra;
+         if(frst == "1"){
+            $("#test0").prop("checked", true);
+         }else if(frst == "3"){
+            $("#test1").prop("checked", true);
+         }else if(frst == "5"){
+            $("#test2").prop("checked", true);
+         }else{
+            $('input:radio[name=same-group-name]').each(function () { $(this).prop('checked', false); });
+         }
+         document.getElementById("amountCoffe").value = newPrice;
+         document.getElementById("quantityCoffe").value = frst;
+         $("#valueBtnExtra").text(newPrice);
+      });
+   }
+   
 
    setTimeout(function() {
       $("#alertPaging").alert('close');
@@ -501,15 +505,23 @@ $(document).ready(function(){
    });
 
    $('#alertBank').hide();
-   document.querySelector("#inputMailFan1").addEventListener("change",function () {
-      var frst = document.querySelector("#inputMailFan1").value;
-      document.getElementById("inputMailFan2").value = frst;
-   });
 
-   document.querySelector("#inputTextFan1").addEventListener("change",function () {
-      var frst = document.querySelector("#inputTextFan1").value;
-      document.getElementById("inputTextFan2").value = frst;
-   });
+   let inputMailFan1 = document.querySelector("inputMailFan1");
+   if(inputMailFan1){
+      inputMailFan1.addEventListener("change",function () {
+         var frst = document.querySelector("#inputMailFan1").value;
+         document.getElementById("inputMailFan2").value = frst;
+      });
+   }
+   
+   let inputTextFan1 = document.querySelector("inputTextFan1");
+   if(inputTextFan1){
+      inputTextFan1.addEventListener("change",function () {
+         var frst = document.querySelector("#inputTextFan1").value;
+         document.getElementById("inputTextFan2").value = frst;
+      });
+   }
+   
 
    $('#inlineRadio1').click(function() {
       if($('#inlineRadio1').is(':checked')) { $("#inlineRadio12").attr('checked', 'checked'); }
@@ -522,20 +534,15 @@ $(document).ready(function(){
 
    $('#preguntaSection').hide();
    $('#endLabelPaying').hide();
-   document.getElementById("questionAnswer").removeAttribute("required");
 
 
-   randomImg();
+   let questionAnswer = document.getElementById("questionAnswer");
+   if(questionAnswer){
+      document.getElementById("questionAnswer").removeAttribute("required");
+   }
+
 });
 
-
-function randomImg(){
-   var randimg = document.getElementById("movieImg");
-   var movieimages = ["https://media.giphy.com/media/yoJC2El7xJkYCadlWE/giphy.gif", "https://media.giphy.com/media/fWfowxJtHySJ0SGCgN/giphy.gif", "https://media.giphy.com/media/l2R0eYcNq9rJUsVAA/giphy.gif", "https://media.giphy.com/media/JlpjgShzDsrMIyFu5U/giphy.gif"];
-   var randNum = Math.floor(Math.random() * movieimages.length) + 0  
-    
-   randimg.src = movieimages[randNum] ;
-}
 
 $("#username").change(function() {
    $("#usernametxt").val($("#username").val());
@@ -552,14 +559,8 @@ $("#username").keyup(function() {
 $("#usernametxt").keyup(function() {
    $("#username").val($("#usernametxt").val());
 });
-
-
-$('#copy').tooltip({
-   trigger: 'click',
-   placement: 'bottom'
- });
  
- function setTooltip(message) {
+function setTooltip(message) {
    $('#copy').tooltip('hide')
      .attr('data-original-title', message)
      .tooltip('show');
@@ -571,22 +572,6 @@ $('#copy').tooltip({
    }, 1000);
  }
  
- // Clipboard
- var clipboard = new ClipboardJS('#copy');
- 
- clipboard.on('success', function(e) {
-      setTooltip('Link copiado ;)');
-      hideTooltip();
-  
- });
- 
- clipboard.on('error', function(e) {
-     setTooltip('Failed!');
-     hideTooltip();
-   
- });
-
- $("[data-toggle=tooltip]").tooltip();
 
 function CheckSession() {
    var session = '<%=Session["uname"] != null%>';
@@ -610,92 +595,6 @@ $('input[name=same-group-name]').click(function() {
    document.getElementById("quantityCoffe").value = valueRadioGive;
    $("#valueBtnExtra").text(newPrice);
 });
-
-//Openpay - Start
-$(document).ready(function() {
-   OpenPay.setId('mklwynufmke2y82injra');
-   OpenPay.setApiKey('pk_7e94dbb7be654ad5ada6cbe87c932f65');
-   OpenPay.setSandboxMode(true);
-   var deviceSessionId = OpenPay.deviceData.setup("payment-form", "deviceIdHiddenFieldName");
-   
-});
-
-var validated = false;
-$('#pay-button').on('click', function(event) {
-   event.preventDefault();
-   $("#alertBank").hide();
-   $("#pay-button").prop( "disabled", true);
-   $('#endLabelPay').hide();
-   $('#endLabelPaying').show();
-   OpenPay.token.extractFormAndCreate('payment-form', success_callbak, error_callbak);        
-   var form = $("#payment-form")
-   if (form[0].checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-      validated = false;
-   } else{
-      validated = true;
-   }
-   form.addClass('was-validated')      
-
-});
-
-var success_callbak = function(response) {
-   var token_id = response.data.id;
-   $('#token_id').val(token_id);
-   if(validated){
-      $('#payment-form').submit();
-   }else{
-      $("#pay-button").prop("disabled", false);
-      $('#endLabelPay').show();
-      $('#endLabelPaying').hide();
-   }
-   
-};
-
-var error_callbak = function(response) {
-   var desc = response.data.description != undefined ?
-      response.data.description : response.message;
-   alert("ERROR [" + response.status + "] " + desc);
-   $("#alertBank").show();
-   if(response.status === "422"){
-      $("#alertBank").text("El número de tarjeta es invalido");
-   }else if(response.status == "400"){
-      $("#alertBank").text("La tarjeta es invalida o la fecha de expiración de la tarjeta ha expirado");
-   }else if(response.status == "2006"){
-      $("#alertBank").text("El código de seguridad de la tarjeta (CVV2) no fue proporcionado");
-   }else if(response.status == "412"){
-      $("#alertBank").text("El número de tarjeta es invalido");
-   }else if(response.status == "2008"){
-      $("#alertBank").text("La tarjeta no es valida para pago con puntos");
-   }else if(response.status == "2009"){
-      $("#alertBank").text("El código de seguridad de la tarjeta (CVV2) es inválido");
-   }else if(response.status == "402"){
-      $("#alertBank").text("Autenticación 3D Secure fallida");
-   }else if(response.status == "422"){
-      $("#alertBank").text("Tipo de tarjeta no soportada");
-   }else{
-      $("#alertBank").text("ERROR [" + response.status + "] " + desc);
-   }
-   
-   $("#pay-button").prop("disabled", false);
-   $('#endLabelPaying').hide();
-   $('#endLabelPay').show();
-
-   $('#tt').tooltip({
-      trigger: 'click',
-      placement: 'bottom'
-   });
-    
-};
-
-function setTooltip(message) {
-   $('#tt').tooltip('hide')
-     .attr('data-original-title', message)
-     .tooltip('show');
-}
-
-//Openpay - End
 
 $(document).ready(function () {
    showGraph();
@@ -730,19 +629,25 @@ $(document).on("click", ".browse", function() {
  });
 
 
-var btnContainer = document.getElementById("myFansButtons");
-
+let btnContainer = document.getElementById("myFansButtons");
+if(btnContainer){
 // Get all buttons with class="btn" inside the container
-var btns = btnContainer.getElementsByClassName("btnFans");
-
-// Loop through the buttons and add the active class to the current/clicked button
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("btn-warning");
-    current[0].className = current[0].className.replace(" btn-warning", "btn-outline-warning");
-    this.className += " btn-warning";
-  });
+   let btns = btnContainer.getElementsByClassName("btnFans");
+   if(btns){
+   // Loop through the buttons and add the active class to the current/clicked button
+      for (var i = 0; i < btns.length; i++) {
+         btns[i].addEventListener("click", function() {
+         var current = document.getElementsByClassName("btn-warning");
+         current[0].className = current[0].className.replace(" btn-warning", "btn-outline-warning");
+         this.className += " btn-warning";
+         });
+      }
+   }
 }
+
+
+
+
 
 function getSummary(id)
 {
@@ -783,11 +688,6 @@ function copyLinkToClipboard(element) {
    setTooltipLink('¡Copiado!');
    hideTooltipLink();
 }
-
-$('#copyLink').tooltip({
-   trigger: 'click',
-   placement: 'bottom'
-});
  
 function setTooltipLink(message) {
    $('#copyLink').tooltip('hide')

@@ -1,41 +1,32 @@
 <?php
 require_once('cn.php');
-if(!isset($_SESSION)) 
-{ 
-  session_start(); 
-} 
-if(!isset($_SESSION["user_param"])) 
-{
-	echo ("<SCRIPT LANGUAGE='JavaScript'>
+if (!isset($_SESSION)) {
+  session_start();
+}
+if (!isset($_SESSION["user_param"])) {
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='../';
         </SCRIPT>");
 }
 ?>
 <!doctype html>
 <html lang="en">
+
 <head>
   <title>Regalame un Cafe</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../fonts/icomoon/style.css">
 
   <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/jquery-ui.css">
-  <link rel="stylesheet" href="../css/owl.carousel.min.css">
-  <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="../css/owl.theme.default.min.css">
 
   <link rel="stylesheet" href="../css/jquery.fancybox.min.css">
 
-  <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-
   <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
   <link rel="stylesheet" href="../fonts/flaticon-covid/font/flaticon.css">
-
-  <link rel="stylesheet" href="../css/aos.css">
 
   <link rel="stylesheet" href="../css/style.css">
   <link href="../css/fontawesome/css/all.css" rel="stylesheet">
@@ -48,91 +39,70 @@ if(!isset($_SESSION["user_param"]))
   <meta name="theme-color" content="#ffffff">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
 </head>
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<body class="App">
 
 
-  <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Cargando...</span>
-    </div>
-  </div>
+  <div class="content">
 
-
-  <div class="site-wrap">
-
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-
-    
-    <header class="site-navbar light js-sticky-header site-navbar-target" role="banner">
-
-      <div class="container">
-        <div class="row align-items-center">
-
-          <div class="col-6 col-xl-2">
-            <div class="mb-0 site-logo"><a href="../" class="mb-0"><img class="img-fluid" src="../images/logo.png" alt="regalameuncafe.com"></a></div>
-          </div>
-
-          <div class="col-12 col-md-10 d-none d-xl-block">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <?php
-                if($_SESSION["utype"] != "2"){
-                  echo '<li><a href="../mipagina/" class="nav-link itemActive" id="navInicio"><i class="fas fa-hat-wizard"></i> Inicio</a></li>
-                  <li><a href="../misfans/" class="nav-link itemActive" id="navFans"><i class="fas fa-grin-hearts"></i> Mis Fans</a></li>
-                  <li><a href="../misextras/" class="nav-link itemActive" id="navExtras"><i class="fas fa-gifts"></i> Extras</a></li>
-                  <li><a href="../misposts/" class="nav-link itemActive" id="navPosts"><i class="far fa-newspaper"></i> Posts</a></li>
-                  <li><a href="../comolovemifan/" class="nav-link itemActive" id="navPagina"><i class="fas fa-address-card"></i> Pagina</a></li>';
-                }else{
-                  echo '<li><a href="../explorar/" class="nav-link itemActive" id="navExplorar"><i class="fas fa-hat-wizard"></i> Explorar creadores</a></li>
-                  <li><a data-toggle="modal" href="" data-target="#crearCuentaCreador" class="nav-link itemActive" id="navFans"><i class="fas fa-magic"></i> Crear cuenta de creador</a></li>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a href="../" class="navbar-brand"><img class="img-fluid" width="200" src="../images/logo.png" alt="regalameuncafe.com"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <?php
+            if ($_SESSION["utype"] != "2") {
+              echo '<li class="nav-item"><a href="../mipagina/" class="nav-link itemActive" id="navInicio"><i class="fas fa-hat-wizard"></i> Inicio</a></li>
+                  <li class="nav-item"><a href="../misfans/" class="nav-link itemActive" id="navFans"><i class="fas fa-grin-hearts"></i> Mis Fans</a></li>
+                  <li class="nav-item"><a href="../misextras/" class="nav-link itemActive" id="navExtras"><i class="fas fa-gifts"></i> Extras</a></li>
+                  <li class="nav-item"><a href="../misposts/" class="nav-link itemActive" id="navPosts"><i class="far fa-newspaper"></i> Posts</a></li>
+                  <li class="nav-item"><a href="../comolovemifan/" class="nav-link itemActive" id="navPagina"><i class="fas fa-address-card"></i> Pagina</a></li>';
+            } else {
+              echo '<li class="nav-item"><a href="../explorar/" class="nav-link itemActive" id="navExplorar"><i class="fas fa-hat-wizard"></i> Explorar creadores</a></li>
+                  <li class="nav-item"><a data-toggle="modal" href="" data-target="#crearCuentaCreador" class="nav-link itemActive" id="navFans"><i class="fas fa-magic"></i> Crear cuenta de creador</a></li>
                  ';
-                }
-                ?>
-                
-                <li class="has-children active">
-                  <a href="#" class="nav-link itemActive" id="navAstronaut"><i class="fas fa-user-astronaut"></i></a>
-                  <ul class="dropdown">
-                    <?php
-                    if($_SESSION["utype"] != "2"){
-                      echo '<li><a href="../micuenta/" class="nav-link">Mi cuenta</a></li>';
-                    }else{
-                      echo '<li><a href="../perfil/" class="nav-link">Mi cuenta</a></li>';
+            }
+            ?>
+            <li class="nav-item dropdown">
+              <div class="dropstart">
+                <a class="nav-link dropdown-toggle itemActive" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-user-astronaut"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <?php
+                  if ($_SESSION["utype"] != "2") {
+                    echo '<li><a href="../micuenta/" class="dropdown-item">Mi cuenta</a></li>';
+                  } else {
+                    echo '<li><a href="../perfil/" class="dropdown-item">Mi cuenta</a></li>';
+                  }
+                  ?>
+                  <li><a href="../explorar/" class="dropdown-item">Apoyo a creadores</a></li>
+                  <?php
+                  if ($_SESSION["utype"] != "2") {
+                    $sqlp = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $_SESSION["user_param"] . " and a.status='completed'";
+                    $resultp = $conn->query($sqlp);
+
+                    if ($resultp->num_rows > 0) {
+                      echo '<li><a href="../mispagos/" class="dropdown-item">Mis pagos</a></li>';
+                    } else {
+                      echo '<li><a href="../mispagos/" class="dropdown-item disabled">Mis pagos</a></li>';
                     }
-                    ?>
-                    <li><a href="../explorar/" class="nav-link">Apoyo a creadores</a></li>
-                    <?php
-                    if($_SESSION["utype"] != "2"){
-                      $sqlp = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=".$_SESSION["user_param"]." and a.status='completed'";
-                      $resultp = $conn->query($sqlp);
-                      
-                      if ($resultp->num_rows > 0) {
-                        echo '<li><a href="../mispagos/" class="nav-link">Mis pagos</a></li>';
-                      } else {
-                        echo '<li><a href="../mispagos/" class="nav-link disabled">Mis pagos</a></li>';
-                      }
-                    }
-                    ?>
-                    <li><a href="../houstontenemosproblemas/" class="nav-link"><i class="fas fa-tools fa-sm"></i> Soporte</a></li>
-                    <li><a href="../adios/" class="nav-link"><i class="fas fa-toggle-off fa-sm"></i> Salir</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-
-
-          <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3 text-black"></span></a></div>
-
+                  }
+                  ?>
+                  <li><a class="dropdown-item" href="../houstontenemosproblemas/"><i class="fas fa-tools fa-sm"></i> Soporte</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="../adios/"><i class="fas fa-toggle-off fa-sm"></i> Salir</a></a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
 
-    </header>
+    <main>
