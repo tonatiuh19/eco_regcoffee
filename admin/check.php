@@ -16,6 +16,7 @@ if(isset($_POST['username'])){
         'chart',
         'comolovemifan',
         'css',
+        'data',
         'developers',
         'fonts',
         'gracias',
@@ -47,5 +48,3 @@ if(isset($_POST['username'])){
     }
     $conn->close();
 }
-
-?>

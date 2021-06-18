@@ -1,14 +1,3 @@
-$( document ).ready(function() {
-  document.getElementById("btnPaypal").style.display = "none";
-    $("#btnPaypal").click(function(evt){
-        $('#apoyar').modal('hide');
-        document.getElementById("payment-form").style.display = "none";
-        document.getElementById("payment-form-paypal").style.display = "block";
-        $('#apoyarSiguiente').modal('show');
-        document.getElementById("isPaypal2").value = "1";
-    });
-});
-
 (function() {
   'use strict';
   window.addEventListener('load', function() {

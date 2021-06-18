@@ -83,3 +83,5 @@ $(document).ready(function() {
  }
  
  //Openpay - End
+
+ $('#txtCardNumber').mask("9999 9999 9999 9999");

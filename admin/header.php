@@ -3,11 +3,6 @@ require_once('cn.php');
 if (!isset($_SESSION)) {
   session_start();
 }
-if (!isset($_SESSION["user_param"])) {
-  echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.location.href='../';
-        </SCRIPT>");
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -52,55 +47,73 @@ if (!isset($_SESSION["user_param"])) {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <?php
-            if ($_SESSION["utype"] != "2") {
-              echo '<li class="nav-item"><a href="../mipagina/" class="nav-link itemActive" id="navInicio"><i class="fas fa-hat-wizard"></i> Inicio</a></li>
+          <?php
+          if (isset($_SESSION["user_param"])) {
+          ?>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <?php
+              if ($_SESSION["utype"] != "2") {
+                echo '<li class="nav-item"><a href="../mipagina/" class="nav-link itemActive" id="navInicio"><i class="fas fa-chart-line"></i> Analytics</a></li>
                   <li class="nav-item"><a href="../misfans/" class="nav-link itemActive" id="navFans"><i class="fas fa-grin-hearts"></i> Mis Fans</a></li>
                   <li class="nav-item"><a href="../misextras/" class="nav-link itemActive" id="navExtras"><i class="fas fa-gifts"></i> Extras</a></li>
                   <li class="nav-item"><a href="../misposts/" class="nav-link itemActive" id="navPosts"><i class="far fa-newspaper"></i> Posts</a></li>
                   <li class="nav-item"><a href="../comolovemifan/" class="nav-link itemActive" id="navPagina"><i class="fas fa-address-card"></i> Pagina</a></li>';
-            } else {
-              echo '<li class="nav-item"><a href="../explorar/" class="nav-link itemActive" id="navExplorar"><i class="fas fa-hat-wizard"></i> Explorar creadores</a></li>
+              } else {
+                echo '<li class="nav-item"><a href="../explorar/" class="nav-link itemActive" id="navExplorar"><i class="fas fa-hat-wizard"></i> Explorar creadores</a></li>
                   <li class="nav-item"><a data-toggle="modal" href="" data-target="#crearCuentaCreador" class="nav-link itemActive" id="navFans"><i class="fas fa-magic"></i> Crear cuenta de creador</a></li>
                  ';
-            }
-            ?>
-            <li class="nav-item dropdown">
-              <div class="dropstart">
-                <a class="nav-link dropdown-toggle itemActive" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fas fa-user-astronaut"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <?php
-                  if ($_SESSION["utype"] != "2") {
-                    echo '<li><a href="../micuenta/" class="dropdown-item">Mi cuenta</a></li>';
-                  } else {
-                    echo '<li><a href="../perfil/" class="dropdown-item">Mi cuenta</a></li>';
-                  }
-                  ?>
-                  <li><a href="../explorar/" class="dropdown-item">Apoyo a creadores</a></li>
-                  <?php
-                  if ($_SESSION["utype"] != "2") {
-                    $sqlp = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $_SESSION["user_param"] . " and a.status='completed'";
-                    $resultp = $conn->query($sqlp);
-
-                    if ($resultp->num_rows > 0) {
-                      echo '<li><a href="../mispagos/" class="dropdown-item">Mis pagos</a></li>';
+              }
+              ?>
+              <li class="nav-item dropdown">
+                <div class="dropstart">
+                  <a class="nav-link dropdown-toggle itemActive" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user-astronaut"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <?php
+                    if ($_SESSION["utype"] != "2") {
+                      echo '<li><a href="../micuenta/" class="dropdown-item">Mi cuenta</a></li>';
                     } else {
-                      echo '<li><a href="../mispagos/" class="dropdown-item disabled">Mis pagos</a></li>';
+                      echo '<li><a href="../perfil/" class="dropdown-item">Mi cuenta</a></li>';
                     }
-                  }
-                  ?>
-                  <li><a class="dropdown-item" href="../houstontenemosproblemas/"><i class="fas fa-tools fa-sm"></i> Soporte</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="../adios/"><i class="fas fa-toggle-off fa-sm"></i> Salir</a></a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
+                    ?>
+                    <li><a href="../explorar/" class="dropdown-item">Apoyo a creadores</a></li>
+                    <?php
+                    if ($_SESSION["utype"] != "2") {
+                      $sqlp = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $_SESSION["user_param"] . " and a.status='completed'";
+                      $resultp = $conn->query($sqlp);
+
+                      if ($resultp->num_rows > 0) {
+                        echo '<li><a href="../mispagos/" class="dropdown-item">Mis pagos</a></li>';
+                      } else {
+                        echo '<li><a href="../mispagos/" class="dropdown-item disabled">Mis pagos</a></li>';
+                      }
+                    }
+                    ?>
+                    <li><a class="dropdown-item" href="../houstontenemosproblemas/"><i class="fas fa-tools fa-sm"></i> Soporte</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="../adios/"><i class="fas fa-toggle-off fa-sm"></i> Salir</a></a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          <?php
+          } else {
+          ?>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a href="explorar/" class="nav-link">Explora creadores</a></li>
+              <li class="nav-item">
+                <a class="nav-link border border-primary rounded p-2" data-bs-toggle="modal" href="#iniciarSesion" role="button">Entrar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="modal" href="#crearCuenta" role="button">Registrate <i class="fas fa-arrow-circle-right text-primary"></i></a>
+              </li>
+            </ul>
+          <?php
+          }
+          ?>
         </div>
       </div>
     </nav>

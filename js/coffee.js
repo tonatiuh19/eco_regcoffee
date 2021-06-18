@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+   $('#alertExist').hide();
    $(window).keydown(function(event){
       if(event.keyCode == 13) {
         event.preventDefault();
@@ -7,7 +7,7 @@ $(document).ready(function(){
       }
     });
     
-    $('#alertExist').hide();
+    
     $("#username").keyup(function(){
       var username = $(this).val().trim();
       var element = document.getElementById("username");
@@ -471,20 +471,23 @@ $(document).ready(function(){
       $('#contrasenaOlvidada').modal('show');
    }
 
-   let valueRadioGive = document.querySelector("valueRadioGive");
+   let valueRadioGive = document.getElementById("valueRadioGive");
    if(valueRadioGive){
-      valueRadioGive.addEventListener("change",function () {
-         var frst = document.querySelector("#valueRadioGive").value;
+      
+      valueRadioGive.addEventListener("input",function () {
+         
+         let frst = document.querySelector("#valueRadioGive").value;
+         
          var priceExtra = $('#hiddenExtra').val();
          var newPrice = frst*priceExtra;
          if(frst == "1"){
-            $("#test0").prop("checked", true);
+            $("#neutral").prop("checked", true);
          }else if(frst == "3"){
-            $("#test1").prop("checked", true);
+            $("#sad").prop("checked", true);
          }else if(frst == "5"){
-            $("#test2").prop("checked", true);
+            $("#super-sad").prop("checked", true);
          }else{
-            $('input:radio[name=same-group-name]').each(function () { $(this).prop('checked', false); });
+            $('input:radio[name=rating]').each(function () { $(this).prop('checked', false); });
          }
          document.getElementById("amountCoffe").value = newPrice;
          document.getElementById("quantityCoffe").value = frst;
@@ -497,28 +500,47 @@ $(document).ready(function(){
       $("#alertPaging").alert('close');
   }, 5000);
 
-   $("#btnPayCreditDebit").click(function(evt){
-      $('#apoyar').modal('hide');
-      $('#apoyarSiguiente').modal('show');
-      document.getElementById("payment-form").style.display = "block";
-      document.getElementById("payment-form-paypal").style.display = "none";
-   });
-
    $('#alertBank').hide();
 
-   let inputMailFan1 = document.querySelector("inputMailFan1");
+   let inputMailFan1 = document.getElementById("inputMailFan1");
    if(inputMailFan1){
-      inputMailFan1.addEventListener("change",function () {
-         var frst = document.querySelector("#inputMailFan1").value;
+
+      inputMailFan1.addEventListener("keypress",function () {
+         let frst = document.getElementById("inputMailFan1").value;
+         document.getElementById("inputMailFan2").value = frst;
+      });
+      
+      inputMailFan1.addEventListener("input",function () {
+         let frst = document.getElementById("inputMailFan1").value;
          document.getElementById("inputMailFan2").value = frst;
       });
    }
    
-   let inputTextFan1 = document.querySelector("inputTextFan1");
+   let inputTextFan1 = document.getElementById("inputTextFan1");
    if(inputTextFan1){
-      inputTextFan1.addEventListener("change",function () {
-         var frst = document.querySelector("#inputTextFan1").value;
+      inputTextFan1.addEventListener("keypress",function () {
+         let frst = document.getElementById("inputTextFan1").value;
          document.getElementById("inputTextFan2").value = frst;
+      });
+
+      inputTextFan1.addEventListener("input",function () {
+         let frst = document.getElementById("inputTextFan1").value;
+         document.getElementById("inputTextFan2").value = frst;
+      });
+   }
+
+   let txtCardNumber = document.getElementById("txtCardNumber");
+   if(txtCardNumber){
+      txtCardNumber.addEventListener("keypress",function () {
+         let frst = document.getElementById("txtCardNumber").value.replace(/\s/g, '').replace(/_/g, '');
+         
+         document.getElementById("txtCardNumberNoSpaces").value = frst;
+      });
+
+      txtCardNumber.addEventListener("input",function () {
+         let frst = document.getElementById("txtCardNumber").value.replace(/\s/g, '').replace(/_/g, '');
+         
+         document.getElementById("txtCardNumberNoSpaces").value = frst;
       });
    }
    
@@ -586,18 +608,14 @@ $('#bologna-list a').on('click', function (e) {
    $(this).tab('show')
 })
 
-$('input[name=same-group-name]').click(function() {
-   var valueRadioGive = $('input[name=same-group-name]:checked').val();
+$('input[name=rating]').click(function() {
+   var valueRadioGive = $('input[name=rating]:checked').val();
    var priceExtra = $('#hiddenExtra').val();
    var newPrice = valueRadioGive*priceExtra;
    document.getElementById("valueRadioGive").value = valueRadioGive;
    document.getElementById("amountCoffe").value = newPrice;
    document.getElementById("quantityCoffe").value = valueRadioGive;
    $("#valueBtnExtra").text(newPrice);
-});
-
-$(document).ready(function () {
-   showGraph();
 });
 
 function openRegister(){
@@ -699,75 +717,6 @@ function hideTooltipLink() {
    setTimeout(function() {
      $('#copyLink').tooltip('hide');
    }, 1000);
-}
-
-
-
-function showGraph()
-{
-	{
-		$.post("../chart/data.php",
-			function (data)
-			{
-				var ctx = document.getElementById("examChart").getContext("2d");
-				var today = new Date();
-
-                var days = 8; // Days you want to subtract
-                var date = new Date();
-                var last = new Date(date.getTime() - (days * 24 * 60 * 60 * 1000));
-                var day =last.getDate();
-                var month=last.getMonth()+1;
-                var year=last.getFullYear();
-                var menossiete = year+"-"+month+"-"+day+" 13:3";
-
-                var today = new Date();
-                var newdate = new Date();
-                newdate.setDate(today.getDate()+5);
-                var newDay = newdate.getDate();
-                var newMonth = newdate.getMonth()+1;
-                var newYear = newdate.getFullYear();
-                var mascinco = newYear+"-"+newMonth+"-"+newDay;
-
-                var myChart = new Chart(ctx, {
-                	type: 'line',
-                	data: {
-                		labels: [new Date(mascinco).toLocaleString(), new Date(menossiete).toLocaleString(), new Date(mascinco).toLocaleString()],
-                		datasets: [{
-                			label: 'Visitas',
-                			data: data,
-                			backgroundColor: [
-                			'rgba(255, 99, 132, 0.2)',
-                			'rgba(54, 162, 235, 0.2)',
-                			'rgba(255, 206, 86, 0.2)',
-                			'rgba(75, 192, 192, 0.2)',
-                			'rgba(153, 102, 255, 0.2)',
-                			'rgba(255, 159, 64, 0.2)'
-                			],
-                			borderColor: [
-                			'rgba(255,99,132,1)',
-                			'rgba(54, 162, 235, 1)',
-                			'rgba(255, 206, 86, 1)',
-                			'rgba(75, 192, 192, 1)',
-                			'rgba(153, 102, 255, 1)',
-                			'rgba(255, 159, 64, 1)'
-                			],
-                			borderWidth: 1
-                		}]
-                	},
-                	options: {
-                		scales: {
-                			xAxes: [{
-                            type: 'time',
-                            time: {
-                              unit: 'day'
-                            }
-                			}]
-                      },
-                      responsive: true
-                	}
-                });
-            });
-	}
 }
 
 function activateNavbarItem(item){

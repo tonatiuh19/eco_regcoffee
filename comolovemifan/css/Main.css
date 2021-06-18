@@ -2,66 +2,6 @@
   display: none;
 }
 
-.boxed label {
-  display: inline-block;
-  width: 100%;
-  padding: 10px;
-  border: solid 2px #ccc;
-  transition: all 0.3s;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.boxed input[type="radio"] {
-  display: none;
-}
-
-.boxed input[type="radio"]:checked + label {
-  border: solid 2px rgb(182, 165, 9);
-}
-
-.topFifty {
-  padding-top: 10%;
-}
-
-.pagination {
-  margin: 15px auto;
-  display: flex;
-  list-style: none;
-  outline: none;
-}
-.pagination > .active > a {
-  background-color: #000000;
-  border-color: #000000;
-  color: #fff;
-}
-.pagination > li > a {
-  border: 1px solid #000000;
-  padding: 5px 10px;
-  outline: none;
-  cursor: pointer;
-}
-.pagination > .active > a,
-.pagination > .active > span,
-.pagination > .active > a:hover,
-.pagination > .active > span:hover,
-.pagination > .active > a:focus,
-.pagination > .active > span:focus {
-  background-color: #000000;
-  border-color: #000000;
-  outline: none;
-}
-.pagination > li > a,
-.pagination > li > span {
-  color: #000000;
-}
-.pagination > li:first-child > a,
-.pagination > li:first-child > span,
-.pagination > li:last-child > a,
-.pagination > li:last-child > span {
-  border-radius: unset;
-}
-
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -78,4 +18,311 @@
   flex-basis: auto;
   align-self: auto;
   order: 0;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+.coffeQuantity {
+  display: grid;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  color: rgba(33, 37, 41, 1);
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+}
+
+.coffeQuantity a:link,
+.coffeQuantity a:visited,
+.coffeQuantity a:hover,
+.coffeQuantity a:active {
+  color: rgba(33, 37, 41, 1);
+  text-decoration: none;
+}
+
+.coffeQuantity a:hover,
+.coffeQuantity a:active {
+  border-bottom: 0.1em solid rgba(33, 37, 41, 1);
+  color: rgba(33, 37, 41, 1);
+  text-decoration: none;
+}
+.coffeQuantity span {
+  color: rgba(0, 0, 16, 0.4);
+  font-size: 70%;
+}
+
+.coffeQuantity .rating-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.4rem 0.8rem;
+  width: 100%;
+}
+
+.coffeQuantity .rating {
+  background-color: rgba(33, 37, 41, 1);
+  padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+  border-radius: 0.5rem;
+}
+
+.coffeQuantity svg {
+  fill: rgb(242, 242, 242);
+  height: 2.5rem;
+  width: 2.5rem;
+  margin: 0.2rem;
+}
+
+.coffeeCupSvg svg {
+  height: 3rem;
+  width: 3rem;
+  margin: 0.2rem;
+}
+
+.timesSvg svg {
+  height: 1.6rem;
+  width: 1.6rem;
+  margin: 0.2rem;
+}
+
+.lastInput {
+  height: 3rem;
+  width: 5rem;
+  margin: 0.3rem;
+}
+
+.lastInput input {
+  height: 3rem;
+  border: 0;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.coffeQuantity #radios label {
+  position: relative;
+}
+
+.coffeQuantity input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.coffeQuantity input[type="radio"] + svg {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.coffeQuantity input + svg {
+  cursor: pointer;
+}
+
+.coffeQuantity input[class="super-happy"]:hover + svg,
+.coffeQuantity input[class="super-happy"]:checked + svg,
+.coffeQuantity input[class="super-happy"]:focus + svg {
+  fill: rgb(0, 109, 217);
+}
+
+.coffeQuantity input[class="happy"]:hover + svg,
+.coffeQuantity input[class="happy"]:checked + svg,
+.coffeQuantity input[class="happy"]:focus + svg {
+  fill: rgb(0, 204, 79);
+}
+
+.coffeQuantity input[class="neutral"]:hover + svg,
+.coffeQuantity input[class="neutral"]:checked + svg,
+.coffeQuantity input[class="neutral"]:focus + svg {
+  fill: rgb(255, 193, 7);
+}
+
+.coffeQuantity input[class="sad"]:hover + svg,
+.coffeQuantity input[class="sad"]:checked + svg,
+.coffeQuantity input[class="sad"]:focus + svg {
+  fill: rgb(255, 193, 7);
+}
+
+.coffeQuantity .coffeQuantityinput[class="super-sad"]:hover + svg,
+.coffeQuantity input[class="super-sad"]:checked + svg,
+.coffeQuantity input[class="super-sad"]:focus + svg {
+  fill: rgb(255, 193, 7);
+}
+
+@media screen and (max-width: 650px) and (max-height: 700px) {
+  .coffeQuantity {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .coffeQuantity {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .coffeQuantity {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 450px) and (max-height: 550px) {
+  .coffeQuantity {
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-height: 550px) {
+  .coffeQuantity {
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .coffeQuantity {
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 400px) and (max-height: 500px) {
+  .coffeQuantity {
+    height: 500px;
+    width: 400px;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .coffeQuantity {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .coffeQuantity {
+    width: 400px;
+  }
+}
+
+/*Toogle*/
+.flipswitch {
+  position: relative;
+  width: 74px;
+}
+.flipswitch input[type="checkbox"] {
+  display: none;
+}
+.flipswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #999999;
+  border-radius: 50px;
+}
+.flipswitch-inner {
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.flipswitch-inner:before,
+.flipswitch-inner:after {
+  float: left;
+  width: 50%;
+  height: 20px;
+  padding: 0;
+  line-height: 20px;
+  font-size: 10px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+.flipswitch-inner:before {
+  content: "Publico";
+  padding-left: 9px;
+  background-color: #ffc107;
+  color: #000000;
+}
+.flipswitch-inner:after {
+  content: "Privado";
+  padding-right: 9px;
+  background-color: #f8f9fa;
+  color: #888888;
+  text-align: right;
+}
+.flipswitch-switch {
+  width: 24px;
+  margin: -2px;
+  background: #ffffff;
+  border: 1px solid #999999;
+  border-radius: 50px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 52px;
+  transition: all 0.3s ease-in 0s;
+}
+.flipswitch-cb:checked + .flipswitch-label .flipswitch-inner {
+  margin-left: 0;
+}
+.flipswitch-cb:checked + .flipswitch-label .flipswitch-switch {
+  right: 0;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-text {
+  margin-left: 0.5em;
+}
+
+.tooltip-toggle {
+  cursor: pointer;
+  position: relative;
+}
+.tooltip-toggle svg {
+  height: 18px;
+  width: 18px;
+}
+.tooltip-toggle::before {
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  background-color: #212529;
+  border-radius: 5px;
+  color: #fff;
+  content: attr(aria-label);
+  padding: 1rem;
+  text-transform: none;
+  transition: all 0.5s ease;
+  width: 160px;
+}
+.tooltip-toggle::after {
+  position: absolute;
+  top: -12px;
+  left: 9px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #212529;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+  margin-left: -5px;
+  width: 0;
+}
+.tooltip-toggle::before,
+.tooltip-toggle::after {
+  color: #efefef;
+  font-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+}
+.tooltip-toggle:focus::before,
+.tooltip-toggle:focus::after,
+.tooltip-toggle:hover::before,
+.tooltip-toggle:hover::after {
+  opacity: 1;
+  transition: all 0.75s ease;
 }
