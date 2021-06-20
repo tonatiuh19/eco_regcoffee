@@ -71,7 +71,7 @@ date_default_timezone_set('America/Mexico_City');
                 <div class="p-5 mb-4 rounded-3">
                   <div class="container-fluid py-5">
                     <h1 class="display-5 fw-bold">
-                      Pon al tanto a tus fans <FaRegNewspaper />
+                      Pon al tanto a tus fans <i class="far fa-newspaper"></i>
                     </h1>
                     <p class="col-md-8 fs-4">
                       Puedes incluir mensajes en tu pagina y asi tus fans no

@@ -117,5 +117,18 @@ if (!isset($_SESSION)) {
         </div>
       </div>
     </nav>
+    <?php
+    if (isset($_SESSION["user_param"])) {
+      $sql = "SELECT a.id_users_payment FROM users_payment as a WHERE a.id_user=" . $_SESSION["user_param"] . "";
+      $result = $conn->query($sql);
 
+      if ($result->num_rows > 0) {
+      } else {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Es necesario captures tu cuenta Paypal o Clabe interbancaria para incluirte tu dinero. <a href="../micuenta/">Ir a perfil <i class="fas fa-arrow-circle-right"></i></a></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+      }
+    }
+    ?>
     <main>
