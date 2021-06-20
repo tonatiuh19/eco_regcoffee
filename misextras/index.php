@@ -17,7 +17,7 @@ if ($_SESSION["utype"] == "2") {
                 <div class="col-sm-12">
                     <a href="../misextras" class="btn btn-primary active"><i class="fas fa-gifts"></i> Extras</a>
                     <a href="../misfans/" class="btn btn-primary"><i class="fas fa-hand-holding-usd"></i> Compromisos</a>
-                    <button class="btn btn-warning float-end"><i class="fas fa-plus-square"></i> Añadir extra</button>
+                    <button type="button" class="btn btn-warning float-end" data-bs-toggle="modal" data-bs-target="#newExtra"><i class="fas fa-plus-square"></i> Añadir extra</button>
                 </div>
                 <?php
                 $idUser = $_SESSION["user_param"];
@@ -34,7 +34,7 @@ if ($_SESSION["utype"] == "2") {
                           <div class="card-body">
                             <div class="float-end">
                                 
-                                <button type="button" class="btn btn-outline-primary p-1" data-bs-toggle="modal" data-bs-target="#edit' . $rowx["id_extra"] . '"><i class="fas fa-pen"></i></button>
+                                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#edit' . $rowx["id_extra"] . '"><i class="fas fa-pen"></i></button>
                                 <div class="modal fade" id="edit' . $rowx["id_extra"] . '" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -46,7 +46,7 @@ if ($_SESSION["utype"] == "2") {
                                             <form action="saveExtra/" method="post" enctype="multipart/form-data">
                                             <div class="mb-3">
                                                 <label><b>¿Cual es el titulo de lo que ofreces?</b></label>
-                                                <input type="text" class="form-control" name="title_ex" value="' . $rowx["title"] . '">
+                                                <input type="text" class="form-control" name="title_ex" value="' . $rowx["title"] . '" required>
                                                 <input type="hidden" name="extra_edit" value="' . $rowx["id_extra"] . '">
                                             </div>
                                             <div class="mb-3">
@@ -105,9 +105,9 @@ if ($_SESSION["utype"] == "2") {
                                                         </div>
                                                         <div class="col-sm-9">';
                         if ($rowx["limit_slots"] >= '0') {
-                            echo '<input type="number" class="form-control" id="limitInput' . $rowx["id_extra"] . '" name="limit_ex" value="' . $rowx["limit_slots"] . '">';
+                            echo '<input type="number" class="form-control" id="limitInput' . $rowx["id_extra"] . '" name="limit_ex" min="1" value="' . $rowx["limit_slots"] . '">';
                         } else {
-                            echo '<input type="number" class="form-control noLimit" id="limitInput' . $rowx["id_extra"] . '" name="limit_ex" value="0">';
+                            echo '<input type="number" class="form-control noLimit" id="limitInput' . $rowx["id_extra"] . '" name="limit_ex" min="1" value="1">';
                         }
 
                         echo '</div>
@@ -137,8 +137,25 @@ if ($_SESSION["utype"] == "2") {
                                     </div>
                                 </div>
 
+                                <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cancel' . $rowx["id_extra"] . '"><i class="far fa-eye-slash" data-toggle="tooltip" data-placement="top" title="Desactivar"></i></button>
 
-                                <button class="btn btn-outline-danger p-1 m-1" data-toggle="modal" data-target="#cancel' . $rowx["id_extra"] . '"><i class="far fa-eye-slash" data-toggle="tooltip" data-placement="top" title="Desactivar"></i></button>
+                                <div class="modal fade" id="cancel' . $rowx["id_extra"] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">¿Estas seguro de querer cancelar: ' . $rowx["title"] . '?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Me equivoque</button>
+                                            <form method="post" action="./deactivateExtra/index.php">
+                                                <input type="hidden" name="extra_cancel" value="' . $rowx["id_extra"] . '">
+                                                <button type="submit" class="btn btn-danger">Ya cancélalo</button>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <h5 class="card-title fw-bold">
                                 ' . $rowx["title"] . '
@@ -188,88 +205,124 @@ if ($_SESSION["utype"] == "2") {
                     </div>
                 </div>
                 <p>
-                <div class="row justify-content-center">
-                    <button type="button" class="btn btn-warning btn-lg " data-toggle="modal" data-target="#desdeCero"><i class="fas fa-plus-square"></i> Añadir desde cero</button>
-                    <!-- Modal -->
-                    <div class="modal fade right" id="desdeCero" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-full-width" role="document">
-                            <div class="modal-content-full-width modal-content">
-                                <div class="modal-header-full-width modal-header text-center bg-dark text-white">
-                                    <h5 class="modal-title w-100" id="exampleModalLabel"><i class="fas fa-magic"></i> Hazlo tuyo</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <i class="fas fa-times-circle text-white"></i>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="saveExtra/" method="post" enctype="multipart/form-data">
-                                        <div class="form-row">
-                                            <div class="col">
-                                                <label><b>¿Cual es el titulo de lo que ofreces?</b></label>
-                                                <input type="text" class="form-control" name="title_ex" placeholder="Ej. Consulta creativa">
-                                            </div>
-                                            <div class="col">
-                                                <label><b>Precio</b></label>
-                                                <input type="textbox" placeholder="Ej. $450.00" class="form-control currency" name="price_ex" autocomplete="off" required>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="form-group">
-                                            <label><b>¿Que descripcion le pondrias?</b></label>
-                                            <textarea class="form-control" name="description_ex" rows="3" required></textarea>
-                                        </div>
-                                        <br>
-                                        <div class="form-group">
-                                            <label><b>El siguiente mensaje aparecera despues que tu fan realiza el pago:</b></label>
-                                            <textarea class="form-control" name="confirmation_ex" rows="3" required></textarea>
-                                        </div>
-                                        <br>
-                                        <div class="form-group">
-                                            <label><b>¿Esto es una subcripcion mensual?</b> <button type="button" class="btn btn-dark btn-xs p-1" data-toggle="tooltip" data-placement="top" title="Se cobrara mensualmente"><i class="fas fa-question"></i></button></label>
-                                            <select class="form-control" name="subs_ex" required>
-                                                <option value="0">No</option>
-                                                <option value="1">Si</option>
-                                            </select>
-                                        </div>
-                                        <br>
-                                        <div class="form-group">
-                                            <label><b>Haz una pregunta:</b> <span class="small">(Opcional)</span></label>
-                                            <input type="text" class="form-control" name="question_ex" placeholder="Ej. ¿Cual es tu id de instagram?">
-                                        </div>
-                                        <br>
-                                        <div class="form-group">
-                                            <label><b>Limite de lugares:</b> <span class="small">(Opcional)</span></label><bR>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="checkLimit" onclick="limitsFunc()">
-                                                <label class="form-check-label" for="defaultCheck1">
-                                                    No hay limite
-                                                </label>
-                                                <script>
-                                                    function limitsFunc() {
-                                                        var checkBox = document.getElementById("checkLimit");
-                                                        if (checkBox.checked == true) {
-                                                            document.getElementById("limitInput").disabled = true;
-                                                        } else {
-                                                            document.getElementById("limitInput").disabled = false;
-                                                        }
-                                                    }
-                                                </script>
-                                            </div>
-                                            <input type="number" class="form-control" id="limitInput" name="limit_ex" placeholder="Ej. 15 lugares">
-                                        </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-warning col-12 m-1" data-bs-toggle="modal" data-bs-target="#newExtra"><i class="fas fa-plus-square"></i> Añadir desde cero</button>
+                    </div>
 
-                                        <div class="form-group files">
-                                            <label><b>Incluye una imagen a tu extra:</b> <span class="small">(Opcional)</span></label>
-                                            <input type="file" class="form-control" name="fileToUpload" accept="image/jpeg, image/png">
-                                        </div>
-                                </div>
-                                <div class="modal-footer-full-width  modal-footer">
-                                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-success text-white"><i class="fab fa-gratipay"></i> Empezar</button>
-                                    </form>
+                    <?php
+                    $sqlf = "SELECT id_extra, title, description, confirmation, limit_slots, price, question, subsciption FROM extras WHERE id_user=1";
+                    $resultf = $conn->query($sqlf);
+
+                    if ($resultf->num_rows > 0) {
+                        // output data of each row
+                        while ($rowf = $resultf->fetch_assoc()) {
+                            echo '<div class="col-sm-4">
+                            <button type="button" class="btn btn-outline-warning text-dark col-12 m-1" data-bs-toggle="modal" data-bs-target="#newExtra' . $rowf['id_extra'] . '"><i class="fas fa-plus-square"></i> ' . $rowf['title'] . '</button>
+                          
+                            <div class="modal fade" id="newExtra' . $rowf['id_extra'] . '" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">' . $rowf['title'] . '</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="./newExtra/" method="post" enctype="multipart/form-data">
+                                            <div class="mb-3">
+                                                <label><b>¿Cual es el titulo de lo que ofreces?</b></label>
+                                                <input type="text" class="form-control" name="title_ex" placeholder="Ej. Consulta creativa" value="' . $rowf['title'] . '" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label><b>Precio</b></label>
+                                                <input type="textbox" placeholder="Ej. 450.00" class="form-control currency" name="price_ex" autocomplete="off" value="' . $rowf['price'] . '" required>
+                                            </div>
+                        
+                                            <div class="mb-3">
+                                                <label><b>¿Que descripcion le pondrias?</b></label>
+                                                <textarea class="form-control" name="description_ex" rows="3" required>' . $rowf['description'] . '</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label><b>El siguiente mensaje aparecera despues que tu fan realiza el pago:</b></label>
+                                                <textarea class="form-control" name="confirmation_ex" rows="3" required>' . $rowf['confirmation'] . '</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label><b>¿Esto es una subcripcion mensual?</b> <span class="small">(Opcional)</span></label>
+                                                <select class="form-control" name="subs_ex" required>';
+
+                            if ($rowf["subsciption"] == "1") {
+                                echo '<option value="0">No</option>';
+                                echo '<option value="1" selected>Si</option>';
+                            } else {
+                                echo '<option value="0">No</option>';
+                                echo '<option value="1">Si</option>';
+                            }
+                            echo '</select>
+                                                <span class="badge bg-success mt-1">
+                                                    <i class="fas fa-exclamation-circle"></i> Se cobrara mensualmente a tu fan
+                                                </span>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label><b>Haz una pregunta:</b> <span class="small">(Opcional)</span></label>
+                                                <input type="text" class="form-control" name="question_ex" placeholder="Ej. ¿Cual es tu id de instagram?" value="' . $rowf['question'] . '">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="mb-1"><b>¿Existe algun limite de usuarios?</b> <span class="small">(Opcional)</span></label>
+                                                <div class="form-check">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-sm-3 mb-1">
+                                                                <div class="flipswitch">';
+
+                            if ($rowf["limit_slots"] >= '0') {
+                                echo '<input type="checkbox" name="flipswitch" class="flipswitch-cb checkSlots' . $rowf["id_extra"] . '" style="display:none" id="fs' . $rowf["id_extra"] . '" onclick="limitSlotsFunc' . $rowf["id_extra"] . '()" checked>';
+                            } else {
+                                echo '<input type="checkbox" name="flipswitch" class="flipswitch-cb checkSlots' . $rowf["id_extra"] . '" style="display:none" id="fs' . $rowf["id_extra"] . '" onclick="limitSlotsFunc' . $rowf["id_extra"] . '()">';
+                            }
+                            echo '<label class="flipswitch-label" for="fs' . $rowf["id_extra"] . '">
+                                                                        <div class="flipswitch-inner"></div>
+                                                                        <div class="flipswitch-switch"></div>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-9">';
+                            if ($rowf["limit_slots"] >= '0') {
+                                echo '<input type="number" class="form-control" id="limitInput' . $rowf["id_extra"] . '" name="limit_ex" min="1" value="' . $rowf["limit_slots"] . '">';
+                            } else {
+                                echo '<input type="number" class="form-control noLimit" id="limitInput' . $rowf["id_extra"] . '" name="limit_ex" min="1" value="1">';
+                            }
+                            echo '</div>
+                                                            <script>
+                                                                function limitSlotsFunc' . $rowf["id_extra"] . '() {
+                                                                    let checkBox = document.querySelector(".checkSlots' . $rowf["id_extra"] . '");
+                                                                    let text = document.getElementById("limitInput' . $rowf["id_extra"] . '");
+                                                                
+                                                                    if (checkBox.checked == true){
+                                                                    text.style.display = "block";
+                                                                    } else {
+                                                                    text.style.display = "none";
+                                                                    }
+                                                                }
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-success">Guardar</button>
+                                        </form>
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>';
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    ?>
 
                 </div>
                 </p>
@@ -277,6 +330,89 @@ if ($_SESSION["utype"] == "2") {
         </div>
 
 
+    </div>
+</div>
+
+<div class="modal fade" id="newExtra" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="staticBackdropLabel">Creando Magia <i class="fas fa-magic"></i></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="./newExtra/" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label><b>¿Cual es el titulo de lo que ofreces?</b></label>
+                        <input type="text" class="form-control" name="title_ex" placeholder="Ej. Consulta creativa" required>
+                    </div>
+                    <div class="mb-3">
+                        <label><b>Precio</b></label>
+                        <input type="textbox" placeholder="Ej. 450.00" class="form-control currency" name="price_ex" autocomplete="off" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label><b>¿Que descripcion le pondrias?</b></label>
+                        <textarea class="form-control" name="description_ex" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label><b>El siguiente mensaje aparecera despues que tu fan realiza el pago:</b></label>
+                        <textarea class="form-control" name="confirmation_ex" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label><b>¿Esto es una subcripcion mensual?</b> <span class="small">(Opcional)</span></label>
+                        <select class="form-control" name="subs_ex" required>
+                            <option value="0">No</option>
+                            <option value="1">Si</option>
+                        </select>
+                        <span class="badge bg-success mt-1">
+                            <i class="fas fa-exclamation-circle"></i> Se cobrara mensualmente a tu fan
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <label><b>Haz una pregunta:</b> <span class="small">(Opcional)</span></label>
+                        <input type="text" class="form-control" name="question_ex" placeholder="Ej. ¿Cual es tu id de instagram?">
+                    </div>
+                    <div class="mb-3">
+                        <label class="mb-1"><b>¿Existe algun limite de usuarios?</b> <span class="small">(Opcional)</span></label>
+                        <div class="form-check">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-3 mb-1">
+                                        <div class="flipswitch">
+                                            <input type="checkbox" name="flipswitch" class="flipswitch-cb checkSlotsNew" id="fs" onclick="limitSlotsFunc()">
+                                            <label class="flipswitch-label" for="fs">
+                                                <div class="flipswitch-inner"></div>
+                                                <div class="flipswitch-switch"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control noLimit" id="limitInputNew" name="limit_ex" min="1" value="1">
+                                    </div>
+                                    <script>
+                                        function limitSlotsFunc() {
+                                            let checkBox = document.querySelector(".checkSlotsNew");
+                                            let text = document.getElementById("limitInputNew");
+
+                                            if (checkBox.checked == true) {
+                                                text.style.display = "block";
+                                            } else {
+                                                text.style.display = "none";
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

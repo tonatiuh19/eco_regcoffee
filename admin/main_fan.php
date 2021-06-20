@@ -58,9 +58,9 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 				<?php
 				if ($sess) {
 					echo '<div class="col-sm-12">
-						<div class="float-end">
-							<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarme"><i class="fas fa-pencil-alt"></i> Editar pagina</button>
-						</div>
+							<div class="float-end mb-2">
+								<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarme"><i class="fas fa-pencil-alt"></i> Editar pagina</button>
+							</div>
 						</div>';
 				}
 				?>

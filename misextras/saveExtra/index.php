@@ -19,10 +19,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $description = test_input($_POST["description_ex"]);
         $confirmation = test_input($_POST["confirmation_ex"]);
         $question = test_input($_POST["question_ex"]);
-        $limit = test_input($_POST["limit_ex"]);
         $subcri = test_input($_POST["subs_ex"]);
+        $isLimit = test_input($_POST["flipswitch"]);
         $idUser = $_SESSION["user_param"];
         $today = date("Y-m-d H:i:s");
+        if ($isLimit != 'on') {
+            $limit = '-1';
+        } else {
+            $limit = test_input($_POST["limit_ex"]);
+        }
 
         $sql = "INSERT INTO extras (title, id_user, description, confirmation, limit_slots, price, question, subsciption, date, active)
         VALUES ('$title', '$idUser', '$description', '$confirmation', '$limit', '$price', '$question', '$subcri', '$today', '3')";
