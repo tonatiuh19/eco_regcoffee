@@ -470,7 +470,7 @@
                             <h2>
                                 Hecho con
                                 <i class="fas fa-heart text-danger"></i> para México y
-                                Latinoamerica.
+                                el mundo.
                             </h2>
                         </div>
                     </div>

@@ -90,25 +90,30 @@ if ($_SESSION["utype"] == "2") {
               <ul class="ulu text-center">
                 <?php
                 $idUser = $_SESSION["user_param"];
-                $sql = "SELECT a.id_users_categories, a.date, a.video, a.writter, a.developer, a.podcaster, a.artist, a.influencer, a.other FROM users_categories as a INNER JOIN (SELECT id_user, MAX(date) as max_date FROM users_categories WHERE id_user=" . $idUser . " GROUP by id_user) as b on a.date=b.max_date";
+                $sql = "SELECT a.id_user,
+                    MAX(CASE WHEN a.id_categories = 1 THEN 1 ELSE 0 END) Video,
+                    MAX(CASE WHEN a.id_categories = 2 THEN 1 ELSE 0 END) Writter,
+                    MAX(CASE WHEN a.id_categories = 3 THEN 1 ELSE 0 END) Developer,
+                    MAX(CASE WHEN a.id_categories = 4 THEN 1 ELSE 0 END) Podcaster,
+                    MAX(CASE WHEN a.id_categories = 5 THEN 1 ELSE 0 END) Artist,
+                    MAX(CASE WHEN a.id_categories = 6 THEN 1 ELSE 0 END) Influencer,
+                    MAX(CASE WHEN a.id_categories = 7 THEN 1 ELSE 0 END) Other
+                  FROM users_categories as a
+                  WHERE a.active=1 AND a.id_user=" . $idUser . "
+                  GROUP BY a.id_user";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                   // output data of each row
                   while ($row = $result->fetch_assoc()) {
-                    if ($row["video"] == "1") {
+                    if ($row["Video"] == "1") {
                       echo '<li class="liu">
                                       <input type="checkbox" id="myCheckbox1" name="video" checked />
                                       <label for="myCheckbox1"><i class="fas fa-video"></i> Video creador</label>
                                   </li>';
-                    } else {
-                      echo '<li class="liu">
-                                      <input type="checkbox" id="myCheckbox1" name="video" />
-                                      <label for="myCheckbox1"><i class="fas fa-video"></i> Video creador</label>
-                                  </li>';
                     }
 
-                    if ($row["writter"] == "1") {
+                    if ($row["Writter"] == "1") {
                       echo '<li class="liu">
                                       <input type="checkbox" id="myCheckbox2" name="writter" checked />
                                       <label for="myCheckbox2"><i class="fas fa-pencil-alt"></i> Escritor</label>
@@ -120,7 +125,7 @@ if ($_SESSION["utype"] == "2") {
                                   </li>';
                     }
 
-                    if ($row["developer"] == "1") {
+                    if ($row["Developer"] == "1") {
                       echo '<li class="liu">
                                       <input type="checkbox" id="myCheckbox3" name="developer" checked />
                                       <label for="myCheckbox3"><i class="fas fa-code"></i> Developer</label>
@@ -132,7 +137,7 @@ if ($_SESSION["utype"] == "2") {
                                   </li>';
                     }
 
-                    if ($row["podcaster"] == "1") {
+                    if ($row["Podcaster"] == "1") {
                       echo '<li class="liu">
                                       <input type="checkbox" id="myCheckbox4" name="podcaster" checked />
                                       <label for="myCheckbox4"><i class="fas fa-microphone"></i> Podcaster</label>
@@ -144,7 +149,7 @@ if ($_SESSION["utype"] == "2") {
                                   </li>';
                     }
 
-                    if ($row["artist"] == "1") {
+                    if ($row["Artist"] == "1") {
                       echo '<li class="liu">
                                       <input type="checkbox" id="myCheckbox5" name="artist" checked />
                                       <label for="myCheckbox5"><i class="fas fa-film"></i> Artista</label>
@@ -156,7 +161,7 @@ if ($_SESSION["utype"] == "2") {
                                   </li>';
                     }
 
-                    if ($row["influencer"] == "1") {
+                    if ($row["Influencer"] == "1") {
                       echo '<li class="liu">
                                       <input type="checkbox" id="myCheckbox6" name="influencer" checked />
                                       <label for="myCheckbox6"><i class="fas fa-heart"></i> Influencer</label>
@@ -168,7 +173,7 @@ if ($_SESSION["utype"] == "2") {
                                   </li>';
                     }
 
-                    if ($row["other"] == "1") {
+                    if ($row["Other"] == "1") {
                       echo '<li class="liu">
                                       <input type="checkbox" id="myCheckbox7" name="otro" checked />
                                       <label for="myCheckbox7"><i class="fas fa-magic"></i> Otro</label>

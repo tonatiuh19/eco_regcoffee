@@ -66,7 +66,7 @@ if (!isset($_SESSION)) {
               ?>
               <li class="nav-item dropdown">
                 <div class="dropstart">
-                  <a class="nav-link dropdown-toggle itemActive" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle itemActive" href="#" id="navAstronaut" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user-astronaut"></i>
                   </a>
                   <ul class="dropdown-menu">
@@ -123,6 +123,25 @@ if (!isset($_SESSION)) {
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
+        $sqlc = "SELECT a.id_user,
+        MAX(CASE WHEN a.id_categories = 1 THEN 1 ELSE 0 END) Video,
+        MAX(CASE WHEN a.id_categories = 2 THEN 1 ELSE 0 END) Writter,
+        MAX(CASE WHEN a.id_categories = 3 THEN 1 ELSE 0 END) Developer,
+        MAX(CASE WHEN a.id_categories = 4 THEN 1 ELSE 0 END) Podcaster,
+        MAX(CASE WHEN a.id_categories = 5 THEN 1 ELSE 0 END) Artist,
+        MAX(CASE WHEN a.id_categories = 6 THEN 1 ELSE 0 END) Influencer,
+        MAX(CASE WHEN a.id_categories = 7 THEN 1 ELSE 0 END) Other
+      FROM users_categories as a
+      WHERE a.active=1 AND a.id_user=" . $_SESSION["user_param"] . "
+      GROUP BY a.id_user";
+        $resultc = $conn->query($sqlc);
+
+        if (!($resultc->num_rows > 0)) {
+          echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Registra una o mas categorias para que tus nuevos fans puedan ver a que te dedicas. <a href="../material/">Ir a perfil <i class="fas fa-arrow-circle-right"></i></a></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+        }
       } else {
         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Es necesario captures tu cuenta Paypal o Clabe interbancaria para incluirte tu dinero. <a href="../micuenta/">Ir a perfil <i class="fas fa-arrow-circle-right"></i></a></strong>

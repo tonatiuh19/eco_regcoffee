@@ -10,58 +10,7 @@ if ($_SESSION["utype"] == "2") {
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 <div class="site-section bg-primary-light">
   <div class="container">
-    <?php
-    $sql = "SELECT t.id_users_payment, a.max_date, t.id_users_payment_type, a.id_user FROM users_payment as t INNER JOIN (SELECT id_user,MAX(date) as max_date FROM users_payment WHERE id_user='" . $_SESSION["user_param"] . "' GROUP BY id_user) as a ON a.max_date = t.date";
-    $result = $conn->query($sql);
-
-    if (!($result->num_rows > 0)) {
-      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Registra tu usuario de <i class="fab fa-paypal"></i> Paypal o tu <i class="fas fa-money-check-alt"></i> Clabe interbancaria</strong> para que tus cafes se vuelvan realidad <a href="../micuenta/" class="text-danger">aqui</a>.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>';
-    } else {
-      $sqlc = "SELECT a.id_users_categories, a.date, a.video, a.writter, a.developer, a.podcaster, a.artist, a.influencer, a.other FROM users_categories as a INNER JOIN (SELECT id_user, MAX(date) as max_date FROM users_categories WHERE id_user=" . $_SESSION["user_param"] . " GROUP by id_user) as b on a.date=b.max_date";
-      $resultc = $conn->query($sqlc);
-
-      if (!($resultc->num_rows > 0)) {
-        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Registra una o mas categorias para que tus nuevos fans puedan ver a que te dedicas <a href="../material/" class="text-danger">aqui</a>.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>';
-      }
-    }
-    ?>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="card">
-          <div class="card-body">
-            <?php
-            echo '';
-            ?>
-            <button id="copyLink" class="btn btn-primary float-right" onclick="copyLinkToClipboard('#linkToCopy')"><i class="fas fa-clone"></i> Copiar link</button>
-            <h5 class="card-title">
-              <span class="fa-stack">
-                <i class="fas fa-square fa-stack-2x"></i>
-                <i class="fas fa-user-astronaut fa-stack-1x fa-inverse"></i>
-              </span>
-              <?php
-              echo $_SESSION['uname'];
-              ?>
-            </h5>
-            <?php
-            echo '<p class="card-text" id="linkToCopy">regalameuncafe.com/' . $_SESSION['uname'] . '</p>';
-            ?>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p></p>
-    <div class="row">
+    <div class="row py-5">
       <div class="col-sm-12">
         <div class="card">
           <div class="card-body">
@@ -70,7 +19,7 @@ if ($_SESSION["utype"] == "2") {
                 <div class="col-sm-4 align-items-center justify-content-center">
                   <?php
                   $idUser = $_SESSION["user_param"];
-                  $sql = "SELECT COUNT(a.id_payments) as 'cafes' FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $idUser . " and b.active=2 and a.status='completed'";
+                  $sql = "SELECT COUNT(a.id_payments) as 'cafes' FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $idUser . " and b.active=4 and a.status='completed'";
                   $result = $conn->query($sql);
 
                   if ($result->num_rows > 0) {
@@ -152,7 +101,7 @@ if ($_SESSION["utype"] == "2") {
     </div>
     <p></p>
     <h2>Agrega un boton en tu git, pagina, blog, etc.</h2>
-    <div class="row" id="generarBoton">
+    <div class="row pb-5" id="generarBoton">
       <div class="col-sm-12">
         <div class="card">
           <div class="card-body">
