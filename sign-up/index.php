@@ -1,21 +1,20 @@
-<link rel="stylesheet" href="../../css/bootstrap.css">
-<link rel="stylesheet" href="../../css/style.css">
-<link href="../../css/fontawesome/css/all.css" rel="stylesheet">
-<?php
 
+<?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-session_start();
 require_once('../admin/cn.php');
 date_default_timezone_set('America/Mexico_City');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail_i = test_input($_POST["email"]);
-    $username = test_input($_POST["usernametxt"]);
+    $username = test_input(str_replace(' ', '', strtolower($_POST["usernametxt"])));
     $pwd = test_input($_POST["password"]);
     $today = date("Y-m-d H:i:s");
 
+    echo '<link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="../../css/fontawesome/css/all.css" rel="stylesheet">';
     if ($mail_i == "" || $pwd == "") {
         echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -42,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="modal-body text-center">
           
               <h4 class="modal-title w-100 mb-3" id="exampleModalLongTitle"><i class="far fa-paper-plane fa-2x"></i></h4>
-              <h4>Hemos enviado instrucciones a tu correo: <span class="btn btn-link">' . $mail_i . '</span></h4>
+              <h4>Este correo ya se encuentra registrado. Hemos enviado instrucciones a tu correo: <span class="btn btn-link">' . $mail_i . '</span></h4>
               
               <a href="../" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> Iniciar sesion</a>
             
@@ -51,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
       </div>';
         } else {
-            $sql = "INSERT INTO users (user_name, email, pwd, date)
-        VALUES ('$username', '$mail_i', '$pwd', '$today')";
+            $sql = "INSERT INTO users (user_name, email, pwd, date, about)
+        VALUES ('$username', '$mail_i', '$pwd', '$today', '¡Oye!, acabo de crear una super página aquí. ¡Ahora puedes invitarme a un café!')";
 
             if ($conn->query($sql) === TRUE) {
 
@@ -62,27 +61,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($result3->num_rows > 0) {
                     // output data of each row
                     while ($row3 = $result3->fetch_assoc()) {
-                        $_SESSION["user_param"] = $row3["id_user"];
-                        $_SESSION["uname"] = $row3["user_name"];
-                        $_SESSION["utype"] = $row3["active"];
-
+                       
                         $folder_path = "../data/" . $row3["id_user"] . "/";
                         if (!file_exists($folder_path)) {
                             if (mkdir($folder_path, 0777, true)) {
-
-
-                                $idUser = $_SESSION["user_param"];
+                                $idUser = $row3["id_user"];
                                 $sqli = "INSERT INTO users_notification (id_user, new_supporter, new_coffe, date)
                                 VALUES ('$idUser', '1', '1', '$today')";
 
                                 if ($conn->query($sqli) === TRUE) {
-                                    $sql2 = "INSERT INTO `extras` (`title`, `id_user`, `description`, `confirmation`, `price`, `date`, `active`) VALUES ('Coffee', '$idUser', '¡Me estas invitando un cafe!', 'Te agradezco de todo corazon. Tu apoyo me permite seguir motivado :)', '45', '$today', '2');";
+                                    $sql2 = "INSERT INTO `extras` (`title`, `id_user`, `description`, `confirmation`, `price`, `date`, `active`) VALUES ('Coffee', '$idUser', '¡Me estas invitando un cafe!', 'Te agradezco de todo corazon. Tu apoyo me permite seguir motivado :)', '45', '$today', '4');";
 
                                     if (mysqli_query($conn, $sql2)) {
                                         if (sendMailWelcome($mail_i, $username)) {
-                                            echo ("<SCRIPT LANGUAGE='JavaScript'>
-                                            window.location.href='../';
-                                            </SCRIPT>");
+                                            echo '<form action="../sign-in/" method="post" id="formTosend" name="formTosend">
+                                                <input type="hidden" name="email_i" value="'.$mail_i.'">
+                                                <input type="hidden" name="pwd_i" value="'.$pwd.'">
+                                            </form>
+                                            <script>
+                                                document.forms["formTosend"].submit();
+                                            </script>';
                                         } else {
                                             echo "Houston tenemos problemas";
                                         }

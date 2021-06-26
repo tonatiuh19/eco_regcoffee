@@ -103,7 +103,7 @@ if (!isset($_SESSION)) {
           } else {
           ?>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item"><a href="explorar/" class="nav-link">Explora creadores</a></li>
+              <li class="nav-item"><a href="../explorar/" class="nav-link">Explora creadores</a></li>
               <li class="nav-item">
                 <a class="nav-link border border-primary rounded p-2" data-bs-toggle="modal" href="#iniciarSesion" role="button">Entrar</a>
               </li>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #000;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 24px;
+      }
+
+      p {
+        font-weight: 700;
+        text-align: center;
+        font-size: 40px;
+        font-family: Hack, sans-serif;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #000, #fff, #000);
+        letter-spacing: 5px;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        animation: shine 5s linear infinite;
+        position: relative;
+      }
+
+      @keyframes shine {
+        0% {
+          background-position-x: -500%;
+        }
+        100% {
+          background-position-x: 500%;
+        }
+      }
+
+      /*  Checkout my other pens on  https://codepen.io/grohit/  */
+    </style>
+
+    <title>Regalame un Cafe</title>
+  </head>
+  <body>
+    <p>
+      ¡Estamos construyendo algo increible! <br /><a href=""
+        >Gracias por la confianza | Agosto 2021</a
+      >
+    </p>
+  </body>
+</html>

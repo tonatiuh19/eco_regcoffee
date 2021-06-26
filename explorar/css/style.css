@@ -38,7 +38,6 @@
 }
 
 div.pagination {
-  font-family: "Lucida Sans", Geneva, Verdana, sans-serif;
   padding: 20px;
   margin: 7px;
 }
@@ -104,7 +103,14 @@ div.pagination span.disabled {
   animation: rotatemagic 0.75s cubic-bezier(0.425, 1.04, 0.47, 1.105) 1s both;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 992px) and (min-width: 768px) {
+  .card-st:after {
+    width: 0px;
+    height: 0px;
+  }
+}
+
+@media (max-width: 430px) {
   .card-st:after {
     width: 0px;
     height: 0px;
@@ -225,8 +231,8 @@ div.pagination span.disabled {
 .container-gum ul li label input[type="checkbox"] {
   position: absolute;
   opacity: 0;
-  font-family: var(--bs-font-sans-serif);
 }
+
 .container-gum ul li label :checked ~ .icon-box {
   box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
@@ -262,7 +268,6 @@ input[type="text"] {
   height: 60px;
   font-size: 35px;
   display: inline-block;
-  font-family: var(--bs-font-sans-serif);
   font-weight: 100;
   border: none;
   outline: none;

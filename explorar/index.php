@@ -19,7 +19,6 @@ date_default_timezone_set('America/Mexico_City');
             </div>
         </div>
 
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="container-gum">
@@ -52,7 +51,6 @@ date_default_timezone_set('America/Mexico_City');
                 </div>
             </div>
         </div>
-
 
         <div class="row" id="postContent">
             <!-- Loading overlay -->
@@ -113,8 +111,8 @@ date_default_timezone_set('America/Mexico_City');
                     $idUser = $row["id_user"];
                     $folder_path = "../data/" . $idUser . "/profile/";
 
-                    echo '<div class="col">
-                    <div class="content-card-st m-5">
+                    echo '<div class="col pb-5">
+                    <div class="content-card-st m-3">
                         <div class="card-st">
                             <div class="firstinfo">
                                 <div class="img-card">';
