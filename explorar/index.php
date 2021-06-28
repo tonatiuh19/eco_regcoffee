@@ -1,6 +1,15 @@
 <?php
 require_once('../admin/header.php');
 date_default_timezone_set('America/Mexico_City');
+$today = date("Y-m-d H:i:s");
+$sqlx = "INSERT INTO visitors (section, date)
+VALUES ('creators', '$today')";
+
+if ($conn->query($sqlx) === TRUE) {
+    //echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 ?>
 <link rel="stylesheet" href="./css/style.css">
 <div class="site-section pb-5">

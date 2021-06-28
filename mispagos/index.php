@@ -8,33 +8,7 @@ if($_SESSION["utype"] == "2"){
 ?>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <div class="site-section bg-primary-light">
-    <div class="container">       
-        
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <?php
-                        echo '';
-                        ?>
-                        <button id="copyLink" class="btn btn-primary float-right"  onclick="copyLinkToClipboard('#linkToCopy')"><i class="fas fa-clone"></i> Copiar link</button>
-                        <h5 class="card-title">
-                        <span class="fa-stack">
-                            <i class="fas fa-square fa-stack-2x"></i>
-                            <i class="fas fa-user-astronaut fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <?php
-                            echo $_SESSION['uname'];
-                        ?>
-                        </h5>
-                        <?php
-                        echo '<p class="card-text" id="linkToCopy">regalameuncafe.com/'.$_SESSION['uname'].'</p>';
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p></p>
+    <div class="container py-5">       
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">

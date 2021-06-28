@@ -28,13 +28,48 @@ if (mysqli_num_rows($resultu) > 0) {
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            if ($row["active"] == "2") {
-                $output .= '<table class="table table-bordered"> <thead class="thead-dark"> <tr> <th scope="col">#</th> <th scope="col">Tipo de mensaje</th> <th scope="col" class="w-30">Mensaje</th> <th scope="col"># de Cafes</th> <th scope="col">Total $</th>  <th scope="col">Fecha</th></tr> </thead> <tbody>';
+            
+            if ($row["active"] == "4") {
+                $output .= '<table class="table table-bordered"> 
+                  <thead class="thead-dark"> 
+                    <tr> 
+                      <th scope="col">#</th> 
+                      <th scope="col">Tipo de mensaje</th> 
+                      <th scope="col" class="w-30">Mensaje</th> 
+                      <th scope="col"># de Cafes</th> 
+                      <th scope="col">Total $</th>  
+                      <th scope="col">Fecha</th>
+                    </tr> 
+                  </thead> 
+                <tbody>';
             } else {
                 if ($row["question"] == "") {
-                    $output .= '<table class="table table-bordered"> <thead class="thead-dark"> <tr> <th scope="col">#</th> <th scope="col">Tipo de mensaje</th> <th scope="col" class="w-30">Mensaje</th> <th scope="col">Total $</th>  <th scope="col">Fecha</th><th scope="col">Completar</th> </tr> </thead> <tbody>';
+                    $output .= '<table class="table table-bordered"> 
+                      <thead class="thead-dark"> 
+                        <tr> 
+                          <th scope="col">#</th> 
+                          <th scope="col">Tipo de mensaje</th> 
+                          <th scope="col" class="w-30">Mensaje</th> 
+                          <th scope="col">Total $</th>  
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Completar</th> 
+                        </tr> 
+                      </thead> 
+                    <tbody>';
                 } else {
-                    $output .= '<table class="table table-bordered"> <thead class="thead-dark"> <tr> <th scope="col">#</th> <th scope="col">Tipo de mensaje</th> <th scope="col" class="w-30">Mensaje</th> <th scope="col">Respuesta a pregunta</th> <th scope="col">Total $</th>  <th scope="col">Fecha</th><th scope="col">Completar</th> </tr> </thead> <tbody>';
+                    $output .= '<table class="table table-bordered"> 
+                      <thead class="thead-dark">
+                        <tr> 
+                          <th scope="col">#</th> 
+                          <th scope="col">Tipo de mensaje</th> 
+                          <th scope="col" class="w-30">Mensaje</th> 
+                          <th scope="col">Respuesta a pregunta</th> 
+                          <th scope="col">Total $</th>  
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Completar</th> 
+                        </tr> 
+                      </thead> 
+                    <tbody>';
                 }
             }
         }
@@ -46,7 +81,7 @@ if (mysqli_num_rows($resultu) > 0) {
         $date = date_create($rowu["date"]);
         $mysqltime = date_format($date, 'd-m-Y G:i a');
 
-        if ($rowu["active"] == "2") {
+        if ($rowu["active"] == "4") {
             $whatIWant = substr($rowu["description"], strpos($rowu["description"], "|") + 1);
             if ($rowu["isPublic_note_fan"] == "1") {
                 $isPublic = '<span class="bg-dark text-white">&nbsp;Privado&nbsp;</span>';

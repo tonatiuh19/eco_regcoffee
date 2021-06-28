@@ -39,6 +39,11 @@ if ($resultz->num_rows > 0) {
 	}
 }
 $money = number_format((float)$priceExtra, 2, '.', '');
+$today = date("Y-m-d H:i:s");
+$sqlh = "INSERT INTO visitors_users (id_user, date) VALUES ('$userID', '$today')";
+if ($conn->query($sqlh) === TRUE) {} else {
+	echo "Error: " . $sql . "<br>" . $conn->error;
+}
 
 echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 
