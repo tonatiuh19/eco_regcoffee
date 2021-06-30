@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <form action="../passwordReset/" method="post" id="formDigit">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Escribe tu nueva contraseña:</label>
-                                    <input type="password" name="newPwd" class="form-control" id="exampleInputPassword1" placeholder="" required>
+                                    <input type="password" name="newPwd" class="form-control mb-3" id="exampleInputPassword1" placeholder="" required>
                                     <input type="hidden" name="idUser" value="'.$idUser.'">
                                     <input type="hidden" name="typee" value="2">
                                 </div>

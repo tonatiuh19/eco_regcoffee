@@ -64,7 +64,12 @@ if ($_POST["payType"]=="1") {
 	}
 
 	
-
+	if($_POST["flipswitch"] == 'on'){
+		$isPublic = 1;
+	}else{
+		$isPublic = 0;
+	}
+	
 	echo '<form action="../gracias/" id="finish" method="post">';
 	if ($status==1) {
 		echo '<input type="hidden" name="stat" value="1">';
@@ -82,7 +87,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$charge->description.'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="type" value="1">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 		echo '<input type="hidden" name="questAnswer" value="'.$_POST["questAnswer"].'">';
@@ -94,7 +99,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}elseif ($status==3) {
 		echo '<input type="hidden" name="stat" value="3">';
@@ -102,7 +107,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}elseif ($status==4) {
 		echo '<input type="hidden" name="stat" value="4">';
@@ -110,7 +115,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}elseif ($status==5) {
 		echo '<input type="hidden" name="stat" value="5">';
@@ -118,7 +123,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}elseif ($status==6) {
 		echo '<input type="hidden" name="stat" value="6">';
@@ -126,7 +131,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}else{
 		echo '<input type="hidden" name="stat" value="6">';
@@ -134,7 +139,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}
 	echo '</form>';
@@ -198,6 +203,12 @@ if ($_POST["payType"]=="1") {
 		$status=7;
 	}
 
+	if($_POST["flipswitch"] == 'on'){
+		$isPublic = 1;
+	}else{
+		$isPublic = 0;
+	}
+
 	echo '<form action="../gracias/" id="finish" method="post">';
 	if ($status==1) {
 		echo '<input type="hidden" name="stat" value="3">';
@@ -215,7 +226,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$subscription->transaction->description.'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="type" value="1">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 		echo '<input type="hidden" name="questAnswer" value="'.$_POST["questAnswer"].'">';
@@ -230,7 +241,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}elseif ($status==3) {
 		echo '<input type="hidden" name="stat" value="3">';
@@ -238,7 +249,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}elseif ($status==4) {
 		echo '<input type="hidden" name="stat" value="4">';
@@ -246,7 +257,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}elseif ($status==5) {
 		echo '<input type="hidden" name="stat" value="5">';
@@ -254,7 +265,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}elseif ($status==6) {
 		echo '<input type="hidden" name="stat" value="6">';
@@ -262,7 +273,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}else{
 		echo '<input type="hidden" name="stat" value="6">';
@@ -270,7 +281,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="description" value="'.$e->getMessage().'">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
-		echo '<input type="hidden" name="isPublic" value="'.$_POST["privatePublic"].'">';
+		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 	}
 	echo '</form>';
@@ -278,6 +289,53 @@ if ($_POST["payType"]=="1") {
 	  document.getElementById("finish").submit();
 	</script>';
 
+}elseif ($_POST["payType"]=="3") {
+	require_once("../admin/cn.php");
+
+	$idUser = $_POST["idUser"];
+	$date = $_POST["date"];
+	$amount = $_POST["amount"];
+	$email = $_POST["payer_email"];
+	$noteFan = $_POST["noteFan"];
+	$idExtra = $_POST["order"];
+	$questAnswer = $_POST["questAnswer"];
+	$descripcionPay = $_POST["item_name"];
+	$order = $_POST["order"];
+	if($_POST["flipswitch"] == 'on'){
+		$isPublic = 1;
+	}else{
+		$isPublic = 0;
+	}
+
+	$sqli = "INSERT INTO payments (id_user, id_paypal, type, brand, card_number, bank_name, status, date, amount, amount_fee, amount_tax, description, email_user, note_fan, isPublic_note_fan, id_extra, question_answer)
+      VALUES ('$idUser', '', 'paypal', '', '', '', 'pending', '$date', '$amount', '', '', '$descripcionPay', '$email', '$noteFan', '$isPublic', '$idExtra', '$questAnswer')";
+
+    if ($conn->query($sqli) === TRUE) {
+		$last_id = $conn->insert_id;
+		echo '<form name="frm_customer_detail" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="POST" id="finish">
+			<input type="hidden" name="business" value="sb-47xwsh6651755@business.example.com">
+			<input type="hidden" name="item_name" value="'.$descripcionPay.'"> 
+			<input type="hidden" name="item_number" value="'.$last_id.'" >
+			<input type="hidden" name="amount" value="'.$amount.'"> 
+			<input type="hidden" name="currency_code" value="MXN">
+			<input type="hidden" name="notify_url" value="https://regalameuncafe.com/pagandoPaypal/notify.php">
+			<input type="hidden" name="return" value="https://regalameuncafe.com/grazie/?order='.$last_id.'">
+			<input type="hidden" name="cancel_return" value="https://regalameuncafe.com/vuelveaintentar/?order='.$last_id.'">
+			<input type="hidden" name="cmd" value="_xclick"> 
+			<input type="hidden" name="order" value="'.$order.'">
+			<input type="hidden" id="myAdress3" name="custom" value="">	
+			<input type="hidden" name="payer_email" value="'.$email.'">
+		</form>';
+		echo '</form>';
+		echo '<script type="text/javascript">
+		document.getElementById("finish").submit();
+		</script>';
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+		
+	
+		
 }else{
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='../';

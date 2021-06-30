@@ -14,12 +14,14 @@ if(isset($_POST['username'])){
         'adios',
         'admin',
         'chart',
+        'comingsoon',
         'comolovemifan',
         'css',
         'data',
         'developers',
         'fonts',
         'gracias',
+        'grazie',
         'houstontenemosproblemas',
         'images',
         'js',
@@ -39,7 +41,8 @@ if(isset($_POST['username'])){
         'template',
         'explorar',
         'misapoyos',
-        'tunombreaqui');
+        'tunombreaqui',
+        'vuelveaintentar');
         if (in_array($_POST['username'], $folders)) {
             echo "1";
         }else{

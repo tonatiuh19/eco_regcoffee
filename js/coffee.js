@@ -498,8 +498,12 @@ $(document).ready(function () {
           $(this).prop("checked", false);
         });
       }
-      document.getElementById("amountCoffe").value = newPrice;
-      document.getElementById("quantityCoffe").value = frst;
+      document.querySelectorAll(".amountCoffe").forEach(function (el) {
+        el.value = newPrice;
+      });
+      document.querySelectorAll(".quantityCoffe").forEach(function (el) {
+        el.value = frst;
+      });
       $("#valueBtnExtra").text(newPrice);
     });
   }
@@ -568,8 +572,10 @@ $(document).ready(function () {
       $("#inlineRadio22").attr("checked", "checked");
     }
   });
-
-  $("#preguntaSection").hide();
+  let preguntaSection = document.querySelector(".preguntaSection");
+  let preguntaSectionCard = document.querySelector(".preguntaSectionCard");
+  $(preguntaSection).hide();
+  $(preguntaSectionCard).hide();
   $("#endLabelPaying").hide();
 
   let questionAnswer = document.getElementById("questionAnswer");
@@ -625,8 +631,12 @@ $("input[name=rating]").click(function () {
   var priceExtra = $("#hiddenExtra").val();
   var newPrice = valueRadioGive * priceExtra;
   document.getElementById("valueRadioGive").value = valueRadioGive;
-  document.getElementById("amountCoffe").value = newPrice;
-  document.getElementById("quantityCoffe").value = valueRadioGive;
+  document.querySelectorAll(".amountCoffe").forEach(function (el) {
+    el.value = newPrice;
+  });
+  document.querySelectorAll(".quantityCoffe").forEach(function (el) {
+    el.value = valueRadioGive;
+  });
   $("#valueBtnExtra").text(newPrice);
 });
 
@@ -736,3 +746,56 @@ function activateNavbarItem(item) {
 $("#filters button").click(function () {
   e.preventDefault();
 });
+
+let btnPaypal = document.getElementById("btnPaypal");
+if (btnPaypal) {
+  let cardContainer = document.querySelector(".cardContainer");
+  let paypalContainer = document.querySelector(".paypalContainer");
+  $("#btnPaypal").on("click", function () {
+    $(cardContainer).css({ display: "none" });
+    $(paypalContainer).css({ display: "block" });
+  });
+}
+
+let btnPayCreditDebit = document.getElementById("btnPayCreditDebit");
+if (btnPayCreditDebit) {
+  let cardContainer = document.querySelector(".cardContainer");
+  let paypalContainer = document.querySelector(".paypalContainer");
+  $("#btnPayCreditDebit").on("click", function () {
+    $(paypalContainer).css({ display: "none" });
+    $(cardContainer).css({ display: "block" });
+  });
+}
+
+function inlinePublicM() {
+  let inlineRadio1 = document.querySelector(".inlineRadio1").checked;
+  if (inlineRadio1) {
+    document.querySelector(".inlineRadio21").checked = true;
+    document.querySelector(".inlineRadio22").checked = true;
+  } else {
+    document.querySelector(".inlineRadio21").checked = false;
+    document.querySelector(".inlineRadio22").checked = false;
+  }
+}
+
+function inlinePublicM21() {
+  let inlineRadio21 = document.querySelector(".inlineRadio21").checked;
+  if (inlineRadio21) {
+    document.querySelector(".inlineRadio1").checked = true;
+    document.querySelector(".inlineRadio22").checked = true;
+  } else {
+    document.querySelector(".inlineRadio1").checked = false;
+    document.querySelector(".inlineRadio22").checked = false;
+  }
+}
+
+function inlinePublic22M() {
+  let inlineRadio22 = document.querySelector(".inlineRadio22").checked;
+  if (inlineRadio22) {
+    document.querySelector(".inlineRadio21").checked = true;
+    document.querySelector(".inlineRadio1").checked = true;
+  } else {
+    document.querySelector(".inlineRadio21").checked = false;
+    document.querySelector(".inlineRadio1").checked = false;
+  }
+}

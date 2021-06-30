@@ -191,18 +191,30 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 								<button class="btn btn-success" type="button" id="btnPayCoffee" data-bs-toggle="modal" data-bs-target="#apoyar">
 									<span class="fw-bold">
 										<?php
-										echo 'Apoyar <i class="fas fa-dollar-sign"></i> <strong style="font-size:120%;" id="valueBtnExtra">' . $money . '</strong>';
-										echo '<script>var btnPay = document.getElementById("btnPayCoffee");
+										echo 'Apoyar <i class="fas fa-dollar-sign"></i> <strong style="font-size:120%;" id="valueBtnExtra">' . $priceExtra . '</strong>';
+										echo '<script>
+												let btnPay = document.getElementById("btnPayCoffee");
+												let preguntaSection = document.querySelector(".preguntaSection");
+												let preguntaSectionCard = document.querySelector(".preguntaSectionCard");
 												btnPay.addEventListener("click", function(){
 													document.getElementById("titlePay").innerHTML = "Apoyando a <b>' . $uName . '</b>"; 
 													document.getElementById("titlePaying").innerHTML = "Apoyando a <b>' . $uName . '</b>"; 
-													$("#preguntaSection").hide();
-													document.getElementById("questionAnswer").removeAttribute("required");
+													$(preguntaSection).hide();
+													$(preguntaSectionCard).hide();
+													document.querySelectorAll(".questionAnswer").forEach(function(el) {
+														el.removeAttribute("required");
+													});
 													document.getElementById("payType").value = "1";
-													var prriceCoffee = document.getElementById("valueBtnExtra").innerText;
-													document.getElementById("amountCoffe").value = prriceCoffee;													
-													document.getElementById("id-extra").value = "' . $idExtra . '";
-													document.getElementById("descripcionPay").value = "Coffee for: ' . $userID . '";
+													let prriceCoffee = document.getElementById("valueBtnExtra").innerText;
+													document.querySelectorAll(".amountCoffe").forEach(function(el) {
+														el.value = prriceCoffee;
+													});		
+													document.querySelectorAll(".descripcionPay").forEach(function(el) {
+														el.value = "Coffee for: ' . $userID . '";
+													});						
+													document.querySelectorAll(".id-extra").forEach(function(el) {
+														el.value = "' . $idExtra . '";
+													});					
 												});</script>';
 										?>
 									</span>
@@ -334,11 +346,16 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 												
 											document.getElementById("titlePay").innerHTML = "<b>' . $rowe["title"] . '</b>"; 
 											document.getElementById("titlePaying").innerHTML = "<b>' . $rowe["title"] . '</b>";
-											document.getElementById("amountCoffe").value = "' . $rowe["price"] . '";
+											document.querySelectorAll(".amountCoffe").forEach(function(el) {
+												el.value = "' . $rowe["price"] . '";
+											});	
 											document.getElementById("titleExtraval").value = "' . $rowe["title"] . '";
-											document.getElementById("id-extra").value = "' . $rowe["id_extra"] . '";
-											document.getElementById("descripcionPay").value = "' . $rowe["title"] . ' from: ' . $userID . '";';
-
+											document.querySelectorAll(".id-extra").forEach(function(el) {
+												el.value = "' . $rowe["id_extra"] . '";
+											});
+											document.querySelectorAll(".descripcionPay").forEach(function(el) {
+												el.value = "' . $rowe["title"] . ' from: ' . $userID . '"
+											});';
 										if ($rowe["subsciption"] == "1") {
 											echo 'document.getElementById("payType").value = "2";';
 											echo 'document.getElementById("subsid").value = "' . $rowe["subsciption_id"] . '";';
@@ -349,15 +366,27 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 										}
 
 										if ($rowe["question"] == "") {
-											echo 'console.log("aqui");';
-											echo '$("#preguntaSection").hide();
-												$("#preguntaSection2").hide();
-												document.getElementById("questionAnswer").removeAttribute("required");';
+											echo 'let preguntaSection = document.querySelector(".preguntaSection");
+												let preguntaSectionCard = document.querySelector(".preguntaSectionCard");
+												$(preguntaSection).hide();
+												$(preguntaSectionCard).hide();
+												document.querySelectorAll(".questionAnswer").forEach(function(el) {
+													el.removeAttribute("required");
+												});';
 										} else {
-											echo '$("#preguntaSection").show();
-												$("#preguntaSection2").show();
-												document.getElementById("questionAnswer").setAttribute("required", "");
-												document.getElementById("questionLabel").innerHTML = "<b>' . $rowe["question"] . '</b>";';
+											echo 'let preguntaSection = document.querySelector(".preguntaSection");
+												let preguntaSectionCard = document.querySelector(".preguntaSectionCard");
+												$(preguntaSection).show();
+												$(preguntaSectionCard).show();
+												document.querySelectorAll(".questionAnswer").forEach(function(el) {
+													el.setAttribute("required", "");
+												});
+												document.querySelectorAll(".questionLabel").forEach(function(el) {
+													el.innerHTML = "<b>' . $rowe["question"] . '</b>";
+												});
+												';
+												
+												
 										}
 										echo '});</script>';
 										$noExtras = false;
@@ -577,27 +606,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 								</h5>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-12">
-								<input type="email" class="form-control" id="inputMailFan1" aria-describedby="emailHelp" placeholder="Ingresa tu correo">
-								<small id="emailHelp" class="form-text text-muted">Aqui te llegara tu confirmacion de pago y un mensaje especial.</small>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<div class="col-12">
-								<textarea class="form-control" id="inputTextFan1" rows="2" placeholder="Aqui puedes escribirle algo publico o privado.. (opcional)"></textarea>
-								<div class="m-1">
-									<div class="flipswitch">
-										<input type="checkbox" name="flipswitch" class="flipswitch-cb" id="fs" checked>
-										<label class="flipswitch-label" for="fs">
-											<div class="flipswitch-inner"></div>
-											<div class="flipswitch-switch"></div>
-										</label>
-									</div>
-								</div>
-
-							</div>
-						</div>
+						
 						<div class="row">
 							<div class="col-12">
 								<h5 class="fw-bold">Pagar con:</h5>
@@ -605,7 +614,11 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 							<div class="col-12 p-2 text-center d-grip">
 								<button type="button" class="btn btn-warning col-12" id="btnPayCreditDebit" data-bs-target="#apoyarSiguiente" data-bs-toggle="modal" data-bs-dismiss="modal"><i class="fab fa-cc-visa fa-2x"></i> <i class="fab fa-cc-mastercard fa-2x"></i> <i class="fab fa-cc-amex fa-2x"></i> Pago seguro</button>
 							</div>
-							<div class="col-12 p-2" id="btnPaypalDiv"><button class="btn btn-warning btn-block" id="btnPaypal"><img src="images/paypal.png" width="100"></button></div>
+							<div class="col-12 p-2 mb-3" id="btnPaypalDiv">
+								<button class="btn btn-warning col-12" id="btnPaypal" data-bs-target="#apoyarSiguiente" data-bs-toggle="modal" data-bs-dismiss="modal">
+									<img src="images/paypal.png" width="100">
+								</button>
+							</div>
 							<div class="col-12 text-center">
 								<span class="badge bg-success"><i class="fas fa-user-lock"></i> Tus pagos se realizan de forma segura con encriptación de 256 bits.</span>
 							</div>
@@ -633,46 +646,102 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-12">
-								<form action="pagando/" method="POST" id="payment-form" novalidate="">
-									<input type="hidden" name="token_id" id="token_id">
-									<input type="hidden" name="payType" value="1" id="payType">
-									<input type="hidden" name="coffeeQuantity" value="1" id="quantityCoffe">
-									<input type="hidden" name="amount" value="0" id="amountCoffe">
-									<input type="hidden" name="descripcion" value="0" id="descripcionPay">
-									<input type="hidden" name="id-extra" value="0" id="id-extra">
-									<input type="hidden" name="subsid" value="0" id="subsid">
-									<input type="hidden" name="titleExtra" value="0" id="titleExtraval">
-									<input type="hidden" name="isPaypal" value="0" id="isPaypal">
+							<div class="col-12 paypalContainer">
+								<form action="pagando/" method="POST"  novalidate="">
+									<input type='hidden' name='item_name' class="descripcionPay" value=""> 
+									<input type='hidden' name='item_number' value="1" class="quantityCoffe">
+									<input type='hidden' name='amount' class="amountCoffe" value=''> 
+									<input type="hidden" name="order" class="id-extra" value="">
+									<input type="hidden" name="payType" value="3">
+																
 									<?php
-									echo '<input type="hidden" name="confirmationM" value="' . $confirmationExtra . '">';
-									echo '<input type="hidden" name="uname" value="' . $uName . '" id="unamePay">';
-									echo '';
+										echo '<input type="hidden" name="confirmationM" value="' . $confirmationExtra . '">';
+										echo '<input type="hidden" name="uname" value="' . $uName . '">';
+										echo '<input type="hidden" name="idUser" value="'.$userID.'">	';
+										echo '<input type="hidden" name="date" value="'.$today.'">	';
 									?>
 									<div class="mb-3">
-										<input type="email" class="form-control" id="inputMailFan2" name="email" aria-describedby="emailHelp" placeholder="Inresa tu correo" required>
+										<input type="email" class="form-control inputMailFan2" name="payer_email" aria-describedby="emailHelp" placeholder="Inresa tu correo" required>
 										<small id="emailHelp" class="form-text text-muted">Aqui te llegara tu confirmacion de pago y un mensaje especial.</small>
 									</div>
-									<div class="mb-3">
-										<textarea class="form-control" id="inputTextFan2" name="noteFan" rows="2" placeholder="Aqui puedes escribirle algo.. (opcional)"></textarea>
-										<div class="form-check form-check-inline small">
-											<input class="form-check-input" type="radio" name="privatePublic" id="inlineRadio12" value="1" checked>
-											<label class="form-check-label" for="inlineRadio1">Publico</label>
-										</div>
-										<div class="form-check form-check-inline small">
-											<input class="form-check-input" type="radio" name="privatePublic" id="inlineRadio22" value="0">
-											<label class="form-check-label" for="inlineRadio2">Privado</label>
+									<div class="row mb-3">
+										<div class="col-12">
+											<textarea class="form-control" rows="2" name="noteFan" placeholder="Aqui puedes escribirle algo publico o privado.. (opcional)"></textarea>
+											<div class="m-1">
+												<div class="flipswitch">
+													<input type="checkbox" name="flipswitch" class="flipswitch-cb inlineRadio21" id="fs2" checked>
+													<label class="flipswitch-label" for="fs2">
+														<div class="flipswitch-inner"></div>
+														<div class="flipswitch-switch"></div>
+													</label>
+												</div>
+											</div>
+
 										</div>
 									</div>
-									<div class="mb-3" id="preguntaSection">
-										<label for="exampleFormControlTextarea1" id="questionLabel">Example textarea</label>
-										<textarea class="form-control" id="questionAnswer" name="questAnswer" rows="2" placeholder="Aqui tu respuesta" name="questionAnswer" required></textarea>
+									<div class="mb-3 preguntaSection">
+										<label for="exampleFormControlTextarea1" class="questionLabel">Example textarea</label>
+										<textarea class="form-control questionAnswer" name="questAnswer" rows="2" placeholder="Aqui tu respuesta" required></textarea>
 									</div>
 									<div class="divider-custom-pay divider-light-pay">
 										<div class="divider-custom-line-pay"></div>
 										<div class="divider-custom-icon-pay">Pagar con:</div>
 										<div class="divider-custom-line-pay"></div>
 									</div>
+
+									<div class="container">
+										<button type="submit" class="btn btn-warning col-12 mb-3" id="btnPaypalEnd">
+											<img src="images/paypal.png" width="100">
+										</button>
+									</div>
+								</form>
+							</div>
+							
+							<div class="col-12 cardContainer">
+								<form action="pagando/" method="POST" id="payment-form" novalidate="">
+									<input type="hidden" name="token_id" id="token_id">
+									<input type="hidden" name="payType" value="1" id="payType">
+									<input type="hidden" name="coffeeQuantity" value="1" class="quantityCoffe">
+									<input type="hidden" name="amount" value="0" class="amountCoffe">
+									<input type="hidden" name="descripcion" value="0" class="descripcionPay">
+									<input type="hidden" name="id-extra" value="0" class="id-extra">
+									<input type="hidden" name="subsid" value="0" id="subsid">
+									<input type="hidden" name="titleExtra" value="0" id="titleExtraval">
+									<input type="hidden" name="isPaypal" value="0" id="isPaypal">
+									<?php
+									echo '<input type="hidden" name="confirmationM" value="' . $confirmationExtra . '">';
+									echo '<input type="hidden" name="uname" value="' . $uName . '">';
+									echo '';
+									?>
+									<div class="mb-3">
+										<input type="email" class="form-control" id="inputMailFan2" name="email" aria-describedby="emailHelp" placeholder="Inresa tu correo" required>
+										<small id="emailHelp" class="form-text text-muted">Aqui te llegara tu confirmacion de pago y un mensaje especial.</small>
+									</div>
+									<div class="row mb-3">
+										<div class="col-12">
+											<textarea class="form-control" rows="2" name="noteFan" placeholder="Aqui puedes escribirle algo publico o privado.. (opcional)"></textarea>
+											<div class="m-1">
+												<div class="flipswitch">
+													<input type="checkbox" name="flipswitch" class="flipswitch-cb inlineRadio22" id="fs3" checked>
+													<label class="flipswitch-label" for="fs3">
+														<div class="flipswitch-inner"></div>
+														<div class="flipswitch-switch"></div>
+													</label>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<div class="mb-3 preguntaSectionCard">
+										<label for="exampleFormControlTextarea1" class="questionLabel">Example textarea</label>
+										<textarea class="form-control questionAnswer" name="questAnswer" rows="2" placeholder="Aqui tu respuesta" required></textarea>
+									</div>
+									<div class="divider-custom-pay divider-light-pay">
+										<div class="divider-custom-line-pay"></div>
+										<div class="divider-custom-icon-pay">Pagar con:</div>
+										<div class="divider-custom-line-pay"></div>
+									</div>
+									
 									<div class="container">
 										<p class="alert alert-danger p-1 small" id="alertBank">Some text success or error</p>
 										<p class="alert alert-danger p-1 small invalid-feedback" id="alertBank_form">Completa todos los campos</p>
@@ -738,7 +807,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 												</div>
 											</div>
 										</div>
-										<button class="btn btn-warning btn-block shadow-sm col-6 mb-3" id="pay-button" type="submit"><span id="endLabelPay"><i class="fas fa-lock"></i> Finalizar</span><span id="endLabelPaying"><i class="fas fa-spinner fa-pulse"></i> Pagando</span></button>
+										<button class="btn btn-warning shadow-sm col-12 mb-3" id="pay-button" type="submit"><span id="endLabelPay"><i class="fas fa-lock"></i> Finalizar</span><span id="endLabelPaying"><i class="fas fa-spinner fa-pulse"></i> Pagando</span></button>
 									</div>
 								</form>
 							</div>
@@ -751,7 +820,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 			</div>
 		</div>
 	</div>
-</div>
+
 
 <script type='text/javascript' src="js/coffeeOpenPay.js"></script>
 <?php

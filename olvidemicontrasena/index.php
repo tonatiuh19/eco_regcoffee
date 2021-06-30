@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="form-group text-center">
                                 <span>Revisa tu correo</span><br>
                                 <label for="exampleInputPassword1">¿Cual es el codigo que enviamos?</label>
-                                <input type="number" name="codeTo" class="form-control" id="exampleInputPassword1" placeholder="XXXX" required>
+                                <input type="number" name="codeTo" class="form-control mb-3" id="exampleInputPassword1" placeholder="XXXX" required>
                                 <input type="hidden" name="idUser" value="'.$idUser.'">
                                 <input type="hidden" name="typee" value="1">
                             </div>

@@ -1,0 +1,109 @@
+[2021-06-30 09:49 America/Mexico_City] HTTP request of validation request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 1062
+Content-Type: application/x-www-form-urlencoded
+Expect: 100-continue
+
+ for IPN payload: cmd=_notify-validate&mc_gross=55.00&protection_eligibility=Eligible&address_status=confirmed&payer_id=CPCPKFAHPZCUA&address_street=Calle+Juarez+1%0D%0ACol.+Cuauhtemoc&payment_date=07%3A48%3A57+Jun+30%2C+2021+PDT&payment_status=Completed&charset=UTF-8&address_zip=11580&first_name=John&mc_fee=7.16&address_country_code=MX&address_name=John+Doe&notify_version=3.9&custom=&payer_status=verified&business=sb-47xwsh6651755%40business.example.com&address_country=Mexico&address_city=Miguel+Hidalgo&quantity=1&verify_sign=ADZVHRm6w6D4ZP3P18qBTPPqIL1kAVP3OG-r67JzceOsEJGshwbGQKWq&payer_email=sb-me53d6656553%40personal.example.com&txn_id=5JS928976G0765103&payment_type=instant&last_name=Doe&address_state=Ciudad+de+Mexico&receiver_email=sb-47xwsh6651755%40business.example.com&payment_fee=&shipping_discount=0.00&insurance_amount=0.00&receiver_id=VPYS47TRHN3Z6&txn_type=web_accept&item_name=Coffee+for%3A+5&discount=0.00&mc_currency=MXN&item_number=87&residence_country=MX&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=807e3041a1f5b
+[2021-06-30 09:49 America/Mexico_City] HTTP response of validation request: HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Connection: close
+Content-Length: 8
+Content-Type: text/html; charset=UTF-8
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Paypal-Debug-Id: 19f0a4441987b
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=UTPwPr88zSYMuJcb6H-SRG3fle0Hz9yh3X7irnxbI7knHBa9YWcPREe4NvSgHI-fBaHtsHbeYFCBphgkKD8hTtlTHyxY4EhmcvOv9ITJxgwDFZgrRbdDdx0tqYl_jLQfEYkfHvjdhh-VZM8eIyILzfu9rp2FhHd-iUs3S2CWhmlLeQDIpihfTuWgIuilypO4r-Z8ToI1qVjc6LF7Es7FGG20io-_Id4-itTTpum50LkGXEXRirktoQc3ylDnJC3hLT3CYuZaCAbBpq-jkvGEk93vnqI9IVdocwv44kpMF9SHUWzU1SyxEXxdMte31NsHB3mOvoE5iW4mi9n3JCjKERdmCJ3Z5e-c7KgYzvCUK5K7Zt-SLn8rf6O8VoI8o7qLxBBo3DFw3Hk4BaZckQCotVOUsWCWqodlSCuSaMP7YaIaSQohyzqDIkZpHWK; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 28-Jun-2031 14:49:07 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=; expires=Fri, 30-Jun-2023 14:49:07 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: ts=vreXpYrS%3D1719758947%26vteXpYrS%3D1625066347%26vr%3D5d6523d817a0a6020608b543fe885b7b%26vt%3D5d6523d817a0a6020608b543fe885b7a%26vtyp%3Dnew; Path=/; Domain=paypal.com; Expires=Sat, 29 Jun 2024 14:49:08 GMT; HttpOnly; Secure
+Set-Cookie: ts_c=vr%3D5d6523d817a0a6020608b543fe885b7b%26vt%3D5d6523d817a0a6020608b543fe885b7a; Path=/; Domain=paypal.com; Expires=Sat, 29 Jun 2024 14:49:08 GMT; Secure
+X-Frame-Options: SAMEORIGIN
+Accept-Ranges: bytes
+Date: Wed, 30 Jun 2021 14:49:08 GMT
+Via: 1.1 varnish
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Served-By: cache-dfw18663-DFW
+X-Cache: MISS
+X-Cache-Hits: 0
+X-Timer: S1625064547.269631,VS0,VE758
+Vary: Accept-Encoding
+Set-Cookie: x-cdn=fastly:DFW; Domain=paypal.com; Path=/; Secure
+
+VERIFIED
+[2021-06-30 09:49 America/Mexico_City] Verified IPN: cmd=_notify-validate&mc_gross=55.00&protection_eligibility=Eligible&address_status=confirmed&payer_id=CPCPKFAHPZCUA&address_street=Calle+Juarez+1%0D%0ACol.+Cuauhtemoc&payment_date=07%3A48%3A57+Jun+30%2C+2021+PDT&payment_status=Completed&charset=UTF-8&address_zip=11580&first_name=John&mc_fee=7.16&address_country_code=MX&address_name=John+Doe&notify_version=3.9&custom=&payer_status=verified&business=sb-47xwsh6651755%40business.example.com&address_country=Mexico&address_city=Miguel+Hidalgo&quantity=1&verify_sign=ADZVHRm6w6D4ZP3P18qBTPPqIL1kAVP3OG-r67JzceOsEJGshwbGQKWq&payer_email=sb-me53d6656553%40personal.example.com&txn_id=5JS928976G0765103&payment_type=instant&last_name=Doe&address_state=Ciudad+de+Mexico&receiver_email=sb-47xwsh6651755%40business.example.com&payment_fee=&shipping_discount=0.00&insurance_amount=0.00&receiver_id=VPYS47TRHN3Z6&txn_type=web_accept&item_name=Coffee+for%3A+5&discount=0.00&mc_currency=MXN&item_number=87&residence_country=MX&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=807e3041a1f5b 
+[2021-06-30 09:58 America/Mexico_City] HTTP request of validation request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 1062
+Content-Type: application/x-www-form-urlencoded
+Expect: 100-continue
+
+ for IPN payload: cmd=_notify-validate&mc_gross=55.00&protection_eligibility=Eligible&address_status=confirmed&payer_id=CPCPKFAHPZCUA&address_street=Calle+Juarez+1%0D%0ACol.+Cuauhtemoc&payment_date=07%3A58%3A22+Jun+30%2C+2021+PDT&payment_status=Completed&charset=UTF-8&address_zip=11580&first_name=John&mc_fee=7.16&address_country_code=MX&address_name=John+Doe&notify_version=3.9&custom=&payer_status=verified&business=sb-47xwsh6651755%40business.example.com&address_country=Mexico&address_city=Miguel+Hidalgo&quantity=1&verify_sign=ArH5sKzeLhwRH46YqCMeWMtHi1b9Alw-Q53rLLl0AB0fsarcMIfZYHsT&payer_email=sb-me53d6656553%40personal.example.com&txn_id=5MP99411KK805381P&payment_type=instant&last_name=Doe&address_state=Ciudad+de+Mexico&receiver_email=sb-47xwsh6651755%40business.example.com&payment_fee=&shipping_discount=0.00&insurance_amount=0.00&receiver_id=VPYS47TRHN3Z6&txn_type=web_accept&item_name=Coffee+for%3A+5&discount=0.00&mc_currency=MXN&item_number=88&residence_country=MX&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=7f5044aca34b5
+[2021-06-30 09:58 America/Mexico_City] HTTP response of validation request: HTTP/1.1 100 Continue
+
+HTTP/1.1 400 Bad Request
+Connection: close
+Content-Length: 226
+Content-Type: text/html; charset=iso-8859-1
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Paypal-Debug-Id: c9f219d83385c
+Set-Cookie: ts=vreXpYrS%3D1719759508%26vteXpYrS%3D1625066908%26vr%3D5d6db39017a0a60212130587fe88e552%26vt%3D5d6db39017a0a60212130587fe88e551%26vtyp%3Dnew; Path=/; Domain=paypal.com; Expires=Sat, 29 Jun 2024 14:58:28 GMT; HttpOnly; Secure
+Set-Cookie: ts_c=vr%3D5d6db39017a0a60212130587fe88e552%26vt%3D5d6db39017a0a60212130587fe88e551; Path=/; Domain=paypal.com; Expires=Sat, 29 Jun 2024 14:58:28 GMT; Secure
+Accept-Ranges: bytes
+Date: Wed, 30 Jun 2021 14:58:28 GMT
+Via: 1.1 varnish
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Served-By: cache-dfw18676-DFW
+X-Cache: MISS
+X-Cache-Hits: 0
+X-Timer: S1625065108.348677,VS0,VE44
+Set-Cookie: x-cdn=fastly:DFW; Domain=paypal.com; Path=/; Secure
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>400 Bad Request</title>
+</head><body>
+<h1>Bad Request</h1>
+<p>Your browser sent a request that this server could not understand.<br />
+</p>
+</body></html>
+
+[2021-06-30 10:03 America/Mexico_City] HTTP request of validation request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.sandbox.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 890
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&payment_type=instant&payment_date=10%3A02%3A44+Jun+29%2C+2021+PDT&payment_status=Completed&address_status=confirmed&payer_status=verified&first_name=John&last_name=Smith&payer_email=buyer%40paypalsandbox.com&payer_id=TESTBUYERID01&address_name=John+Smith&address_country=United+States&address_country_code=US&address_zip=95131&address_state=CA&address_city=San+Jose&address_street=123+any+street&business=seller%40paypalsandbox.com&receiver_email=seller%40paypalsandbox.com&receiver_id=seller%40paypalsandbox.com&residence_country=US&item_name1=something&item_number1=88&tax=2.02&mc_currency=USD&mc_fee=0.44&mc_gross=12.34&mc_gross_1=12.34&mc_handling=2.06&mc_handling1=1.67&mc_shipping=3.02&mc_shipping1=1.02&txn_type=cart&txn_id=997942292&notify_version=2.1&custom=xyz123&invoice=abc1234&test_ipn=1&verify_sign=AQq9S7Ok-pw8oyfqd1s.l.8B2TrvALCVQEHuZX8mJbqIsYZt1JsMgK4f
+[2021-06-30 10:03 America/Mexico_City] HTTP response of validation request: HTTP/1.1 200 OK
+Connection: close
+Content-Length: 8
+Content-Type: text/html; charset=UTF-8
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Paypal-Debug-Id: 91eb99b6e467f
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=_10NZZcIOmJdPDY7unu0nlP9cmosKDzNPsW9Bj1h0xQi5s22CgBliNv6QdMQXDG0LSNGgmjppqVyFaVMt_vVMgmR9rsJeFJS2JMiYxOLilGc_GGp-RHQPpkHlSyVfO4dbYtQsD4e-p7KHySTMiPyZhNDT7kNMGErWxNmaljMXzN_X9tCGbrZyHvP0sG7ZuUgjJw0Fi32amRyvWimAriRPQiCk8Q2z5zNakhUoD_3q2vcoirWU6eQQsv3fW_ABM3OAWwFTHasNvFoUsWQZrxUhu8LwW_NiTRiGdHAa_QAX8y3h0NHRp77xYdrBk6MnPooT_h3HjdsGoKGmSE0VKI_ovQI9EyiVHr67DpZG75XFoYuYwKR8B5qPI_bL3aVuDMFGE92hDv5zBPUPIcQYHkW6vkb-hWC6GTxyBErMpvfhId0ExvcnNU8iuoDM8a; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 28-Jun-2031 15:03:30 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=; expires=Fri, 30-Jun-2023 15:03:30 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: ts=vreXpYrS%3D1719759809%26vteXpYrS%3D1625067209%26vr%3D5d724dbf17a0a6020608b543fe87a20a%26vt%3D5d724dbf17a0a6020608b543fe87a209%26vtyp%3Dnew; Path=/; Domain=paypal.com; Expires=Sat, 29 Jun 2024 15:03:30 GMT; HttpOnly; Secure
+Set-Cookie: ts_c=vr%3D5d724dbf17a0a6020608b543fe87a20a%26vt%3D5d724dbf17a0a6020608b543fe87a209; Path=/; Domain=paypal.com; Expires=Sat, 29 Jun 2024 15:03:30 GMT; Secure
+X-Frame-Options: SAMEORIGIN
+Accept-Ranges: bytes
+Date: Wed, 30 Jun 2021 15:03:30 GMT
+Via: 1.1 varnish
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Served-By: cache-dfw18628-DFW
+X-Cache: MISS
+X-Cache-Hits: 0
+X-Timer: S1625065410.963771,VS0,VE784
+Vary: Accept-Encoding
+Set-Cookie: x-cdn=fastly:DFW; Domain=paypal.com; Path=/; Secure
+
+VERIFIED
+[2021-06-30 10:03 America/Mexico_City] Verified IPN: cmd=_notify-validate&payment_type=instant&payment_date=10%3A02%3A44+Jun+29%2C+2021+PDT&payment_status=Completed&address_status=confirmed&payer_status=verified&first_name=John&last_name=Smith&payer_email=buyer%40paypalsandbox.com&payer_id=TESTBUYERID01&address_name=John+Smith&address_country=United+States&address_country_code=US&address_zip=95131&address_state=CA&address_city=San+Jose&address_street=123+any+street&business=seller%40paypalsandbox.com&receiver_email=seller%40paypalsandbox.com&receiver_id=seller%40paypalsandbox.com&residence_country=US&item_name1=something&item_number1=88&tax=2.02&mc_currency=USD&mc_fee=0.44&mc_gross=12.34&mc_gross_1=12.34&mc_handling=2.06&mc_handling1=1.67&mc_shipping=3.02&mc_shipping1=1.02&txn_type=cart&txn_id=997942292&notify_version=2.1&custom=xyz123&invoice=abc1234&test_ipn=1&verify_sign=AQq9S7Ok-pw8oyfqd1s.l.8B2TrvALCVQEHuZX8mJbqIsYZt1JsMgK4f 
