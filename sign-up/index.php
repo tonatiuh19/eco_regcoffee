@@ -86,9 +86,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         }
                                     } else {
                                         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                        header('Location: ../algosaliomal/');
                                     }
                                 } else {
                                     echo "Error: " . $sql . "<br>" . $conn->error;
+                                    header('Location: ../algosaliomal/');
                                 }
                             } else {
                             }
@@ -101,6 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
+                header('Location: ../algosaliomal/');
             }
         }
     }
@@ -144,6 +147,7 @@ function sendMailWelcome($email, $uname)
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         return false;
+        header('Location: ../algosaliomal/');
     }
 }
 ?>

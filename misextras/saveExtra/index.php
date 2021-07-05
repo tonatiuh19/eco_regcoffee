@@ -70,9 +70,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         </SCRIPT>");
                         } else {
                             echo "Error updating record: " . $conn->error;
+                            header('Location: ../algosaliomal/');
                         }
                     } else {
                         echo "Error updating record: " . $conn->error;
+                        header('Location: ../algosaliomal/');
                     }
                 } else {
                     $sqly = "UPDATE payments SET id_extra='" . $idExtra . "' WHERE id_extra=" . $editId . "";
@@ -83,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         </SCRIPT>");
                     } else {
                         echo "Error updating record: " . $conn->error;
+                        header('Location: ../algosaliomal/');
                     }
                 }
 
@@ -90,9 +93,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
+            header('Location: ../algosaliomal/');
         }
     } else {
         echo "Error updating record: " . $conn->error;
+        header('Location: ../algosaliomal/');
     }
 } else {
     echo ("<SCRIPT LANGUAGE='JavaScript'>

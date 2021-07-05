@@ -77,6 +77,7 @@ if(!isset($_GET['order']) || $_GET['order']=='') {
 					}
 				} else {
 					echo "Error: " . $sql2 . "<br>" . $conn->error;
+					header('Location: ../algosaliomal/');
 				}
 			}else{
 				if (sendMailGracias($row["email_user"], $row["user_name"], $row["confirmation"], $row["amount"], $whatIWant)) {
@@ -157,6 +158,7 @@ function sendMailGracias($email, $uname, $message, $total, $qty)
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     return false;
+	header('Location: ../algosaliomal/');
   }
 }
 ?>

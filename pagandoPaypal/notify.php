@@ -95,6 +95,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
           //echo "New record created successfully";
         } else {
           //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		  header('Location: ../algosaliomal/');
         }
     }
 	/*$payment_id = $shoppingCart->insertPayment($item_number, $payment_status, $payment_response);

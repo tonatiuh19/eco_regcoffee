@@ -68,10 +68,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_query($conn, $sql)) {
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                header('Location: ../algosaliomal/');
             }
         }
     } else {
         echo "Error updating record: " . $conn->error;
+        header('Location: ../algosaliomal/');
     }
 
 

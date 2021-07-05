@@ -21,7 +21,8 @@ if ($result->num_rows > 0) {
   if ($conn->query($sqlx) === TRUE) {
     //echo "New record created successfully";
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+    header('Location: ./algosaliomal/');
   }
   require_once('admin/main.php');
 }

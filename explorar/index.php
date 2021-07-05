@@ -8,7 +8,8 @@ VALUES ('creators', '$today')";
 if ($conn->query($sqlx) === TRUE) {
     //echo "New record created successfully";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    //echo "Error: " . $sql . "<br>" . $conn->error;
+    header('Location: ../algosaliomal/');
 }
 ?>
 <link rel="stylesheet" href="./css/style.css">

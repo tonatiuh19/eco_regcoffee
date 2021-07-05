@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>';
         } else {
             echo "Error updating record: " . $conn->error;
+            header('Location: ../algosaliomal/');
         }
         $conn->close();
     }else if($type == "1"){

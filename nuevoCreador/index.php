@@ -22,9 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </SCRIPT>");
         } else {
           echo "Error: " . $sql2 . "<br>" . $conn->error;
+          header('Location: ../algosaliomal/');
         }
     } else {
         echo "Error updating record: " . $conn->error;
+        header('Location: ../algosaliomal/');
     }
 
 }else{

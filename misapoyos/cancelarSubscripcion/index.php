@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </SCRIPT>");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
+        header('Location: ../algosaliomal/');
     }
 }else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>

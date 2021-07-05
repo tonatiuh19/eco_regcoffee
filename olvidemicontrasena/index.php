@@ -120,6 +120,7 @@ function sendMailCode($code, $email, $uname){
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         return false;
+        header('Location: ../algosaliomal/');
     }
 }
 

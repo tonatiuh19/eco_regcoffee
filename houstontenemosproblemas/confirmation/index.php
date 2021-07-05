@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        header('Location: ../algosaliomal/');
     }
 
 

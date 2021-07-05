@@ -141,10 +141,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           }
         } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
+          header('Location: ../algosaliomal/');
         }
       }
     } else {
       echo "Error: " . $sqli . "<br>" . $conn->error;
+      header('Location: ../algosaliomal/');
     }
   } else if ($status == "3") {
     $uname = test_input($_POST["uname"]);
@@ -256,10 +258,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           }
         } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
+          header('Location: ../algosaliomal/');
         }
       }
     } else {
       echo "Error: " . $sqli . "<br>" . $conn->error;
+      header('Location: ../algosaliomal/');
     }
   } else {
     $today = date("Y-m-d H:i:s");
@@ -284,6 +288,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>';
     } else {
       echo "Error: " . $sqli . "<br>" . $conn->error;
+      header('Location: ../algosaliomal/');
     }
   }
 } else {
@@ -332,6 +337,7 @@ function sendMailGracias($email, $uname, $message, $total, $qty)
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     return false;
+    header('Location: ../algosaliomal/');
   }
 }
 
@@ -362,6 +368,7 @@ function sendMailGraciasSubs($email, $uname, $message, $plan, $total)
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     return false;
+    header('Location: ../algosaliomal/');
   }
 }
 ?>

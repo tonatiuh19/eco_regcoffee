@@ -85,6 +85,7 @@ try {
 		</script>';
 	} else {
 		echo "Error: " . $sql . "<br>" . $conn->error;
+		header('Location: ../algosaliomal/');
 	}
 
 	$conn->close();

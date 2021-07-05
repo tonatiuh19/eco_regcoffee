@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //echo "Record updated successfully";
     } else {
         echo "Error updating record: " . $conn->error;
+        header('Location: ../algosaliomal/');
     }
 
     $name       = $_FILES['fileToUpload']['name'];
@@ -68,16 +69,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </SCRIPT>");
                             } else {
                                 echo "Error updating record: " . $conn->error;
+                                header('Location: ../algosaliomal/');
                             }
                         } else {
                             echo "0 results";
                         }
                     } else {
                         echo "Error updating record: " . $conn->error;
+                        header('Location: ../algosaliomal/');
                     }
                 }
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
+                header('Location: ../algosaliomal/');
             }
         } else {
             echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -118,15 +122,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </SCRIPT>");
                     } else {
                         echo "Error updating record: " . $conn->error;
+                        header('Location: ../algosaliomal/');
                     }
                 } else {
                     echo "0 results";
                 }
             } else {
                 echo "Error updating record: " . $conn->error;
+                header('Location: ../algosaliomal/');
             }
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
+            header('Location: ../algosaliomal/');
         }
     }
 } else {
