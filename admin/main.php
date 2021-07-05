@@ -171,7 +171,7 @@
                 <div class="container py-5">
                     <div class="row">
                         <div class="col-sm text-center">
-                            <span class="fas fa-magic"></span>
+                            <span class="fas fa-magic fa-2x"></span>
                             <h4 class="fw-bolder">Control total</h4>
                             <h5 class="fs-5 pt-2">
                                 Tienes el 100% de propiedad de tus seguidores. Nunca les
@@ -180,7 +180,7 @@
                             </h5>
                         </div>
                         <div class="col-sm text-center">
-                            <span class="fas fa-users"></span>
+                            <span class="fas fa-users fa-2x"></span>
                             <h4 class="fw-bolder">Conciente a los tuyos</h4>
                             <h5 class="fs-5 pt-2">
                                 Comienza una suscripción para tus fans. material exclusivo,
@@ -188,7 +188,7 @@
                             </h5>
                         </div>
                         <div class="col-sm text-center">
-                            <span class="fas fa-heart"></span>
+                            <span class="fas fa-heart fa-2x"></span>
                             <h4 class="fw-bolder">Servicio insuperable</h4>
                             <h5 class="fs-5 pt-2">
                                 Puedes hablar siempre con un humano para que te ayude, o si solo
@@ -476,7 +476,8 @@
                     </div>
                 </div>
             </div>
-            <img class="imgFullWidth" src="./images/creativity.png"></img>
+            <img class="imgFullWidth banner"></img>
+            <!--<img class="imgFullWidth banner" src="./images/creativity.png"></img>-->
         </main>
 
     </div>

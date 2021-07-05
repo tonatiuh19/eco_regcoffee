@@ -114,3 +114,9 @@
   height: 100px;
   width: 150px;
 }
+
+.banner {
+  background: url("https://media.giphy.com/media/VbEuHLBUPQm55MyqJg/giphy.gif");
+  height: 450px;
+  background-position: bottom;
+}
