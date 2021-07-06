@@ -15,7 +15,7 @@ if (isset($_POST['page_no'])) {
 
 $offset = ($page_no - 1) * $limit;
 
-$sqlu = "SELECT a.id_payments, a.id_extra, a.id_openpay, a.date, a.amount, a.description, a.question_answer, a.email_user, a.isPublic_note_fan, a.note_fan, b.active, b.title, b.subsciption FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.status='completed' and a.id_extra=" . $idExtra . " order by a.date desc LIMIT $offset, $limit";
+$sqlu = "SELECT a.id_payments, a.id_extra, a.id_openpay, a.date, a.amount, a.description, a.question_answer, a.email_user, a.isPublic_note_fan, a.note_fan, b.active, b.title, b.subsciption FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE (a.status='completed' or a.status='pending') and a.id_extra=" . $idExtra . " order by a.date desc LIMIT $offset, $limit";
 
 $resultu = $conn->query($sqlu);
 
@@ -133,7 +133,7 @@ if (mysqli_num_rows($resultu) > 0) {
                 // output data of each row
                 $complet = '<td><button type="button" class="btn btn-primary btn-sm text-white disabled">Completo</button></td>';
             } else {
-                $complet = '<td><button type="button" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#completar' . $rowu["id_payments"] . '"><i class="fas fa-check"></i></button></td>';
+                $complet = '<td><button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#completar' . $rowu["id_payments"] . '">Completar <i class="fas fa-check"></i></button>';
             }
             $output .= '
                     <th scope="row">' . $x . '</th>
@@ -156,7 +156,7 @@ if (mysqli_num_rows($resultu) > 0) {
                   <input type="hidden" name="idPayment" value="' . $rowu["id_payments"] . '">
                   <input type="hidden" name="subs" value="' . $rowu["subsciption"] . '">
                   <br>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                   <button type="submit" class="btn btn-success text-white"><i class="fas fa-check"></i> Completar</button>
                   </form>
                 </div>
@@ -176,7 +176,7 @@ if (mysqli_num_rows($resultu) > 0) {
 
 
 
-    $sqly = "SELECT a.id_openpay, a.date, a.amount, a.description, a.question_answer, a.isPublic_note_fan, a.note_fan, b.active FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.status='completed' and a.id_extra=" . $idExtra . "";
+    $sqly = "SELECT a.id_openpay, a.date, a.amount, a.description, a.question_answer, a.isPublic_note_fan, a.note_fan, b.active FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE (a.status='completed' or a.status='pending') and a.id_extra=" . $idExtra . "";
 
     $records = $conn->query($sqly);
 

@@ -547,7 +547,7 @@ $(document).ready(function () {
         .getElementById("txtCardNumber")
         .value.replace(/\s/g, "")
         .replace(/_/g, "");
-
+      //console.log(frst);
       document.getElementById("txtCardNumberNoSpaces").value = frst;
     });
 
@@ -556,7 +556,7 @@ $(document).ready(function () {
         .getElementById("txtCardNumber")
         .value.replace(/\s/g, "")
         .replace(/_/g, "");
-
+      //console.log(frst);
       document.getElementById("txtCardNumberNoSpaces").value = frst;
     });
   }

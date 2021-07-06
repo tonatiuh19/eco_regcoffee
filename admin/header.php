@@ -77,9 +77,9 @@ if (!isset($_SESSION)) {
                       echo '<li><a href="../perfil/" class="dropdown-item">Mi cuenta</a></li>';
                     }
                     ?>
-                    <li><a href="../explorar/" class="dropdown-item">Apoyo a creadores</a></li>
                     <?php
                     if ($_SESSION["utype"] != "2") {
+                      echo '<li><a href="../explorar/" class="dropdown-item">Apoyo a creadores</a></li>';
                       $sqlp = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $_SESSION["user_param"] . " and a.status='completed'";
                       $resultp = $conn->query($sqlp);
 
@@ -90,6 +90,7 @@ if (!isset($_SESSION)) {
                       }
                     }
                     ?>
+                    <li><a href="../misapoyos/" class="dropdown-item">Subcripciones y pagos</a></li>
                     <li><a class="dropdown-item" href="../houstontenemosproblemas/"><i class="fas fa-tools fa-sm"></i> Soporte</a></li>
                     <li>
                       <hr class="dropdown-divider">
@@ -119,34 +120,36 @@ if (!isset($_SESSION)) {
     </nav>
     <?php
     if (isset($_SESSION["user_param"])) {
-      $sql = "SELECT a.id_users_payment FROM users_payment as a WHERE a.id_user=" . $_SESSION["user_param"] . "";
-      $result = $conn->query($sql);
+      if ($_SESSION["utype"] != "2") {
+        $sql = "SELECT a.id_users_payment FROM users_payment as a WHERE a.id_user=" . $_SESSION["user_param"] . "";
+        $result = $conn->query($sql);
 
-      if ($result->num_rows > 0) {
-        $sqlc = "SELECT a.id_user,
-        MAX(CASE WHEN a.id_categories = 1 THEN 1 ELSE 0 END) Video,
-        MAX(CASE WHEN a.id_categories = 2 THEN 1 ELSE 0 END) Writter,
-        MAX(CASE WHEN a.id_categories = 3 THEN 1 ELSE 0 END) Developer,
-        MAX(CASE WHEN a.id_categories = 4 THEN 1 ELSE 0 END) Podcaster,
-        MAX(CASE WHEN a.id_categories = 5 THEN 1 ELSE 0 END) Artist,
-        MAX(CASE WHEN a.id_categories = 6 THEN 1 ELSE 0 END) Influencer,
-        MAX(CASE WHEN a.id_categories = 7 THEN 1 ELSE 0 END) Other
-      FROM users_categories as a
-      WHERE a.active=1 AND a.id_user=" . $_SESSION["user_param"] . "
-      GROUP BY a.id_user";
-        $resultc = $conn->query($sqlc);
+        if ($result->num_rows > 0) {
+          $sqlc = "SELECT a.id_user,
+          MAX(CASE WHEN a.id_categories = 1 THEN 1 ELSE 0 END) Video,
+          MAX(CASE WHEN a.id_categories = 2 THEN 1 ELSE 0 END) Writter,
+          MAX(CASE WHEN a.id_categories = 3 THEN 1 ELSE 0 END) Developer,
+          MAX(CASE WHEN a.id_categories = 4 THEN 1 ELSE 0 END) Podcaster,
+          MAX(CASE WHEN a.id_categories = 5 THEN 1 ELSE 0 END) Artist,
+          MAX(CASE WHEN a.id_categories = 6 THEN 1 ELSE 0 END) Influencer,
+          MAX(CASE WHEN a.id_categories = 7 THEN 1 ELSE 0 END) Other
+        FROM users_categories as a
+        WHERE a.active=1 AND a.id_user=" . $_SESSION["user_param"] . "
+        GROUP BY a.id_user";
+          $resultc = $conn->query($sqlc);
 
-        if (!($resultc->num_rows > 0)) {
+          if (!($resultc->num_rows > 0)) {
+            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong>Registra una o mas categorias para que tus nuevos fans puedan ver a que te dedicas. <a href="../material/">Ir a perfil <i class="fas fa-arrow-circle-right"></i></a></strong>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+          }
+        } else {
           echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Registra una o mas categorias para que tus nuevos fans puedan ver a que te dedicas. <a href="../material/">Ir a perfil <i class="fas fa-arrow-circle-right"></i></a></strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>';
+          <strong>Es necesario captures tu cuenta Paypal o Clabe interbancaria para incluirte tu dinero. <a href="../micuenta/">Ir a perfil <i class="fas fa-arrow-circle-right"></i></a></strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
         }
-      } else {
-        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Es necesario captures tu cuenta Paypal o Clabe interbancaria para incluirte tu dinero. <a href="../micuenta/">Ir a perfil <i class="fas fa-arrow-circle-right"></i></a></strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>';
       }
     }
     ?>

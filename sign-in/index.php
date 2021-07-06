@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			if (isset($_SESSION["user_param"])) {
 				if($_SESSION["utype"] == '2'){
 					echo ("<SCRIPT LANGUAGE='JavaScript'>
-					window.location.href='../';
+					window.location.href='../misapoyos/';
 					</SCRIPT>");
 				}else{
 					echo ("<SCRIPT LANGUAGE='JavaScript'>

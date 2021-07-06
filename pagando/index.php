@@ -148,7 +148,12 @@ if ($_POST["payType"]=="1") {
 	  document.getElementById("finish").submit();
 	</script>';
 }elseif ($_POST["payType"]=="2") {
-	
+	/*echo $_POST["email"]. '<br>';
+	echo $_POST["holder_name"]. '<br>';
+	echo $_POST["card_number"]. '<br>';
+	echo $_POST["expiration_month"]. '<br>';
+	echo $_POST["expiration_year"]. '<br>';
+	echo $_POST["subsid"]. '<br>';*/
 	$openpay = Openpay::getInstance('mklwynufmke2y82injra', 'sk_e8bd01b6ec2f434089ddf536725654bb');
 	$customerData = array(
 		'name' => $_POST["email"],
@@ -166,14 +171,14 @@ if ($_POST["payType"]=="1") {
 	$customer = $openpay->customers->get($customer2->id);
 	$card = $customer->cards->add($cardDataRequest);
 	$todayVisit = date("Y-m-d H:i:s");
-	$subscriptionDataRequest = array(
+	/*$subscriptionDataRequest = array(
 		'plan_id' => $_POST["subsid"],
-		'card_id' => $card->id);
+		'card_id' => $card->id);*/
 	
 	try {
 			//Openpay::setProductionMode(false);
 		$customer = $openpay->customers->get($customer2->id);
-		$subscription = $customer->subscriptions->add($subscriptionDataRequest);
+		//$subscription = $customer->subscriptions->add($subscriptionDataRequest);
 		$status=1;
 	} catch (OpenpayApiTransactionError $e) {
 			/*echo 'ERROR on the transaction: ' . $e->getMessage() .
@@ -208,30 +213,29 @@ if ($_POST["payType"]=="1") {
 	}else{
 		$isPublic = 0;
 	}
-
+	$today = date("Y-m-d H:i:s");
 	echo '<form action="../gracias/" id="finish" method="post">';
 	if ($status==1) {
 		echo '<input type="hidden" name="stat" value="3">';
 		echo '<input type="hidden" name="uname" value="'.$_POST["uname"].'">';
-		echo '<input type="hidden" name="idPay" value="'.$subscription->id.'">';
-		/*echo '<input type="hidden" name="typeB" value="'.$subscription->transaction->card->type.'">';
-		echo '<input type="hidden" name="brand" value="'.$subscription->transaction->card->brand.'">';
-		echo '<input type="hidden" name="cardNo" value="'.$subscription->transaction->card->card_number.'">';
-		echo '<input type="hidden" name="bank" value="'.$subscription->transaction->card->bank_name.'">';*/
-		echo '<input type="hidden" name="status" value="'.$subscription->transaction->status.'">';
-		echo '<input type="hidden" name="date" value="'.$subscription->transaction->operation_date.'">';
-		echo '<input type="hidden" name="amount" value="'.$subscription->transaction->amount.'">';
-		/*echo '<input type="hidden" name="amountF" value="'.$subscription->transaction->fee->amount.'">';
-		echo '<input type="hidden" name="amountT" value="'.$subscription->transaction->fee->tax.'">';*/
-		echo '<input type="hidden" name="description" value="'.$subscription->transaction->description.'">';
+		echo '<input type="hidden" name="idPay" value="pending">';
+		echo '<input type="hidden" name="typeB" value="'.$card->type.'">';
+		echo '<input type="hidden" name="status" value="pending">';
+		echo '<input type="hidden" name="date" value="'.$today.'">';
+		echo '<input type="hidden" name="amount" value="pending">';
+		echo '<input type="hidden" name="brand" value="'.$card->brand.'">';
+		echo '<input type="hidden" name="cardNo" value="'.$card->card_number.'">';
+		echo '<input type="hidden" name="bank" value="'.$card->bank_name.'">';
+		echo '<input type="hidden" name="description" value="pending">';
 		echo '<input type="hidden" name="email" value="'.$_POST["email"].'">';
 		echo '<input type="hidden" name="noteFan" value="'.$_POST["noteFan"].'">';
 		echo '<input type="hidden" name="isPublic" value="'.$isPublic.'">';
 		echo '<input type="hidden" name="type" value="1">';
 		echo '<input type="hidden" name="id-extra" value="'.$_POST["id-extra"].'">';
 		echo '<input type="hidden" name="questAnswer" value="'.$_POST["questAnswer"].'">';
-		echo '<input type="hidden" name="period_end_date" value="'.$subscription->period_end_date.'">';
-		echo '<input type="hidden" name="customerID" value="'.$subscription->customer_id.'">';
+		echo '<input type="hidden" name="period_end_date" value="pending">';
+		echo '<input type="hidden" name="customerID" value="'.$customer2->id.'">';
+		echo '<input type="hidden" name="cardID" value="'.$card->id.'">';
 		echo '<input type="hidden" name="confirmationM" value="'.$_POST["confirmationM"].'">';
 		echo '<input type="hidden" name="titleExtra" value="'.$_POST["titleExtra"].'">';
 		echo '<input type="hidden" name="active" value="1">';

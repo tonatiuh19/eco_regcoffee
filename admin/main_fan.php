@@ -253,7 +253,8 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 					<div class="container">
 						<div class="row">
 							<?php
-							$sqle = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.id_user, a.limit_slots, a.price, a.question, a.subsciption, a.subsciption_id, a.active, a.date FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE b.user_name='" . $uName . "' and (a.active=1 or a.active=3)";
+							$sqle = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.id_user, (a.limit_slots-c.limit_payment) as limit_slots, a.price, a.question, a.subsciption, a.subsciption_id, a.active, a.date FROM extras as a INNER JOIN users as b on b.id_user=a.id_user INNER JOIN (SELECT COUNT(id_extra) as limit_payment, id_extra FROM payments GROUP BY id_extra) as c on c.id_extra=a.id_extra WHERE b.user_name='" . $uName . "' and (a.active=1 or a.active=3)";
+							
 							$resulte = $conn->query($sqle);
 							if ($resulte->num_rows > 0) {
 
@@ -752,7 +753,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 										<div class="mb-3">
 											<div class="input-group">
 												<input type="text" class="form-control" placeholder="Numero de tarjeta" id="txtCardNumber" aria-describedby="basic-addon2">
-												<input type="hidden" id="txtCardNumberNoSpaces" data-openpay-card="card_number" aria-describedby="basic-addon2">
+												<input type="hidden" id="txtCardNumberNoSpaces" data-openpay-card="card_number" name="card_number" aria-describedby="basic-addon2">
 												<span class="input-group-text" id="basic-addon2">
 													<i class="fab fa-cc-visa mx-1"></i>
 													<i class="fab fa-cc-mastercard mx-1"></i>
