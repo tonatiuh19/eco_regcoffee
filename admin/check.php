@@ -33,6 +33,7 @@ if(isset($_POST['username'])){
         'mispagos',
         'notificaciones',
         'pagando',
+        'passwordResetFromMail',
         'perfil',
         'scss',
         'sign-in',

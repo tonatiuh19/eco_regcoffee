@@ -20,9 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$_SESSION["uname"] = $row["user_name"];
 			$_SESSION["utype"] = $row["active"];
 			if (isset($_SESSION["user_param"])) {
-				echo ("<SCRIPT LANGUAGE='JavaScript'>
-                        window.location.href='../" . $_SESSION["uname"] . "';
-                        </SCRIPT>");
+				if($_SESSION["utype"] == '2'){
+					echo ("<SCRIPT LANGUAGE='JavaScript'>
+					window.location.href='../';
+					</SCRIPT>");
+				}else{
+					echo ("<SCRIPT LANGUAGE='JavaScript'>
+					window.location.href='../" . $_SESSION["uname"] . "';
+					</SCRIPT>");
+				}
+				
 			}
 		}
 	} else {

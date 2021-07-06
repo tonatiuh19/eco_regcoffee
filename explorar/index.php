@@ -143,7 +143,7 @@ if ($conn->query($sqlx) === TRUE) {
                                     <h3>' . $row["creation"] . '</h3>
                                     <p class="bio">' . limit_text($row["about"], 15) . '
                                         <div class="pt-1 float-end">
-                                            <a href="../' . $row["user_name"] . '" target="_blank" class="btn btn-danger""><i class="far fa-heart"></i> Apoyar</a>
+                                            <a href="../' . $row["user_name"] . '" target="_blank" class="btn btn-danger stretched-link"><i class="far fa-heart"></i> Apoyar</a>
                                         </div> 
                                     </p>
                                 </div>
