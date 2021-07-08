@@ -51,7 +51,9 @@
                   <li class="nav-item"><a href="../comolovemifan/" class="nav-link itemActive" id="navPagina"><i class="fas fa-address-card"></i> Pagina</a></li>';
                             } else {
                                 echo '<li class="nav-item"><a href="../explorar/" class="nav-link itemActive" id="navExplorar"><i class="fas fa-hat-wizard"></i> Explorar creadores</a></li>
-                  <li class="nav-item"><a data-toggle="modal" href="" data-target="#crearCuentaCreador" class="nav-link itemActive" id="navFans"><i class="fas fa-magic"></i> Crear cuenta de creador</a></li>
+                                <li class="nav-item">
+                                <a href="" data-bs-toggle="modal" data-bs-target="#crearCuentaCreador" class="nav-link itemActive" id="navFans"><i class="fas fa-magic"></i> Crear cuenta de creador</a>
+                              </li>
                  ';
                             }
                             ?>
@@ -155,7 +157,6 @@
                                             Es gratis y toma menos de un minuto.
                                         <div class="badge bg-danger text-wrap" id="alertExist">
                                             El nombre de usuario ya existe
-                                            <ImSad2 />
                                         </div>
                                         </p>
                                     </div>
@@ -636,7 +637,39 @@
             </div>
         </div>
     </div>
-
+    <?php
+    if (isset($_SESSION["user_param"])) {
+        if ($_SESSION["utype"] == "2") {
+            echo '<div class="modal fade" id="crearCuentaCreador" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Crea tu cuenta de creador</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="../admin/newUser.php" method="post">
+                <div class="py-3">
+                  <label for="basic-url" class="form-label">Escoge tu nombre de usuario</label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="basic-addon3">regalameuncafe.com/</span>
+                    <input type="search" class="form-control" name="usernametxt" id="usernameType2" autofocus="autofocus" autocomplete="off" aria-describedby="basic-addon3" placeholder="tunombre" required>
+                    <input type="hidden" name="userID" value="'.$_SESSION["user_param"].'">
+                  </div>
+                  <span class="badge bg-danger" id="alertExistType2"><i class="fas fa-exclamation-circle"></i> Este nombre de usuario ya existe</span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" id="comenzarBtnType2" class="btn btn-success">Empezar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>';
+        }
+    }
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="js/coffee.js"></script>

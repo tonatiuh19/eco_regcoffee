@@ -60,8 +60,11 @@ if (!isset($_SESSION)) {
                   <li class="nav-item"><a href="../comolovemifan/" class="nav-link itemActive" id="navPagina"><i class="fas fa-address-card"></i> Pagina</a></li>';
               } else {
                 echo '<li class="nav-item"><a href="../explorar/" class="nav-link itemActive" id="navExplorar"><i class="fas fa-hat-wizard"></i> Explorar creadores</a></li>
-                  <li class="nav-item"><a data-toggle="modal" href="" data-target="#crearCuentaCreador" class="nav-link itemActive" id="navFans"><i class="fas fa-magic"></i> Crear cuenta de creador</a></li>
+                  <li class="nav-item">
+                    <a href="" data-bs-toggle="modal" data-bs-target="#crearCuentaCreador" class="nav-link itemActive" id="navFans"><i class="fas fa-magic"></i> Crear cuenta de creador</a>
+                  </li>
                  ';
+                 echo '';
               }
               ?>
               <li class="nav-item dropdown">
@@ -150,6 +153,35 @@ if (!isset($_SESSION)) {
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';
         }
+      }else{
+        echo '<div class="modal fade" id="crearCuentaCreador" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Crea tu cuenta de creador</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="../admin/newUser.php" method="post">
+                <div class="py-3">
+                  <label for="basic-url" class="form-label">Escoge tu nombre de usuario</label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="basic-addon3">regalameuncafe.com/</span>
+                    <input type="search" class="form-control" name="username" id="username" autofocus="autofocus" autocomplete="off" aria-describedby="basic-addon3" placeholder="tunombre" required>
+                    <input type="hidden" id="usernametxt" name="usernametxt">
+                    <input type="hidden" name="userID" value="'.$_SESSION["user_param"].'">
+                  </div>
+                  <span class="badge bg-danger" id="alertExist"><i class="fas fa-exclamation-circle"></i> Este nombre de usuario ya existe</span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" id="comenzarBtn" class="btn btn-success">Empezar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>';
       }
     }
     ?>

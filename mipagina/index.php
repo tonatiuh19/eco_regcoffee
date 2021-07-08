@@ -82,7 +82,7 @@ if ($_SESSION["utype"] == "2") {
                                       <h6 class="card-title text-white">Agrega un extra<i class="fas fa-gifts text-white float-right"></i></h6>
                                       <p class="card-text">
                                         
-                                        <a href="../misextras/" class="btn btn-white btn-sm p-1 mt-1 float-right">Agregar</a>
+                                        <a href="../misextras/" class="btn btn-dark btn-sm p-1 mt-1 float-right">Agregar</a>
                                       </p>
                                     </div>
                                   </div>';

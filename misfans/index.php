@@ -4,15 +4,14 @@ require_once('../admin/header.php');
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <div class="site-section bg-primary-light">
   <div class="container py-5">
-    
-          <div class="row text-center" id="myFansButtons">
+  
             <?php
             $uName = $_SESSION['uname'];
             $sqlw = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.price, b.id_user, b.name, b.last_name, b.about, b.creation, b.extra FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=4 AND b.user_name='" . $uName . "'";
             $resultw = $conn->query($sqlw);
 
             if ($resultw->num_rows > 0) {
-              // output data of each row
+              echo '<div class="row text-center" id="myFansButtons">';
               while ($roww = $resultw->fetch_assoc()) {
                 $idCoffe = $roww["id_extra"];
                 
@@ -47,6 +46,29 @@ require_once('../admin/header.php');
                                       });
                                     });
                               </script>';
+              echo ' </div>';
+            }else{
+              echo '<div class="row">
+                <div class="flex-container-center">
+                  <div class="row-center">
+                    <div class="flex-item-center">
+                      <div class="p-5 mb-4 rounded-3">
+                        <div class="container-fluid py-5">
+                          <h1 class="display-5 fw-bold">
+                            Aun no te compran cafes <i class="fas fa-hands-helping"></i>
+                          </h1>
+                          <p class="col-md-8 fs-4">
+                            Puedes incluir tu link en todas partes o crear un boton
+                            e insertarlo en tu sitio o blog. Tambien puedes añadir extras y
+                            aumentar tus ingresos.
+                          </p>
+                          <a href="../misextras/" class="btn btn-warning float-end"><i class="fas fa-plus-square"></i> Añadir extra</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>';
             }
             ?>
             <?php
@@ -66,7 +88,7 @@ require_once('../admin/header.php');
             }
             ?>
 
-    </div>
+   
     <p></p>
     <div class="row text-center">
       <script>

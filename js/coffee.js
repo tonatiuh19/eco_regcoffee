@@ -6,12 +6,15 @@ $(document).ready(function () {
       return false;
     }
   });
-
+  let comenzarBtn = document.getElementById("comenzarBtn");
+  if (comenzarBtn) {
+    comenzarBtn.setAttribute("disabled", "");
+  }
   $("#username").keyup(function () {
-    var username = $(this).val().trim();
-    var element = document.getElementById("username");
-    var comenzarBtn = document.getElementById("comenzarBtn");
-
+    let username = $(this).val().trim();
+    let element = document.getElementById("username");
+    let comenzarBtn = document.getElementById("comenzarBtn");
+    comenzarBtn.setAttribute("disabled", "");
     if (username != "") {
       $("#uname_response").show();
       $.ajax({
@@ -77,13 +80,17 @@ $(document).ready(function () {
     }
   });
 
+  let comenzarBtnModal = document.getElementById("comenzarBtnModal");
+  if (comenzarBtnModal) {
+    comenzarBtnModal.setAttribute("disabled", "");
+  }
   //Modal
   $("#alertExistModal").hide();
   $("#usernameModal").keyup(function () {
     var username = $(this).val().trim();
     var element = document.getElementById("usernameModal");
-    var comenzarBtn = document.getElementById("comenzarBtn");
-
+    var comenzarBtn = document.getElementById("comenzarBtnModal");
+    comenzarBtn.setAttribute("disabled", "");
     if (username != "") {
       $("#uname_response").show();
       $.ajax({
@@ -147,6 +154,83 @@ $(document).ready(function () {
             document
               .getElementById("comenzarBtnModal")
               .removeAttribute("disabled");
+          }
+        },
+      });
+    } else {
+      $("#uname_response").hide();
+      element.classList.remove("border-success");
+      document.getElementById("comenzarBtn").setAttribute("disabled", "");
+    }
+  });
+
+  let comenzarBtnType2 = document.getElementById("comenzarBtnType2");
+  if (comenzarBtnType2) {
+    comenzarBtnType2.setAttribute("disabled", "");
+  }
+
+  $("#alertExistType2").hide();
+  $("#usernameType2").keyup(function () {
+    let username = $(this).val().trim();
+    let element = document.getElementById("usernameType2");
+    let comenzarBtn = document.getElementById("comenzarBtnType2");
+    comenzarBtn.setAttribute("disabled", "");
+    if (username != "") {
+      $("#uname_response").show();
+      $.ajax({
+        url: "../../admin/check.php",
+        type: "post",
+        data: { username: username },
+        success: function (response) {
+          // Show response
+          //$("#uname_response").html(response);
+
+          if (response == "1") {
+            $("#alertExistType2").show();
+            element.classList.remove("border-success");
+            element.classList.add("border-danger");
+            comenzarBtn.setAttribute("disabled", "");
+          } else {
+            $("#alertExistType2").hide();
+            element.classList.add("border-success");
+            element.classList.remove("border-danger");
+            comenzarBtn.removeAttribute("disabled");
+          }
+        },
+      });
+    } else {
+      $("#uname_response").hide();
+      element.classList.remove("border-success");
+      document.getElementById("comenzarBtnModal").setAttribute("disabled", "");
+    }
+  });
+
+  $("#usernameType2").mouseleave(function () {
+    var username = $(this).val().trim();
+    var element = document.getElementById("usernameType2");
+    let comenzarBtn = document.getElementById("comenzarBtnType2");
+    comenzarBtn.setAttribute("disabled", "");
+
+    if (username != "") {
+      $("#uname_response").show();
+      $.ajax({
+        url: "../../admin/check.php",
+        type: "post",
+        data: { username: username },
+        success: function (response) {
+          // Show response
+          //$("#uname_response").html(response);
+
+          if (response == "1") {
+            $("#alertExistType2").show();
+            element.classList.remove("border-success");
+            element.classList.add("border-danger");
+            comenzarBtn.setAttribute("disabled", "");
+          } else {
+            $("#alertExistType2").hide();
+            element.classList.add("border-success");
+            element.classList.remove("border-danger");
+            comenzarBtn.removeAttribute("disabled");
           }
         },
       });

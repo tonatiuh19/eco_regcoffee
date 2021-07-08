@@ -10,17 +10,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subs = "1";
     $today = date("Y-m-d H:i:s");
 
-    $sql = "INSERT INTO payments_complete (id_payments, id_extra, email_user, date, subsciption)
-    VALUES ('$idPayment', '$idExtra', '$emailUser', '$today', '$subs')";
+    $sql = "UPDATE payments_complete SET subsciption='2', date='".$today."' WHERE id_payments=".$idPayment."";
 
     if ($conn->query($sql) === TRUE) {
+      $sqlx = "UPDATE payments SET status='cancelled' WHERE id_payments=".$idPayment."";
+
+      if ($conn->query($sqlx) === TRUE) {
         echo ("<SCRIPT LANGUAGE='JavaScript'>
                 $('#exampleModalCenter').modal('show');
             </SCRIPT>");
+      } else {
+        echo "Error updating record: " . $conn->error;
+      }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-        header('Location: ../algosaliomal/');
+      echo "Error updating record: " . $conn->error;
+      header('Location: ../algosaliomal/');
     }
+
 }else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='../';
@@ -45,7 +51,7 @@ function test_input($data) {
      
         <h5 class="modal-title w-100" id="exampleModalLongTitle"><i class="fas fa-sad-tear fa-2x"></i><br>Que dificil se me hace, mantenerme...</h5>
         <?php
-            echo '<p>Se ha finalizado con exito esta suscribcion.</p><span class="font-weight-bold">Puedes re-activarla cuando quieras</span><br>';
+            echo '<p>Se ha finalizado con exito esta suscribcion.</p><span class="font-weight-bold">Puedes re-activarla cuando quieras y este disponible.</span><br>';
         ?>
         <a href="../" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
       </div>

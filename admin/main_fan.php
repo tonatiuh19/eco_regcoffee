@@ -18,8 +18,10 @@ if ($_SESSION["uname"] != $uName) {
 require_once('admin/header.php');
 $_SESSION['extra'] = '0';
 date_default_timezone_set('America/Mexico_City');
+$sqlz = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.price, b.id_user, b.name, b.last_name, b.about, b.creation, b.extra, b.email
+FROM extras as a 
+INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=4 AND b.user_name='" . $uName . "'";
 
-$sqlz = "SELECT a.id_extra, a.title, a.description, a.confirmation, a.price, b.id_user, b.name, b.last_name, b.about, b.creation, b.extra FROM extras as a INNER JOIN users as b on b.id_user=a.id_user WHERE a.active=4 AND b.user_name='" . $uName . "'";
 $resultz = $conn->query($sqlz);
 
 if ($resultz->num_rows > 0) {
@@ -36,6 +38,7 @@ if ($resultz->num_rows > 0) {
 		$creation = $rowz["creation"];
 		$extra = $rowz["extra"];
 		$userID = $rowz["id_user"];
+		$emailUser = $rowz["email"];
 	}
 }
 $money = number_format((float)$priceExtra, 2, '.', '');
@@ -661,6 +664,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 										echo '<input type="hidden" name="uname" value="' . $uName . '">';
 										echo '<input type="hidden" name="idUser" value="'.$userID.'">	';
 										echo '<input type="hidden" name="date" value="'.$today.'">	';
+										echo '<input type="hidden" name="emailHost" value="'.$emailUser.'">	';
 									?>
 									<div class="mb-3">
 										<input type="email" class="form-control inputMailFan2" name="payer_email" aria-describedby="emailHelp" placeholder="Inresa tu correo" required>
@@ -713,6 +717,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 									<?php
 									echo '<input type="hidden" name="confirmationM" value="' . $confirmationExtra . '">';
 									echo '<input type="hidden" name="uname" value="' . $uName . '">';
+									echo '<input type="hidden" name="emailHost" value="'.$emailUser.'">	';
 									echo '';
 									?>
 									<div class="mb-3">

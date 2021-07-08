@@ -93,6 +93,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="questAnswer" value="'.$_POST["questAnswer"].'">';
 		echo '<input type="hidden" name="period_end_date" value="'.$charge->operation_date.'">';
 		echo '<input type="hidden" name="confirmationM" value="'.$_POST["confirmationM"].'">';
+		echo '<input type="hidden" name="emailHost" value="'.$_POST["emailHost"].'">';
 	}elseif ($status==2) {
 		echo '<input type="hidden" name="stat" value="2">';
 		echo '<input type="hidden" name="uname" value="'.$_POST["uname"].'">';
@@ -208,7 +209,7 @@ if ($_POST["payType"]=="1") {
 		$status=7;
 	}
 
-	if($_POST["flipswitch"] == 'on'){
+	if($_POST["flipswitch"] != 'on'){
 		$isPublic = 1;
 	}else{
 		$isPublic = 0;
@@ -239,6 +240,7 @@ if ($_POST["payType"]=="1") {
 		echo '<input type="hidden" name="confirmationM" value="'.$_POST["confirmationM"].'">';
 		echo '<input type="hidden" name="titleExtra" value="'.$_POST["titleExtra"].'">';
 		echo '<input type="hidden" name="active" value="1">';
+		echo '<input type="hidden" name="emailHost" value="'.$_POST["emailHost"].'">';
 	}elseif ($status==2) {
 		echo '<input type="hidden" name="stat" value="2">';
 		echo '<input type="hidden" name="uname" value="'.$_POST["uname"].'">';

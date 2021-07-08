@@ -40,7 +40,7 @@ date_default_timezone_set('America/Mexico_City');
                         INNER JOIN users as c on c.id_user=a.id_user 
                         INNER JOIN extras as d on d.id_extra=a.id_extra 
                         LEFT JOIN payments_complete as e on e.id_payments=a.id_payments 
-                        WHERE (a.status='completed' or a.status='pending') and d.active=1 and d.subsciption=1 and b.id_user=".$_SESSION["user_param"]."";
+                        WHERE (a.status='completed' or a.status='pending' or a.status='cancelled') and d.active=1 and d.subsciption=1 and b.id_user=".$_SESSION["user_param"]."";
                         
                         $resulty = $conn->query($sqly);
                         
