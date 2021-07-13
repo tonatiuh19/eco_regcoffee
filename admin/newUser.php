@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
       </div>';
     } else {
-        $sql = "UPDATE users SET user_name='".$username."', active=1 WHERE id_user=".$userID."";
+        $sql = "UPDATE users SET user_name='".$username."', active=1, date='".$today."' WHERE id_user=".$userID."";
 
         if ($conn->query($sql) === TRUE) {
             $sqle = "SELECT email, pwd FROM users WHERE id_user=".$userID."";

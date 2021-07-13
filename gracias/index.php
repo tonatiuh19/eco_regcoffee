@@ -102,8 +102,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           echo 'Houston tenemos problemas';
         }
       } else {
-        $sql2 = "INSERT INTO users (user_name, email, pwd, date, active)
-          VALUES ('', '$email', '/%Chivas%%%%%%(93)123%/', '$today', '2')";
+        $sql2 = "INSERT INTO users (user_name, email, pwd, date, active, about)
+          VALUES ('', '$email', '/%Chivas%%%%%%(93)123%/', '$today', '2', '¡Oye!, acabo de crear una super página aquí. ¡Ahora puedes invitarme a un café!')";
 
         if ($conn->query($sql2) === TRUE) {
           if (sendMailGracias($email, $uname, $confirmationM, $amount, $whatIWant)) {
