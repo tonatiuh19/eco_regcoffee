@@ -14,7 +14,7 @@ if (isset($_POST['page_no'])) {
 
 $offset = ($page_no - 1) * $limit;
 
-$sqlu = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='" . $uName . "' AND a.status='completed' AND a.isPublic_note_fan=1 AND a.note_fan<>'' ORDER by a.date desc LIMIT $offset, $limit";
+$sqlu = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='" . $uName . "' AND a.status='paid' AND a.isPublic_note_fan=1 AND a.note_fan<>'' ORDER by a.date desc LIMIT $offset, $limit";
 
 $resultu = $conn->query($sqlu);
 
@@ -42,7 +42,7 @@ if (mysqli_num_rows($resultu) > 0) {
 	}
 	$output .= '</div>';
 
-	$sqly = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='" . $uName . "' AND a.status='completed' AND a.isPublic_note_fan=1 AND a.note_fan<>'' order by a.date desc";
+	$sqly = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='" . $uName . "' AND a.status='paid' AND a.isPublic_note_fan=1 AND a.note_fan<>'' order by a.date desc";
 
 	$records = $conn->query($sqly);
 

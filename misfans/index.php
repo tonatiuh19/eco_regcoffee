@@ -46,7 +46,7 @@ require_once('../admin/header.php');
                                       });
                                     });
                               </script>';
-              echo ' </div>';
+              
             }else{
               echo '<div class="row">
                 <div class="flex-container-center">
@@ -86,6 +86,7 @@ require_once('../admin/header.php');
                 </div>';
               }
             }
+            echo ' </div>';
             ?>
 
    

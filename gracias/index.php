@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $questAnswer = test_input($_POST["questAnswer"]);
     $emailHost = test_input($_POST["emailHost"]);
 
-    $sqli = "INSERT INTO payments (id_user, id_openpay, type, brand, card_number, bank_name, status, date, amount, amount_fee, amount_tax, description, email_user, note_fan, isPublic_note_fan, id_extra, question_answer)
+    $sqli = "INSERT INTO payments (id_user, id_conekta, type, brand, card_number, bank_name, status, date, amount, amount_fee, amount_tax, description, email_user, note_fan, isPublic_note_fan, id_extra, question_answer)
       VALUES ('$idUser', '$idPay', '$typeB', '$brand', '$cardNo', '$bank', '$satusB', '$date', '$amount', '$amountF', '$amountT', '$description', '$email', '$noteFan', '$isPublic', '$idExtra', '$questAnswer')";
 
     if ($conn->query($sqli) === TRUE) {
@@ -159,80 +159,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   } else if ($status == "3") {
     $uname = test_input($_POST["uname"]);
-    $idPay = test_input($_POST["idPay"]);
-    $typeB = test_input($_POST["typeB"]);
-    $brand = test_input($_POST["brand"]);
-    $cardNo = test_input($_POST["cardNo"]);
-    $bank = test_input($_POST["bank"]);
-    $satusB = test_input($_POST["status"]);
+    $idPay = '';
+    $typeB = '';
+    $brand = '';
+    $cardNo = '';
+    $bank = '';
+    $satusB = 'pending';
     $date = test_input($_POST["date"]);
-    $amount = test_input($_POST["amount"]);
+    $amount = '';
     $amountF = "";
     $amountT = "";
     $questAnswer = test_input($_POST["questAnswer"]);
-    $endPeriod = test_input($_POST["period_end_date"]);
+    $endPeriod = '';
     $customerID = test_input($_POST["customerID"]);
-    $cardID = test_input($_POST["cardID"]);
+    $cardID = '';
     $titleExtra = test_input($_POST["titleExtra"]);
     $emailHost = test_input($_POST["emailHost"]);
 
-    $sqli = "INSERT INTO payments (id_user, id_openpay, type, brand, card_number, bank_name, status, date, amount, amount_fee, amount_tax, description, email_user, note_fan, isPublic_note_fan, id_extra, question_answer, period_end_date, customer_id, card_id)
+    $sqli = "INSERT INTO payments (id_user, id_conekta, type, brand, card_number, bank_name, status, date, amount, amount_fee, amount_tax, description, email_user, note_fan, isPublic_note_fan, id_extra, question_answer, period_end_date, customer_id, card_id)
       VALUES ('$idUser', '$idPay', '$typeB', '$brand', '$cardNo', '$bank', '$satusB', '$date', '$amount', '$amountF', '$amountT', '$description', '$email', '$noteFan', '$isPublic', '$idExtra', '$questAnswer', '$endPeriod', '$customerID', '$cardID')";
 
     if ($conn->query($sqli) === TRUE) {
+      $last_id = $conn->insert_id;
+      $sqlm = "INSERT INTO users_customer_subs (id_user, customer_conekta_id, id_extra, id_payments, active)
+      VALUES ('$idUser', '$customerID', '$idExtra', '$last_id', '0')";
 
-      $sql1 = "SELECT email FROM users WHERE email='" . $email . "'";
-      $result1 = $conn->query($sql1);
+      if ($conn->query($sqlm) === TRUE) {
+        $sql1 = "SELECT email FROM users WHERE email='" . $email . "'";
+        $result1 = $conn->query($sql1);
 
-      if ($result1->num_rows > 0) {
-        // output data of each row
-        if (sendMailGraciasSubs($email, $uname, $confirmationM, $titleExtra)) {
-          if(sendMailHostSubs($emailHost, $uname, $titleExtra)){
-            echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <div class="container">
-                    <div class="row text-center">
-                      <h4 class="modal-title w-100" id="exampleModalLongTitle">
-                        <div class="col-12 mb-2">
-                          <i class="fas fa-user-alt"></i>
-                        </div>
-                        <div class="col-12 mb-2">
-                          <span class="bg-dark text-white p-1 rounded small">' . $uname . '</span>
-                        </div>
-                        <div class="col-12 mb-2">
-                          <b>¡Gracias totales!</b>
-                        </div>
-                      </h4>
-          
-                    </div>
-                  </div>
-                  <div class="row text-center">
-                    <div class="col-12 mb-2">
-                    Tu suscripción se encuentra en proceso. Entra a tu cuenta donde puedes administrar tu suscripción, asi como tambien encontrar tu primer recibo de pago, en tu correo un mensaje especial ;).
-                    </div>
-                  </div>
-                  <div class="row text-center">
-                    <div class="col-12">
-                      <a href="../' . $uname . '" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>';
-          }else{
-            echo 'Houston tenemos problemas';
-          }
-        } else {
-          echo 'Houston tenemos problemas';
-        }
-      } else {
-        $sql2 = "INSERT INTO users (user_name, email, pwd, date, active)
-          VALUES ('', '$email', '/%Chivas%%%%%%(93)123%/', '$today', '2')";
-
-        if ($conn->query($sql2) === TRUE) {
+        if ($result1->num_rows > 0) {
+          // output data of each row
           if (sendMailGraciasSubs($email, $uname, $confirmationM, $titleExtra)) {
             if(sendMailHostSubs($emailHost, $uname, $titleExtra)){
               echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -276,10 +233,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo 'Houston tenemos problemas';
           }
         } else {
-          echo "Error: " . $sql . "<br>" . $conn->error;
-          header('Location: ../algosaliomal/');
+          $sql2 = "INSERT INTO users (user_name, email, pwd, date, active)
+            VALUES ('', '$email', '/%Chivas%%%%%%(93)123%/', '$today', '2')";
+
+          if ($conn->query($sql2) === TRUE) {
+            if (sendMailGraciasSubs($email, $uname, $confirmationM, $titleExtra)) {
+              if(sendMailHostSubs($emailHost, $uname, $titleExtra)){
+                echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <div class="container">
+                        <div class="row text-center">
+                          <h4 class="modal-title w-100" id="exampleModalLongTitle">
+                            <div class="col-12 mb-2">
+                              <i class="fas fa-user-alt"></i>
+                            </div>
+                            <div class="col-12 mb-2">
+                              <span class="bg-dark text-white p-1 rounded small">' . $uname . '</span>
+                            </div>
+                            <div class="col-12 mb-2">
+                              <b>¡Gracias totales!</b>
+                            </div>
+                          </h4>
+              
+                        </div>
+                      </div>
+                      <div class="row text-center">
+                        <div class="col-12 mb-2">
+                        Tu suscripción se encuentra en proceso. Entra a tu cuenta donde puedes administrar tu suscripción, asi como tambien encontrar tu primer recibo de pago, en tu correo un mensaje especial ;).
+                        </div>
+                      </div>
+                      <div class="row text-center">
+                        <div class="col-12">
+                          <a href="../' . $uname . '" class="btn btn-dark"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>';
+              }else{
+                echo 'Houston tenemos problemas';
+              }
+            } else {
+              echo 'Houston tenemos problemas';
+            }
+          } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+            header('Location: ../algosaliomal/');
+          }
         }
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
       }
+
+      
     } else {
       echo "Error: " . $sqli . "<br>" . $conn->error;
       header('Location: ../algosaliomal/');

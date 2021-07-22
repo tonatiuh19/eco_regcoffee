@@ -89,7 +89,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
 	}
 
     if($isPaymentCompleted){
-		$sql = "UPDATE payments SET status='completed', id_paypal='".$txn_id."', amount_fee='".$mc_fee."', amount_tax='".$tax."' WHERE id_payments=".$item_number."";
+		$sql = "UPDATE payments SET status='paid', id_paypal='".$txn_id."', amount_fee='".$mc_fee."', amount_tax='".$tax."' WHERE id_payments=".$item_number."";
         
         if (mysqli_query($conn, $sql)) {
           //echo "New record created successfully";

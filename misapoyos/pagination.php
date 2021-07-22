@@ -19,7 +19,7 @@ $sqlu = "SELECT a.id_payments, a.amount, a.note_fan, a.isPublic_note_fan, a.date
     INNER JOIN users as b on a.email_user=b.email 
     INNER JOIN users as c on c.id_user=a.id_user 
     INNER JOIN extras as d on d.id_extra=a.id_extra 
-    WHERE a.status='completed' and d.active=4 and b.id_user=".$userId."
+    WHERE a.status='paid' and d.active=4 and b.id_user=".$userId."
     ORDER BY a.date DESC LIMIT $offset, $limit";
 
 $resultu = $conn->query($sqlu);
@@ -58,7 +58,7 @@ if (mysqli_num_rows($resultu) > 0) {
         INNER JOIN users as b on a.email_user=b.email 
         INNER JOIN users as c on c.id_user=a.id_user 
         INNER JOIN extras as d on d.id_extra=a.id_extra 
-        WHERE a.status='completed' and d.active=4 and b.id_user=".$userId."
+        WHERE a.status='paid' and d.active=4 and b.id_user=".$userId."
         ORDER BY a.date DESC";
 
 	$records = $conn->query($sqly);

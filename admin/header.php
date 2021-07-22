@@ -83,7 +83,7 @@ if (!isset($_SESSION)) {
                     <?php
                     if ($_SESSION["utype"] != "2") {
                       echo '<li><a href="../explorar/" class="dropdown-item">Apoyo a creadores</a></li>';
-                      $sqlp = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $_SESSION["user_param"] . " and a.status='completed'";
+                      $sqlp = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $_SESSION["user_param"] . " and a.status='paid'";
                       $resultp = $conn->query($sqlp);
 
                       if ($resultp->num_rows > 0) {

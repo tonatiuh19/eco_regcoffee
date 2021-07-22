@@ -20,7 +20,7 @@ if($_SESSION["utype"] == "2"){
                         </li>
                         
                         <?php
-                        $sqld = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$_SESSION["user_param"]." and a.status='completed' AND b.subsciption=1 ORDER BY a.date DESC";
+                        $sqld = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$_SESSION["user_param"]." and a.status='paid' AND b.subsciption=1 ORDER BY a.date DESC";
                         $resultd = $conn->query($sqld);
                         
                         if ($resultd->num_rows > 0) {
@@ -40,7 +40,7 @@ if($_SESSION["utype"] == "2"){
                     <div class="tab-content mt-3">
                         <div class="tab-pane active" id="description" role="tabpanel">
                             <?php
-                            /*$sql = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$_SESSION["user_param"]." and a.status='completed' AND b.subsciption=0 ORDER BY a.date DESC";
+                            /*$sql = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$_SESSION["user_param"]." and a.status='paid' AND b.subsciption=0 ORDER BY a.date DESC";
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {

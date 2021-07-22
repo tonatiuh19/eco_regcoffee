@@ -15,7 +15,7 @@
     
         $offset = ($page_no-1) * $limit;
     
-        $sqlu = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$idUser." and a.status='completed' AND b.subsciption=0 ORDER BY a.date DESC LIMIT $offset, $limit";
+        $sqlu = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$idUser." and a.status='paid' AND b.subsciption=0 ORDER BY a.date DESC LIMIT $offset, $limit";
     
         $resultu = $conn->query($sqlu);
     
@@ -56,7 +56,7 @@
         $output.='</tbody>
         </table>';
     
-        $sqly = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$idUser." and a.status='completed' AND b.subsciption=0 ORDER BY a.date DESC";
+        $sqly = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$idUser." and a.status='paid' AND b.subsciption=0 ORDER BY a.date DESC";
     
         $records = $conn->query($sqly);
     
@@ -94,7 +94,7 @@
     
         $offset = ($page_no-1) * $limit;
     
-        $sqlu = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$idUser." and a.status='completed' AND b.subsciption=1 ORDER BY a.date DESC LIMIT $offset, $limit";
+        $sqlu = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$idUser." and a.status='paid' AND b.subsciption=1 ORDER BY a.date DESC LIMIT $offset, $limit";
     
         $resultu = $conn->query($sqlu);
     
@@ -137,7 +137,7 @@
         $output.='</tbody>
         </table>';
     
-        $sqly = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$idUser." and a.status='completed' AND b.subsciption=1 ORDER BY a.date DESC";
+        $sqly = "SELECT a.id_payments, a.id_extra, a.amount, a.amount_fee, a.amount_tax, b.title, a.date, c.id_users_pay FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra LEFT JOIN users_pay as c on c.id_payments=a.id_payments WHERE a.id_user=".$idUser." and a.status='paid' AND b.subsciption=1 ORDER BY a.date DESC";
     
         $records = $conn->query($sqly);
     

@@ -26,7 +26,7 @@ date_default_timezone_set('America/Mexico_City');
                           INNER JOIN users as c on c.id_user=a.id_user 
                           INNER JOIN extras as d on d.id_extra=a.id_extra 
                           LEFT JOIN payments_complete as e on e.id_payments=a.id_payments 
-                          WHERE a.status='completed' and d.active=1 and d.subsciption=0 and b.id_user=".$_SESSION["user_param"]."";
+                          WHERE a.status='paid' and d.active=1 and d.subsciption=0 and b.id_user=".$_SESSION["user_param"]."";
                         
                         $result = $conn->query($sql);
                         
@@ -35,12 +35,12 @@ date_default_timezone_set('America/Mexico_City');
                             <a class="nav-link"  href="#history" role="tab" aria-controls="history" aria-selected="false">Extras</a>
                           </li>';
                         }
-                        $sqly = "SELECT a.id_payments, a.amount, a.note_fan, a.isPublic_note_fan, a.date, c.user_name, d.title, d.id_extra, a.id_openpay, a.email_user, a.description, a.question_answer, d.question, e.id_payments_complete, a.customer_id, d.subsciption_id 
+                        $sqly = "SELECT a.id_payments, a.amount, a.note_fan, a.isPublic_note_fan, a.date, c.user_name, d.title, d.id_extra, a.id_conekta, a.email_user, a.description, a.question_answer, d.question, e.id_payments_complete, a.customer_id, d.subsciption_id 
                         FROM payments as a INNER JOIN users as b on a.email_user=b.email 
                         INNER JOIN users as c on c.id_user=a.id_user 
                         INNER JOIN extras as d on d.id_extra=a.id_extra 
                         LEFT JOIN payments_complete as e on e.id_payments=a.id_payments 
-                        WHERE (a.status='completed' or a.status='pending' or a.status='cancelled') and d.active=1 and d.subsciption=1 and b.id_user=".$_SESSION["user_param"]."";
+                        WHERE (a.status='paid' or a.status='pending' or a.status='cancelled') and d.active=1 and d.subsciption=1 and b.id_user=".$_SESSION["user_param"]."";
                         
                         $resulty = $conn->query($sqly);
                         

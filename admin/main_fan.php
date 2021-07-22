@@ -54,9 +54,9 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 ?>
 <link rel="stylesheet" href="comolovemifan/css/Main.css">
 <link rel="stylesheet" href="comolovemifan/css/usernameAnimation.css">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://js.openpay.mx/openpay.v1.min.js"></script>
-<script type='text/javascript' src="https://js.openpay.mx/openpay-data.v1.min.js"></script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.conekta.io/js/latest/conekta.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
 
 <div class="site-section bg-primary-light">
@@ -471,7 +471,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 									<div class="card-body">
 										<div class="card-text ">
 											<?php
-											$sqlk = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='" . $uName . "' AND a.status='completed' ORDER by a.date asc";
+											$sqlk = "SELECT a.note_fan, a.date FROM payments as a INNER JOIN users as b on a.id_user=b.id_user WHERE b.user_name='" . $uName . "' AND a.status='paid' ORDER by a.date asc";
 											$resultk = $conn->query($sqlk);
 
 											if ($resultk->num_rows > 0) {
@@ -704,8 +704,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 							</div>
 							
 							<div class="col-12 cardContainer">
-								<form action="pagando/" method="POST" id="payment-form" novalidate="">
-									<input type="hidden" name="token_id" id="token_id">
+								<form action="pagando/" method="POST" id="card-form" novalidate="">
 									<input type="hidden" name="payType" value="1" id="payType">
 									<input type="hidden" name="coffeeQuantity" value="1" class="quantityCoffe">
 									<input type="hidden" name="amount" value="0" class="amountCoffe">
@@ -750,15 +749,17 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 									</div>
 									
 									<div class="container">
-										<p class="alert alert-danger p-1 small" id="alertBank">Some text success or error</p>
+										<p class="p-1" id="alertBank">
+											<span class="badge bg-danger card-errors"></span>
+										</p>
 										<p class="alert alert-danger p-1 small invalid-feedback" id="alertBank_form">Completa todos los campos</p>
 										<div class="mb-3">
-											<input type="text" placeholder="Nombre en tarjeta" name="holder_name" autocomplete="off" data-openpay-card="holder_name" required class="form-control">
+											<input type="text" placeholder="Nombre en tarjeta" name="holder_name" autocomplete="off" data-conekta="card[name]" required class="form-control">
 										</div>
 										<div class="mb-3">
 											<div class="input-group">
 												<input type="text" class="form-control" placeholder="Numero de tarjeta" id="txtCardNumber" aria-describedby="basic-addon2">
-												<input type="hidden" id="txtCardNumberNoSpaces" data-openpay-card="card_number" name="card_number" aria-describedby="basic-addon2">
+												<input type="hidden" id="txtCardNumberNoSpaces" data-conekta="card[number]" aria-describedby="basic-addon2">
 												<span class="input-group-text" id="basic-addon2">
 													<i class="fab fa-cc-visa mx-1"></i>
 													<i class="fab fa-cc-mastercard mx-1"></i>
@@ -771,7 +772,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 												<div class="mb-3">
 													<label><span class="hidden-xs">Expiración</span></label>
 													<div class="input-group">
-														<select class="form-select" name="expiration_month" data-openpay-card="expiration_month" required>
+														<select class="form-select" data-conekta="card[exp_month]" required>
 															<option selected disabled value="">Mes</option>
 															<option>01</option>
 															<option>02</option>
@@ -786,7 +787,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 															<option>11</option>
 															<option>21</option>
 														</select>
-														<select class="form-select" name="expiration_year" data-openpay-card="expiration_year" required>
+														<select class="form-select" data-conekta="card[exp_year]" required>
 															<option selected disabled value="">Año</option>
 															<option>21</option>
 															<option>22</option>
@@ -810,7 +811,7 @@ echo '<input type="hidden" value="' . $money . '" id="hiddenExtra">';
 															<i class="fa fa-question-circle"></i>
 														</span>
 													</div>
-													<input type="text" required autocomplete="off" data-openpay-card="cvv2" name="cvv2" class="form-control">
+													<input type="text" required autocomplete="off" data-conekta="card[cvc]"  class="form-control">
 												</div>
 											</div>
 										</div>

@@ -14,12 +14,12 @@ if (isset($_POST['page_no'])) {
 
 $offset = ($page_no - 1) * $limit;
 
-$sqlu = "SELECT a.id_payments, a.brand, a.card_number, a.amount, a.note_fan, a.isPublic_note_fan, a.date, c.user_name, d.title, d.id_extra, a.id_openpay, a.email_user, a.description, a.question_answer, d.question, e.id_payments_complete, e.subsciption, a.customer_id, d.subsciption_id 
+$sqlu = "SELECT a.id_payments, a.brand, a.card_number, a.amount, a.note_fan, a.isPublic_note_fan, a.date, c.user_name, d.title, d.id_extra, a.id_conekta, a.email_user, a.description, a.question_answer, d.question, e.id_payments_complete, e.subsciption, a.customer_id, d.subsciption_id 
     FROM payments as a INNER JOIN users as b on a.email_user=b.email 
     INNER JOIN users as c on c.id_user=a.id_user 
     INNER JOIN extras as d on d.id_extra=a.id_extra 
     LEFT JOIN payments_complete as e on e.id_payments=a.id_payments 
-    WHERE (a.status='completed' or a.status='pending' or a.status='cancelled') and d.active=1 and d.subsciption=1 and b.id_user=".$userId."
+    WHERE (a.status='paid' or a.status='pending' or a.status='cancelled') and d.active=1 and d.subsciption=1 and b.id_user=".$userId."
     ORDER BY a.date DESC LIMIT $offset, $limit";
 
 $resultu = $conn->query($sqlu);
@@ -54,7 +54,7 @@ if (mysqli_num_rows($resultu) > 0) {
                                   <h5>¿Estas seguro?</h5>
                                   <form action="../misapoyos/cancelando/" method="post">
                                     <input type="hidden" name="customerID" value="'.$rowu["customer_id"].'">
-                                    <input type="hidden" name="subs" value="'.$rowu["id_openpay"].'">
+                                    <input type="hidden" name="subs" value="'.$rowu["id_conekta"].'">
                                     <input type="hidden" name="idPayment" value="'.$rowu["id_payments"].'">
                                     <input type="hidden" name="idExtra" value="'.$rowu["id_extra"].'">
                                     <input type="hidden" name="emailUser" value="'.$rowu["email_user"].'">
@@ -118,12 +118,12 @@ if (mysqli_num_rows($resultu) > 0) {
 	}
 	$output .= '</div>';
 
-	$sqly = "SELECT a.id_payments, a.amount, a.note_fan, a.isPublic_note_fan, a.date, c.user_name, d.title, d.id_extra, a.id_openpay, a.email_user, a.description, a.question_answer, d.question, e.id_payments_complete, a.customer_id, d.subsciption_id 
+	$sqly = "SELECT a.id_payments, a.amount, a.note_fan, a.isPublic_note_fan, a.date, c.user_name, d.title, d.id_extra, a.id_conekta, a.email_user, a.description, a.question_answer, d.question, e.id_payments_complete, a.customer_id, d.subsciption_id 
         FROM payments as a INNER JOIN users as b on a.email_user=b.email 
         INNER JOIN users as c on c.id_user=a.id_user 
         INNER JOIN extras as d on d.id_extra=a.id_extra 
         LEFT JOIN payments_complete as e on e.id_payments=a.id_payments 
-        WHERE (a.status='completed' or a.status='pending' or a.status='cancelled') and d.active=1 and d.subsciption=1 and b.id_user=".$userId."";
+        WHERE (a.status='paid' or a.status='pending' or a.status='cancelled') and d.active=1 and d.subsciption=1 and b.id_user=".$userId."";
 
 	$records = $conn->query($sqly);
 

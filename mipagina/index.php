@@ -19,7 +19,7 @@ if ($_SESSION["utype"] == "2") {
                 <div class="col-sm-4 align-items-center justify-content-center">
                   <?php
                   $idUser = $_SESSION["user_param"];
-                  $sql = "SELECT COUNT(a.id_payments) as 'cafes' FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $idUser . " and b.active=4 and a.status='completed'";
+                  $sql = "SELECT COUNT(a.id_payments) as 'cafes' FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $idUser . " and b.active=4 and a.status='paid'";
                   $result = $conn->query($sql);
 
                   if ($result->num_rows > 0) {
@@ -55,7 +55,7 @@ if ($_SESSION["utype"] == "2") {
                   ?>
                   <hr>
                   <?php
-                  $sql2 = "SELECT a.id_payments, b.title, COUNT(b.id_extra) as 'cafes' FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $idUser . " and b.active<>2 and b.active<>0 and a.status='completed' GROUP BY b.id_extra ORDER BY cafes DESC LIMIT 3";
+                  $sql2 = "SELECT a.id_payments, b.title, COUNT(b.id_extra) as 'cafes' FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE a.id_user=" . $idUser . " and b.active<>2 and b.active<>0 and a.status='paid' GROUP BY b.id_extra ORDER BY cafes DESC LIMIT 3";
                   $result2 = $conn->query($sql2);
 
                   if ($result2->num_rows > 0) {

@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idPayment = $_POST["idPayment"];
     $today = date("Y-m-d H:i:s");
     echo "Cargando...";
-    $sqlt = "UPDATE payments SET id_openpay='pending', status='pending', amount='pending', description='pending', period_end_date='pending', date='".$today."' WHERE id_payments=".$idPayment."";
+    $sqlt = "UPDATE payments SET id_conekta='pending', status='pending', amount='pending', description='pending', period_end_date='pending', date='".$today."' WHERE id_payments=".$idPayment."";
 
         if ($conn->query($sqlt) === TRUE) {
             $sqle = "DELETE FROM payments_complete WHERE id_payments=".$idPayment."";

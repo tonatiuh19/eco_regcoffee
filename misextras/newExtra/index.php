@@ -1,11 +1,7 @@
 <?php
 session_start();
 require_once('../../admin/cn.php');
-require_once("../../pagando/Openpay.php");
 date_default_timezone_set('America/Mexico_City');
-
-Openpay::setId('mklwynufmke2y82injra');
-Openpay::setApiKey('sk_e8bd01b6ec2f434089ddf536725654bb');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -30,48 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
 
-        if ($subcri == '1') {
-            $sql1 = "SELECT id_extra FROM extras WHERE id_user='" . $idUser . "' AND date='" . $today . "' AND title='" . $title . "'";
-            $result1 = $conn->query($sql1);
-
-            if ($result1->num_rows > 0) {
-                // output data of each row
-                while ($row1 = $result1->fetch_assoc()) {
-                    $idExtra = $row1["id_extra"];
-                }
-
-
-                $openpay = Openpay::getInstance('mklwynufmke2y82injra', 'sk_e8bd01b6ec2f434089ddf536725654bb');
-                $mon = trim($price, '$');
-                $mon = str_replace(',', '', $mon);
-                $planDataRequest = array(
-                    'amount' => $mon,
-                    'status_after_retry' => 'cancelled',
-                    'retry_times' => 2,
-                    'name' => "Extra: " . $idExtra,
-                    'repeat_unit' => 'month',
-                    'trial_days' => '0',
-                    'repeat_every' => '1',
-                    'currency' => 'MXN'
-                );
-
-                $plan = $openpay->plans->add($planDataRequest);
-                $sql2 = "UPDATE extras SET subsciption_id='" . $plan->id . "' WHERE id_extra=" . $idExtra . "";
-
-                if ($conn->query($sql2) === TRUE) {
-                    echo ("<SCRIPT LANGUAGE='JavaScript'>
-                                        $('#exampleModalCenter').modal('show');
-                                        </SCRIPT>");
-                } else {
-                    echo "Error updating record: " . $conn->error;
-                    header('Location: ../algosaliomal/');
-                }
-            }
-        } else {
-            echo ("<SCRIPT LANGUAGE='JavaScript'>
-                                    $('#exampleModalCenter').modal('show');
-                                    </SCRIPT>");
-        }
+        echo ("<SCRIPT LANGUAGE='JavaScript'>
+        $('#exampleModalCenter').modal('show');
+        </SCRIPT>");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
         header('Location: ../algosaliomal/');

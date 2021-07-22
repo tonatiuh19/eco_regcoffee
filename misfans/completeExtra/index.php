@@ -1,11 +1,10 @@
 <?php
 session_start();
 require_once('../../admin/cn.php');
-require_once('../../pagando/Openpay.php');
 date_default_timezone_set('America/Mexico_City');
-
-Openpay::setId('mklwynufmke2y82injra');
-Openpay::setApiKey('sk_e8bd01b6ec2f434089ddf536725654bb');
+require_once("../../pagando/conekta-php/lib/Conekta.php");
+\Conekta\Conekta::setApiKey("key_YM6imXFrseD7FoCUZZjKxA");
+\Conekta\Conekta::setApiVersion("2.0.0");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idExtra = test_input($_POST["idExtra"]);
@@ -19,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         VALUES ('$idPayment', '$idExtra', '$emailUser', '$today', '1')";
 
         if ($conn->query($sql) === TRUE) {
-            $sqlu = "SELECT a.id_payments, a.brand, a.card_number, a.bank_name, a.customer_id, a.card_id, b.subsciption_id FROM payments as a
+            $sqlu = "SELECT a.id_users_customer_subs, a.customer_conekta_id, b.subsciption_id FROM users_customer_subs as a
             INNER JOIN extras as b on b.id_extra=a.id_extra
             WHERE a.id_payments=".$idPayment."";
             $resultu = $conn->query($sqlu);
@@ -28,57 +27,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // output data of each row
                 while($rowu = $resultu->fetch_assoc()) {
                     $subs_id = $rowu["subsciption_id"];
-                    $card_id = $rowu["card_id"];
-                    $customer_id = $rowu["customer_id"];
+                    $customer_id = $rowu["customer_conekta_id"];
+                    $id_users_customer_subs = $rowu["id_users_customer_subs"];
                 }
             } 
 
-            $openpay = Openpay::getInstance('mklwynufmke2y82injra', 'sk_e8bd01b6ec2f434089ddf536725654bb');
-            $subscriptionDataRequest = array(
-                'plan_id' => $subs_id,
-                'card_id' => $card_id);
-            
             try {
-                    //Openpay::setProductionMode(false);
-                $customer = $openpay->customers->get($customer_id);
-                $subscription = $customer->subscriptions->add($subscriptionDataRequest);
+                $customer = \Conekta\Customer::find($customer_id);
+                $subscription = $customer->createSubscription(
+                    [
+                        'plan' => $subs_id
+                    ]
+                );
                 $status=1;
-
-            } catch (OpenpayApiTransactionError $e) {
-                    /*echo 'ERROR on the transaction: ' . $e->getMessage() .
-                        ' error code: ' . $e->getErrorCode() .
-                        ', error category: ' . $e->getCategory() .
-                        ', HTTP code: '. $e->getHttpCode() .
-                        ', request ID: ' . $e->getRequestId();*/
+              } catch (\Conekta\ProccessingError $error){
+                echo $error->getMesage();
                 $status=2;
-                    
-            } catch (OpenpayApiRequestError $e) {
-                    //echo 'ERROR on the request: ' . $e->getMessage();
-                $status=3;
-                        
-            } catch (OpenpayApiConnectionError $e) {
-                    //echo 'ERROR while connecting to the API: ' . $e->getMessage();
-                $status=4;
-                        
-            } catch (OpenpayApiAuthError $e) {
-                    
-                $status=5;
-                        
-            } catch (OpenpayApiError $e) {
-                    //echo 'ERROR on the API: ' . $e->getMessage();
-                $status=6;
-                    
-            } catch (Exception $e) {
-                $status=7;
-            }
+              } catch (\Conekta\ParameterValidationError $error){
+                echo $error->getMessage();
+                $status=2;
+              } catch (\Conekta\Handler $error){
+                echo $error->getMessage();
+                $status=2;
+              }
 
             if ($status==1) {
-                $sqlt = "UPDATE payments SET id_openpay='".$subscription->id."', status='completed', amount='".$subscription->transaction->amount."', description='".$subscription->transaction->description."', period_end_date='".$subscription->period_end_date."' WHERE id_payments=".$idPayment."";
+                $sqlt = "UPDATE payments SET id_conekta='".$subscription->id."', status='paid', amount='0', description='".$subs_id."', card_id='".$subscription->card_id."' WHERE id_payments=".$idPayment."";
 
                 if ($conn->query($sqlt) === TRUE) {
-                  echo ("<SCRIPT LANGUAGE='JavaScript'>
-                    $('#exampleModalCenter').modal('show');
-                </SCRIPT>");
+
+                    $sql = "UPDATE users_customer_subs SET start_date='".$subscription->billing_cycle_start."', end_date='".$subscription->billing_cycle_end."', active='1' WHERE id_users_customer_subs=".$id_users_customer_subs."";
+
+                    if ($conn->query($sql) === TRUE) {
+                        echo ("<SCRIPT LANGUAGE='JavaScript'>
+                        $('#exampleModalCenter').modal('show');
+                    </SCRIPT>");
+                    } else {
+                        echo "Error updating record: " . $conn->error;
+                        header('Location: ../algosaliomal/');
+                    }
+                  
                 } else {
                   echo "Error updating record: " . $conn->error;
                   header('Location: ../algosaliomal/');

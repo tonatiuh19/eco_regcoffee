@@ -23,7 +23,7 @@ date_default_timezone_set('America/Mexico_City');
 
         <?php
             if($sess){
-                $sqlx = "SELECT a.id_payments FROM payments as a INNER JOIN users as b on a.email_user=b.email WHERE a.status='completed' and b.id_user=".$_SESSION["user_param"]."";
+                $sqlx = "SELECT a.id_payments FROM payments as a INNER JOIN users as b on a.email_user=b.email WHERE a.status='paid' and b.id_user=".$_SESSION["user_param"]."";
                 $resultx = $conn->query($sqlx);
                 
                 if ($resultx->num_rows > 0) {

@@ -15,7 +15,7 @@ if (isset($_POST['page_no'])) {
 
 $offset = ($page_no - 1) * $limit;
 
-$sqlu = "SELECT a.id_payments, a.id_extra, a.id_openpay, a.date, a.amount, a.description, a.question_answer, a.email_user, a.isPublic_note_fan, a.note_fan, b.active, b.title, b.subsciption FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE (a.status='completed' or a.status='pending') and a.id_extra=" . $idExtra . " order by a.date desc LIMIT $offset, $limit";
+$sqlu = "SELECT a.id_payments, a.id_extra, a.id_conekta, a.date, b.price, a.description, a.question_answer, a.email_user, a.isPublic_note_fan, a.note_fan, b.active, b.title, b.subsciption FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE (a.status='paid' or a.status='pending') and a.id_extra=" . $idExtra . " order by a.date desc LIMIT $offset, $limit";
 
 $resultu = $conn->query($sqlu);
 
@@ -102,7 +102,7 @@ if (mysqli_num_rows($resultu) > 0) {
                     <td>' . $isPublic . '</td>
                     <td>' . $nota . '</td>
                     <td>' . $whatIWant . '</td>
-                    <td>$ ' . $rowu["amount"] . '</td>
+                    <td>$ ' . $rowu["price"] . '</td>
                     <td>' . $mysqltime . '</td>
                 </tr>';
         } else {
@@ -140,7 +140,7 @@ if (mysqli_num_rows($resultu) > 0) {
                     <td>' . $isPublic . '</td>
                     <td>' . $nota . '</td>
                     ' . $respuesta . '
-                    <td>$ ' . $rowu["amount"] . '</td>
+                    <td>$ ' . $rowu["price"] . '</td>
                     <td>' . $mysqltime . '</td>
                     ' . $complet . '
                 </tr>';
@@ -176,7 +176,7 @@ if (mysqli_num_rows($resultu) > 0) {
 
 
 
-    $sqly = "SELECT a.id_openpay, a.date, a.amount, a.description, a.question_answer, a.isPublic_note_fan, a.note_fan, b.active FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE (a.status='completed' or a.status='pending') and a.id_extra=" . $idExtra . "";
+    $sqly = "SELECT a.id_conekta, a.date, b.price, a.description, a.question_answer, a.isPublic_note_fan, a.note_fan, b.active FROM payments as a INNER JOIN extras as b on a.id_extra=b.id_extra WHERE (a.status='paid' or a.status='pending') and a.id_extra=" . $idExtra . "";
 
     $records = $conn->query($sqly);
 
